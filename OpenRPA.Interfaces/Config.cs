@@ -20,7 +20,7 @@ namespace OpenRPA
         public string cancelkey = "{ESCAPE}";
         public bool isagent = false;
         public bool showloadingscreen = true;
-        public string culture = "";
+        public string culture = "en";
         public string ocrlanguage = "eng";
         public string[] openworkflows = new string[] { };
         public System.Drawing.Rectangle mainwindow_position = System.Drawing.Rectangle.Empty;
