@@ -26,7 +26,7 @@ namespace OpenRPA.Image
         {
             CompareGray = true;
             Threshold = 0.8;
-            MaxResults = 10;
+            MaxResults = 1;
             MinResults = 1;
             Timeout = new InArgument<TimeSpan>()
             {

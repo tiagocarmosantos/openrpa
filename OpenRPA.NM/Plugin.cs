@@ -190,7 +190,7 @@ namespace OpenRPA.NM
                     LastElement = new NMElement(message);
                 }
 
-                if (message.functionName == "click")
+                if (message.functionName == "click" || message.functionName == "tab" || message.functionName == "submit")
                 {
                     if (IsRecording)
                     {
@@ -200,7 +200,7 @@ namespace OpenRPA.NM
                             Button = Input.MouseButton.Left
                         }; var a = new GetElement { DisplayName = LastElement.ToString() };
 
-                        message.tab = NMHook.tabs.Where(x => x.id == message.tabid && x.windowId == message.windowId).FirstOrDefault();
+                        message.tab = NMHook.tabs.Where(x => x.id == message.tabid && x.browser == message.browser && x.windowId == message.windowId).FirstOrDefault();
 
                         var selector = new NMSelector(LastElement, null, true, null);
                         a.Selector = selector.ToString();

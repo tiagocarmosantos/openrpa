@@ -64,6 +64,7 @@
     <Content Include="harvestMain.bat" />
     <Content Include="HeatTransform.xslt" />
     <Content Include="lanEN.wxi" />
+    <Content Include="myinvenio_logo_icon.ico" />
     <Content Include="open_rpa.ico" />
   </ItemGroup>
   <ItemGroup>

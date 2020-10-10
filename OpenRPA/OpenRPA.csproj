@@ -3,9 +3,9 @@
     <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net462</TargetFramework>
-    <ApplicationIcon>Resources\open_rpa.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\myinvenio_logo_icon.ico</ApplicationIcon>
     <StartupObject />
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <!--<NuspecFile>nuget.nuspec</NuspecFile>-->
     <Description>Base UI of OpenRPA, used as part of OpenRPA robot</Description>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
@@ -131,7 +131,7 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
       1.0.21 hitfixing "missing snippets" error
       1.0.19 DownloadFile/UploadeFile renamed GetFile/Save file. Added DownloadFole, Added a Snippets liberary with examples
 </PackageReleaseNotes>
-    <PackageIcon>open_rpa128.png</PackageIcon>
+    <PackageIcon>myinvenio-logo.png</PackageIcon>
     <Configurations>Debug;Release;ReleaseNuget;PrepInstaller</Configurations>
     <PackageTags></PackageTags>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
@@ -140,7 +140,7 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
     <Company>OpenIAP</Company>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\debug</OutputPath>
+    <OutputPath>..\debug\version1</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -173,7 +173,7 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
   </Target>
   <ItemGroup>
     <!-- https://tyrrrz.me/blog/additional-nuget-files-in-new-csproj -->
-    <None Include="Resources\open_rpa128.png" Pack="true" PackagePath="\" />
+    <None Include="Resources\myinvenio-logo.png" Pack="true" PackagePath="\" />
     <None Include="$(OutputPath)\OpenRPA.exe.config" Pack="true" PackagePath="build" />
   </ItemGroup>
   <ItemGroup>
@@ -307,11 +307,15 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
     <None Remove="Resources\icons\openin.png" />
     <None Remove="Resources\icons\property.png" />
     <None Remove="Resources\icons\variable.png" />
+    <None Remove="Resources\myinvenio-logo-completo.png" />
+    <None Remove="Resources\myinvenio-logo-white-1.png" />
+    <None Remove="Resources\myinvenio-logo-white-2.png" />
+    <None Remove="Resources\myinvenio_logo_icon.ico" />
     <None Remove="Resources\open.png" />
     <None Remove="Resources\open_flow.ico" />
     <None Remove="Resources\open_flow_org.ico" />
     <None Remove="Resources\open_rpa.ico" />
-    <None Remove="Resources\open_rpa512.png" />
+    <None Remove="Resources\myinvenio-logo.png" />
     <None Remove="Resources\open_rpa_white.png" />
     <None Remove="Resources\Selector\Button.png" />
     <None Remove="Resources\Selector\Calendar.png" />
@@ -533,12 +537,15 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
     <Resource Include="Resources\icons\openin.png" />
     <Resource Include="Resources\icons\property.png" />
     <Resource Include="Resources\icons\variable.png" />
+    <Resource Include="Resources\myinvenio-logo-completo.png" />
+    <Resource Include="Resources\myinvenio-logo-white-1.png" />
+    <Resource Include="Resources\myinvenio-logo-white-2.png" />
+    <Resource Include="Resources\myinvenio_logo_icon.ico" />
     <Resource Include="Resources\open.png" />
     <Resource Include="Resources\open_flow.ico" />
     <Resource Include="Resources\open_flow_org.ico" />
     <Resource Include="Resources\open_rpa.ico" />
-    <Resource Include="Resources\open_rpa128.png" />
-    <Resource Include="Resources\open_rpa512.png" />
+    <Resource Include="Resources\myinvenio-logo.png" />
     <Resource Include="Resources\designer\ballon.png" />
     <EmbeddedResource Include="Resources\toolbox\addentitypermission.png" />
     <EmbeddedResource Include="Resources\toolbox\ballon.png" />

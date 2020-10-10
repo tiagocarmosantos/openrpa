@@ -125,6 +125,7 @@ if (true == false) {
             var last_mousemove = null;
             var cache = {};
             var cachecount = 0;
+            var KEYCODE_TAB = 9;
             var openrpautil = {
                 parent: null,
                 ping: function () {
@@ -140,7 +141,84 @@ if (true == false) {
                     document.addEventListener('click', function (e) { openrpautil.pushEvent('click', e); }, true);
                     document.addEventListener('keydown', function (e) { openrpautil.pushEvent('keydown', e); }, true);
                     document.addEventListener('keypress', function (e) { openrpautil.pushEvent('keyup', e); }, true);
+                    document.addEventListener('keyup', function(e) {
+                        if (e.keyCode === KEYCODE_TAB) {
+                            openrpautil.pushEvent('tab', e);
+                        }
+                    }, true);
+                    document.addEventListener('submit', function(e) {
+                        e["formData"] = openrpautil.dumpForm(event.target || event.srcElement);
+                        openrpautil.pushEvent('submit', e);
+                    }, true);
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
+                },
+                dumpForm: function(form) {
+                    try 
+                    {
+                        if (!form || form.nodeName !== "FORM") {
+                            return "";
+                        }
+
+                        var i, j, q = [];
+                        for (i = form.elements.length - 1; i >= 0; i = i - 1) {
+                            if (form.elements[i].name === "") {
+                                continue;
+                            }
+                            switch (form.elements[i].nodeName) {
+                            case 'INPUT':
+                                switch (form.elements[i].type) {
+                                case 'text':
+                                case 'hidden':
+                                case 'password':
+                                case 'button':
+                                case 'reset':
+                                case 'submit':
+                                    q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                                    break;
+                                case 'checkbox':
+                                case 'radio':
+                                    if (form.elements[i].checked) {
+                                        q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                                    }
+                                    break;
+                                }
+                                break;
+                            case 'file':
+                                break;
+                            case 'TEXTAREA':
+                                q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                                break;
+                            case 'SELECT':
+                                switch (form.elements[i].type) {
+                                case 'select-one':
+                                    q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                                    break;
+                                case 'select-multiple':
+                                    for (j = form.elements[i].options.length - 1; j >= 0; j = j - 1) {
+                                        if (form.elements[i].options[j].selected) {
+                                            q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].options[j].value));
+                                        }
+                                    }
+                                    break;
+                                }
+                                break;
+                            case 'BUTTON':
+                                switch (form.elements[i].type) {
+                                case 'reset':
+                                case 'submit':
+                                case 'button':
+                                    q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                                    break;
+                                }
+                                break;
+                            }
+                        }
+                        return q.join("&");
+                        
+                    } catch (e) {
+                        console.error(e);
+                        return "";
+                    }
                 },
                 findform: function (element) {
                     try {
@@ -657,6 +735,7 @@ if (true == false) {
                 pushEvent: function (action, event) {
                     let frame = -1;
                     if (window.frameElement) frame = window.frameElement.id;
+
                     if (action === 'keydown') {
                         chrome.runtime.sendMessage({ functionName: action, key: String.fromCharCode(event.which) });
                     }
@@ -665,10 +744,8 @@ if (true == false) {
                     }
                     else {
                         // https://www.jeffersonscher.com/res/resolution.php
-
                         // https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
-
-                        var message = { functionName: action, frame: frame, parents: 0, xpaths: [] };
+                        var message = { functionName: action, frame: frame, parents: 0, xpaths: []};
                         var targetElement = null;
                         targetElement = event.target || event.srcElement;
                         if (targetElement == null) {
@@ -676,9 +753,6 @@ if (true == false) {
                             return;
                         }
                         if (action === 'mousemove') {
-                            //if (last_mousemove === targetElement) {
-                            //    return;
-                            //}
                             last_mousemove = targetElement;
                         }
                         try {
@@ -709,7 +783,10 @@ if (true == false) {
                         message.xPath = UTILS.xPath(targetElement, true);
                         message.zn_id = openrpautil.getuniqueid(targetElement);
                         message.c = targetElement.childNodes.length;
-                        message.result = openrpautil.mapDOM(targetElement, true);
+
+                        var treeNodes = openrpautil.mapDOM(targetElement, false);
+                        treeNodes["formData"] = event.formData !== undefined ? event.formData : ""; 
+                        message.result = JSON.stringify(treeNodes);
                         //if (targetElement.tagName == "IFRAME" || targetElement.tagName == "FRAME") {
                         message.xpaths.push(message.xPath);
                         //if (document.openrpadebug)

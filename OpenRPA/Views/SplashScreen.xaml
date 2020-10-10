@@ -159,11 +159,7 @@
                          Path=ActualWidth}">-->
 
 
-    <Border CornerRadius="8" Margin="15">
-        <Border.Background>
-            <ImageBrush ImageSource="/OpenRPA;component/Resources/gears-1236578_1920.jpg" 
-                        Stretch="Fill" />
-        </Border.Background>
+    <Border CornerRadius="8" Margin="15" Background="#FFFEFEFE">
         <Border.Effect>
             <DropShadowEffect Color="#894F3B" 
                               BlurRadius="10" 
@@ -171,19 +167,20 @@
                               ShadowDepth="15" />
         </Border.Effect>
         <StackPanel Margin="20, 20, 20,20">
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Image Source="/OpenRPA;component/Resources/open_rpa_white.png" Width="40" Height="40"  />
-                <TextBlock FontSize="40"
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
+                <!--<Image Source="/OpenRPA;component/Resources/open_rpa_white.png" Width="40" Height="40"  />-->
+                <Image Source="/OpenRPA;component/Resources/myinvenio-logo-completo.png"  />
+                <!--<TextBlock FontSize="40"
                    FontFamily="Bauhaus 93"
                    Foreground="White"
                    Margin="10"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   Text="OpenRPA">
+                   Text="myInvenio">
                     <TextBlock.Effect>
                         <DropShadowEffect Color="Black" />
                     </TextBlock.Effect>
-                </TextBlock>
+                </TextBlock>-->
             </StackPanel>
             <WPFTool:BusyIndicator x:Name="BusyIndicator" IsBusy="True" 
                                    BusyContent="Initializing"
@@ -192,12 +189,12 @@
                     <DataTemplate>
                         <TextBlock FontSize="20" TextTrimming="None"
                    FontFamily="Bauhaus 93"
-                   Foreground="White"
+                   Foreground="Black"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Text="{Binding}">
                                 <TextBlock.Effect>
-                                    <DropShadowEffect Color="Black" />
+                                    <DropShadowEffect Color="Black" BlurRadius="6" ShadowDepth="2" />
                                 </TextBlock.Effect>
                             </TextBlock>
                     </DataTemplate>

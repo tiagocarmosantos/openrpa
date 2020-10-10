@@ -12,7 +12,7 @@ namespace OpenRPA
 {
     public class Config : AppSettings<Config>
     {
-        public string wsurl = "wss://app.openiap.io/";
+        public string wsurl = "wss://tm-auth.my-invenio.com/openflow/";
         public string username = "";
         public byte[] jwt;
         public byte[] password;
@@ -125,9 +125,9 @@ namespace OpenRPA
                         filename = System.IO.Path.Combine(Extensions.ProjectsDirectory, "settings.json");
                     }
                     _local = Load(filename);
-                    if(_local.wsurl == "wss://demo1.openrpa.dk/" || _local.wsurl == "wss://demo1.openrpa.dk")
+                    if(_local.wsurl == "wss://tm-auth.my-invenio.com/openflow/" || _local.wsurl == "wss://tm-auth.my-invenio.com/openflow")
                     {
-                        _local.wsurl = "wss://app.openiap.io/";
+                        _local.wsurl = "wss://tm-auth.my-invenio.com/openflow/";
                     }
                 }
                 return _local;

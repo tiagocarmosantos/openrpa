@@ -146,8 +146,7 @@ namespace OpenRPA
 
                             LayoutDocument layoutDocument = new LayoutDocument { Title = "Getting started" };
                             layoutDocument.ContentId = "GettingStarted";
-                            // Views.GettingStarted view = new Views.GettingStarted(url + "://" + u.Host + "/gettingstarted.html");
-                            Views.GettingStarted view = new Views.GettingStarted("https://openrpa.dk/gettingstarted.html");
+                            Views.GettingStarted view = new Views.GettingStarted("https://www.my-invenio.com/");
                             layoutDocument.Content = view;
                             MainTabControl.Children.Add(layoutDocument);
                             layoutDocument.IsSelected = true;

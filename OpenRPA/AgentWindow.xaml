@@ -11,7 +11,7 @@
         xmlns:dockctrl="clr-namespace:Xceed.Wpf.AvalonDock.Controls;assembly=Xceed.Wpf.AvalonDock"
         mc:Ignorable="d"
         Loaded="Window_Loaded" Closed="Window_Closed" Closing="Window_Closing" StateChanged="Window_StateChanged" 
-        Title="OpenRPA"
+        Title="myInvenio Workflow Designer"
         x:Uid="title"
          Height="750" Width="1200">
 
