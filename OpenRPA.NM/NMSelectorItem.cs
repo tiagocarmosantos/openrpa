@@ -17,7 +17,7 @@ namespace OpenRPA.NM
             SetBackingFieldValues(item._backingFieldValues);
             Properties = item.Properties;
         }
-        public NMSelectorItem(NMElement element, bool isRoot, bool hasAnchor )
+        public NMSelectorItem(NMElement element, bool isRoot, bool hasAnchor)
         {
             this.Element = element;
             string n = null;
@@ -34,11 +34,13 @@ namespace OpenRPA.NM
                 return;
             }
             if (!string.IsNullOrEmpty(element.xpath)) Properties.Add(new SelectorItemProperty("xpath", element.xpath) { Enabled = !hasAnchor });
-            if (!string.IsNullOrEmpty(element.cssselector)) Properties.Add(new SelectorItemProperty("cssselector", element.cssselector) { Enabled = hasAnchor });
-            if (!string.IsNullOrEmpty(element.id)) Properties.Add(new SelectorItemProperty("id", element.id) { Enabled = false });
-            if (!string.IsNullOrEmpty(element.Name)) Properties.Add(new SelectorItemProperty("Name", element.Name) { Enabled = false });
-            if (!string.IsNullOrEmpty(element.type)) Properties.Add(new SelectorItemProperty("type", element.type) { Enabled = false });
-            if (!string.IsNullOrEmpty(element.tagname)) Properties.Add(new SelectorItemProperty("tagname", element.tagname) { Enabled = false });
+            if (!string.IsNullOrEmpty(element.cssselector)) Properties.Add(new SelectorItemProperty("cssselector", element.cssselector) { Enabled = !hasAnchor });
+            if (!string.IsNullOrEmpty(element.id)) Properties.Add(new SelectorItemProperty("id", element.id) { Enabled = !hasAnchor });
+            if (!string.IsNullOrEmpty(element.Value)) Properties.Add(new SelectorItemProperty("value", element.Value) { Enabled = !hasAnchor });
+            if (!string.IsNullOrEmpty(element.Name)) Properties.Add(new SelectorItemProperty("Name", element.Name) { Enabled = !hasAnchor });
+            if (!string.IsNullOrEmpty(element.type)) Properties.Add(new SelectorItemProperty("type", element.type) { Enabled = !hasAnchor });
+            if (!string.IsNullOrEmpty(element.tagname)) Properties.Add(new SelectorItemProperty("tagname", element.tagname) { Enabled = !hasAnchor });
+            if (!string.IsNullOrEmpty(element.classname)) Properties.Add(new SelectorItemProperty("class", element.classname) { Enabled = !hasAnchor });
             Enabled = (Properties.Count > 1);
             //foreach (var p in Properties)
             //{
@@ -98,7 +100,7 @@ namespace OpenRPA.NM
                 return e.Value;
             }
         }
-        
+
         public NMSelectorItem(NMElement element)
         {
             this.Element = element;
@@ -107,7 +109,7 @@ namespace OpenRPA.NM
             if (!string.IsNullOrEmpty(element.Name)) Properties.Add(new SelectorItemProperty("Name", element.Name));
             if (!string.IsNullOrEmpty(element.type)) Properties.Add(new SelectorItemProperty("type", element.type));
             if (!string.IsNullOrEmpty(element.tagname)) Properties.Add(new SelectorItemProperty("tagname", element.tagname));
-           
+
             if (!string.IsNullOrEmpty(element.id)) Properties.Add(new SelectorItemProperty("id", element.id));
             foreach (var p in Properties)
             {
@@ -128,8 +130,10 @@ namespace OpenRPA.NM
             if (Properties.Where(x => x.Name == "id").Count() == 1) result.Add("id");
             if (Properties.Where(x => x.Name == "Name").Count() == 1) result.Add("Name");
             if (Properties.Where(x => x.Name == "type").Count() == 1) result.Add("type");
+            if (Properties.Where(x => x.Name == "value").Count() == 1) result.Add("value");
             if (Properties.Where(x => x.Name == "tagname").Count() == 1) result.Add("tagname");
-            
+            if (Properties.Where(x => x.Name == "class").Count() == 1) result.Add("class");
+
             return result.ToArray();
         }
         public void EnumNeededProperties(NMElement element, NMElement parent)
@@ -151,7 +155,7 @@ namespace OpenRPA.NM
                 var selectedProps = props.Take(i).ToArray();
                 foreach (var p in Properties) p.Enabled = selectedProps.Contains(p.Name);
                 NMElement[] children = { };
-                if(element.Parent != null) { children = element.Parent.Children; }
+                if (element.Parent != null) { children = element.Parent.Children; }
                 matchcounter = 0;
                 foreach (NMElement elementNode in children)
                 {
@@ -214,7 +218,7 @@ namespace OpenRPA.NM
         {
             foreach (var p in item.Properties.Where(x => x.Enabled == true && x.Value != null))
             {
-                
+
                 if (p.Name == "Name")
                 {
                     if (!string.IsNullOrEmpty(m.Name))

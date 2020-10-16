@@ -16,8 +16,10 @@ namespace OpenRPA.NM
         public string Name { get; set; }
         public string id { get; set; }
         public string type { get; set; }
-        public NMElement[] Children {
-            get {
+        public NMElement[] Children
+        {
+            get
+            {
                 var result = new List<NMElement>();
                 if (chromeelement.ContainsKey("content"))
                 {
@@ -52,20 +54,22 @@ namespace OpenRPA.NM
             set { }
         }
         public NMElement Parent { get; set; }
-        public bool SupportInput {
+        public bool SupportInput
+        {
             get
             {
                 if (tagname.ToLower() != "input" && tagname.ToLower() != "select") return false;
-                if(tagname.ToLower() == "input")
+                if (tagname.ToLower() == "input")
                 {
-                    if(type==null) return true;
+                    if (type == null) return true;
                     if (type.ToLower() == "text" || type.ToLower() == "password") return true;
                     return false;
-                } else
+                }
+                else
                 {
                     return true;
                 }
-                
+
             }
         }
         private Dictionary<string, object> chromeelement { get; set; }
@@ -95,17 +99,18 @@ namespace OpenRPA.NM
                 {
                 }
                 chromeelement = new Dictionary<string, object>();
-                if(c!=null)
-                    foreach (var kp in c )
+                if (c != null)
+                    foreach (var kp in c)
                     {
-                        if(chromeelement.ContainsKey(kp.Key.ToLower()))
+                        if (chromeelement.ContainsKey(kp.Key.ToLower()))
                         {
                             chromeelement[kp.Key.ToLower()] = kp.Value;
-                        } else
+                        }
+                        else
                         {
                             chromeelement.Add(kp.Key.ToLower(), kp.Value);
                         }
-                        
+
                     }
                 //if (chromeelement.ContainsKey("attributes"))
                 //{
@@ -120,6 +125,10 @@ namespace OpenRPA.NM
                 if (chromeelement.ContainsKey("id")) id = chromeelement["id"].ToString();
                 if (chromeelement.ContainsKey("tagname")) tagname = chromeelement["tagname"].ToString();
                 if (chromeelement.ContainsKey("classname")) classname = chromeelement["classname"].ToString();
+                if (String.IsNullOrEmpty(classname) && (chromeelement.ContainsKey("class")))
+                {
+                    classname = chromeelement["class"].ToString();
+                }
                 if (chromeelement.ContainsKey("type")) type = chromeelement["type"].ToString();
                 if (chromeelement.ContainsKey("xpath")) xpath = chromeelement["xpath"].ToString();
                 if (chromeelement.ContainsKey("cssselector")) cssselector = chromeelement["cssselector"].ToString();
@@ -143,7 +152,7 @@ namespace OpenRPA.NM
             _browser = message.browser;
             zn_id = message.zn_id;
             this.message = message;
-            if(string.IsNullOrEmpty(xpath)) xpath = message.xPath;
+            if (string.IsNullOrEmpty(xpath)) xpath = message.xPath;
             if (string.IsNullOrEmpty(cssselector)) cssselector = message.cssPath;
             X = message.uix;
             Y = message.uiy;
@@ -158,8 +167,10 @@ namespace OpenRPA.NM
         }
         [Newtonsoft.Json.JsonIgnore]
         private readonly string _browser = null;
-        public string browser {
-            get {
+        public string browser
+        {
+            get
+            {
                 return _browser;
             }
         }
@@ -170,7 +181,7 @@ namespace OpenRPA.NM
             {
                 if (chromeelement.ContainsKey("text")) return chromeelement["text"].ToString();
                 if (chromeelement.ContainsKey("innertext")) return chromeelement["innertext"].ToString();
-                if(!hasRefreshed)
+                if (!hasRefreshed)
                 {
                     Refresh();
                     if (chromeelement.ContainsKey("text")) return chromeelement["text"].ToString();
@@ -207,9 +218,9 @@ namespace OpenRPA.NM
                     var json = chromeelement["values"].ToString();
                     result = JsonConvert.DeserializeObject<string[]>(json);
                 }
-                if(result==null|| result.Length==0)
+                if (result == null || result.Length == 0)
                 {
-                    if(!string.IsNullOrEmpty(Value))
+                    if (!string.IsNullOrEmpty(Value))
                     {
                         result = new string[] { Value };
                     }
@@ -249,7 +260,7 @@ namespace OpenRPA.NM
             }
         }
 
-    public string Value
+        public string Value
         {
             get
             {
@@ -536,7 +547,7 @@ namespace OpenRPA.NM
                 var result = new List<IElement>();
                 if (tagname.ToLower() == "select")
                 {
-                    foreach(var item in Children)
+                    foreach (var item in Children)
                     {
                         item.Refresh();
                         result.Add(item);
