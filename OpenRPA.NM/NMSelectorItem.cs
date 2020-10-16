@@ -33,15 +33,19 @@ namespace OpenRPA.NM
                 canDisable = false;
                 return;
             }
-            if (!string.IsNullOrEmpty(element.xpath)) Properties.Add(new SelectorItemProperty("xpath", element.xpath) { Enabled = !hasAnchor });
-            if (!string.IsNullOrEmpty(element.cssselector)) Properties.Add(new SelectorItemProperty("cssselector", element.cssselector) { Enabled = !hasAnchor });
-            if (!string.IsNullOrEmpty(element.id)) Properties.Add(new SelectorItemProperty("id", element.id) { Enabled = !hasAnchor });
-            if (!string.IsNullOrEmpty(element.Value)) Properties.Add(new SelectorItemProperty("value", element.Value) { Enabled = !hasAnchor });
-            if (!string.IsNullOrEmpty(element.Name)) Properties.Add(new SelectorItemProperty("Name", element.Name) { Enabled = !hasAnchor });
-            if (!string.IsNullOrEmpty(element.type)) Properties.Add(new SelectorItemProperty("type", element.type) { Enabled = !hasAnchor });
-            if (!string.IsNullOrEmpty(element.tagname)) Properties.Add(new SelectorItemProperty("tagname", element.tagname) { Enabled = !hasAnchor });
-            if (!string.IsNullOrEmpty(element.classname)) Properties.Add(new SelectorItemProperty("class", element.classname) { Enabled = !hasAnchor });
-            Enabled = (Properties.Count > 1);
+            if (!string.IsNullOrEmpty(element.xpath)) Properties.Add(new SelectorItemProperty("xpath", element.xpath) { Enabled = !hasAnchor });  
+            // if (!string.IsNullOrEmpty(element.cssselector)) Properties.Add(new SelectorItemProperty("cssselector", element.cssselector) { Enabled = !hasAnchor });
+            if (!string.IsNullOrEmpty(element.id)) Properties.Add(new SelectorItemProperty("id", element.id) { Enabled = !hasAnchor });  
+
+            if (element.chromeelement != null && element.chromeelement.ContainsKey("value") && (!string.IsNullOrEmpty(element.chromeelement["value"].ToString())) ) 
+                Properties.Add(new SelectorItemProperty("value", element.chromeelement["value"].ToString()) { Enabled = !hasAnchor });  
+
+            if (!string.IsNullOrEmpty(element.Name)) Properties.Add(new SelectorItemProperty("Name", element.Name) { Enabled = !hasAnchor });  
+            if (!string.IsNullOrEmpty(element.type)) Properties.Add(new SelectorItemProperty("type", element.type) { Enabled = !hasAnchor });  
+           // if (!string.IsNullOrEmpty(element.tagname)) Properties.Add(new SelectorItemProperty("tagname", element.tagname) { Enabled = !hasAnchor });   
+            if (!string.IsNullOrEmpty(element.classname)) Properties.Add(new SelectorItemProperty("class", element.classname) { Enabled = !hasAnchor });  
+
+           Enabled = (Properties.Count > 1);
             //foreach (var p in Properties)
             //{
             //    p.Enabled = true;

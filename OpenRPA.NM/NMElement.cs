@@ -72,7 +72,7 @@ namespace OpenRPA.NM
 
             }
         }
-        private Dictionary<string, object> chromeelement { get; set; }
+        internal Dictionary<string, object> chromeelement { get; set; }
         public string xpath { get; set; }
         public string cssselector { get; set; }
         public string tagname { get; set; }
