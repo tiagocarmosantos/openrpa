@@ -141,9 +141,14 @@ if (true == false) {
                     document.addEventListener('click', function (e) { openrpautil.pushEvent('click', e); }, true);
                     document.addEventListener('keydown', function (e) { openrpautil.pushEvent('keydown', e); }, true);
                     document.addEventListener('keypress', function (e) { openrpautil.pushEvent('keyup', e); }, true);
-                    document.addEventListener('keyup', function (e) {
+                    document.addEventListener('keyup', function(e) {
                         if (e.keyCode === KEYCODE_TAB) {
                             openrpautil.pushEvent('tab', e);
+                        }
+                    }, true);
+                    document.addEventListener('change', function (e) {
+                        if (e.target.type === 'text' || e.target.type === 'select' || e.target.type === 'radio' || e.target.type === 'checkbox') {
+                            openrpautil.pushEvent('change', e);
                         }
                     }, true);
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
@@ -577,9 +582,9 @@ if (true == false) {
                             message.uix += 7;
                             message.uiy -= 7;
                         }
-                        //} else {
-                        //    message.uix += 1;
-                        //    message.uiy += 1;
+                    //} else {
+                    //    message.uix += 1;
+                    //    message.uiy += 1;
                     }
                 },
                 // https://stackoverflow.com/questions/53056796/getboundingclientrect-from-within-iframe
@@ -625,7 +630,7 @@ if (true == false) {
                                             } else {
                                                 positions.push({ x: 0, y: 0 });
                                             }
-
+                                            
                                         }
                                     } catch (e) {
                                         // console.debug(e);
@@ -641,7 +646,7 @@ if (true == false) {
                                 break;
                             }
                     }
-
+                    
                     var result = positions.reduce((accumulator, currentValue) => {
                         return {
                             x: (accumulator.x + currentValue.x) | 0,
@@ -673,7 +678,7 @@ if (true == false) {
                     else {
                         // https://www.jeffersonscher.com/res/resolution.php
                         // https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
-                        var message = { functionName: action, frame: frame, parents: 0, xpaths: [] };
+                        var message = { functionName: action, frame: frame, parents: 0, xpaths: []};
                         var targetElement = null;
                         targetElement = event.target || event.srcElement;
                         if (targetElement == null) {
@@ -755,7 +760,7 @@ if (true == false) {
                     delete message.script;
                     var test = JSON.parse(JSON.stringify(message));
                     if (document.openrpadebug) console.log(test);
-                    return test;
+                    return test;                    
                 },
                 fullPath: function (el) {
                     var names = [];
@@ -957,6 +962,8 @@ if (true == false) {
                     treeObject["isvisibleonscreen"] = openrpautil.isVisibleOnScreen(element);
                     treeObject["disabled"] = element.disabled;
                     treeObject["innerText"] = element.innerText;
+                    treeObject["additions"] = openrpautil.getAdditions(element);
+
                     if (element.tagName && element.tagName.toLowerCase() == "options") {
                         treeObject["selected"] = element.selected;
                     }
@@ -966,13 +973,44 @@ if (true == false) {
                             if (element.options[i].selected) {
                                 selectedvalues.push(element.options[i].value);
                             }
-                        }
+                        } 
                         treeObject["values"] = selectedvalues;
                     }
 
                     //updateelementtext
                     if (treeObject["disabled"] === null || treeObject["disabled"] === undefined) treeObject["disabled"] = false;
                     return json ? JSON.stringify(treeObject) : treeObject;
+                },
+                getAdditions: function (elm) {
+                    var additions = {};
+                    
+                    try {
+                        var cells = getTableRowCellsFrom(elm);
+                        
+                        if (cells.length > 0) {
+                            additions["tableRowCells"] = cells;
+                        }
+                        
+                        return additions;
+                    } 
+                    catch (e) {
+                        //window.console.error(e);
+                        return { };
+                    }
+
+                    function getTableRowCellsFrom(element) {
+                        var data = [];
+                        while (element && element.nodeName !== "TR") {
+                            element = element.parentNode;
+                        }
+                        if (element) {
+                            var td = element.getElementsByTagName("td");
+                            for (var i = 0; i < td.length; i++) {
+                                data.push(td[i].innerText);
+                            }
+                        }
+                        return data;
+                    }
                 },
                 isVisibleOnScreen: function (elm) {
                     var rect = elm.getBoundingClientRect();
@@ -1173,7 +1211,7 @@ if (true == false) {
                     case Node.ELEMENT_NODE:
                         ownValue = node.localName;
                         if (optimized) {
-
+                            
                             for (var i = 0; i < document.openrpauniquexpathids.length; i++) {
                                 var id = document.openrpauniquexpathids[i].toLowerCase();
                                 if (node.getAttribute(id))
