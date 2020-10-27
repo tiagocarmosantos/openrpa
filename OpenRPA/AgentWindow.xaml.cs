@@ -4,6 +4,7 @@ using OpenRPA.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,7 +46,7 @@ namespace OpenRPA
             Console.SetError(new ConsoleDecorator(Console.Out, true));
             lvDataBinding.ItemsSource = Plugins.recordPlugins;
             NotifyPropertyChanged("Toolbox");
-            lblVersion.Text = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
+            lblVersion.Text = System.Reflection.Assembly.GetEntryAssembly().GetName().Version + ConfigurationManager.AppSettings["TmVersion"];
         }
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
