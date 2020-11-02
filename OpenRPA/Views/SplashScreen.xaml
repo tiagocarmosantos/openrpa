@@ -168,19 +168,8 @@
         </Border.Effect>
         <StackPanel Margin="20, 20, 20,20">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
-                <!--<Image Source="/OpenRPA;component/Resources/open_rpa_white.png" Width="40" Height="40"  />-->
-                <Image Source="/OpenRPA;component/Resources/myinvenio-logo-completo.png"  />
-                <!--<TextBlock FontSize="40"
-                   FontFamily="Bauhaus 93"
-                   Foreground="White"
-                   Margin="10"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   Text="myInvenio">
-                    <TextBlock.Effect>
-                        <DropShadowEffect Color="Black" />
-                    </TextBlock.Effect>
-                </TextBlock>-->
+                 <Image Source="/OpenRPA;component/Resources/company-logo-completo.png"  />
+                
             </StackPanel>
             <WPFTool:BusyIndicator x:Name="BusyIndicator" IsBusy="True" 
                                    BusyContent="Initializing"

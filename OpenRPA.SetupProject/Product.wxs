@@ -32,8 +32,8 @@
     <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
 
-    <Icon Id="myinvenio_logo_icon.ico" SourceFile="myinvenio_logo_icon.ico"/>
-    <Property Id="ARPPRODUCTICON" Value="myinvenio_logo_icon.ico" />
+    <Icon Id="company_logo_icon.ico" SourceFile="company_logo_icon.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="company_logo_icon.ico" />
 
 
     <Property Id="INSTALLOFFICEFEATURE" Value="TRUE" />
