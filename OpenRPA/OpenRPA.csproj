@@ -156,7 +156,6 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstaller|AnyCPU'">
     <OutputPath></OutputPath>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstallerIBM|AnyCPU'">
     <OutputPath>bin\PrepInstaller\</OutputPath>
