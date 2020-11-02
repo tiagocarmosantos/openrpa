@@ -20,6 +20,20 @@
     <SuppressPdbOutput>True</SuppressPdbOutput>
     <VerboseOutput>False</VerboseOutput>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PrepInstallerIBM|x86' ">
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+    <VerboseOutput>False</VerboseOutput>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PrepInstallerIBM|AnyCPU' ">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'PrepInstallerIBM|Any CPU' ">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="compOffice.wxs" />
     <Compile Include="compMain.wxs" />
@@ -64,7 +78,6 @@
     <Content Include="harvestMain.bat" />
     <Content Include="HeatTransform.xslt" />
     <Content Include="lanEN.wxi" />
-    <Content Include="myinvenio_logo_icon.ico" />
     <Content Include="open_rpa.ico" />
   </ItemGroup>
   <ItemGroup>

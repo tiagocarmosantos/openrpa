@@ -32,7 +32,7 @@
     <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
 
-    <Icon Id="company_logo_icon.ico" SourceFile="company_logo_icon.ico"/>
+    <Icon Id="company_logo_icon.ico" SourceFile="..\OpenRPA\Resources\company_logo_icon.ico"/>
     <Property Id="ARPPRODUCTICON" Value="company_logo_icon.ico" />
 
 
