@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
     <PackageIcon>open_rpa128.png</PackageIcon>
     <PackageIconUrl />
-    <Configurations>Debug;Release;PrepInstaller;ReleaseNuget</Configurations>
+    <Configurations>Debug;Release;PrepInstaller;ReleaseNuget;PrepInstallerIBM</Configurations>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
     <PackageTags></PackageTags>
     <Version>1.0.1</Version>

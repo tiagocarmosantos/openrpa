@@ -7,7 +7,7 @@
     <Description>A Collection of activities to work the openflow database</Description>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
-    <Configurations>Debug;Release;PrepInstaller;ReleaseNuget</Configurations>
+    <Configurations>Debug;Release;PrepInstaller;ReleaseNuget;PrepInstallerIBM</Configurations>
     <PackageIcon>open_rpa128.png</PackageIcon>
     <Version>1.0.8</Version>
     <PackageReleaseNotes>1.0.8 fix issue with getfile not fetching newest version when getting by filename

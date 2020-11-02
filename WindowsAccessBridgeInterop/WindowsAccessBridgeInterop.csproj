@@ -13,7 +13,7 @@
 1.1.5 update interfaces reference</PackageReleaseNotes>
     <PackageIcon>open_rpa128.png</PackageIcon>
     <Version>1.1.9</Version>
-    <Configurations>Debug;Release;ReleaseNuget;PrepInstaller</Configurations>
+    <Configurations>Debug;Release;ReleaseNuget;PrepInstaller;PrepInstallerIBM</Configurations>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
     <PackageTags></PackageTags>
     <Platforms>AnyCPU;x86</Platforms>
@@ -28,7 +28,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstaller|AnyCPU'">
     <OutputPath />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstallerIBM|AnyCPU'">
+    <OutputPath />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstaller|x86'">
+    <OutputPath />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstallerIBM|x86'">
     <OutputPath />
   </PropertyGroup>
   <Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">

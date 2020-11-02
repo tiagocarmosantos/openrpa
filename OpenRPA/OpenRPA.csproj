@@ -132,7 +132,7 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
       1.0.19 DownloadFile/UploadeFile renamed GetFile/Save file. Added DownloadFole, Added a Snippets liberary with examples
 </PackageReleaseNotes>
     <PackageIcon>company-logo.png</PackageIcon>
-    <Configurations>Debug;Release;ReleaseNuget;PrepInstaller</Configurations>
+    <Configurations>Debug;Release;ReleaseNuget;PrepInstaller;PrepInstallerIBM</Configurations>
     <PackageTags></PackageTags>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
     <Platforms>AnyCPU;x86</Platforms>
@@ -156,8 +156,17 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstaller|AnyCPU'">
     <OutputPath></OutputPath>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstallerIBM|AnyCPU'">
+    <OutputPath>bin\PrepInstaller\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstaller|x86'">
+    <OutputPath />
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstallerIBM|x86'">
     <OutputPath />
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
@@ -833,6 +842,9 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
       <UserProperties BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="if  NOT  &quot;$(ConfigurationName)&quot;==&quot;PrepInstallerIBM&quot;;  xcopy /f /y  &quot;$(SolutionDir)themes\MyInvenio\Resources&quot; &quot;$(ProjectDir)Resources&quot;&#xD;&#xA;if  &quot;$(ConfigurationName)&quot;==&quot;PrepInstallerIBM&quot;;  xcopy /f /y  &quot;$(SolutionDir)themes\IBM\Resources&quot; &quot;$(ProjectDir)Resources&quot;" />
+  </Target>
   <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="ECHO ON&#xD;&#xA;dir" />
   </Target>-->

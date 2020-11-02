@@ -28,7 +28,7 @@
 1.0.9 update interfaces reference</PackageReleaseNotes>
     <Description>OpenRPA Package Manager</Description>
     <PackageIcon>open_rpa128.png</PackageIcon>
-    <Configurations>Debug;Release;ReleaseNuget;PrepInstaller</Configurations>
+    <Configurations>Debug;Release;ReleaseNuget;PrepInstaller;PrepInstallerIBM</Configurations>
     <ApplicationManifest>OpenRPA.Updater.exe.manifest</ApplicationManifest>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
     <PackageTags>OpenRPAcore</PackageTags>
@@ -44,7 +44,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstaller|AnyCPU'">
     <OutputPath></OutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstallerIBM|AnyCPU'">
+    <OutputPath />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstaller|x86'">
+    <OutputPath />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstallerIBM|x86'">
     <OutputPath />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

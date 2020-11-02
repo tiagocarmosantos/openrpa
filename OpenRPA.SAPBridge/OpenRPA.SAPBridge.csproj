@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <Platforms>AnyCPU;x86</Platforms>
     <ApplicationIcon>OpenRPA.ico</ApplicationIcon>
-    <Configurations>Debug;Release;PrepInstaller</Configurations>
+    <Configurations>Debug;Release;PrepInstaller;PrepInstallerIBM</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\debug</OutputPath>
@@ -14,6 +14,9 @@
     <OutputPath>..\debug86</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstaller|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PrepInstallerIBM|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>

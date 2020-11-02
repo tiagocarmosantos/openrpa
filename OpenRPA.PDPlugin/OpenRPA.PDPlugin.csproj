@@ -9,7 +9,7 @@
     <PackageIcon>open_rpa128.png</PackageIcon>
     <PackageIconUrl />
     <Description>OpenRPA Process Mining Addon</Description>
-    <Configurations>Debug;Release;PrepInstaller;ReleaseNuget</Configurations>
+    <Configurations>Debug;Release;PrepInstaller;ReleaseNuget;PrepInstallerIBM</Configurations>
     <PackageTags>OpenRPA</PackageTags>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
     <Version>1.0.1</Version>
