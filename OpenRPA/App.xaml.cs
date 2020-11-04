@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace OpenRPA
         {
             if (SingleInstance<App>.InitializeAsFirstInstance("OpenRPA"))
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Ssl3;
                 AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
                 AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceHandler;
                 var application = new App();

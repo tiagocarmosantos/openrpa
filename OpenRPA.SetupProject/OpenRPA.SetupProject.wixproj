@@ -6,7 +6,7 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>70e2e351-ac0d-486d-b357-b890ef20d1c8</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>OpenRPA</OutputName>
+    <OutputName>Task Mining Workflow Designer</OutputName>
     <OutputType>Package</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

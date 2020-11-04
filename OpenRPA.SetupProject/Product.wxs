@@ -126,8 +126,8 @@
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="$(var.UpgradeCode)" Feature="MainFeature">
         <Shortcut Id="ApplicationStartMenuShortcut"
-                  Name="OpenRPA"
-                  Description="OpenRPA"
+                  Name="Task Mining Workflow Designer"
+                  Description="Task Mining Workflow Designer"
                   Target="[#openrpaExe]"
                   WorkingDirectory="INSTALLDIR"/>
         <RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall"/>
@@ -201,11 +201,13 @@
 
       </Directory>
       <Directory Id="ProgramFiles64Folder">
-        <Directory Id="INSTALLDIR" Name="OpenRPA" />
-      </Directory>
+        <Directory Id="INSTALLPARENTDIR" Name="Task Mining" >
+			<Directory Id="INSTALLDIR" Name="Workflow Designer" >  </Directory>
+		  </Directory>
+	   </Directory>
 
       <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="OpenRPA"/>
+        <Directory Id="ApplicationProgramsFolder" Name="Task Mining Workflow Designer"/>
       </Directory>
     </Directory>
 

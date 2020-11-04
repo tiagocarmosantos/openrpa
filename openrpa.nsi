@@ -5,13 +5,13 @@
 !include "StrRep.nsh"
 !include "ReplaceInFile.nsh"
 
-Name "OpenRPA"
+Name "Task Mining Workflow Designer"
 OutFile "OpenRPA.exe"
-InstallDir $PROGRAMFILES\OpenRPA
+InstallDir $PROGRAMFILES\Task Mining\Workflow Designer
 function .onInit
     ${If} ${RunningX64}
         SetRegView 64
-        StrCpy $INSTDIR "$PROGRAMFILES64\OpenRPA"
+        StrCpy $INSTDIR "$PROGRAMFILES64\Task Mining\Workflow Designer"
     ${EndIf}
 functionEnd
 
@@ -127,7 +127,7 @@ Section "Base robot files" ; section 0
   File /r "C:\code\openrpa\OpenRPA.Utilities\bin\PrepInstaller\net462\*"  
 
   WriteRegStr HKLM SOFTWARE\OpenRPA "Install_Dir" "$INSTDIR"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenRPA" "DisplayName" "OpenRPA"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenRPA" "DisplayName" "Task Mining Workflow Designer"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenRPA" "UninstallString" '"$INSTDIR\uninstall.exe"'
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenRPA" "NoModify" 1
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenRPA" "NoRepair" 1
@@ -135,16 +135,16 @@ Section "Base robot files" ; section 0
 SectionEnd
 
 Section "Start Menu Shortcuts" ; section 1
-  CreateDirectory "$SMPROGRAMS\OpenRPA"
-  CreateShortcut "$SMPROGRAMS\OpenRPA\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
-  CreateShortcut "$SMPROGRAMS\OpenRPA\OpenRPA.lnk" "$INSTDIR\OpenRPA.exe" "" "$INSTDIR\OpenRPA.exe" 0
+  CreateDirectory "$SMPROGRAMS\Task Mining Workflow Designer"
+  CreateShortcut "$SMPROGRAMS\Task Mining Workflow Designer\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
+  CreateShortcut "$SMPROGRAMS\Task Mining Workflow Designer\Task Mining Workflow Designer.lnk" "$INSTDIR\OpenRPA.exe" "" "$INSTDIR\OpenRPA.exe" 0
 SectionEnd
 
 Section "Uninstall"
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\OpenRPA"
   DeleteRegKey HKLM SOFTWARE\OpenRPA
-  Delete "$SMPROGRAMS\OpenRPA\*.*"
-  RMDir "$SMPROGRAMS\OpenRPA"
+  Delete "$SMPROGRAMS\Task Mining Workflow Designer\*.*"
+  RMDir "$SMPROGRAMS\Task Mining Workflow Designer"
   RMDir /r /REBOOTOK "$INSTDIR"
 SectionEnd
 
