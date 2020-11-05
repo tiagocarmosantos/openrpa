@@ -168,8 +168,12 @@
         </Border.Effect>
         <StackPanel Margin="20, 20, 20,20">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
-                 <Image Source="/OpenRPA;component/Resources/company-logo-completo.png"  />
-                
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Top" HorizontalAlignment="Center">
+                    <Image Source="/OpenRPA;component/Resources/company-logo-completo.png"    />
+                    <StackPanel Orientation="Vertical" DockPanel.Dock="Top" VerticalAlignment="Top">
+                        <Image Source="/OpenRPA;component/Resources/company-logo-under.png" MouseDown="Image_MouseDown" MouseEnter="Image_MouseEnter" MouseLeave="Image_OnMouseLeave"          />
+                    </StackPanel>
+                    </StackPanel>
             </StackPanel>
             <WPFTool:BusyIndicator x:Name="BusyIndicator" IsBusy="True" 
                                    BusyContent="Initializing"

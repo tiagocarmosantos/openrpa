@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,10 +21,26 @@ namespace OpenRPA.Views
     /// </summary>
     public partial class SplashScreen : Window, System.ComponentModel.INotifyPropertyChanged
     {
+
+        private DateTime StartDt;
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            var deltaTime = DateTime.Now - StartDt;
+            if (deltaTime.TotalSeconds < 5 )
+            {
+                var waitTime = new TimeSpan(0, 0, 5) - deltaTime;
+                Thread.Sleep((int)waitTime.TotalMilliseconds);
+            }
+
+            base.OnClosing(e);
+        }
+
+
         public SplashScreen()
         {
             InitializeComponent();
             DataContext = this;
+            StartDt = DateTime.Now;
         }
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propertyName)
@@ -101,6 +119,22 @@ namespace OpenRPA.Views
             //    IsBusy = false;
             //};
             //worker.RunWorkerAsync();
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+             System.Diagnostics.Process.Start("https://www.my-invenio.com");
+        }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Cursor != Cursors.Wait) Mouse.OverrideCursor = Cursors.Hand;
+        }
+
+        private void Image_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (Cursor != Cursors.Wait)
+                Mouse.OverrideCursor = Cursors.Arrow;
         }
     }
 }
