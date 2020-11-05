@@ -142,12 +142,11 @@ namespace OpenRPA
                         first_connect = false;
                         LoadLayout();
 
-                        if (Config.local.show_getting_started)
+                        if (Config.local.show_getting_started && (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["GettingStartedURL"])))
                         {
-
                             LayoutDocument layoutDocument = new LayoutDocument { Title = "Getting started" };
-                            layoutDocument.ContentId = "GettingStarted";
-                            Views.GettingStarted view = new Views.GettingStarted(  ConfigurationManager.AppSettings["GettingStartedURL"]);
+                            layoutDocument.ContentId = "GettingStarted";                           
+                            Views.GettingStarted view = new Views.GettingStarted(ConfigurationManager.AppSettings["GettingStartedURL"]);
                             layoutDocument.Content = view;
                             MainTabControl.Children.Add(layoutDocument);
                             layoutDocument.IsSelected = true;
