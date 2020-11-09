@@ -156,63 +156,47 @@ namespace OpenRPA.NM
         }
         private float dpiscale = 0;
         private readonly object _lock = new object();
+        private static readonly string[] MyEvents = {"ctrlc","ctrlv","click","tab", "change"};
         private void OnMessage(NativeMessagingMessage message)
         {
             try
             {
-                //lock(_lock)
-                //{
-
-                //    //if (dpiscale == 0)
-                //    //{
-                //    //    dpiscale = NativeMethods.getScalingFactor();
-                //    //} else
-                //    //{
-                //    //    dpiscale = NativeMethods.getScalingFactor();
-                //    //}
-                //    var dpi = NativeMethods.GetDpiForSystem();
-                //    dpiscale = 1;
-                //    if (dpi == 96) dpiscale = 1;
-                //    if (dpi == 120) dpiscale = 1.25f;
-                //    if (dpi == 144) dpiscale = 1.5f;
-                //    if (dpi == 192) dpiscale = 2;
-                //}
-                if (message.uiy > 0 && message.uix > 0 && message.uiwidth > 0 && message.uiheight > 0)
+                lock(_lock)
                 {
-                    //message.uiy = (int)(message.uiy * dpiscale);
-                    //message.uix = (int)(message.uix * dpiscale);
-                    //message.uiwidth = (int)(message.uiwidth * dpiscale);
-                    //message.uiheight = (int)(message.uiheight * dpiscale);
-                    if(dpiscale == 1.25)
+                    if (message.uiy > 0 && message.uix > 0 && message.uiwidth > 0 && message.uiheight > 0)
                     {
-                        message.uiy += 158;
-                    }
-                    LastElement = new NMElement(message);
-                }
-
-                if (message.functionName == "click" || message.functionName == "tab" || message.functionName == "change")
-                {
-                    if (IsRecording)
-                    {
-                        if (LastElement == null) return;
-                        var re = new RecordEvent
+                        if(dpiscale == 1.25)
                         {
-                            Button = Input.MouseButton.Left
-                        }; var a = new GetElement { DisplayName = LastElement.ToString() };
+                            message.uiy += 158;
+                        }
 
-                        message.tab = NMHook.tabs.FirstOrDefault(x => x.id == message.tabid && x.browser == message.browser && x.windowId == message.windowId);
+                        LastElement = new NMElement(message);
+                    }
 
-                        var selector = new NMSelector(LastElement, null, true, null);
-                        a.Selector = selector.ToString();
-                        a.Image = LastElement.ImageString();
-                        a.MaxResults = 1;
+                    if (MyEvents.Contains(message.functionName, StringComparer.OrdinalIgnoreCase))
+                    {
+                        if (IsRecording)
+                        {
+                            if (LastElement == null) return;
+                            var re = new RecordEvent
+                            {
+                                Button = Input.MouseButton.Left
+                            }; var a = new GetElement { DisplayName = LastElement.ToString() };
 
-                        re.Selector = selector;
-                        re.a = new GetElementResult(a);
-                        re.SupportInput = LastElement.SupportInput;
-                        re.SupportSelect = false;
-                        re.ClickHandled = true;
-                        OnUserAction?.Invoke(this, re);
+                            message.tab = NMHook.tabs.FirstOrDefault(x => x.id == message.tabid && x.browser == message.browser && x.windowId == message.windowId);
+
+                            var selector = new NMSelector(LastElement, null, true, null);
+                            a.Selector = selector.ToString();
+                            a.Image = LastElement.ImageString();
+                            a.MaxResults = 1;
+
+                            re.Selector = selector;
+                            re.a = new GetElementResult(a);
+                            re.SupportInput = LastElement.SupportInput;
+                            re.SupportSelect = false;
+                            re.ClickHandled = true;
+                            OnUserAction?.Invoke(this, re);
+                        }
                     }
                 }
             }

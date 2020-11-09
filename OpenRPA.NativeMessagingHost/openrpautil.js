@@ -126,6 +126,11 @@ if (true == false) {
             var cache = {};
             var cachecount = 0;
             var KEYCODE_TAB = 9;
+            var ctrlDown = false,
+                ctrlKey = 17,
+                cmdKey = 91,
+                vKey = 86,
+                cKey = 67;
             var openrpautil = {
                 parent: null,
                 ping: function () {
@@ -139,10 +144,29 @@ if (true == false) {
                     document.addEventListener('mousemove', function (e) { openrpautil.pushEvent('mousemove', e); }, true);
                     if (inIframe()) return;
                     document.addEventListener('click', function (e) { openrpautil.pushEvent('click', e); }, true);
-                    document.addEventListener('keydown', function (e) { openrpautil.pushEvent('keydown', e); }, true);
+                    document.addEventListener('keydown', function(e) {
+
+                        if (e.keyCode === ctrlKey || e.keyCode === cmdKey) ctrlDown = true;
+                        
+                        if (ctrlDown && (e.keyCode === cKey)) 
+                        {
+                            openrpautil.pushEvent('ctrlc', e);
+                            return;
+                        }
+                        
+                        if (ctrlDown && (e.keyCode === vKey)) 
+                        {
+                            openrpautil.pushEvent('ctrlv', e);
+                            return;
+                        }
+
+                        openrpautil.pushEvent('keydown', e);
+                    }, true);
                     document.addEventListener('keypress', function (e) { openrpautil.pushEvent('keyup', e); }, true);
                     document.addEventListener('keyup', function(e) {
-                        if (e.keyCode === KEYCODE_TAB) {
+                        if (e.keyCode === ctrlKey || e.keyCode === cmdKey) ctrlDown = false;
+                        if (e.keyCode === KEYCODE_TAB) 
+                        {
                             openrpautil.pushEvent('tab', e);
                         }
                     }, true);
@@ -676,6 +700,7 @@ if (true == false) {
                         chrome.runtime.sendMessage({ functionName: action, key: String.fromCharCode(event.which) });
                     }
                     else {
+                        console.log("Catch", action);
                         // https://www.jeffersonscher.com/res/resolution.php
                         // https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
                         var message = { functionName: action, frame: frame, parents: 0, xpaths: []};
