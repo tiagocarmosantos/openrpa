@@ -44,6 +44,18 @@
       </Directory>
       <Directory Id="SAPru" Name="ru">
       </Directory>
+
+		<Directory Id="SAPit" Name="it">
+		</Directory>
+
+		<Directory Id="SAPfr" Name="fr">
+		</Directory>
+
+		<Directory Id="SAPnl" Name="nl">
+		</Directory>
+
+		<Directory Id="SAPja" Name="ja">
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

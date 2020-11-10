@@ -27,7 +27,23 @@
       <Component Id='NMComponentru' Win64='yes' Directory="NMru" Guid='{D48F61C4-3E51-44CC-849E-0AEC6CA19D96}'>
         <File Id="OpenRPA.NM.resources.dll_ru" Source="!(wix.NMSource)\ru\OpenRPA.NM.resources.dll" />
       </Component>
-    </ComponentGroup>
+
+		<Component Id='NMComponentit' Win64='yes' Directory="NMit" Guid='{D48F61C4-3E51-44CC-849E-0AEC6CA19D97}'>
+			<File Id="OpenRPA.NM.resources.dll_it" Source="!(wix.NMSource)\it\OpenRPA.NM.resources.dll" />
+		</Component>
+
+		<Component Id='NMComponentfr' Win64='yes' Directory="NMfr" Guid='{D48F61C4-3E51-44CC-849E-0AEC6CA19D98}'>
+			<File Id="OpenRPA.NM.resources.dll_fr" Source="!(wix.NMSource)\fr\OpenRPA.NM.resources.dll" />
+		</Component>
+
+		<Component Id='NMComponentnl' Win64='yes' Directory="NMnl" Guid='{D48F61C4-3E51-44CC-849E-0AEC6CA19D99}'>
+			<File Id="OpenRPA.NM.resources.dll_nl" Source="!(wix.NMSource)\nl\OpenRPA.NM.resources.dll" />
+		</Component>
+		<Component Id='NMComponentja' Win64='yes' Directory="NMja" Guid='{D48F61C4-3E51-44CC-849E-0AEC6CA19D90}'>
+			<File Id="OpenRPA.NM.resources.dll_ja" Source="!(wix.NMSource)\ja\OpenRPA.NM.resources.dll" />
+		</Component>
+
+	</ComponentGroup>
     
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="NMde" Name="de">
@@ -42,6 +58,18 @@
       </Directory>
       <Directory Id="NMru" Name="ru">
       </Directory>
+
+		<Directory Id="NMit" Name="it">
+		</Directory>
+
+		<Directory Id="NMfr" Name="fr">
+		</Directory>
+
+		<Directory Id="NMnl" Name="nl">
+		</Directory>
+
+		<Directory Id="NMja" Name="ja">
+		</Directory>
     </DirectoryRef>
   </Fragment>
 </Wix>

@@ -1,6 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-   
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -66,25 +124,25 @@
     <value>Animate Mouse</value>
   </data>
   <data name="activity_animatemouse_help" xml:space="preserve">
-    <value>Visibly move the mouse, instead of instantly moving it to the destination</value>
+    <value>Visibly move the mouse instead of instantly moving it to the destination</value>
   </data>
   <data name="activity_animatemove" xml:space="preserve">
     <value>Animate Move</value>
   </data>
   <data name="activity_animatemove_help" xml:space="preserve">
-    <value>Visibly move the window, instead of instantly moving it to the destination</value>
+    <value>Visibly move the window instead of instantly moving it to the destination</value>
   </data>
   <data name="activity_blocking" xml:space="preserve">
     <value>Blocking</value>
   </data>
   <data name="activity_blocking_help" xml:space="preserve">
-    <value>Block execution until the complete</value>
+    <value>Block execution until activity is complete</value>
   </data>
   <data name="activity_checkrunning" xml:space="preserve">
     <value>Check Running</value>
   </data>
   <data name="activity_checkrunning_help" xml:space="preserve">
-    <value>Check if application is already running using the selector, if set to false, will launch a new application no matter what</value>
+    <value>Check if the application is already running using the selector. If set to false, will launch a new application no matter what</value>
   </data>
   <data name="activity_clickdelay" xml:space="preserve">
     <value>Click Delay</value>
@@ -111,7 +169,8 @@
     <value>Comment Out</value>
   </data>
   <data name="activity_commentout_tooltip" xml:space="preserve">
-    <value>Ignore everything inside this Acitvity, handy for quickly remarking something out</value>
+    <value>Ignore everything inside this Activity. Useful to quickly highlight something</value>
+    <comment>hand for quick commenting</comment>
   </data>
   <data name="activity_copyclipboard" xml:space="preserve">
     <value>Copy Clipboard</value>
@@ -120,16 +179,18 @@
     <value>Copy content of Clipboard into a variable</value>
   </data>
   <data name="activity_datatable" xml:space="preserve">
-    <value>Data Table</value>
+    <value>DataTable</value>
   </data>
   <data name="activity_datatable_help" xml:space="preserve">
     <value>The DataTable to work with</value>
+    <comment>?</comment>
   </data>
   <data name="activity_dataview" xml:space="preserve">
     <value>Data View</value>
   </data>
   <data name="activity_dataview_help" xml:space="preserve">
     <value>The DateView to work with</value>
+    <comment>?</comment>
   </data>
   <data name="activity_detector" xml:space="preserve">
     <value>Detector</value>
@@ -165,7 +226,7 @@
     <value>Element</value>
   </data>
   <data name="activity_element_help" xml:space="preserve">
-    <value>Click on this element, the return type of all GetElement activites and some others</value>
+    <value>Work on this element, the return type of all GetElement activites and some others</value>
   </data>
   <data name="activity_focuselement" xml:space="preserve">
     <value>Focus Element</value>
@@ -177,10 +238,12 @@
     <value>Force</value>
   </data>
   <data name="activity_force_help" xml:space="preserve">
-    <value>Forcefully do the action</value>
+    <value>Force activity execution</value>
+    <comment>Force start action</comment>
   </data>
   <data name="activity_foreachdatarow" xml:space="preserve">
-    <value>Foreach DataRow</value>
+    <value>For each DataRow</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="activity_foreachdatarow_tooltip" xml:space="preserve">
     <value>Enumerate through each row inside a DataTable</value>
@@ -204,7 +267,7 @@
     <value>Ignore Errors</value>
   </data>
   <data name="activity_ignoreerrors_help" xml:space="preserve">
-    <value>If an error occurs, will ignore it an continue</value>
+    <value>If an error occurs, will ignore it and continue</value>
   </data>
   <data name="activity_imageresult" xml:space="preserve">
     <value>Image Result</value>
@@ -243,7 +306,7 @@
     <value>Hold this key down, while clicking, only works if Virtual click is disabled</value>
   </data>
   <data name="activity_map_variables" xml:space="preserve">
-    <value>Map Variables</value>
+    <value>Map variables</value>
   </data>
   <data name="activity_mousebutton" xml:space="preserve">
     <value>Mouse Button</value>
@@ -282,7 +345,9 @@
     <value>Post Wait</value>
   </data>
   <data name="activity_postwait_help" xml:space="preserve">
-    <value>Wait this amount of time, after doing the click, help full one applications that can be very slow to react on clicks</value>
+    <value>Wait this amount of time after doing the click. Helpful for applications that can be very slow to react to clicks</value>
+    <comment>one?
+Fuzzy</comment>
   </data>
   <data name="activity_result" xml:space="preserve">
     <value>Result</value>
@@ -315,7 +380,9 @@
     <value>Title</value>
   </data>
   <data name="activity_showballontop_title_hint" xml:space="preserve">
-    <value>Title on bollanmessage</value>
+    <value>Title on balloon message</value>
+    <comment>ballon or balloon?
+Fuzzy</comment>
   </data>
   <data name="activity_showballoontip" xml:space="preserve">
     <value>Show Balloon Tip</value>
@@ -348,7 +415,7 @@
     <value>Type Text</value>
   </data>
   <data name="activity_typetext_tooltip" xml:space="preserve">
-    <value>Send keyboard strokes to what ever that has focus, should only be used by recorder</value>
+    <value>Send keyboard strokes to whatever is in focus, should only be used by recorder</value>
   </data>
   <data name="activity_virtualclick" xml:space="preserve">
     <value>Virtual Click</value>
@@ -668,62 +735,56 @@
   <data name="warning" xml:space="preserve">
     <value>Warning</value>
   </data>
-  
-   <data name="NEW_FILE_AVIRECORDER" xml:space="preserve">
-    <value>NEW_FILE_AVIRECORDER</value>
+  <data name="NEW_FILE_AVIRECORDER" xml:space="preserve">
+    <value></value>
+    <comment>?</comment>
   </data>
-  
-  <data name="activity_click_to_view" xml:space="preserve">
-    <value>Double-click to view</value>
-  </data>
-	<data name="activity_playrecording" xml:space="preserve">
+  <data name="activity_playrecording" xml:space="preserve">
     <value>Play Recording</value>
   </data>
-	<data name="activity_playrecording_tooltip" xml:space="preserve">
+  <data name="activity_playrecording_tooltip" xml:space="preserve">
     <value>Playback a video recording</value>
   </data>
-	<data name="activity_play_hint" xml:space="preserve">
+  <data name="activity_play_hint" xml:space="preserve">
     <value>Play this video file</value>
   </data>
-	<data name="activity_startrecording" xml:space="preserve">
+  <data name="activity_startrecording" xml:space="preserve">
     <value>Start Recording</value>
   </data>
-	<data name="activity_startrecording_tooltip" xml:space="preserve">
+  <data name="activity_startrecording_tooltip" xml:space="preserve">
     <value>Start recording the screen to a file</value>
   </data>
-	<data name="activity_start_hint" xml:space="preserve">
+  <data name="activity_start_hint" xml:space="preserve">
     <value>Save in this folder</value>
   </data>
-	<data name="activity_stoprecording" xml:space="preserve">
+  <data name="activity_stoprecording" xml:space="preserve">
     <value>Stop Recording</value>
   </data>
-	<data name="activity_stoprecording_tooltip" xml:space="preserve">
+  <data name="activity_stoprecording_tooltip" xml:space="preserve">
     <value>Stop a running screen recording and save to file</value>
   </data>
-	<data name="activity_stop_hint" xml:space="preserve">
+  <data name="activity_stop_hint" xml:space="preserve">
     <value>Save video filename</value>
   </data>
-	<data name="plugin_codec" xml:space="preserve">
+  <data name="plugin_codec" xml:space="preserve">
     <value>Codec</value>
   </data>
-	<data name="plugin_enabled" xml:space="preserve">
+  <data name="plugin_enabled" xml:space="preserve">
     <value>Enabled</value>
   </data>
-	<data name="plugin_keep_successful" xml:space="preserve">
+  <data name="plugin_keep_successful" xml:space="preserve">
     <value>Keep successful</value>
   </data>
-	<data name="plugin_quality" xml:space="preserve">
+  <data name="plugin_quality" xml:space="preserve">
     <value>Recording quality</value>
   </data>
-	<data name="plugin_save_in_folder" xml:space="preserve">
+  <data name="plugin_save_in_folder" xml:space="preserve">
     <value>Save in folder</value>
   </data>
-  
-   <data name="NEW_FILE_DATABASE" xml:space="preserve">
-    <value>NEW_FILE_DATABASE</value>
+  <data name="NEW_FILE_DATABASE" xml:space="preserve">
+    <value></value>
   </data>
-  
-   <data name="activity_databasescope" xml:space="preserve">
+  <data name="activity_databasescope" xml:space="preserve">
     <value>Database Scope</value>
   </data>
   <data name="activity_databasescope_select" xml:space="preserve">
@@ -766,7 +827,7 @@
     <value>The query to execute</value>
   </data>
   <data name="activity_executenonquery_tooltip" xml:space="preserve">
-    <value>Runs a query that returns no results, for UPDATE, INSERT, and DELETE statements, the Result value is the number of rows affected by the command, for all else, the Result value will be -1</value>
+    <value>Runs a query that returns no results, for UPDATE, INSERT, and DELETE statements. The Result value is the number of rows affected by the command. For all else, the Result value will be -1</value>
   </data>
   <data name="activity_executequery" xml:space="preserve">
     <value>Execute Query</value>
@@ -807,54 +868,50 @@
   <data name="activity_updatefromtable_tooltip" xml:space="preserve">
     <value>Insert, Update and Delete the data from the DataTable against the current database, returns the number of rows affected</value>
   </data>
-  
-  
-   <data name="NEW_FILE_ELIS" xml:space="preserve">
-    <value>NEW_FILE_ELIS</value>
+  <data name="NEW_FILE_ELIS" xml:space="preserve">
+    <value></value>
   </data>
-  
-  
   <data name="activity_auth" xml:space="preserve">
     <value>Auth</value>
   </data>
-	<data name="activity_auth_hint" xml:space="preserve">
+  <data name="activity_auth_hint" xml:space="preserve">
     <value>Username or Email</value>
   </data>
-	<data name="activity_auth_tooltip" xml:space="preserve">
+  <data name="activity_auth_tooltip" xml:space="preserve">
     <value>Authenticate against Rossum service and get a Token/Key back</value>
   </data>
-	<data name="activity_auth_username" xml:space="preserve">
+  <data name="activity_auth_username" xml:space="preserve">
     <value>Username</value>
   </data>
-	<data name="activity_exportfiledata" xml:space="preserve">
+  <data name="activity_exportfiledata" xml:space="preserve">
     <value>Export File Data</value>
   </data>
-	<data name="activity_exportfiledata_tooltip" xml:space="preserve">
-    <value>Get date the extracted data from an invoice, only works once the file status is in status exported</value>
+  <data name="activity_exportfiledata_tooltip" xml:space="preserve">
+    <value>Get date of the extracted data from an invoice. Only works once the file status is in status exported</value>
   </data>
-	<data name="activity_exportfile_file" xml:space="preserve">
+  <data name="activity_exportfile_file" xml:space="preserve">
     <value>FileURL</value>
   </data>
-	<data name="activity_exportfile_file_hint" xml:space="preserve">
+  <data name="activity_exportfile_file_hint" xml:space="preserve">
     <value>URL to file to get data from</value>
   </data>
-	<data name="activity_exportfile_key" xml:space="preserve">
+  <data name="activity_exportfile_key" xml:space="preserve">
     <value>Key</value>
   </data>
-	<data name="activity_exportfile_key_hint" xml:space="preserve">
+  <data name="activity_exportfile_key_hint" xml:space="preserve">
     <value>API key from auth activitity</value>
   </data>
-	<data name="activity_exportfile_queue" xml:space="preserve">
+  <data name="activity_exportfile_queue" xml:space="preserve">
     <value>Queue</value>
   </data>
-	<data name="activity_exportfile_queue_hint" xml:space="preserve">
+  <data name="activity_exportfile_queue_hint" xml:space="preserve">
     <value>Queue to export data from</value>
   </data>
-	<data name="activity_getfilestatus" xml:space="preserve">
+  <data name="activity_getfilestatus" xml:space="preserve">
     <value>Get File Status</value>
   </data>
-	<data name="activity_getfilestatus_tooltip" xml:space="preserve">
-    <value>Get status of a file in queue, can be either 
+  <data name="activity_getfilestatus_tooltip" xml:space="preserve">
+    <value>Get status of a file in queue, can be any of the following:
 importing - Document is being processed by the AI Core Engine for data extraction; initial state of the document.
 failed_import - Import failed e.g. due to a malformed document file.
 to_review - Initial extraction step is done and the document is waiting for user validation.
@@ -866,84 +923,81 @@ postponed - Operator has chosen to postpone the document instead of exporting it
 deleted - When the document was deleted by the user.
 purged - Only metadata was preserved after a deletion.</value>
   </data>
-	<data name="activity_getqueues" xml:space="preserve">
+  <data name="activity_getqueues" xml:space="preserve">
     <value>Get Queues</value>
   </data>
-	<data name="activity_getqueues_key" xml:space="preserve">
+  <data name="activity_getqueues_key" xml:space="preserve">
     <value>Key</value>
   </data>
-	<data name="activity_getqueues_key_hint" xml:space="preserve">
+  <data name="activity_getqueues_key_hint" xml:space="preserve">
     <value>API key from auth activitity</value>
   </data>
-	<data name="activity_getqueues_tooltip" xml:space="preserve">
-    <value>Get a list of queues from rossum, a file must be upload to a queue that has variuse settings set though the website</value>
+  <data name="activity_getqueues_tooltip" xml:space="preserve">
+    <value>Get a list of queues from Rossum. A file must be uploaded to a queue that has various settings set through the website.</value>
   </data>
-	<data name="activity_getstatus_file" xml:space="preserve">
+  <data name="activity_getstatus_file" xml:space="preserve">
     <value>FileURL</value>
   </data>
-	<data name="activity_getstatus_file_hint" xml:space="preserve">
+  <data name="activity_getstatus_file_hint" xml:space="preserve">
     <value>URL to file to get status from</value>
   </data>
-	<data name="activity_getstatus_key" xml:space="preserve">
+  <data name="activity_getstatus_key" xml:space="preserve">
     <value>Key</value>
   </data>
-	<data name="activity_getstatus_key_hint" xml:space="preserve">
+  <data name="activity_getstatus_key_hint" xml:space="preserve">
     <value>API key from auth activitity</value>
   </data>
-	<data name="activity_uploadfile" xml:space="preserve">
+  <data name="activity_uploadfile" xml:space="preserve">
     <value>Upload File</value>
   </data>
-	<data name="activity_uploadfile_filename" xml:space="preserve">
+  <data name="activity_uploadfile_filename" xml:space="preserve">
     <value>Filename</value>
   </data>
-	<data name="activity_uploadfile_filename_hint" xml:space="preserve">
+  <data name="activity_uploadfile_filename_hint" xml:space="preserve">
     <value>File to upload to the queue</value>
   </data>
-	<data name="activity_uploadfile_key" xml:space="preserve">
+  <data name="activity_uploadfile_key" xml:space="preserve">
     <value>Key</value>
   </data>
-	<data name="activity_uploadfile_key_hint" xml:space="preserve">
+  <data name="activity_uploadfile_key_hint" xml:space="preserve">
     <value>API key from auth activitity</value>
   </data>
-	<data name="activity_uploadfile_queue" xml:space="preserve">
+  <data name="activity_uploadfile_queue" xml:space="preserve">
     <value>Queue</value>
   </data>
-	<data name="activity_uploadfile_queue_hint" xml:space="preserve">
+  <data name="activity_uploadfile_queue_hint" xml:space="preserve">
     <value>Queue to upload the file to</value>
   </data>
-	<data name="activity_uploadfile_tooltip" xml:space="preserve">
+  <data name="activity_uploadfile_tooltip" xml:space="preserve">
     <value>Uploads a file to a Rossum queue</value>
   </data>
-	<data name="activity_waitforfilestatus" xml:space="preserve">
+  <data name="activity_waitforfilestatus" xml:space="preserve">
     <value>Wait For File Status</value>
   </data>
-	<data name="activity_waitforfilestatus_tooltip" xml:space="preserve">
+  <data name="activity_waitforfilestatus_tooltip" xml:space="preserve">
     <value>Make workflow go idle while waiting for file to go into the specified status</value>
   </data>
-	<data name="activity_waitforfile_file" xml:space="preserve">
+  <data name="activity_waitforfile_file" xml:space="preserve">
     <value>FileURL</value>
   </data>
-	<data name="activity_waitforfile_file_hint" xml:space="preserve">
+  <data name="activity_waitforfile_file_hint" xml:space="preserve">
     <value>URL to file to wait for</value>
   </data>
-	<data name="activity_waitforfile_key" xml:space="preserve">
+  <data name="activity_waitforfile_key" xml:space="preserve">
     <value>Key</value>
   </data>
-	<data name="activity_waitforfile_key_hint" xml:space="preserve">
+  <data name="activity_waitforfile_key_hint" xml:space="preserve">
     <value>API key from auth activitity</value>
   </data>
-	<data name="activity_waitforfile_status" xml:space="preserve">
+  <data name="activity_waitforfile_status" xml:space="preserve">
     <value>Status</value>
   </data>
-	<data name="activity_waitforfile_status_hint" xml:space="preserve">
+  <data name="activity_waitforfile_status_hint" xml:space="preserve">
     <value>Status to wait for</value>
   </data>
-  
   <data name="NEW_FILE_FILE_WATCHER" xml:space="preserve">
-    <value>NEW_FILE_FILE_WATCHER</value>
+    <value></value>
   </data>
-  
-  
   <data name="plugin_filter" xml:space="preserve">
     <value>File filter</value>
   </data>
@@ -956,54 +1010,44 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="plugin_path" xml:space="preserve">
     <value>Path</value>
   </data>
-  
-  
   <data name="NEW_FILE_FORMS" xml:space="preserve">
-    <value>NEW_FILE_FORMS</value>
+    <value></value>
   </data>
-  
   <data name="activity_alert_message_hint" xml:space="preserve">
     <value>Alert message</value>
   </data>
-	<data name="activity_formdesigner_build" xml:space="preserve">
+  <data name="activity_formdesigner_build" xml:space="preserve">
     <value>Build form</value>
   </data>
-	<data name="activity_invokeform" xml:space="preserve">
+  <data name="activity_invokeform" xml:space="preserve">
     <value>Invoke Formula</value>
   </data>
-	<data name="activity_invokeform_create_var" xml:space="preserve">
+  <data name="activity_invokeform_create_var" xml:space="preserve">
     <value>Create variables</value>
   </data>
-	<data name="activity_invokeform_open" xml:space="preserve">
+  <data name="activity_invokeform_open" xml:space="preserve">
     <value>Open designer</value>
   </data>
-	<data name="activity_invokeform_tooltip" xml:space="preserve">
+  <data name="activity_invokeform_tooltip" xml:space="preserve">
     <value>Do interaction with user at the computer with predesigned formulas</value>
   </data>
-	<data name="activity_noti_message" xml:space="preserve">
+  <data name="activity_noti_message" xml:space="preserve">
     <value>Message</value>
   </data>
-	<data name="activity_noti_message_hint" xml:space="preserve">
+  <data name="activity_noti_message_hint" xml:space="preserve">
     <value>Notification message</value>
   </data>
-	<data name="activity_shownotification" xml:space="preserve">
+  <data name="activity_shownotification" xml:space="preserve">
     <value>Show Notification</value>
   </data>
-	<data name="activity_shownotification_tooltip" xml:space="preserve">
+  <data name="activity_shownotification_tooltip" xml:space="preserve">
     <value>Show a notification in the lower right corner of the screen for a limited amount of time</value>
   </data>
-  
-  
   <data name="NEW_FILE_IE" xml:space="preserve">
-    <value>NEW_FILE_IE</value>
+    <value></value>
   </data>
-  
-  
-   <data name="activity_getelement" xml:space="preserve">
+  <data name="activity_getelement" xml:space="preserve">
     <value>Get Element</value>
-  </data>
-  <data name="activity_getelement_drop_hint" xml:space="preserve">
-    <value>Drop activity</value>
   </data>
   <data name="activity_getelement_highlight" xml:space="preserve">
     <value>Highlight</value>
@@ -1012,7 +1056,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Open Selector</value>
   </data>
   <data name="activity_getelement_tooltip" xml:space="preserve">
-    <value>Find an Windows UI element based on selector</value>
+    <value>Find a Windows UI element based on selector</value>
   </data>
   <data name="activity_openurl" xml:space="preserve">
     <value>Open URL</value>
@@ -1021,13 +1065,13 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Get current</value>
   </data>
   <data name="activity_openurl_tooltip" xml:space="preserve">
-    <value>Open the specefied url in Internet Explorer</value>
+    <value>Open the specefied url in the selected browser</value>
   </data>
   <data name="activity_waitforready" xml:space="preserve">
     <value>Wait for ready</value>
   </data>
   <data name="activity_waitforready_help" xml:space="preserve">
-    <value>Wait for page page to be ready / is not loading</value>
+    <value>Wait for page to be ready / is not loading</value>
   </data>
   <data name="enable_caching_browser" xml:space="preserve">
     <value>Caching browser object</value>
@@ -1041,23 +1085,8 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="enable_xpath_support_help" xml:space="preserve">
     <value>Enable experimental XPath support in IE</value>
   </data>
-  
   <data name="NEW_FILE_IMAGE" xml:space="preserve">
-    <value>NEW_FILE_IMAGE</value>
-  </data>
-  
-  
-  <data name="activity_displayname" xml:space="preserve">
-    <value>Displayname</value>
-  </data>
-  <data name="activity_displayname_help" xml:space="preserve">
-    <value>Displayname inside the workflow designer</value>
-  </data>
-  <data name="activity_element" xml:space="preserve">
-    <value>Element</value>
-  </data>
-  <data name="activity_element_help" xml:space="preserve">
-    <value>Work on this element, the return type of all GetElement activites and some others</value>
+    <value></value>
   </data>
   <data name="activity_getcolor" xml:space="preserve">
     <value>Get Color</value>
@@ -1065,23 +1094,11 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="activity_getcolor_tooltip" xml:space="preserve">
     <value>Get color at specefied cordinates. </value>
   </data>
-  <data name="activity_getelement" xml:space="preserve">
-    <value>Get Element</value>
-  </data>
-  <data name="activity_getelement_drop_hint" xml:space="preserve">
-    <value>Drop activity</value>
-  </data>
-  <data name="activity_getelement_highlight" xml:space="preserve">
-    <value>Highlight</value>
-  </data>
   <data name="activity_getelement_process_limit" xml:space="preserve">
     <value>Process Limit</value>
   </data>
   <data name="activity_getelement_select" xml:space="preserve">
     <value>Select Image</value>
-  </data>
-  <data name="activity_getelement_tooltip" xml:space="preserve">
-    <value>Find an image on the screen or inside a specific application window</value>
   </data>
   <data name="activity_getimage" xml:space="preserve">
     <value>Get Image</value>
@@ -1096,7 +1113,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Select Image</value>
   </data>
   <data name="activity_getimage_tooltip" xml:space="preserve">
-    <value>Get an image of the screen relative from another image or element found with GetElement</value>
+    <value>Get an image of the screen relative to another image or element found with GetElement</value>
   </data>
   <data name="activity_gettext" xml:space="preserve">
     <value>Get Text</value>
@@ -1111,7 +1128,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Search only for this word</value>
   </data>
   <data name="activity_gettext_tooltip" xml:space="preserve">
-    <value>Using OCR get all text from a image, can be limited to a specific word or sentence</value>
+    <value>Use OCR to get all text from an image. Can be limited to a specific word or sentence</value>
   </data>
   <data name="activity_loadfile_drop_hint" xml:space="preserve">
     <value>Drop activity</value>
@@ -1128,116 +1145,78 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="activity_loadfromfile_tooltip" xml:space="preserve">
     <value>Load an image from a file and return an ImageElement</value>
   </data>
-  <data name="activity_offsetx" xml:space="preserve">
-    <value>X Offset</value>
-  </data>
-  <data name="activity_offsetx_help" xml:space="preserve">
-    <value>Click with this offset inside the element</value>
-  </data>
-  <data name="activity_offsety" xml:space="preserve">
-    <value>Y Offset</value>
-  </data>
-  <data name="activity_offsety_help" xml:space="preserve">
-    <value>Click with this offset inside the element</value>
-  </data>
   <data name="activity_takescreenshot" xml:space="preserve">
     <value>Take Screenshot</value>
   </data>
   <data name="activity_takescreenshot_tooltip" xml:space="preserve">
     <value>Take screenshot of the entire screen or a specific element found using Get Element</value>
   </data>
-  
-  
-    <data name="NEW_FILE_INTERFACE" xml:space="preserve">
-    <value>NEW_FILE_INTERFACE</value>
+  <data name="NEW_FILE_INTERFACE" xml:space="preserve">
+    <value></value>
   </data>
-  
-  
   <data name="selector_buttons_cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-	<data name="selector_buttons_cancel_hint" xml:space="preserve">
+  <data name="selector_buttons_cancel_hint" xml:space="preserve">
     <value>Cancel changes and close selector window</value>
   </data>
-	<data name="selector_buttons_highlight" xml:space="preserve">
+  <data name="selector_buttons_highlight" xml:space="preserve">
     <value>Highlight</value>
   </data>
-	<data name="selector_buttons_highlight_hint" xml:space="preserve">
+  <data name="selector_buttons_highlight_hint" xml:space="preserve">
     <value>Highligt element(s) effected by current selector</value>
   </data>
-	<data name="selector_buttons_ok" xml:space="preserve">
+  <data name="selector_buttons_ok" xml:space="preserve">
     <value>Ok</value>
   </data>
-	<data name="selector_buttons_ok_hint" xml:space="preserve">
+  <data name="selector_buttons_ok_hint" xml:space="preserve">
     <value>Accept changes and close selector window</value>
   </data>
-	<data name="selector_buttons_select" xml:space="preserve">
+  <data name="selector_buttons_select" xml:space="preserve">
     <value>Select</value>
   </data>
-	<data name="selector_buttons_select_hint" xml:space="preserve">
+  <data name="selector_buttons_select_hint" xml:space="preserve">
     <value>Select element by clicking it</value>
   </data>
-	<data name="selector_buttons_sync" xml:space="preserve">
+  <data name="selector_buttons_sync" xml:space="preserve">
     <value>Sync tree</value>
   </data>
-	<data name="selector_buttons_sync_hint" xml:space="preserve">
+  <data name="selector_buttons_sync_hint" xml:space="preserve">
     <value>Sync tree and go to current element</value>
   </data>
-	<data name="selector_menu_select" xml:space="preserve">
+  <data name="selector_menu_select" xml:space="preserve">
     <value>Select Element</value>
   </data>
-  
-  
-   <data name="NEW_FILE_JAVA" xml:space="preserve">
-    <value>NEW_FILE_JAVA</value>
+  <data name="NEW_FILE_JAVA" xml:space="preserve">
+    <value></value>
   </data>
-  
-  
-  <data name="activity_getelement" xml:space="preserve">
-    <value>Get Element</value>
-  </data>
-	<data name="activity_getelement_drop_hint" xml:space="preserve">
-    <value>Drop activity</value>
-  </data>
-	<data name="activity_getelement_highlight" xml:space="preserve">
+  <data name="detector_highlight" xml:space="preserve">
     <value>Highlight</value>
   </data>
-	<data name="activity_getelement_open_selector" xml:space="preserve">
-    <value>Open Selector</value>
-  </data>
-	<data name="activity_getelement_tooltip" xml:space="preserve">
-    <value>Find an Windows Java element based on selector</value>
-  </data>
-	<data name="detector_highlight" xml:space="preserve">
-    <value>Highlight</value>
-  </data>
-	<data name="detector_name" xml:space="preserve">
+  <data name="detector_name" xml:space="preserve">
     <value>Name</value>
   </data>
-	<data name="detector_open_selector" xml:space="preserve">
+  <data name="detector_open_selector" xml:space="preserve">
     <value>Open Selector</value>
   </data>
-	<data name="detector_select" xml:space="preserve">
+  <data name="detector_select" xml:space="preserve">
     <value>Select</value>
   </data>
-	<data name="detector_selector" xml:space="preserve">
+  <data name="detector_selector" xml:space="preserve">
     <value>Selector</value>
   </data>
-	<data name="plugin_auto_launch_java_bridge" xml:space="preserve">
+  <data name="plugin_auto_launch_java_bridge" xml:space="preserve">
     <value>Auto launch</value>
   </data>
-	<data name="plugin_auto_launch_java_bridge_help" xml:space="preserve">
+  <data name="plugin_auto_launch_java_bridge_help" xml:space="preserve">
     <value>Auto launch java bridge application when robot is running</value>
   </data>
-	<data name="plugin_launch_java_bridge" xml:space="preserve">
+  <data name="plugin_launch_java_bridge" xml:space="preserve">
     <value>Launch java bridge</value>
   </data>
-  
-  
-   <data name="NEW_FILE_NM" xml:space="preserve">
-    <value>NEW_FILE_NM</value>
+  <data name="NEW_FILE_NM" xml:space="preserve">
+    <value></value>
   </data>
-  
   <data name="activity_closetab" xml:space="preserve">
     <value>Close Tab</value>
   </data>
@@ -1250,44 +1229,16 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="activity_executescript_tooltip" xml:space="preserve">
     <value>Execute script in the browser, targeting current tab and default frame</value>
   </data>
-  <data name="activity_getelement" xml:space="preserve">
-    <value>Get Element</value>
-  </data>
-  <data name="activity_getelement_drop_hint" xml:space="preserve">
-    <value>Drop activity</value>
-  </data>
-  <data name="activity_getelement_highlight" xml:space="preserve">
-    <value>Highlight</value>
-  </data>
   <data name="activity_getelement_loopaction" xml:space="preserve">
     <value>Loop action</value>
   </data>
   <data name="activity_getelement_loopaction_tooltop" xml:space="preserve">
-    <value>Do this, once done processing each result, then reruns the selector and looks for new items</value>
-  </data>
-  <data name="activity_getelement_open_selector" xml:space="preserve">
-    <value>Open Selector</value>
-  </data>
-  <data name="activity_getelement_tooltip" xml:space="preserve">
-    <value>Find an browser element based on selector</value>
-  </data>
-  <data name="activity_openurl" xml:space="preserve">
-    <value>Open URL</value>
-  </data>
-  <data name="activity_openurl_getcurrent" xml:space="preserve">
-    <value>Get current</value>
-  </data>
-  <data name="activity_openurl_tooltip" xml:space="preserve">
-    <value>Open the specefied url in the selected browser</value>
+    <value>Do this once done processing each result. Then reruns the selector and looks for new items</value>
+    <comment>the program automatically reruns the selector and looks for new items, or this is a command telling the user to rerun the selector and look for new items?
+Fuzzy</comment>
   </data>
   <data name="activity_open_editor" xml:space="preserve">
     <value>Open Editor</value>
-  </data>
-  <data name="activity_waitforready" xml:space="preserve">
-    <value>Wait for ready</value>
-  </data>
-  <data name="activity_waitforready_help" xml:space="preserve">
-    <value>Wait for page page to be ready / is not loading</value>
   </data>
   <data name="compensate_for_old_addon" xml:space="preserve">
     <value>Compensate for old extension</value>
@@ -1299,7 +1250,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Debug Console</value>
   </data>
   <data name="debug_console_output_help" xml:space="preserve">
-    <value>Write debug informtation to browser console</value>
+    <value>Write debug information to browser console</value>
   </data>
   <data name="plugin_wait_for_tab_after_set_value" xml:space="preserve">
     <value>Wait after set value</value>
@@ -1317,7 +1268,8 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>unique ids</value>
   </data>
   <data name="unique_xpath_ids_help" xml:space="preserve">
-    <value>Use on of these attributes as unique id's when creating xpath selectors</value>
+    <value>Use one of these attributes as unique ids when creating xpath selectors</value>
+    <comment>Fuzzy</comment>
   </data>
   <data name="wait_for_tab_click" xml:space="preserve">
     <value>wait for tab</value>
@@ -1325,13 +1277,9 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="wait_for_tab_click_help" xml:space="preserve">
     <value>Wait for tab status to be in ready state after clicking a button</value>
   </data>
-  
-  
-  
-   <data name="NEW_FILE_OFFICE" xml:space="preserve">
-    <value>NEW_FILE_OFFICE</value>
+  <data name="NEW_FILE_OFFICE" xml:space="preserve">
+    <value></value>
   </data>
-  
   <data name="activity_addparagraph" xml:space="preserve">
     <value>Add Paragraph</value>
   </data>
@@ -1345,7 +1293,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Index</value>
   </data>
   <data name="activity_addparagraph_index_help" xml:space="preserve">
-    <value>Add the new paragraph at this index (zero indexed) Leave blank to add at the end of the document</value>
+    <value>Add the new paragraph at this index (zero indexed). Leave blank to add at the end of the document</value>
   </data>
   <data name="activity_addparagraph_text" xml:space="preserve">
     <value>Text</value>
@@ -1381,10 +1329,10 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Save Changes</value>
   </data>
   <data name="activity_closedocument_savechanges_help" xml:space="preserve">
-    <value>Set to true, to save the word file, set to false to discard any changces made</value>
+    <value>Set to true to save the word file. Set to false to discard any changes made</value>
   </data>
   <data name="activity_closedocument_tooltip" xml:space="preserve">
-    <value>Close a Microsoft Word document if open, will also closes word if no more documents are open</value>
+    <value>Close a Microsoft Word document if open. Will also close word if no other documents are open</value>
   </data>
   <data name="activity_closeworkbook" xml:space="preserve">
     <value>Close Workbook</value>
@@ -1402,16 +1350,13 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Set to true, to save the excel file, set to false to discard any changces made</value>
   </data>
   <data name="activity_closeworkbook_tooltip" xml:space="preserve">
-    <value>Close a Workbook if open, will also closes excel if no more workbooks are open</value>
+    <value>Close a Workbook if open. Will also close Excel if no other workbooks are open</value>
   </data>
   <data name="activity_closeworkbook_workbook" xml:space="preserve">
     <value>Workbook</value>
   </data>
   <data name="activity_closeworkbook_workbook_help" xml:space="preserve">
     <value>Use a Microsoft Excel workbook variable to work with</value>
-  </data>
-  <data name="activity_drop_hint" xml:space="preserve">
-    <value>Drop activity</value>
   </data>
   <data name="activity_filename" xml:space="preserve">
     <value>Filename</value>
@@ -1456,7 +1401,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Max Results</value>
   </data>
   <data name="activity_getparagraph_maxresults_help" xml:space="preserve">
-    <value>Limit the amount of paragraphs to get, leave blank or at 0 to get all from Index and onward</value>
+    <value>Limit the number of paragraphs to get. Leave blank or at 0 to get all from Index onwards</value>
   </data>
   <data name="activity_getparagraph_text" xml:space="preserve">
     <value>Text</value>
@@ -1471,7 +1416,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Get Selected Range</value>
   </data>
   <data name="activity_getselectedrange_tooltip" xml:space="preserve">
-    <value>Get the currently selected cells in the specefied worksheet</value>
+    <value>Get the currently selected cells in the specified worksheet</value>
   </data>
   <data name="activity_movemailitem" xml:space="preserve">
     <value>Move MailItem</value>
@@ -1522,7 +1467,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Macro Name</value>
   </data>
   <data name="activity_runexcelmacro_tooltip" xml:space="preserve">
-    <value>Run a Macro within a Excel workbook. The Workbook file needs to be enabled for Macros</value>
+    <value>Run a Macro within an Excel workbook. The Workbook file needs to be enabled for Macros</value>
   </data>
   <data name="activity_runslideshow" xml:space="preserve">
     <value>Run Slideshow</value>
@@ -1549,7 +1494,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Index</value>
   </data>
   <data name="activity_setparagraph_index_help" xml:space="preserve">
-    <value>Overwrite content in the paragraph with this index, set 0 to overwrite the entire word document</value>
+    <value>Overwrite content in the paragraph with this index. Set 0 to overwrite the entire word document</value>
   </data>
   <data name="activity_setparagraph_text" xml:space="preserve">
     <value>Text</value>
@@ -1558,13 +1503,14 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>The text to set</value>
   </data>
   <data name="activity_setparagraph_tooltip" xml:space="preserve">
-    <value>Set content of a paragraph in side a Microsoft Word document</value>
+    <value>Set content of a paragraph inside a Microsoft Word document</value>
   </data>
   <data name="activity_writecell" xml:space="preserve">
     <value>Write Cell</value>
   </data>
   <data name="activity_writecell_tooltip" xml:space="preserve">
-    <value>Set a value or formular to a single cell in Microsoft Excel</value>
+    <value>Set a value or formula to a single cell in Microsoft Excel</value>
+    <comment>formula?</comment>
   </data>
   <data name="activity_writerange" xml:space="preserve">
     <value>Write Range</value>
@@ -1573,7 +1519,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Cells</value>
   </data>
   <data name="activity_writerange_cells_help" xml:space="preserve">
-    <value>Set the first cell to start writing from, leave blank to start at last empty row in column A</value>
+    <value>Set the first cell to start writing from. Leave blank to start at last empty row in column A</value>
   </data>
   <data name="activity_writerange_datatable" xml:space="preserve">
     <value>DataTable</value>
@@ -1590,21 +1536,14 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="activity_writerange_useheaderrow_help" xml:space="preserve">
     <value>If set to true, will also add a header row with column names as the first row, set to false to only add the data</value>
   </data>
-  
-  
-   <data name="NEW_FILE_OPENFLOW" xml:space="preserve">
-    <value>NEW_FILE_OPENFLOW</value>
+  <data name="NEW_FILE_OPENFLOW" xml:space="preserve">
+    <value></value>
   </data>
-  
-  
   <data name="activity_assignopenflow" xml:space="preserve">
     <value>Assign OpenFlow</value>
   </data>
   <data name="activity_assignopenflow_tooltip" xml:space="preserve">
     <value>Assign an OpenFlow workflow to a user or role</value>
-  </data>
-  <data name="activity_click_to_view" xml:space="preserve">
-    <value>Double-click to view</value>
   </data>
   <data name="activity_deletefile" xml:space="preserve">
     <value>Delete File</value>
@@ -1617,9 +1556,6 @@ purged - Only metadata was preserved after a deletion.</value>
   </data>
   <data name="activity_deleteone_tooltip" xml:space="preserve">
     <value>Delete one item in the OpenFlow database</value>
-  </data>
-  <data name="activity_filename" xml:space="preserve">
-    <value>Filename</value>
   </data>
   <data name="activity_filename_hint" xml:space="preserve">
     <value>Filename</value>
@@ -1640,7 +1576,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Grant Permission</value>
   </data>
   <data name="activity_grantpermission_tooltip" xml:space="preserve">
-    <value>Add or update permissions for a user or role on the specified object, you must update the document in OpenFlow after</value>
+    <value>Add or update permissions for a user or role on the specified object. You must update the document in OpenFlow after</value>
   </data>
   <data name="activity_insertone" xml:space="preserve">
     <value>Insert One</value>
@@ -1652,7 +1588,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Insert Or Update One</value>
   </data>
   <data name="activity_insertorupdateone_tooltip" xml:space="preserve">
-    <value>Inserts one item into the OpenFlow database, update if already exists. checks on _id unless you specify Uniqueness then it will find existing items based on the fields mentioned in Uniqueness</value>
+    <value>Inserts one item into the OpenFlow database or updates if it already exists. Checks _id unless you specify Uniqueness in which case it will find existing items based on the fields mentioned in Uniqueness</value>
   </data>
   <data name="activity_local_path" xml:space="preserve">
     <value>Local path</value>
@@ -1679,7 +1615,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Remove Permission</value>
   </data>
   <data name="activity_removepermission_tooltip" xml:space="preserve">
-    <value>Remove a permission from a user or role on the specified object, you must update the document in OpenFlow after</value>
+    <value>Remove a permission from a user or role on the specified object. You must update the document in OpenFlow after</value>
   </data>
   <data name="activity_savefile" xml:space="preserve">
     <value>Save File</value>
@@ -1694,7 +1630,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Path</value>
   </data>
   <data name="activity_savefile_path_help" xml:space="preserve">
-    <value>Save file in this subfolder on the server, this has relevans when getting the file again</value>
+    <value>Save file in this subfolder on the server, this has relevance when getting the file again</value>
   </data>
   <data name="activity_savefile_result" xml:space="preserve">
     <value>Result</value>
@@ -1715,45 +1651,32 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Update From DataTable</value>
   </data>
   <data name="activity_updatefromdataTable_tooltip" xml:space="preserve">
-    <value>Commit changes made on a DataTable back to OpenFlow, returns list of inserted and updated rows</value>
+    <value>Commit changes made on a DataTable back to OpenFlow. Returns list of inserted and updated rows</value>
   </data>
-  <data name="activity_waitforcompleted" xml:space="preserve">
-    <value>Wait until Completed</value>
+  <data name="NEW_FILE_PDPLUGIN" xml:space="preserve">
+    <value></value>
   </data>
-  <data name="activity_waitforcompleted_help" xml:space="preserve">
-    <value>Wait for Completion before continuing with workflow</value>
-  </data>
-  
-   <data name="NEW_FILE_PDPLUGIN" xml:space="preserve">
-    <value>NEW_FILE_PDPLUGIN</value>
-  </data>
-  
-  
-  
   <data name="plugin_collectionname" xml:space="preserve">
     <value>Collectionname</value>
   </data>
-	<data name="plugin_collectionname_help" xml:space="preserve">
+  <data name="plugin_collectionname_help" xml:space="preserve">
     <value>Save events to this collection</value>
   </data>
-	<data name="plugin_enabled_keyboard_recording" xml:space="preserve">
+  <data name="plugin_enabled_keyboard_recording" xml:space="preserve">
     <value>Capture keyboard</value>
   </data>
-	<data name="plugin_enabled_keyboard_recording_help" xml:space="preserve">
+  <data name="plugin_enabled_keyboard_recording_help" xml:space="preserve">
     <value>Record all keyboard events</value>
   </data>
-	<data name="plugin_enabled_mouse_recording" xml:space="preserve">
+  <data name="plugin_enabled_mouse_recording" xml:space="preserve">
     <value>Capture mouse</value>
   </data>
-	<data name="plugin_enabled_mouse_recording_help" xml:space="preserve">
+  <data name="plugin_enabled_mouse_recording_help" xml:space="preserve">
     <value>Record all mouse clicks</value>
   </data>
-  
   <data name="NEW_FILE_RDSERVICEPLUGIN" xml:space="preserve">
-    <value>NEW_FILE_RDSERVICEPLUGIN</value>
+    <value></value>
   </data>
-  
-  
   <data name="plugin_auto_signout" xml:space="preserve">
     <value>Auto Signout</value>
   </data>
@@ -1796,26 +1719,8 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="plugin_windows_username" xml:space="preserve">
     <value>Windows Username</value>
   </data>
-  
-  
   <data name="NEW_FILE_SAP" xml:space="preserve">
-    <value>NEW_FILE_SAP</value>
-  </data>
-  
-   <data name="activity_getelement" xml:space="preserve">
-    <value>Get Element</value>
-  </data>
-  <data name="activity_getelement_drop_hint" xml:space="preserve">
-    <value>Drop activity</value>
-  </data>
-  <data name="activity_getelement_highlight" xml:space="preserve">
-    <value>Highlight</value>
-  </data>
-  <data name="activity_getelement_open_selector" xml:space="preserve">
-    <value>Open Selector</value>
-  </data>
-  <data name="activity_getelement_tooltip" xml:space="preserve">
-    <value>Find an SAP element based on selector</value>
+    <value></value>
   </data>
   <data name="activity_getproperty" xml:space="preserve">
     <value>Get Property</value>
@@ -1908,25 +1813,22 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Password</value>
   </data>
   <data name="activity_login_password_help" xml:space="preserve">
-    <value>Password for user to login with</value>
+    <value>Password for user to log in with</value>
   </data>
   <data name="activity_login_systemname" xml:space="preserve">
     <value>System Name</value>
   </data>
   <data name="activity_login_systemname_help" xml:space="preserve">
-    <value>Expected System Name, will search for a session to this system, and only login if non is found. Leave empty to always login to a new session</value>
+    <value>Expected System Name. Will search for a session in this system, and only logs in if none is found. Leave empty to always log in to a new session</value>
   </data>
   <data name="activity_login_tooltip" xml:space="preserve">
-    <value>Login to sap using the credentials, unless a session with the given name exists</value>
+    <value>Login to SAP using the credentials, unless a session with the given name exists</value>
   </data>
   <data name="activity_login_username" xml:space="preserve">
     <value>Username</value>
   </data>
   <data name="activity_login_username_help" xml:space="preserve">
-    <value>Username to login with</value>
-  </data>
-  <data name="activity_map_variables" xml:space="preserve">
-    <value>Map variables</value>
+    <value>Username to log in with</value>
   </data>
   <data name="activity_setproperty" xml:space="preserve">
     <value>Set Property</value>
@@ -1977,25 +1879,16 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Record Get Element</value>
   </data>
   <data name="plugin_record_with_get_element_help" xml:space="preserve">
-    <value>When recording use GetElement instead of SetProperty</value>
+    <value>When recording, use GetElement instead of SetProperty</value>
   </data>
-  
-  
   <data name="NEW_FILE_OPENRPASCRIPT" xml:space="preserve">
-    <value>NEW_FILE_OPENRPASCRIPT</value>
-  </data>
-  
-  <data name="activity_click_to_view" xml:space="preserve">
-    <value>Double-click to view</value>
+    <value></value>
   </data>
   <data name="activity_invokecode" xml:space="preserve">
     <value>Invoke Code</value>
   </data>
   <data name="activity_invokecode_tooltip" xml:space="preserve">
     <value>Invoke code written in one of several languages</value>
-  </data>
-  <data name="activity_open_editor" xml:space="preserve">
-    <value>Open Editor</value>
   </data>
   <data name="activity_pipinstall" xml:space="preserve">
     <value>Pip Install</value>
@@ -2010,7 +1903,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Modules</value>
   </data>
   <data name="activity_pipinstall_modules_help" xml:space="preserve">
-    <value>List of python modules to install</value>
+    <value>List of Python modules to install</value>
   </data>
   <data name="activity_pipinstall_tooltip" xml:space="preserve">
     <value>Install one or more python modules in the currently selected python envoriment</value>
@@ -2022,10 +1915,10 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Enable intellisense for C# scripts</value>
   </data>
   <data name="plugin_use_embedded_python" xml:space="preserve">
-    <value>Use embedded python</value>
+    <value>Use embedded Python</value>
   </data>
   <data name="plugin_use_embedded_python_help" xml:space="preserve">
-    <value>OpenRPA comes with python embedded, but will use the default system python if disabled</value>
+    <value>OpenRPA comes with Python embedded, but will use the default system Python if disabled</value>
   </data>
   <data name="plugin_vb_intellisense" xml:space="preserve">
     <value>VB Intellisense</value>
@@ -2033,73 +1926,66 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="plugin_vb_intellisense_help" xml:space="preserve">
     <value>Enable intellisense for Visual Basic scripts</value>
   </data>
-  
-  
-   <data name="NEW_FILE_UPDATER" xml:space="preserve">
-    <value>NEW_FILE_UPDATER</value>
+  <data name="NEW_FILE_UPDATER" xml:space="preserve">
+    <value></value>
   </data>
-  
   <data name="main_button_install" xml:space="preserve">
     <value>Install</value>
   </data>
-	<data name="main_button_launch" xml:space="preserve">
+  <data name="main_button_launch" xml:space="preserve">
     <value>Launch</value>
   </data>
-	<data name="main_button_launch_hint" xml:space="preserve">
+  <data name="main_button_launch_hint" xml:space="preserve">
     <value>Launch OpenRPA</value>
   </data>
-	<data name="main_button_reinstall" xml:space="preserve">
+  <data name="main_button_reinstall" xml:space="preserve">
     <value>Reinstall</value>
   </data>
-	<data name="main_button_search" xml:space="preserve">
+  <data name="main_button_search" xml:space="preserve">
     <value>Search</value>
   </data>
-	<data name="main_button_search_hint" xml:space="preserve">
+  <data name="main_button_search_hint" xml:space="preserve">
     <value>Search for activities</value>
   </data>
-	<data name="main_button_search_text" xml:space="preserve">
+  <data name="main_button_search_text" xml:space="preserve">
     <value>Search...</value>
   </data>
-	<data name="main_button_uninstall" xml:space="preserve">
+  <data name="main_button_uninstall" xml:space="preserve">
     <value>Uninstall</value>
   </data>
-	<data name="main_button_update_all" xml:space="preserve">
+  <data name="main_button_update_all" xml:space="preserve">
     <value>Update all</value>
   </data>
-	<data name="main_button_update_all_hint" xml:space="preserve">
+  <data name="main_button_update_all_hint" xml:space="preserve">
     <value>Update all</value>
   </data>
-	<data name="main_button_upgrade" xml:space="preserve">
+  <data name="main_button_upgrade" xml:space="preserve">
     <value>Upgrade</value>
   </data>
-	<data name="main_label_authors" xml:space="preserve">
+  <data name="main_label_authors" xml:space="preserve">
     <value>Authors</value>
   </data>
-	<data name="main_label_description" xml:space="preserve">
+  <data name="main_label_description" xml:space="preserve">
     <value>Description</value>
   </data>
-	<data name="main_label_id" xml:space="preserve">
+  <data name="main_label_id" xml:space="preserve">
     <value>Id</value>
   </data>
-	<data name="main_label_latestversion" xml:space="preserve">
+  <data name="main_label_latestversion" xml:space="preserve">
     <value>Latest Version</value>
   </data>
-	<data name="main_label_summary" xml:space="preserve">
+  <data name="main_label_summary" xml:space="preserve">
     <value>Summary</value>
   </data>
-	<data name="main_label_tags" xml:space="preserve">
+  <data name="main_label_tags" xml:space="preserve">
     <value>Tags</value>
   </data>
-	<data name="main_label_version" xml:space="preserve">
+  <data name="main_label_version" xml:space="preserve">
     <value>Version</value>
   </data>
-  
-  
   <data name="NEW_FILE_UTILITIES" xml:space="preserve">
-    <value>NEW_FILE_UTILITIES</value>
+    <value></value>
   </data>
-  
-  
   <data name="activity_adddatarow_datatable" xml:space="preserve">
     <value>DataTable to insert into</value>
   </data>
@@ -2108,9 +1994,6 @@ purged - Only metadata was preserved after a deletion.</value>
   </data>
   <data name="activity_converter_jarray" xml:space="preserve">
     <value>JArray</value>
-  </data>
-  <data name="activity_datatable" xml:space="preserve">
-    <value>DataTable</value>
   </data>
   <data name="activity_datatable_columnnames" xml:space="preserve">
     <value>Array of DataTable columns</value>
@@ -2123,9 +2006,6 @@ purged - Only metadata was preserved after a deletion.</value>
   </data>
   <data name="activity_downloadfile_hint" xml:space="preserve">
     <value>Save into this folder</value>
-  </data>
-  <data name="activity_drop_hint" xml:space="preserve">
-    <value>Drop activity</value>
   </data>
   <data name="activity_match_compiled" xml:space="preserve">
     <value>Compiled</value>
@@ -2166,22 +2046,8 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="activity_writeexcel_hint" xml:space="preserve">
     <value>Select excel file to write to</value>
   </data>
-  
-   <data name="NEW_FILE_WINDOWS" xml:space="preserve">
-    <value>NEW_FILE_WINDOWS</value>
-  </data>
-  
-  <data name="activity_getelement" xml:space="preserve">
-    <value>Get Element</value>
-  </data>
-  <data name="activity_getelement_loopaction" xml:space="preserve">
-    <value>Loop action</value>
-  </data>
-  <data name="activity_getelement_loopaction_tooltop" xml:space="preserve">
-    <value>Do this, once done processing each result, then reruns the selector and looks for new items</value>
-  </data>
-  <data name="activity_getelement_tooltip" xml:space="preserve">
-    <value>Find an Windows UI element based on selector</value>
+  <data name="NEW_FILE_WINDOWS" xml:space="preserve">
+    <value></value>
   </data>
   <data name="detector_button_highlight" xml:space="preserve">
     <value>Highlight</value>
@@ -2191,12 +2057,6 @@ purged - Only metadata was preserved after a deletion.</value>
   </data>
   <data name="detector_button_select" xml:space="preserve">
     <value>Select</value>
-  </data>
-  <data name="detector_name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="detector_selector" xml:space="preserve">
-    <value>Selector</value>
   </data>
   <data name="enable_cache_help" xml:space="preserve">
     <value>Enable caching of elements for faster automation at the expense of ram</value>
@@ -2214,7 +2074,7 @@ purged - Only metadata was preserved after a deletion.</value>
     <value>Allow child searching</value>
   </data>
   <data name="plugin_allow_child_searching_help" xml:space="preserve">
-    <value>If an element in a selector is not found, automaticly search all children for match</value>
+    <value>If an element in a selector is not found, automatically search all children for a match</value>
   </data>
   <data name="plugin_allow_multiple_hits" xml:space="preserve">
     <value>Allow multiple hits</value>
@@ -2249,5 +2109,4 @@ purged - Only metadata was preserved after a deletion.</value>
   <data name="plugin_traverse_selector_both_ways_help" xml:space="preserve">
     <value>Traverse UI tree both ways to filter out ghost selector elements</value>
   </data>
-  
 </root>

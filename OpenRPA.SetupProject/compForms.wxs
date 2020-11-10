@@ -33,6 +33,22 @@
         <File Id="OpenRPA.Forms.resources.dll_ru" Source="!(wix.FormsSource)\ru\OpenRPA.Forms.resources.dll" />
       </Component>
 
+		<Component Id='FormsComponentit' Win64='yes' Directory="Formsit">
+			<File Id="OpenRPA.Forms.resources.dll_it" Source="!(wix.FormsSource)\it\OpenRPA.Forms.resources.dll" />
+		</Component>
+
+		<Component Id='FormsComponentfr' Win64='yes' Directory="Formsfr">
+			<File Id="OpenRPA.Forms.resources.dll_fr" Source="!(wix.FormsSource)\fr\OpenRPA.Forms.resources.dll" />
+		</Component>
+
+		<Component Id='FormsComponentnl' Win64='yes' Directory="Formsnl">
+			<File Id="OpenRPA.Forms.resources.dll_nl" Source="!(wix.FormsSource)\nl\OpenRPA.Forms.resources.dll" />
+		</Component>
+
+		<Component Id='FormsComponentja' Win64='yes' Directory="Formsja">
+			<File Id="OpenRPA.Forms.resources.dll_ja" Source="!(wix.FormsSource)\ja\OpenRPA.Forms.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="Formsde" Name="de">
@@ -47,6 +63,18 @@
       </Directory>
       <Directory Id="Formsru" Name="ru">
       </Directory>
+
+		<Directory Id="Formsit" Name="it">
+		</Directory>
+
+		<Directory Id="Formsfr" Name="fr">
+		</Directory>
+
+		<Directory Id="Formsnl" Name="nl">
+		</Directory>
+
+		<Directory Id="Formsja" Name="ja">
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

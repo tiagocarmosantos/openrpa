@@ -26,6 +26,23 @@
         <File Id="OpenRPA.IE.resources.dll_ru" Source="!(wix.IESource)\ru\OpenRPA.IE.resources.dll" />
       </Component>
 
+
+		<Component Id='IEComponentit' Win64='yes' Directory="IEit" Guid='{DC89F690-5A3B-4E54-84DF-9DF81D3AFB57}'>
+			<File Id="OpenRPA.IE.resources.dll_it" Source="!(wix.IESource)\it\OpenRPA.IE.resources.dll" />
+		</Component>
+
+		<Component Id='IEComponentfr' Win64='yes' Directory="IEfr" Guid='{DC89F690-5A3B-4E54-84DF-9DF81D3AFB58}'>
+			<File Id="OpenRPA.IE.resources.dll_fr" Source="!(wix.IESource)\fr\OpenRPA.IE.resources.dll" />
+		</Component>
+
+		<Component Id='IEComponentnl' Win64='yes' Directory="IEnl" Guid='{DC89F690-5A3B-4E54-84DF-9DF81D3AFB59}'>
+			<File Id="OpenRPA.IE.resources.dll_nl" Source="!(wix.IESource)\nl\OpenRPA.IE.resources.dll" />
+		</Component>
+
+		<Component Id='IEComponentja' Win64='yes' Directory="IEja" Guid='{DC89F690-5A3B-4E54-84DF-9DF81D3AFB50}'>
+			<File Id="OpenRPA.IE.resources.dll_ja" Source="!(wix.IESource)\ja\OpenRPA.IE.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="IEde" Name="de">
@@ -40,6 +57,18 @@
       </Directory>
       <Directory Id="IEru" Name="ru">
       </Directory>
+
+		<Directory Id="IEit" Name="it">
+		</Directory>
+
+		<Directory Id="IEfr" Name="fr">
+		</Directory>
+
+		<Directory Id="IEnl" Name="nl">
+		</Directory>
+
+		<Directory Id="IEja" Name="ja">
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

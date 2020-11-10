@@ -1,0 +1,2121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="activity_add_variables" xml:space="preserve">
+    <value>変数の追加</value>
+  </data>
+  <data name="activity_animatemouse" xml:space="preserve">
+    <value>マウスのアニメーション</value>
+  </data>
+  <data name="activity_animatemouse_help" xml:space="preserve">
+    <value>目標に対して即座にマウスポインタを動かす代わりに、ポインタを実動作させます</value>
+  </data>
+  <data name="activity_animatemove" xml:space="preserve">
+    <value>動作のアニメーション</value>
+  </data>
+  <data name="activity_animatemove_help" xml:space="preserve">
+    <value>目標に対して即座にウインドウを動かす代わりに、ウインドウを実動作させます</value>
+  </data>
+  <data name="activity_blocking" xml:space="preserve">
+    <value>ブロック中</value>
+  </data>
+  <data name="activity_blocking_help" xml:space="preserve">
+    <value>完了まで実行をブロック</value>
+  </data>
+  <data name="activity_checkrunning" xml:space="preserve">
+    <value>実行中チェック</value>
+  </data>
+  <data name="activity_checkrunning_help" xml:space="preserve">
+    <value>セレクターがアプリケーションが実行されているかを確認、実行されていない場合には新規のアプリケーションを起動します</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="activity_clickdelay" xml:space="preserve">
+    <value>遅延をクリック</value>
+  </data>
+  <data name="activity_clickdelay_help" xml:space="preserve">
+    <value>キーストローク間隔の遅延</value>
+  </data>
+  <data name="activity_clickelement" xml:space="preserve">
+    <value>要素をクリック</value>
+  </data>
+  <data name="activity_clickelement_tooltip" xml:space="preserve">
+    <value>GetElementで取した要素をクリック</value>
+  </data>
+  <data name="activity_click_to_view" xml:space="preserve">
+    <value>ダブリクリックして確認</value>
+  </data>
+  <data name="activity_closeapplication" xml:space="preserve">
+    <value>アプリケーションの終了</value>
+  </data>
+  <data name="activity_closeapplication_tooltip" xml:space="preserve">
+    <value>UIセレクターにより選択されたアプリケーションを閉じる</value>
+  </data>
+  <data name="activity_commentout" xml:space="preserve">
+    <value>コメントアウト</value>
+  </data>
+  <data name="activity_commentout_tooltip" xml:space="preserve">
+    <value>このActivityは考慮せず他のを考慮する</value>
+  </data>
+  <data name="activity_copyclipboard" xml:space="preserve">
+    <value>クリップボードのコピー</value>
+  </data>
+  <data name="activity_copyclipboard_tooltip" xml:space="preserve">
+    <value>クリップボードの内容を変数にコピー</value>
+  </data>
+  <data name="activity_datatable" xml:space="preserve">
+    <value>DataTable</value>
+  </data>
+  <data name="activity_datatable_help" xml:space="preserve">
+    <value>作業対象のDataTable</value>
+  </data>
+  <data name="activity_dataview" xml:space="preserve">
+    <value>データビュー</value>
+  </data>
+  <data name="activity_dataview_help" xml:space="preserve">
+    <value>作業対象のデータビュー
+</value>
+  </data>
+  <data name="activity_detector" xml:space="preserve">
+    <value>検知モジュール</value>
+  </data>
+  <data name="activity_detector_help" xml:space="preserve">
+    <value>検知モジュールの起動後にワークフローが継続するのを待ちます</value>
+  </data>
+  <data name="activity_detector_tooltip" xml:space="preserve">
+    <value>ワークフローがアイドル状態になり検知モジュールが起動するのを待ちます</value>
+  </data>
+  <data name="activity_displayname" xml:space="preserve">
+    <value>表示名</value>
+  </data>
+  <data name="activity_displayname_help" xml:space="preserve">
+    <value>ワークフローデザイナ内の表示名</value>
+  </data>
+  <data name="activity_doubleclick" xml:space="preserve">
+    <value>ダブルクリック</value>
+  </data>
+  <data name="activity_doubleclick_help" xml:space="preserve">
+    <value>シングルクリックの代わりにダブルクリックを行う</value>
+  </data>
+  <data name="activity_drop_hint" xml:space="preserve">
+    <value>アクティビティを消去</value>
+  </data>
+  <data name="activity_duration" xml:space="preserve">
+    <value>継続期間</value>
+  </data>
+  <data name="activity_duration_help" xml:space="preserve">
+    <value>継続期間中において実行されます</value>
+  </data>
+  <data name="activity_element" xml:space="preserve">
+    <value>要素</value>
+  </data>
+  <data name="activity_element_help" xml:space="preserve">
+    <value>対象要素に対する処理後にGetElementアクティビティとその他の要素を戻します</value>
+  </data>
+  <data name="activity_focuselement" xml:space="preserve">
+    <value>要素にフォーカス</value>
+  </data>
+  <data name="activity_focuselement_tooltip" xml:space="preserve">
+    <value>要素へフォーカスを移動</value>
+  </data>
+  <data name="activity_force" xml:space="preserve">
+    <value>強制</value>
+  </data>
+  <data name="activity_force_help" xml:space="preserve">
+    <value>強制実行</value>
+  </data>
+  <data name="activity_foreachdatarow" xml:space="preserve">
+    <value>データ行における</value>
+  </data>
+  <data name="activity_foreachdatarow_tooltip" xml:space="preserve">
+    <value>DataTable行を列挙</value>
+  </data>
+  <data name="activity_height" xml:space="preserve">
+    <value>高さ</value>
+  </data>
+  <data name="activity_height_help" xml:space="preserve">
+    <value>指定した場所へウインドウを移動</value>
+  </data>
+  <data name="activity_highlight" xml:space="preserve">
+    <value>ハイライト</value>
+  </data>
+  <data name="activity_highlightelement" xml:space="preserve">
+    <value>要素をハイライト</value>
+  </data>
+  <data name="activity_highlightelement_tooltip" xml:space="preserve">
+    <value>GetElementで検知された要素をハイライト</value>
+  </data>
+  <data name="activity_ignoreerrors" xml:space="preserve">
+    <value>エラーを無視</value>
+  </data>
+  <data name="activity_ignoreerrors_help" xml:space="preserve">
+    <value>エラーが発生した場合でも続行</value>
+  </data>
+  <data name="activity_imageresult" xml:space="preserve">
+    <value>結果のイメージ</value>
+  </data>
+  <data name="activity_imageresult_help" xml:space="preserve">
+    <value>結果をイメージとして出力</value>
+  </data>
+  <data name="activity_insertclipboard" xml:space="preserve">
+    <value>クリップボードの挿入</value>
+  </data>
+  <data name="activity_insertclipboard_tooltip" xml:space="preserve">
+    <value>クリップボードへ新たな内容を格納</value>
+  </data>
+  <data name="activity_invokeopenflow" xml:space="preserve">
+    <value>OpenFlowの起動</value>
+  </data>
+  <data name="activity_invokeopenflow_tooltip" xml:space="preserve">
+    <value>OpenFlow上でのRPA</value>
+  </data>
+  <data name="activity_invokeopenrpa" xml:space="preserve">
+    <value>OpenRPAの起動</value>
+  </data>
+  <data name="activity_invokeopenrpa_tooltip" xml:space="preserve">
+    <value>ローカルOpenRPAワークフローの起動</value>
+  </data>
+  <data name="activity_invokeremoteopenrpa" xml:space="preserve">
+    <value>リモートOpenRPAの起動</value>
+  </data>
+  <data name="activity_invokeremoteopenrpa_tooltip" xml:space="preserve">
+    <value>リモートロボット上でのOpenRAPワークフローの起動</value>
+  </data>
+  <data name="activity_keymodifiers" xml:space="preserve">
+    <value>キーボード修正</value>
+  </data>
+  <data name="activity_keymodifiers_help" xml:space="preserve">
+    <value>Virtualクリックが無効な場合にはクリック中にキーを押したままにして下さい</value>
+  </data>
+  <data name="activity_map_variables" xml:space="preserve">
+    <value>変数のマッピング</value>
+  </data>
+  <data name="activity_mousebutton" xml:space="preserve">
+    <value>マウスボタン</value>
+  </data>
+  <data name="activity_mousebutton_help" xml:space="preserve">
+    <value>クリック対象マウスボタン</value>
+  </data>
+  <data name="activity_movemouse" xml:space="preserve">
+    <value>マウスの移動</value>
+  </data>
+  <data name="activity_movemouse_tooltip" xml:space="preserve">
+    <value>GetElementで取得した要素から相対的な位置にマウスを移動させます</value>
+  </data>
+  <data name="activity_offsetx" xml:space="preserve">
+    <value>X軸オフセット</value>
+  </data>
+  <data name="activity_offsetx_help" xml:space="preserve">
+    <value>エレメント上定義されたオフセット情報を用いてクリック</value>
+  </data>
+  <data name="activity_offsety" xml:space="preserve">
+    <value>Y軸オフセット</value>
+  </data>
+  <data name="activity_offsety_help" xml:space="preserve">
+    <value>要素内のオフセットを考慮してクリックします</value>
+  </data>
+  <data name="activity_openapplication" xml:space="preserve">
+    <value>アプリケーションを開く</value>
+  </data>
+  <data name="activity_openapplication_tooltip" xml:space="preserve">
+    <value>セレクターでWindows要素を検索、対象のアプリケーションへフォーカス、対象がない場合には起動します</value>
+  </data>
+  <data name="activity_open_selector" xml:space="preserve">
+    <value>セレクターを開く</value>
+  </data>
+  <data name="activity_postwait" xml:space="preserve">
+    <value>待機後</value>
+  </data>
+  <data name="activity_postwait_help" xml:space="preserve">
+    <value>クリック動作後に遅延が発生する場合を考慮、所定の時間を待ちます</value>
+  </data>
+  <data name="activity_result" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="activity_result_help" xml:space="preserve">
+    <value>結果を変数に格納</value>
+  </data>
+  <data name="activity_selector" xml:space="preserve">
+    <value>セレクター</value>
+  </data>
+  <data name="activity_selector_help" xml:space="preserve">
+    <value>{{variablename}}により(要素を検索するために使用した)セレクターが適合するワークフロー変数をサポートします</value>
+  </data>
+  <data name="activity_select_element" xml:space="preserve">
+    <value>要素を選択</value>
+  </data>
+  <data name="activity_sendctrlc" xml:space="preserve">
+    <value>Ctrl+Cを送信</value>
+  </data>
+  <data name="activity_sendctrlc_help" xml:space="preserve">
+    <value>クリップボード内コンテンツを送る前に Ctrl+Cを送信</value>
+  </data>
+  <data name="activity_showballontop_message" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="activity_showballontop_message_hint" xml:space="preserve">
+    <value>表示メッセージ</value>
+  </data>
+  <data name="activity_showballontop_title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="activity_showballontop_title_hint" xml:space="preserve">
+    <value>バルーン型ヘルプタイトル</value>
+  </data>
+  <data name="activity_showballoontip" xml:space="preserve">
+    <value>バルーン型ヘルプの表示</value>
+  </data>
+  <data name="activity_showballoontip_tooltip" xml:space="preserve">
+    <value>システムトレイ近くにバルーンチップを表示する設定を行います。設定はOSメッセージセンターに反映されます</value>
+  </data>
+  <data name="activity_stringresult" xml:space="preserve">
+    <value>文字列の結果</value>
+  </data>
+  <data name="activity_stringresult_help" xml:space="preserve">
+    <value>文字列としての結果</value>
+  </data>
+  <data name="activity_target" xml:space="preserve">
+    <value>ターゲット</value>
+  </data>
+  <data name="activity_target_help" xml:space="preserve">
+    <value>対象ユーザー/ロール</value>
+  </data>
+  <data name="activity_text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="activity_timeout" xml:space="preserve">
+    <value>タイムアウト</value>
+  </data>
+  <data name="activity_timeout_help" xml:space="preserve">
+    <value>処理を中止する前に特定の時間を待った上で、設定に応じた失敗もしくは継続を行います</value>
+  </data>
+  <data name="activity_typetext" xml:space="preserve">
+    <value>文字列を入力して下さい</value>
+  </data>
+  <data name="activity_typetext_tooltip" xml:space="preserve">
+    <value>レコーダーにより、現在フォーカスがあるアプリケーションに対してキーボード入力を行う</value>
+  </data>
+  <data name="activity_virtualclick" xml:space="preserve">
+    <value>仮想クリック</value>
+  </data>
+  <data name="activity_virtualclick_help" xml:space="preserve">
+    <value>マウスクリックの代わる仮想クリック(全ての要素に適用できない場合があります)</value>
+  </data>
+  <data name="activity_waitforcompleted" xml:space="preserve">
+    <value>処理完了まで待機</value>
+  </data>
+  <data name="activity_waitforcompleted_help" xml:space="preserve">
+    <value>完了を待ってからワークフローを継続</value>
+  </data>
+  <data name="activity_width" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="activity_width_help" xml:space="preserve">
+    <value>指定した場所へウインドウを移動</value>
+  </data>
+  <data name="activity_workflow" xml:space="preserve">
+    <value>ワークフロー</value>
+  </data>
+  <data name="activity_workflow_help" xml:space="preserve">
+    <value>選択したワークフローを使用</value>
+  </data>
+  <data name="activity_x" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="activity_x_help" xml:space="preserve">
+    <value>指定した場所へウインドウを移動</value>
+  </data>
+  <data name="activity_y" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="activity_y_help" xml:space="preserve">
+    <value>指定した場所へウインドウを移動</value>
+  </data>
+  <data name="animatemouse" xml:space="preserve">
+    <value>アニメーションマウスの使用</value>
+  </data>
+  <data name="browseraddons" xml:space="preserve">
+    <value>ブラウザのアドオン</value>
+  </data>
+  <data name="button_ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="cancelkey" xml:space="preserve">
+    <value>キャンセルーき</value>
+  </data>
+  <data name="chrome" xml:space="preserve">
+    <value>Chrome</value>
+  </data>
+  <data name="clickpostwait" xml:space="preserve">
+    <value>クリック後の待機を設定</value>
+  </data>
+  <data name="copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="copyid" xml:space="preserve">
+    <value>コピーID</value>
+  </data>
+  <data name="copyrelativefilename" xml:space="preserve">
+    <value>相対ファイル名をコピー</value>
+  </data>
+  <data name="debug" xml:space="preserve">
+    <value>デバッグ</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="designer_menu_commentout" xml:space="preserve">
+    <value>コメントアウト</value>
+  </data>
+  <data name="designer_menu_runfromhere" xml:space="preserve">
+    <value>この場所から実行</value>
+  </data>
+  <data name="designer_menu_runthis" xml:space="preserve">
+    <value>このActivityを実行</value>
+  </data>
+  <data name="designer_menu_uncomment" xml:space="preserve">
+    <value>コメントを外す</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="detectors" xml:space="preserve">
+    <value>ディテクター</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="dock_logging" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="dock_output" xml:space="preserve">
+    <value>出力</value>
+  </data>
+  <data name="dock_properties" xml:space="preserve">
+    <value>プロパティ</value>
+  </data>
+  <data name="dock_snippets" xml:space="preserve">
+    <value>スニペット</value>
+  </data>
+  <data name="dock_toolbox" xml:space="preserve">
+    <value>ツールボックス</value>
+  </data>
+  <data name="dock_workflowinstances" xml:space="preserve">
+    <value>ワークフローインスタンス</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>ダウンロード</value>
+  </data>
+  <data name="edge" xml:space="preserve">
+    <value>Edge</value>
+  </data>
+  <data name="exitapplication" xml:space="preserve">
+    <value>アプリケーションの終了</value>
+  </data>
+  <data name="export" xml:space="preserve">
+    <value>エクスポート</value>
+  </data>
+  <data name="files" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="firefox" xml:space="preserve">
+    <value>Firefox</value>
+  </data>
+  <data name="general" xml:space="preserve">
+    <value>全般</value>
+  </data>
+  <data name="import" xml:space="preserve">
+    <value>インポート</value>
+  </data>
+  <data name="logging" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="mainnew" xml:space="preserve">
+    <value>new</value>
+  </data>
+  <data name="maintitle" xml:space="preserve">
+    <value>OpenRPA</value>
+  </data>
+  <data name="main_reload" xml:space="preserve">
+    <value>リロード</value>
+  </data>
+  <data name="main_settings_recording_add_to_designer" xml:space="preserve">
+    <value>デザイナへの直接レコード</value>
+  </data>
+  <data name="minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="newproject" xml:space="preserve">
+    <value>新規プロジェクト</value>
+  </data>
+  <data name="newworkflow" xml:space="preserve">
+    <value>新規ワークフロー</value>
+  </data>
+  <data name="nodered" xml:space="preserve">
+    <value>NodeRed</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="open" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="openflow" xml:space="preserve">
+    <value>OpenFlow</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="openrpa" xml:space="preserve">
+    <value>OpenRPA</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="open_created" xml:space="preserve">
+    <value>に作成</value>
+  </data>
+  <data name="open_createdby" xml:space="preserve">
+    <value>による作成</value>
+  </data>
+  <data name="open_edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="open_edit_xaml" xml:space="preserve">
+    <value>XAMLの編集</value>
+  </data>
+  <data name="open_modified" xml:space="preserve">
+    <value>最終更新時</value>
+  </data>
+  <data name="open_modifiedby" xml:space="preserve">
+    <value>最終更新者</value>
+  </data>
+  <data name="open_name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="open_serializable" xml:space="preserve">
+    <value>シリアライズ化</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="open_state" xml:space="preserve">
+    <value>状態</value>
+  </data>
+  <data name="packages" xml:space="preserve">
+    <value>パッケージ</value>
+  </data>
+  <data name="permissions" xml:space="preserve">
+    <value>許可</value>
+  </data>
+  <data name="permissionswindow_delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="permissionswindow_new" xml:space="preserve">
+    <value>新規</value>
+  </data>
+  <data name="permissions_delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="permissions_invoke" xml:space="preserve">
+    <value>起動</value>
+  </data>
+  <data name="permissions_read" xml:space="preserve">
+    <value>読み取り</value>
+  </data>
+  <data name="permissions_update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="play" xml:space="preserve">
+    <value>再生</value>
+  </data>
+  <data name="plugins" xml:space="preserve">
+    <value>プラグイン</value>
+  </data>
+  <data name="record" xml:space="preserve">
+    <value>録画</value>
+  </data>
+  <data name="recorderplugins" xml:space="preserve">
+    <value>録画プラグイン</value>
+  </data>
+  <data name="recordingoverlay" xml:space="preserve">
+    <value>録画を上書き</value>
+  </data>
+  <data name="rename" xml:space="preserve">
+    <value>名前を変更</value>
+  </data>
+  <data name="ribbon_search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="runplugins" xml:space="preserve">
+    <value>プラグインの実行</value>
+  </data>
+  <data name="runtime" xml:space="preserve">
+    <value>ランタイム</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="selector" xml:space="preserve">
+    <value>セレクター</value>
+  </data>
+  <data name="selectorverbose" xml:space="preserve">
+    <value>セレクター詳細</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="settingsfile" xml:space="preserve">
+    <value>設定ファイル</value>
+  </data>
+  <data name="signout" xml:space="preserve">
+    <value>サインアウト</value>
+  </data>
+  <data name="slowmotion" xml:space="preserve">
+    <value>スローモーション</value>
+  </data>
+  <data name="status_disconnected" xml:space="preserve">
+    <value>切断</value>
+  </data>
+  <data name="stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="tesseract" xml:space="preserve">
+    <value>Tesseract</value>
+  </data>
+  <data name="tools" xml:space="preserve">
+    <value>ツール</value>
+  </data>
+  <data name="tools_change_type" xml:space="preserve">
+    <value>タイプを変更</value>
+  </data>
+  <data name="tools_swap_animate" xml:space="preserve">
+    <value>アニメを置き換える</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="tools_swap_sendkeys" xml:space="preserve">
+    <value>キー送信の置換え</value>
+  </data>
+  <data name="tools_swap_virtualclick" xml:space="preserve">
+    <value>仮想クリックを置換</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>タイプ</value>
+  </data>
+  <data name="uilanguage" xml:space="preserve">
+    <value>UI言語</value>
+  </data>
+  <data name="usesendkeys" xml:space="preserve">
+    <value>キー送信を使用</value>
+  </data>
+  <data name="usevirtualclicks" xml:space="preserve">
+    <value>仮想クリックを使用</value>
+  </data>
+  <data name="value" xml:space="preserve">
+    <value>値</value>
+  </data>
+  <data name="verbose" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="version" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="visualtracking" xml:space="preserve">
+    <value>トラッキングのビジュアル化</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="NEW_FILE_AVIRECORDER" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_playrecording" xml:space="preserve">
+    <value>録画の再生</value>
+  </data>
+  <data name="activity_playrecording_tooltip" xml:space="preserve">
+    <value>録画の確認</value>
+  </data>
+  <data name="activity_play_hint" xml:space="preserve">
+    <value>動画ファイルの再生</value>
+  </data>
+  <data name="activity_startrecording" xml:space="preserve">
+    <value>録画の開始</value>
+  </data>
+  <data name="activity_startrecording_tooltip" xml:space="preserve">
+    <value>画面をファイルに録画開始</value>
+  </data>
+  <data name="activity_start_hint" xml:space="preserve">
+    <value>このフォルダへ保存</value>
+  </data>
+  <data name="activity_stoprecording" xml:space="preserve">
+    <value>録画の停止</value>
+  </data>
+  <data name="activity_stoprecording_tooltip" xml:space="preserve">
+    <value>画面録画を停止して名前付けて保存</value>
+  </data>
+  <data name="activity_stop_hint" xml:space="preserve">
+    <value>録画ファイル名</value>
+  </data>
+  <data name="plugin_codec" xml:space="preserve">
+    <value>コーデック</value>
+  </data>
+  <data name="plugin_enabled" xml:space="preserve">
+    <value>有効化</value>
+  </data>
+  <data name="plugin_keep_successful" xml:space="preserve">
+    <value>成功ステータスの維持</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="plugin_quality" xml:space="preserve">
+    <value>録画品質</value>
+  </data>
+  <data name="plugin_save_in_folder" xml:space="preserve">
+    <value>フォルダへ保存</value>
+  </data>
+  <data name="NEW_FILE_DATABASE" xml:space="preserve">
+    <value></value>
+    <comment>seems like a method or a variant name, hence will leave it untranslated.</comment>
+  </data>
+  <data name="activity_databasescope" xml:space="preserve">
+    <value>データベースの範囲</value>
+  </data>
+  <data name="activity_databasescope_select" xml:space="preserve">
+    <value>データベースを選択</value>
+  </data>
+  <data name="activity_databasescope_tooltip" xml:space="preserve">
+    <value>接続時及び終了時クローズ対象データベース</value>
+  </data>
+  <data name="activity_database_datatable" xml:space="preserve">
+    <value>DataTable</value>
+  </data>
+  <data name="activity_database_datatable_hint" xml:space="preserve">
+    <value>結果を保存するDataTable</value>
+  </data>
+  <data name="activity_database_query" xml:space="preserve">
+    <value>クエリ</value>
+  </data>
+  <data name="activity_database_query_hint" xml:space="preserve">
+    <value>実行対象クエリ</value>
+  </data>
+  <data name="activity_database_result" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="activity_database_result_hint" xml:space="preserve">
+    <value>クエリの結果</value>
+  </data>
+  <data name="activity_database_table" xml:space="preserve">
+    <value>テーブル</value>
+  </data>
+  <data name="activity_database_table_hint" xml:space="preserve">
+    <value>行を追加するテーブル</value>
+  </data>
+  <data name="activity_executenonquery" xml:space="preserve">
+    <value>ノンクエリの実行</value>
+  </data>
+  <data name="activity_executenonquery_query" xml:space="preserve">
+    <value>クエリ</value>
+  </data>
+  <data name="activity_executenonquery_query_help" xml:space="preserve">
+    <value>実行対象クエリ</value>
+  </data>
+  <data name="activity_executenonquery_tooltip" xml:space="preserve">
+    <value>結果を返さないクエリ(UPDATE, INSERT, DELETE)を実行、クエリによる影響があった件数が返されます。影響がない場合の件数は-1です。</value>
+  </data>
+  <data name="activity_executequery" xml:space="preserve">
+    <value>クエリの実行</value>
+  </data>
+  <data name="activity_executequery_tooltip" xml:space="preserve">
+    <value>クエリ実行結果をDataTableとして取得</value>
+  </data>
+  <data name="activity_executescalar" xml:space="preserve">
+    <value>スカラの実行</value>
+  </data>
+  <data name="activity_executescalar_tooltip" xml:space="preserve">
+    <value>完全一致する1つの結果を返すクエリの実行</value>
+  </data>
+  <data name="activity_getelement_drop_hint" xml:space="preserve">
+    <value>アクティビティを消去</value>
+  </data>
+  <data name="activity_updatefromtable" xml:space="preserve">
+    <value>DataTableから更新</value>
+  </data>
+  <data name="activity_updatefromtable_datatable" xml:space="preserve">
+    <value>更新対象データが格納されているDataTable</value>
+  </data>
+  <data name="activity_updatefromtable_datatable_help" xml:space="preserve">
+    <value>DataTable</value>
+  </data>
+  <data name="activity_updatefromtable_result" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="activity_updatefromtable_result_help" xml:space="preserve">
+    <value>影響が生じた行数</value>
+  </data>
+  <data name="activity_updatefromtable_tablename" xml:space="preserve">
+    <value>テーブル名</value>
+  </data>
+  <data name="activity_updatefromtable_tablename_help" xml:space="preserve">
+    <value>行を追加するテーブル</value>
+  </data>
+  <data name="activity_updatefromtable_tooltip" xml:space="preserve">
+    <value>現在のデータベース上のDataTableへInsert, Update and Deleteを実行、影響が生じた行数を返します</value>
+  </data>
+  <data name="NEW_FILE_ELIS" xml:space="preserve">
+    <value></value>
+    <comment>seems like a method or a variant name, hence will leave it untranslated.</comment>
+  </data>
+  <data name="activity_auth" xml:space="preserve">
+    <value>認証</value>
+  </data>
+  <data name="activity_auth_hint" xml:space="preserve">
+    <value>ユーザ名もしくはEメール</value>
+  </data>
+  <data name="activity_auth_tooltip" xml:space="preserve">
+    <value>Rossumへの認証及びトークン/キーの取得</value>
+  </data>
+  <data name="activity_auth_username" xml:space="preserve">
+    <value>ユーザ名</value>
+  </data>
+  <data name="activity_exportfiledata" xml:space="preserve">
+    <value>ファイルデータのエクスポート</value>
+  </data>
+  <data name="activity_exportfiledata_tooltip" xml:space="preserve">
+    <value>インボイスからデータを取得します。ファイルステータスがexportedである場合に1回のみ動作します。</value>
+  </data>
+  <data name="activity_exportfile_file" xml:space="preserve">
+    <value>ファイルURL</value>
+  </data>
+  <data name="activity_exportfile_file_hint" xml:space="preserve">
+    <value>データ取得を行うファイルURL</value>
+  </data>
+  <data name="activity_exportfile_key" xml:space="preserve">
+    <value>キー</value>
+  </data>
+  <data name="activity_exportfile_key_hint" xml:space="preserve">
+    <value>認証行動からのAPIキー取得</value>
+  </data>
+  <data name="activity_exportfile_queue" xml:space="preserve">
+    <value>キュー</value>
+  </data>
+  <data name="activity_exportfile_queue_hint" xml:space="preserve">
+    <value>データエクスポートのキュー</value>
+  </data>
+  <data name="activity_getfilestatus" xml:space="preserve">
+    <value>ファイルステータスの取得</value>
+  </data>
+  <data name="activity_getfilestatus_tooltip" xml:space="preserve">
+    <value>キューイングされているファイルステータスは以下のどれかになります：
+importing - AI Core Engineがドキュメントデータの取得処理を実行しています。最初のステータスになります。
+failed_import - ドキュメントデータの取得処理が失敗したステータスです。例としてドキュメントのフォーマットが正しくない可能性があります。
+to_review - ドキュメントデータの取得処理が完了、ユーザの検証開始待ちのステータスです。
+reviewing - ユーザによるドキュメント検証中のステータスです。
+exporting - ドキュメント検証が完了、コネクタによる保存処理完了待ちのステータスです。
+exported - ドキュメント検証及び保存が問題なく完了したステータスです。通常は処理の最後のステータスになります。
+postponed - exportingの際にユーザが処理を保留したステータスです。
+deleted - ユーザによりドキュメントが削除されたステータスです。
+purged - ドキュメント削除後にメタデータのみが残されているステータスです。</value>
+  </data>
+  <data name="activity_getqueues" xml:space="preserve">
+    <value>キューの取得</value>
+  </data>
+  <data name="activity_getqueues_key" xml:space="preserve">
+    <value>キー</value>
+  </data>
+  <data name="activity_getqueues_key_hint" xml:space="preserve">
+    <value>認証行動からのAPIキー取得</value>
+  </data>
+  <data name="activity_getqueues_tooltip" xml:space="preserve">
+    <value>Rossumからキュー一覧を取得します。ウェブサイトで定義した設定値を持つキューへのファイルアップロードが必要です。</value>
+  </data>
+  <data name="activity_getstatus_file" xml:space="preserve">
+    <value>ファイルURL</value>
+  </data>
+  <data name="activity_getstatus_file_hint" xml:space="preserve">
+    <value>ステータス取得対象のファイルURL</value>
+  </data>
+  <data name="activity_getstatus_key" xml:space="preserve">
+    <value>キー</value>
+  </data>
+  <data name="activity_getstatus_key_hint" xml:space="preserve">
+    <value>認証行動からのAPIキー取得</value>
+  </data>
+  <data name="activity_uploadfile" xml:space="preserve">
+    <value>ファイルのアップロード</value>
+  </data>
+  <data name="activity_uploadfile_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_uploadfile_filename_hint" xml:space="preserve">
+    <value>キューへアップロードを行うファイル</value>
+  </data>
+  <data name="activity_uploadfile_key" xml:space="preserve">
+    <value>キー</value>
+  </data>
+  <data name="activity_uploadfile_key_hint" xml:space="preserve">
+    <value>認証行動からのAPIキー取得</value>
+  </data>
+  <data name="activity_uploadfile_queue" xml:space="preserve">
+    <value>キュー</value>
+  </data>
+  <data name="activity_uploadfile_queue_hint" xml:space="preserve">
+    <value>ファイルアップロード先のキュー</value>
+  </data>
+  <data name="activity_uploadfile_tooltip" xml:space="preserve">
+    <value>Rossumキューへファイルをアップロード</value>
+  </data>
+  <data name="activity_waitforfilestatus" xml:space="preserve">
+    <value>ファイルステータスの待機</value>
+  </data>
+  <data name="activity_waitforfilestatus_tooltip" xml:space="preserve">
+    <value>ワークフローをアイドル状態として特定の状態に移行するまで待機させます</value>
+  </data>
+  <data name="activity_waitforfile_file" xml:space="preserve">
+    <value>ファイルURL</value>
+  </data>
+  <data name="activity_waitforfile_file_hint" xml:space="preserve">
+    <value>待機対象のファイルURL</value>
+  </data>
+  <data name="activity_waitforfile_key" xml:space="preserve">
+    <value>キー</value>
+  </data>
+  <data name="activity_waitforfile_key_hint" xml:space="preserve">
+    <value>認証行動からのAPIキー取得</value>
+  </data>
+  <data name="activity_waitforfile_status" xml:space="preserve">
+    <value>ステータス</value>
+  </data>
+  <data name="activity_waitforfile_status_hint" xml:space="preserve">
+    <value>待機するステータス</value>
+  </data>
+  <data name="NEW_FILE_FILE_WATCHER" xml:space="preserve">
+    <value></value>
+    <comment>seems like a method or a variant name, hence will leave it untranslated.</comment>
+  </data>
+  <data name="plugin_filter" xml:space="preserve">
+    <value>ファイルフィルタ</value>
+  </data>
+  <data name="plugin_includesubdir" xml:space="preserve">
+    <value>サブディレクトリ</value>
+  </data>
+  <data name="plugin_name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="plugin_path" xml:space="preserve">
+    <value>パス</value>
+  </data>
+  <data name="NEW_FILE_FORMS" xml:space="preserve">
+    <value></value>
+    <comment>seems like a method or a variant name, hence will leave it untranslated.</comment>
+  </data>
+  <data name="activity_alert_message_hint" xml:space="preserve">
+    <value>アラートメッセージ</value>
+  </data>
+  <data name="activity_formdesigner_build" xml:space="preserve">
+    <value>フォームの作成</value>
+  </data>
+  <data name="activity_invokeform" xml:space="preserve">
+    <value>関数の起動</value>
+    <comment>Checking the name of label, &quot;Invoke form&quot; would make more sense..?</comment>
+  </data>
+  <data name="activity_invokeform_create_var" xml:space="preserve">
+    <value>変数の作成</value>
+  </data>
+  <data name="activity_invokeform_open" xml:space="preserve">
+    <value>デザイナを開く</value>
+  </data>
+  <data name="activity_invokeform_tooltip" xml:space="preserve">
+    <value>事前に作成されたフォームを用いてユーザと対話を行う</value>
+  </data>
+  <data name="activity_noti_message" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="activity_noti_message_hint" xml:space="preserve">
+    <value>通知メッセージ</value>
+  </data>
+  <data name="activity_shownotification" xml:space="preserve">
+    <value>通知を表示</value>
+  </data>
+  <data name="activity_shownotification_tooltip" xml:space="preserve">
+    <value>画面右下に所定の期間中通知を表示</value>
+  </data>
+  <data name="NEW_FILE_IE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_getelement" xml:space="preserve">
+    <value>要素の取得</value>
+  </data>
+  <data name="activity_getelement_highlight" xml:space="preserve">
+    <value>ハイライト</value>
+  </data>
+  <data name="activity_getelement_open_selector" xml:space="preserve">
+    <value>セレクターを開く</value>
+  </data>
+  <data name="activity_getelement_tooltip" xml:space="preserve">
+    <value>セレクターを用いてWindows UI要素を取得する</value>
+  </data>
+  <data name="activity_openurl" xml:space="preserve">
+    <value>URLを開く</value>
+  </data>
+  <data name="activity_openurl_getcurrent" xml:space="preserve">
+    <value>現行を取得</value>
+  </data>
+  <data name="activity_openurl_tooltip" xml:space="preserve">
+    <value>選択したブラウザで所定のURLを開く</value>
+  </data>
+  <data name="activity_waitforready" xml:space="preserve">
+    <value>readyのステータスまで待機</value>
+  </data>
+  <data name="activity_waitforready_help" xml:space="preserve">
+    <value>ページ読み込みの完了まで待機</value>
+  </data>
+  <data name="enable_caching_browser" xml:space="preserve">
+    <value>ブラウザオブジェクトをキャッシュ中</value>
+  </data>
+  <data name="enable_caching_browser_help" xml:space="preserve">
+    <value>呼び出し毎に発生するウインドウ検索の代わりにブラウザオブジェクトを保存します</value>
+  </data>
+  <data name="enable_xpath_support" xml:space="preserve">
+    <value>XPathを有効化</value>
+  </data>
+  <data name="enable_xpath_support_help" xml:space="preserve">
+    <value>IEでサポートされる実験的XPathの有効化</value>
+  </data>
+  <data name="NEW_FILE_IMAGE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_getcolor" xml:space="preserve">
+    <value>色の取得</value>
+  </data>
+  <data name="activity_getcolor_tooltip" xml:space="preserve">
+    <value>指定した座標の色を取得. </value>
+  </data>
+  <data name="activity_getelement_process_limit" xml:space="preserve">
+    <value>プロセス上限</value>
+  </data>
+  <data name="activity_getelement_select" xml:space="preserve">
+    <value>イメージを選択</value>
+  </data>
+  <data name="activity_getimage" xml:space="preserve">
+    <value>イメージを取得</value>
+  </data>
+  <data name="activity_getimage_drop_hint" xml:space="preserve">
+    <value>アクティビティを消去</value>
+  </data>
+  <data name="activity_getimage_highlight" xml:space="preserve">
+    <value>ハイライト</value>
+  </data>
+  <data name="activity_getimage_select" xml:space="preserve">
+    <value>イメージを選択</value>
+  </data>
+  <data name="activity_getimage_tooltip" xml:space="preserve">
+    <value>GetElementで取得した要素から相対的な位置のスクリーンキャプチャを取得します</value>
+  </data>
+  <data name="activity_gettext" xml:space="preserve">
+    <value>テキストを取得</value>
+  </data>
+  <data name="activity_gettext_drop_hint" xml:space="preserve">
+    <value>アクティビティを消去</value>
+  </data>
+  <data name="activity_gettext_limit" xml:space="preserve">
+    <value>件へ制限</value>
+  </data>
+  <data name="activity_gettext_limit_hint" xml:space="preserve">
+    <value>この文言のみを検索</value>
+  </data>
+  <data name="activity_gettext_tooltip" xml:space="preserve">
+    <value>OCRを使いイメージからテキストを取得します。特定の文言もしくは文章に使用します。</value>
+  </data>
+  <data name="activity_loadfile_drop_hint" xml:space="preserve">
+    <value>アクティビティを消去</value>
+  </data>
+  <data name="activity_loadfile_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_loadfile_filename_hint" xml:space="preserve">
+    <value>イメージファイルの読み込み</value>
+  </data>
+  <data name="activity_loadfromfile" xml:space="preserve">
+    <value>ファイルから読み込み</value>
+  </data>
+  <data name="activity_loadfromfile_tooltip" xml:space="preserve">
+    <value>イメージファイルを読み込みImageElementとして返す</value>
+  </data>
+  <data name="activity_takescreenshot" xml:space="preserve">
+    <value>スクリーンショットの取得</value>
+  </data>
+  <data name="activity_takescreenshot_tooltip" xml:space="preserve">
+    <value>全画面もしくはGetElementで指定した所定の要素に対するスクリーンショットの取得</value>
+  </data>
+  <data name="NEW_FILE_INTERFACE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="selector_buttons_cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="selector_buttons_cancel_hint" xml:space="preserve">
+    <value>変更をキャンセルのうえセレクター画面を閉じる</value>
+  </data>
+  <data name="selector_buttons_highlight" xml:space="preserve">
+    <value>ハイライト</value>
+  </data>
+  <data name="selector_buttons_highlight_hint" xml:space="preserve">
+    <value>現行のセレクターによる要素をハイライト</value>
+  </data>
+  <data name="selector_buttons_ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="selector_buttons_ok_hint" xml:space="preserve">
+    <value>変更を適用してセレクターを閉じる</value>
+  </data>
+  <data name="selector_buttons_select" xml:space="preserve">
+    <value>選択</value>
+  </data>
+  <data name="selector_buttons_select_hint" xml:space="preserve">
+    <value>クリックして要素を選択</value>
+  </data>
+  <data name="selector_buttons_sync" xml:space="preserve">
+    <value>ツリーの同期</value>
+  </data>
+  <data name="selector_buttons_sync_hint" xml:space="preserve">
+    <value>ツリーの同期を行い現在の要素に移動</value>
+  </data>
+  <data name="selector_menu_select" xml:space="preserve">
+    <value>要素を選択</value>
+  </data>
+  <data name="NEW_FILE_JAVA" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="detector_highlight" xml:space="preserve">
+    <value>ハイライト</value>
+  </data>
+  <data name="detector_name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="detector_open_selector" xml:space="preserve">
+    <value>セレクターを開く</value>
+  </data>
+  <data name="detector_select" xml:space="preserve">
+    <value>選択</value>
+  </data>
+  <data name="detector_selector" xml:space="preserve">
+    <value>セレクター</value>
+  </data>
+  <data name="plugin_auto_launch_java_bridge" xml:space="preserve">
+    <value>自動起動</value>
+  </data>
+  <data name="plugin_auto_launch_java_bridge_help" xml:space="preserve">
+    <value>ロボット実行時にjava bridgeを自動起動</value>
+  </data>
+  <data name="plugin_launch_java_bridge" xml:space="preserve">
+    <value>java bridgeの起動</value>
+  </data>
+  <data name="NEW_FILE_NM" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_closetab" xml:space="preserve">
+    <value>タブを閉じる</value>
+  </data>
+  <data name="activity_closetab_tooltip" xml:space="preserve">
+    <value>現行のタブもしくは全てのタブを閉じる</value>
+  </data>
+  <data name="activity_executescript" xml:space="preserve">
+    <value>スクリプトの実行</value>
+  </data>
+  <data name="activity_executescript_tooltip" xml:space="preserve">
+    <value>ブラウザ上の現行タブとデフォルトフレームに対してスクリプトを実行</value>
+  </data>
+  <data name="activity_getelement_loopaction" xml:space="preserve">
+    <value>アクションのループ</value>
+  </data>
+  <data name="activity_getelement_loopaction_tooltop" xml:space="preserve">
+    <value>実行する事によりセレクターの把握と新たな項目を発見します</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="activity_open_editor" xml:space="preserve">
+    <value>エディタを開く</value>
+  </data>
+  <data name="compensate_for_old_addon" xml:space="preserve">
+    <value>旧拡張子を補正</value>
+  </data>
+  <data name="compensate_for_old_addon_help" xml:space="preserve">
+    <value>旧アドオンへ補正ピクセルを追加</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="debug_console_output" xml:space="preserve">
+    <value>デバッグコンソール</value>
+  </data>
+  <data name="debug_console_output_help" xml:space="preserve">
+    <value>ブラウザコンソールへデバッグ出力</value>
+  </data>
+  <data name="plugin_wait_for_tab_after_set_value" xml:space="preserve">
+    <value>値の設定後待機</value>
+  </data>
+  <data name="plugin_wait_for_tab_after_set_value_help" xml:space="preserve">
+    <value>値を設定後にタブのステータスがreadyになるまで待機</value>
+  </data>
+  <data name="register_old_portname" xml:space="preserve">
+    <value>旧ポート番号を登録</value>
+  </data>
+  <data name="register_old_portname_help" xml:space="preserve">
+    <value>旧拡張子と旧ポート番号を登録</value>
+  </data>
+  <data name="unique_xpath_ids" xml:space="preserve">
+    <value>ユニークID/PW</value>
+  </data>
+  <data name="unique_xpath_ids_help" xml:space="preserve">
+    <value>xpathセレクターを作成する際にこれらの属性を一意のIDとして仕様します</value>
+  </data>
+  <data name="wait_for_tab_click" xml:space="preserve">
+    <value>タブの待機</value>
+  </data>
+  <data name="wait_for_tab_click_help" xml:space="preserve">
+    <value>ボタンクリック後にタブのステータスがreadyになるまで待機</value>
+  </data>
+  <data name="NEW_FILE_OFFICE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_addparagraph" xml:space="preserve">
+    <value>文章の追加</value>
+  </data>
+  <data name="activity_addparagraph_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_addparagraph_filename_help" xml:space="preserve">
+    <value>作業対象Microsoft Wordドキュメントへのファイル名を含んだフルパス</value>
+  </data>
+  <data name="activity_addparagraph_index" xml:space="preserve">
+    <value>インデックス</value>
+  </data>
+  <data name="activity_addparagraph_index_help" xml:space="preserve">
+    <value>新規文章を指定したインデックスへと追加します。ドキュメント末尾に追加する場合には空白を指定します</value>
+  </data>
+  <data name="activity_addparagraph_text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="activity_addparagraph_text_help" xml:space="preserve">
+    <value>追加するテキスト</value>
+  </data>
+  <data name="activity_addparagraph_tooltip" xml:space="preserve">
+    <value>Microsoft Wordドキュメントへの新規文章の追加</value>
+  </data>
+  <data name="activity_clearrange" xml:space="preserve">
+    <value>範囲のクリア</value>
+  </data>
+  <data name="activity_clearrange_cells" xml:space="preserve">
+    <value>セル</value>
+  </data>
+  <data name="activity_clearrange_cells_help" xml:space="preserve">
+    <value>クリア対象のセルを指定、全てのセルをクリアする場合は空白のままにします</value>
+  </data>
+  <data name="activity_clearrange_tooltip" xml:space="preserve">
+    <value>セル範囲の全てのデータとフォーマットをクリアします</value>
+  </data>
+  <data name="activity_closedocument" xml:space="preserve">
+    <value>ドキュメントを閉じる</value>
+  </data>
+  <data name="activity_closedocument_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_closedocument_filename_help" xml:space="preserve">
+    <value>作業対象Microsoft Wordドキュメントへのファイル名を含んだフルパス</value>
+  </data>
+  <data name="activity_closedocument_savechanges" xml:space="preserve">
+    <value>変更を保存</value>
+  </data>
+  <data name="activity_closedocument_savechanges_help" xml:space="preserve">
+    <value>Wordファイルを保存する場合にはTrueを設定、変更を破棄する場合にはFalseを設定します</value>
+  </data>
+  <data name="activity_closedocument_tooltip" xml:space="preserve">
+    <value>Microsoft Wordのドキュメントが開いている場合に閉じます。他に開いているドキュメントがない場合にはWord自体を閉じます</value>
+  </data>
+  <data name="activity_closeworkbook" xml:space="preserve">
+    <value>ワークブックを閉じる</value>
+  </data>
+  <data name="activity_closeworkbook_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_closeworkbook_filename_help" xml:space="preserve">
+    <value>作業対象Microsoft Excelファイルへのファイル名を含んだフルパス</value>
+  </data>
+  <data name="activity_closeworkbook_savechanges" xml:space="preserve">
+    <value>変更を保存</value>
+  </data>
+  <data name="activity_closeworkbook_savechanges_help" xml:space="preserve">
+    <value>Excelファイルを保存する場合にはTrueを設定、変更を破棄する場合にはFalseを設定します</value>
+  </data>
+  <data name="activity_closeworkbook_tooltip" xml:space="preserve">
+    <value>Excelワークブックが開いている場合に閉じます。他に開いているワークブックがない場合にはExcelを閉じます</value>
+  </data>
+  <data name="activity_closeworkbook_workbook" xml:space="preserve">
+    <value>ワークブック</value>
+  </data>
+  <data name="activity_closeworkbook_workbook_help" xml:space="preserve">
+    <value>Microsoft Excelワークブック変数を使用</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="activity_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_getemails_reload" xml:space="preserve">
+    <value>リロード</value>
+  </data>
+  <data name="activity_getmails" xml:space="preserve">
+    <value>メール取得</value>
+  </data>
+  <data name="activity_getmails_filter" xml:space="preserve">
+    <value>フィルタ</value>
+  </data>
+  <data name="activity_getmails_filter_hint" xml:space="preserve">
+    <value>クエリによるメールフィルタ</value>
+  </data>
+  <data name="activity_getmails_tooltip" xml:space="preserve">
+    <value>Microsoft Outlookフォルダからメールを取得</value>
+  </data>
+  <data name="activity_getparagraph" xml:space="preserve">
+    <value>文章の取得</value>
+  </data>
+  <data name="activity_getparagraph_count" xml:space="preserve">
+    <value>総数</value>
+  </data>
+  <data name="activity_getparagraph_count_help" xml:space="preserve">
+    <value>Microsoft Wordドキュメント内の文章数を取得</value>
+  </data>
+  <data name="activity_getparagraph_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_getparagraph_filename_help" xml:space="preserve">
+    <value>作業対象Microsoft Wordドキュメントへのファイル名を含んだフルパス</value>
+  </data>
+  <data name="activity_getparagraph_index" xml:space="preserve">
+    <value>インデックス</value>
+  </data>
+  <data name="activity_getparagraph_index_help" xml:space="preserve">
+    <value>指定したインデックスにおける全ての文章(最大件数での設定値以上)を取得します。Wordドキュメント全てを取得する場合には空白を指定します</value>
+  </data>
+  <data name="activity_getparagraph_maxresults" xml:space="preserve">
+    <value>最大結果数</value>
+  </data>
+  <data name="activity_getparagraph_maxresults_help" xml:space="preserve">
+    <value>取得文章数の制限を指定します。制限しない場合には空白もしくは0(ゼロ)を指定します</value>
+  </data>
+  <data name="activity_getparagraph_text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="activity_getparagraph_text_help" xml:space="preserve">
+    <value>読み込まれた文章を変数へ保持</value>
+  </data>
+  <data name="activity_getparagraph_tooltip" xml:space="preserve">
+    <value>Microsoft Wordドキュメントから1以上の文章を取得</value>
+  </data>
+  <data name="activity_getselectedrange" xml:space="preserve">
+    <value>選択した範囲の取得</value>
+  </data>
+  <data name="activity_getselectedrange_tooltip" xml:space="preserve">
+    <value>所定のシートから現在選択されているセルの取得</value>
+  </data>
+  <data name="activity_movemailitem" xml:space="preserve">
+    <value>メールアイテムの移動</value>
+  </data>
+  <data name="activity_movemailitem_tooltip" xml:space="preserve">
+    <value>GetEmailsで取得したメールを別フォルダへ移動</value>
+  </data>
+  <data name="activity_movemail_mail" xml:space="preserve">
+    <value>メール</value>
+  </data>
+  <data name="activity_movemail_mail_hint" xml:space="preserve">
+    <value>移動対象のメール</value>
+  </data>
+  <data name="activity_newmailitem" xml:space="preserve">
+    <value>新規メールアイテム</value>
+  </data>
+  <data name="activity_newmailitem_tooltip" xml:space="preserve">
+    <value>Microsoft Outlookメールアイテムの新規作成</value>
+  </data>
+  <data name="activity_readcell" xml:space="preserve">
+    <value>セルの読み取り</value>
+  </data>
+  <data name="activity_readcell_tooltip" xml:space="preserve">
+    <value>Microsoft Excel内単一セル値の読み取り</value>
+  </data>
+  <data name="activity_readrange" xml:space="preserve">
+    <value>範囲の読み取り</value>
+  </data>
+  <data name="activity_readrange_clearformats" xml:space="preserve">
+    <value>フォーマットのクリア</value>
+  </data>
+  <data name="activity_readrange_clearformats_help" xml:space="preserve">
+    <value>選択したワークシートから全てのフォーマットをクリアにするオプションをTrueに設定</value>
+  </data>
+  <data name="activity_readrange_tooltip" xml:space="preserve">
+    <value>Microsoft Excelシートから範囲の取得</value>
+  </data>
+  <data name="activity_readrange_useheaderrow" xml:space="preserve">
+    <value>ヘッダー行を使用</value>
+  </data>
+  <data name="activity_readrange_useheaderrow_help" xml:space="preserve">
+    <value>選択した範囲内にカラム名を記載したヘッダー行がある場合にはTrueに設定、それ以外は空白のままにします(全てのカラムが名無しになります)</value>
+  </data>
+  <data name="activity_runexcelmacro" xml:space="preserve">
+    <value>Excelマクロの実行</value>
+  </data>
+  <data name="activity_runexcelmacro_name_hint" xml:space="preserve">
+    <value>マクロ名</value>
+  </data>
+  <data name="activity_runexcelmacro_tooltip" xml:space="preserve">
+    <value>Excelワークブック内でマクロを実行します。対象ワークブックはマクロが有効化されている必要があります</value>
+  </data>
+  <data name="activity_runslideshow" xml:space="preserve">
+    <value>スライドショーの実行</value>
+  </data>
+  <data name="activity_runslideshow_tooltip" xml:space="preserve">
+    <value>Microsoft Powerpointプレゼンテーションを開きスライドショーを開始</value>
+  </data>
+  <data name="activity_savemailitem" xml:space="preserve">
+    <value>メールアイテムを保存</value>
+  </data>
+  <data name="activity_savemailitem_tooltip" xml:space="preserve">
+    <value>Microsoft Outlookメールアイテムをファイルとして保存</value>
+  </data>
+  <data name="activity_setparagraph" xml:space="preserve">
+    <value>文章をセット</value>
+  </data>
+  <data name="activity_setparagraph_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_setparagraph_filename_help" xml:space="preserve">
+    <value>作業対象Microsoft Wordドキュメントへのファイル名を含んだフルパス</value>
+  </data>
+  <data name="activity_setparagraph_index" xml:space="preserve">
+    <value>インデックス</value>
+  </data>
+  <data name="activity_setparagraph_index_help" xml:space="preserve">
+    <value>指定したインデックスにおける文書を上書きします。Wordドキュメント全てを上書きする場合には空白を指定します</value>
+  </data>
+  <data name="activity_setparagraph_text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="activity_setparagraph_text_help" xml:space="preserve">
+    <value>セットするテキスト</value>
+  </data>
+  <data name="activity_setparagraph_tooltip" xml:space="preserve">
+    <value>Microsoft Wordドキュメントへ文書コンテンツをセットします</value>
+  </data>
+  <data name="activity_writecell" xml:space="preserve">
+    <value>セルの書き出し</value>
+  </data>
+  <data name="activity_writecell_tooltip" xml:space="preserve">
+    <value>Microsoft Excel単一セルへ値もしくは関数をセット</value>
+  </data>
+  <data name="activity_writerange" xml:space="preserve">
+    <value>範囲の書き出し</value>
+  </data>
+  <data name="activity_writerange_cells" xml:space="preserve">
+    <value>セル</value>
+  </data>
+  <data name="activity_writerange_cells_help" xml:space="preserve">
+    <value>記載を開始するセルをセットします。空白の場合にはA列最終行から記載を始めます。</value>
+    <comment>Need to check the actual behavior when leaving blank...
+Fuzzy</comment>
+  </data>
+  <data name="activity_writerange_datatable" xml:space="preserve">
+    <value>DataTable</value>
+  </data>
+  <data name="activity_writerange_datatable_help" xml:space="preserve">
+    <value>Excelへと反映させるデータを持つDataTable</value>
+  </data>
+  <data name="activity_writerange_tooltip" xml:space="preserve">
+    <value>DataTable上の全てのデータをMicrosoft Excelシート上の範囲へ書き出し</value>
+  </data>
+  <data name="activity_writerange_useheaderrow" xml:space="preserve">
+    <value>ヘッダー行を使用</value>
+  </data>
+  <data name="activity_writerange_useheaderrow_help" xml:space="preserve">
+    <value>Trueにセットした場合にはカラム名を持ったヘッダー行が追加、Falseの場合はデータ行のみが追加されます</value>
+  </data>
+  <data name="NEW_FILE_OPENFLOW" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_assignopenflow" xml:space="preserve">
+    <value>OpenFlowのアサイン</value>
+  </data>
+  <data name="activity_assignopenflow_tooltip" xml:space="preserve">
+    <value>OpenFlowをユーザもしくはロールへアサイン</value>
+  </data>
+  <data name="activity_deletefile" xml:space="preserve">
+    <value>ファイルを削除</value>
+  </data>
+  <data name="activity_deletefile_tooltip" xml:space="preserve">
+    <value>OpenFlowデータベース内の1ファイルを削除</value>
+  </data>
+  <data name="activity_deleteone" xml:space="preserve">
+    <value>1項目を削除</value>
+  </data>
+  <data name="activity_deleteone_tooltip" xml:space="preserve">
+    <value>OpenFlowデータベース内の1項目を削除</value>
+  </data>
+  <data name="activity_filename_hint" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_getcredentials" xml:space="preserve">
+    <value>認証情報を取得</value>
+  </data>
+  <data name="activity_getcredentials_tooltip" xml:space="preserve">
+    <value>暗号化された認証情報をOpenFlowから取得</value>
+  </data>
+  <data name="activity_getfile" xml:space="preserve">
+    <value>ファイルの取得</value>
+  </data>
+  <data name="activity_getfile_tooltip" xml:space="preserve">
+    <value>OpenFlowデータベース内に保存されたファイルのダウンロード</value>
+  </data>
+  <data name="activity_grantpermission" xml:space="preserve">
+    <value>権限の付与</value>
+  </data>
+  <data name="activity_grantpermission_tooltip" xml:space="preserve">
+    <value>指定したオブジェクトに対するユーザ・ロール権限の追加・更新を行います。変更後にはOpenFlowドキュメントを更新する必要があります</value>
+  </data>
+  <data name="activity_insertone" xml:space="preserve">
+    <value>1項目の挿入</value>
+  </data>
+  <data name="activity_insertone_tooltip" xml:space="preserve">
+    <value>OpenFlowデータベースへ1項目を挿入します</value>
+  </data>
+  <data name="activity_insertorupdateone" xml:space="preserve">
+    <value>1項目の挿入もしくは更新</value>
+  </data>
+  <data name="activity_insertorupdateone_tooltip" xml:space="preserve">
+    <value>OpenFlowデータベースへ1項目の挿入、もしくは既に項目がある場合には更新されます。一意性指定されたフィールドが無い場合には_idフィールドで一意性チェックが行われます</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="activity_local_path" xml:space="preserve">
+    <value>ローカルパス</value>
+  </data>
+  <data name="activity_local_path_hint" xml:space="preserve">
+    <value>このフォルダへ保存</value>
+  </data>
+  <data name="activity_perm_delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="activity_perm_read" xml:space="preserve">
+    <value>読み取り</value>
+  </data>
+  <data name="activity_perm_update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="activity_query" xml:space="preserve">
+    <value>クエリ</value>
+  </data>
+  <data name="activity_query_tooltip" xml:space="preserve">
+    <value>OpenFlowデータベース内項目へのクエリ</value>
+  </data>
+  <data name="activity_removepermission" xml:space="preserve">
+    <value>権限の消去</value>
+  </data>
+  <data name="activity_removepermission_tooltip" xml:space="preserve">
+    <value>指定したオブジェクトに対するユーザ・ロール権限の削除を行います。変更後にはOpenFlowドキュメントを更新する必要があります</value>
+  </data>
+  <data name="activity_savefile" xml:space="preserve">
+    <value>ファイルを保存</value>
+  </data>
+  <data name="activity_savefile_filename" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="activity_savefile_filename_help" xml:space="preserve">
+    <value>アップロード対象ファイルのファイル名を含んだフルパス</value>
+  </data>
+  <data name="activity_savefile_path" xml:space="preserve">
+    <value>パス</value>
+  </data>
+  <data name="activity_savefile_path_help" xml:space="preserve">
+    <value>このサブフォルダへファイルを保存、ファイルを再取得する際には階層が保持されています</value>
+  </data>
+  <data name="activity_savefile_result" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="activity_savefile_result_help" xml:space="preserve">
+    <value>新規アップロードファイルのIDを返す</value>
+  </data>
+  <data name="activity_savefile_tooltip" xml:space="preserve">
+    <value>ファイルのアップロード及びOpenFlowデータベースへの保存</value>
+  </data>
+  <data name="activity_setcredentials" xml:space="preserve">
+    <value>認証情報のセット</value>
+  </data>
+  <data name="activity_setcredentials_tooltip" xml:space="preserve">
+    <value>OpenFlow内の暗号化認証情報の作成もしくは変更</value>
+  </data>
+  <data name="activity_updatefromdataTable" xml:space="preserve">
+    <value>DataTableから更新</value>
+  </data>
+  <data name="activity_updatefromdataTable_tooltip" xml:space="preserve">
+    <value>DataTableで行われた変更をOpenFlowへ反映、挿入・更新された行リストを返します</value>
+  </data>
+  <data name="NEW_FILE_PDPLUGIN" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="plugin_collectionname" xml:space="preserve">
+    <value>コレクション名</value>
+  </data>
+  <data name="plugin_collectionname_help" xml:space="preserve">
+    <value>イベントをコレクションへ保存</value>
+  </data>
+  <data name="plugin_enabled_keyboard_recording" xml:space="preserve">
+    <value>キーボード入力をキャプチャ</value>
+  </data>
+  <data name="plugin_enabled_keyboard_recording_help" xml:space="preserve">
+    <value>キーボードイベントをレコード</value>
+  </data>
+  <data name="plugin_enabled_mouse_recording" xml:space="preserve">
+    <value>マウス動作をキャプチャ</value>
+  </data>
+  <data name="plugin_enabled_mouse_recording_help" xml:space="preserve">
+    <value>全てのマウスクリックをレコード</value>
+  </data>
+  <data name="NEW_FILE_RDSERVICEPLUGIN" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="plugin_auto_signout" xml:space="preserve">
+    <value>自動サインアウト</value>
+  </data>
+  <data name="plugin_button_add_user" xml:space="preserve">
+    <value>現在のユーザを追加</value>
+  </data>
+  <data name="plugin_button_install_service" xml:space="preserve">
+    <value>サービスのインストール</value>
+  </data>
+  <data name="plugin_button_reauth" xml:space="preserve">
+    <value>サービスを再認証</value>
+  </data>
+  <data name="plugin_button_remove_user" xml:space="preserve">
+    <value>現在のユーザを削除</value>
+  </data>
+  <data name="plugin_button_start_service" xml:space="preserve">
+    <value>サービスの開始</value>
+  </data>
+  <data name="plugin_button_stop_service" xml:space="preserve">
+    <value>サービスの停止</value>
+  </data>
+  <data name="plugin_button_uninstall_service" xml:space="preserve">
+    <value>サービスのアンイストール</value>
+  </data>
+  <data name="plugin_executable" xml:space="preserve">
+    <value>実行可能</value>
+  </data>
+  <data name="plugin_reload_interval" xml:space="preserve">
+    <value>間隔値のリロード</value>
+  </data>
+  <data name="plugin_use_free_rdp" xml:space="preserve">
+    <value>Free RDPを使用</value>
+  </data>
+  <data name="plugin_windows_login" xml:space="preserve">
+    <value>ログインユーザ名</value>
+  </data>
+  <data name="plugin_windows_password" xml:space="preserve">
+    <value>Windowsパスワード</value>
+  </data>
+  <data name="plugin_windows_username" xml:space="preserve">
+    <value>Windowsユーザ名</value>
+  </data>
+  <data name="NEW_FILE_SAP" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_getproperty" xml:space="preserve">
+    <value>プロパティを取得</value>
+  </data>
+  <data name="activity_getproperty_actionname" xml:space="preserve">
+    <value>プロパティ名</value>
+  </data>
+  <data name="activity_getproperty_actionname_help" xml:space="preserve">
+    <value>取得するプロパティ名</value>
+  </data>
+  <data name="activity_getproperty_path" xml:space="preserve">
+    <value>パス</value>
+  </data>
+  <data name="activity_getproperty_path_help" xml:space="preserve">
+    <value>オブジェクトへのパス</value>
+  </data>
+  <data name="activity_getproperty_result" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="activity_getproperty_result_help" xml:space="preserve">
+    <value>プロパティ値取得の結果</value>
+  </data>
+  <data name="activity_getproperty_systemname" xml:space="preserve">
+    <value>システム名</value>
+  </data>
+  <data name="activity_getproperty_systemname_help" xml:space="preserve">
+    <value>コマンド送信対処のシステム名</value>
+  </data>
+  <data name="activity_getproperty_tooltip" xml:space="preserve">
+    <value>SAP UI Elementプロパティ値の取得</value>
+  </data>
+  <data name="activity_invokemethod" xml:space="preserve">
+    <value>メソッドの起動</value>
+  </data>
+  <data name="activity_invokemethod_actionname" xml:space="preserve">
+    <value>アクション名</value>
+  </data>
+  <data name="activity_invokemethod_actionname_help" xml:space="preserve">
+    <value>対象オブジェクトへのアクション</value>
+  </data>
+  <data name="activity_invokemethod_parameters" xml:space="preserve">
+    <value>パラメータ</value>
+  </data>
+  <data name="activity_invokemethod_parameters_help" xml:space="preserve">
+    <value>アクション用パラメータ</value>
+  </data>
+  <data name="activity_invokemethod_path" xml:space="preserve">
+    <value>パス</value>
+  </data>
+  <data name="activity_invokemethod_path_help" xml:space="preserve">
+    <value>オブジェクトへのパス</value>
+  </data>
+  <data name="activity_invokemethod_result" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="activity_invokemethod_result_help" xml:space="preserve">
+    <value>起動メソッドに返り値がある場合の値</value>
+  </data>
+  <data name="activity_invokemethod_systemname" xml:space="preserve">
+    <value>システム名</value>
+  </data>
+  <data name="activity_invokemethod_systemname_help" xml:space="preserve">
+    <value>コマンド送信対処のシステム名</value>
+  </data>
+  <data name="activity_invokemethod_tooltip" xml:space="preserve">
+    <value>SAP UIメソッドの起動</value>
+  </data>
+  <data name="activity_login" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="activity_login_client" xml:space="preserve">
+    <value>クライアント</value>
+  </data>
+  <data name="activity_login_client_help" xml:space="preserve">
+    <value>使用SAPクライアント</value>
+  </data>
+  <data name="activity_login_host" xml:space="preserve">
+    <value>ホスト</value>
+  </data>
+  <data name="activity_login_host_help" xml:space="preserve">
+    <value>サーバーIPアドレスもしくはホスト名</value>
+  </data>
+  <data name="activity_login_language" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="activity_login_language_help" xml:space="preserve">
+    <value>クライアント言語のセット</value>
+  </data>
+  <data name="activity_login_password" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="activity_login_password_help" xml:space="preserve">
+    <value>ログイン時使用パスワード</value>
+  </data>
+  <data name="activity_login_systemname" xml:space="preserve">
+    <value>システム名</value>
+  </data>
+  <data name="activity_login_systemname_help" xml:space="preserve">
+    <value>想定されるシステム名。指定されたシステム名を用いてセッションを検索、ヒットしない場合にログインを行います。ブランクの場合には常に新たなセッションへログインを行います</value>
+  </data>
+  <data name="activity_login_tooltip" xml:space="preserve">
+    <value>指定されたセッション名が存在しない場合に使用されるSAPログイン情報</value>
+  </data>
+  <data name="activity_login_username" xml:space="preserve">
+    <value>ユーザ名</value>
+  </data>
+  <data name="activity_login_username_help" xml:space="preserve">
+    <value>ログイン時使用ユーザ名</value>
+  </data>
+  <data name="activity_setproperty" xml:space="preserve">
+    <value>プロパティのセット</value>
+  </data>
+  <data name="activity_setproperty_actionname" xml:space="preserve">
+    <value>プロパティ名</value>
+  </data>
+  <data name="activity_setproperty_actionname_help" xml:space="preserve">
+    <value>セット対象のプロパティ名</value>
+  </data>
+  <data name="activity_setproperty_parameters" xml:space="preserve">
+    <value>パラメータ</value>
+  </data>
+  <data name="activity_setproperty_parameters_help" xml:space="preserve">
+    <value>アクション用パラメータ</value>
+  </data>
+  <data name="activity_setproperty_path" xml:space="preserve">
+    <value>パス</value>
+  </data>
+  <data name="activity_setproperty_path_help" xml:space="preserve">
+    <value>オブジェクトへのパス</value>
+  </data>
+  <data name="activity_setproperty_systemname" xml:space="preserve">
+    <value>システム名</value>
+  </data>
+  <data name="activity_setproperty_systemname_help" xml:space="preserve">
+    <value>コマンド送信対処のシステム名</value>
+  </data>
+  <data name="activity_setproperty_tooltip" xml:space="preserve">
+    <value>SAP UI Elementプロパティに値をセット</value>
+  </data>
+  <data name="plugin_auto_launch_sap_bridge" xml:space="preserve">
+    <value>自動起動</value>
+  </data>
+  <data name="plugin_auto_launch_sap_bridge_help" xml:space="preserve">
+    <value>ロボット実行時にSAP bridgeを自動起動</value>
+  </data>
+  <data name="plugin_bridge_timeout_seconds" xml:space="preserve">
+    <value>ブリッジタイムアウト</value>
+  </data>
+  <data name="plugin_bridge_timeout_seconds_help" xml:space="preserve">
+    <value>SAP bridgeへのリクエストの待ち時間</value>
+  </data>
+  <data name="plugin_launch_sap_bridge" xml:space="preserve">
+    <value>SAPブリッジを起動</value>
+  </data>
+  <data name="plugin_record_with_get_element" xml:space="preserve">
+    <value>GetElementのレコード</value>
+  </data>
+  <data name="plugin_record_with_get_element_help" xml:space="preserve">
+    <value>レコード時にはSetPropertyに代わりGetElementを使用</value>
+  </data>
+  <data name="NEW_FILE_OPENRPASCRIPT" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_invokecode" xml:space="preserve">
+    <value>コードを起動</value>
+  </data>
+  <data name="activity_invokecode_tooltip" xml:space="preserve">
+    <value>特定の言語を用いてコードを起動</value>
+  </data>
+  <data name="activity_pipinstall" xml:space="preserve">
+    <value>Pipインストール</value>
+  </data>
+  <data name="activity_pipinstall_force" xml:space="preserve">
+    <value>強制</value>
+  </data>
+  <data name="activity_pipinstall_force_help" xml:space="preserve">
+    <value>既存のモジュールが存在する場合でも再インストールの強制</value>
+  </data>
+  <data name="activity_pipinstall_modules" xml:space="preserve">
+    <value>モジュール</value>
+  </data>
+  <data name="activity_pipinstall_modules_help" xml:space="preserve">
+    <value>インストール対象Pythonモジュール一覧</value>
+  </data>
+  <data name="activity_pipinstall_tooltip" xml:space="preserve">
+    <value>現在選択されているPython環境からモジュールを選択してインストール</value>
+  </data>
+  <data name="plugin_csharp_intellisense" xml:space="preserve">
+    <value>C#用インテリセンス</value>
+  </data>
+  <data name="plugin_csharp_intellisense_help" xml:space="preserve">
+    <value>C#用インテリセンスの有効化</value>
+  </data>
+  <data name="plugin_use_embedded_python" xml:space="preserve">
+    <value>組み込みPythonを使用</value>
+  </data>
+  <data name="plugin_use_embedded_python_help" xml:space="preserve">
+    <value>OpenRPAにはPythonがエンベッドされていますが、無効化にした場合にはデフォルトのPythonを使用します</value>
+  </data>
+  <data name="plugin_vb_intellisense" xml:space="preserve">
+    <value>Visual Basic用インテリセンス</value>
+  </data>
+  <data name="plugin_vb_intellisense_help" xml:space="preserve">
+    <value>Visual Basic用インテリセンスの有効化</value>
+  </data>
+  <data name="NEW_FILE_UPDATER" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="main_button_install" xml:space="preserve">
+    <value>インストール</value>
+  </data>
+  <data name="main_button_launch" xml:space="preserve">
+    <value>起動</value>
+  </data>
+  <data name="main_button_launch_hint" xml:space="preserve">
+    <value>OpenRPAを起動</value>
+  </data>
+  <data name="main_button_reinstall" xml:space="preserve">
+    <value>再インストール</value>
+  </data>
+  <data name="main_button_search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="main_button_search_hint" xml:space="preserve">
+    <value>アクティビティの検索</value>
+  </data>
+  <data name="main_button_search_text" xml:space="preserve">
+    <value>検索...</value>
+  </data>
+  <data name="main_button_uninstall" xml:space="preserve">
+    <value>アンイストール</value>
+  </data>
+  <data name="main_button_update_all" xml:space="preserve">
+    <value>全て更新</value>
+  </data>
+  <data name="main_button_update_all_hint" xml:space="preserve">
+    <value>全て更新</value>
+  </data>
+  <data name="main_button_upgrade" xml:space="preserve">
+    <value>アップグレード</value>
+  </data>
+  <data name="main_label_authors" xml:space="preserve">
+    <value>作成者</value>
+  </data>
+  <data name="main_label_description" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="main_label_id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="main_label_latestversion" xml:space="preserve">
+    <value>最新バージョン</value>
+  </data>
+  <data name="main_label_summary" xml:space="preserve">
+    <value>サマリ</value>
+  </data>
+  <data name="main_label_tags" xml:space="preserve">
+    <value>タグ</value>
+  </data>
+  <data name="main_label_version" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="NEW_FILE_UTILITIES" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_adddatarow_datatable" xml:space="preserve">
+    <value>挿入先のDataTable</value>
+  </data>
+  <data name="activity_converter_datatable" xml:space="preserve">
+    <value>DataTable</value>
+  </data>
+  <data name="activity_converter_jarray" xml:space="preserve">
+    <value>JArray</value>
+  </data>
+  <data name="activity_datatable_columnnames" xml:space="preserve">
+    <value>DataTableカラム配列</value>
+  </data>
+  <data name="activity_datatable_newcolumnname" xml:space="preserve">
+    <value>新規カラム名</value>
+  </data>
+  <data name="activity_deletedatarow_row" xml:space="preserve">
+    <value>行</value>
+  </data>
+  <data name="activity_downloadfile_hint" xml:space="preserve">
+    <value>このフォルダへ保存</value>
+  </data>
+  <data name="activity_match_compiled" xml:space="preserve">
+    <value>コンパイル済</value>
+  </data>
+  <data name="activity_match_input" xml:space="preserve">
+    <value>マッチさせる文字列</value>
+  </data>
+  <data name="activity_match_pattern" xml:space="preserve">
+    <value>マッチさせる正規表現</value>
+  </data>
+  <data name="activity_match_replacement" xml:space="preserve">
+    <value>この文字列に置換</value>
+  </data>
+  <data name="activity_new_datatable" xml:space="preserve">
+    <value>新規DataTable変数</value>
+  </data>
+  <data name="activity_readexcel_hint" xml:space="preserve">
+    <value>読み込むExcelファイルの選択</value>
+  </data>
+  <data name="activity_readjson_hint" xml:space="preserve">
+    <value>読み込むJSONの選択</value>
+  </data>
+  <data name="activity_readpdf_hint" xml:space="preserve">
+    <value>読み込むPDFの選択</value>
+  </data>
+  <data name="activity_selectfolder_hint" xml:space="preserve">
+    <value>選択したフォルダ</value>
+  </data>
+  <data name="activity_startprocess_arguments_hint" xml:space="preserve">
+    <value>実行ファイル(.exe)への引数</value>
+  </data>
+  <data name="activity_startprocess_filename_hint" xml:space="preserve">
+    <value>実行ファイル(.exe)のフルファイル名とフルパス</value>
+  </data>
+  <data name="activity_writecsv_hint" xml:space="preserve">
+    <value>書き出し対象CSVファイルの選択</value>
+  </data>
+  <data name="activity_writeexcel_hint" xml:space="preserve">
+    <value>書き出し対象Excelファイルの選択</value>
+  </data>
+  <data name="NEW_FILE_WINDOWS" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="detector_button_highlight" xml:space="preserve">
+    <value>ハイライト</value>
+  </data>
+  <data name="detector_button_open_selector" xml:space="preserve">
+    <value>セレクターを開く</value>
+  </data>
+  <data name="detector_button_select" xml:space="preserve">
+    <value>選択</value>
+  </data>
+  <data name="enable_cache_help" xml:space="preserve">
+    <value>要素に対するキャッシュ有効化 (メモリは消費しますがより早く動作します)</value>
+  </data>
+  <data name="getelement_drop_hint" xml:space="preserve">
+    <value>アクティビティを消去</value>
+  </data>
+  <data name="getelement_highlight" xml:space="preserve">
+    <value>ハイライト</value>
+  </data>
+  <data name="getelement_open_selector" xml:space="preserve">
+    <value>セレクターを開く</value>
+  </data>
+  <data name="plugin_allow_child_searching" xml:space="preserve">
+    <value>子ノードを検索</value>
+  </data>
+  <data name="plugin_allow_child_searching_help" xml:space="preserve">
+    <value>セレクターで要素が見つからない場合には自動的に子ノードを検索します</value>
+  </data>
+  <data name="plugin_allow_multiple_hits" xml:space="preserve">
+    <value>複数件ヒットを許可</value>
+  </data>
+  <data name="plugin_allow_multiple_hits_help" xml:space="preserve">
+    <value>セレクターに1段階下のエレメントまで対象にして要素を調べさせます</value>
+  </data>
+  <data name="plugin_enable_cache" xml:space="preserve">
+    <value>キャッシュの有効化</value>
+  </data>
+  <data name="plugin_enum_properties" xml:space="preserve">
+    <value>リスト型プロパティ</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="plugin_enum_properties_help" xml:space="preserve">
+    <value>各セレクター要素に対して最小限必要なプロパティ数を確認します</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="plugin_get_elements_in_different_thread" xml:space="preserve">
+    <value>別スレッドで要素を取得</value>
+  </data>
+  <data name="plugin_get_elements_in_different_thread_help" xml:space="preserve">
+    <value>GetElementは別スレッドを使用することでセレクターがロボット実行を検知した際のロックを回避します</value>
+  </data>
+  <data name="plugin_search_descendants" xml:space="preserve">
+    <value>全ての子ノードの検索</value>
+    <comment>Fuzzy</comment>
+  </data>
+  <data name="plugin_search_descendants_help" xml:space="preserve">
+    <value>より簡素なセレクターを使用してすべての子ノードを検索します(ただしパフォーマンスに影響が出ます)</value>
+  </data>
+  <data name="plugin_traverse_selector_both_ways" xml:space="preserve">
+    <value>両方の方法でセレクターを巡回させます</value>
+  </data>
+  <data name="plugin_traverse_selector_both_ways_help" xml:space="preserve">
+    <value>両方の方法でUIツリーを巡回してゴーストセレクターを非表示にします</value>
+  </data>
+</root>

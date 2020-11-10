@@ -197,6 +197,39 @@
         <File Id="fil126FD8D7BC3CA134C631C10414C0844C" Source="!(wix.MainSource)\ru\OpenRPA.Windows.resources.dll" />
         <File Id="fil746AB0109F6368FE0AE56C2FA8C44711" Source="!(wix.MainSource)\ru\Xceed.Wpf.AvalonDock.resources.dll" />
       </Component>
+		
+		
+		
+		 <Component Id='mainComponentit' Win64='yes' Directory="mainit" Guid='{A5C38BDE-0F0A-49B0-BFEF-964B81A02F36}'>
+        <File Id="filCB0114F5EFE192364FBA9FB7F2F0C65F" Source="!(wix.MainSource)\it\OpenRPA.Interfaces.resources.dll" />
+        <File Id="fil36507B8C89ECB8F8BF5B934D6FA434F4" Source="!(wix.MainSource)\it\OpenRPA.resources.dll" />
+        <File Id="filDA3067B9DC56657830C3E584F1D6B0B2" Source="!(wix.MainSource)\it\OpenRPA.Windows.resources.dll" />
+        <File Id="fil3F9345202472B57C4B615EF270AFC5AA" Source="!(wix.MainSource)\it\Xceed.Wpf.AvalonDock.resources.dll" />
+      </Component>
+
+
+		<Component Id='mainComponentfr' Win64='yes' Directory="mainfr" Guid='{A5C38BDE-0F0A-49B0-BFEF-964B81A02F37}'>
+			<File Id="filCB0114F5EFE192364FBA9FB7F2F0C62F" Source="!(wix.MainSource)\fr\OpenRPA.Interfaces.resources.dll" />
+			<File Id="fil36507B8C89ECB8F8BF5B934D6FA434F7" Source="!(wix.MainSource)\fr\OpenRPA.resources.dll" />
+			<File Id="filDA3067B9DC56657830C3E584F1D6B0B5" Source="!(wix.MainSource)\fr\OpenRPA.Windows.resources.dll" />
+			<File Id="fil3F9345202472B57C4B615EF270AFC8AA" Source="!(wix.MainSource)\fr\Xceed.Wpf.AvalonDock.resources.dll" />
+		</Component>
+
+
+		<Component Id='mainComponentnl' Win64='yes' Directory="mainnl" Guid='{A5C38BDE-0F0A-49B0-BFEF-964B81A02F38}'>
+			<File Id="filCB0114F5EFE192364FBA9FB7F2F0C63F" Source="!(wix.MainSource)\nl\OpenRPA.Interfaces.resources.dll" />
+			<File Id="fil36507B8C89ECB8F8BF5B934D6FA434F6" Source="!(wix.MainSource)\nl\OpenRPA.resources.dll" />
+			<File Id="filDA3067B9DC56657830C3E584F1D6B0B4" Source="!(wix.MainSource)\nl\OpenRPA.Windows.resources.dll" />
+		 </Component>
+
+
+		<Component Id='mainComponentja' Win64='yes' Directory="mainja" Guid='{A5C38BDE-0F0A-49B0-BFEF-964B81A02F39}'>
+			<File Id="filCB0114F5EFE192364FBA9FB7F2F0C64F" Source="!(wix.MainSource)\ja\OpenRPA.Interfaces.resources.dll" />
+			<File Id="fil36507B8C89ECB8F8BF5B934D6FA434F5" Source="!(wix.MainSource)\ja\OpenRPA.resources.dll" />
+			<File Id="filDA3067B9DC56657830C3E584F1D6B0B3" Source="!(wix.MainSource)\ja\OpenRPA.Windows.resources.dll" />
+	 	</Component>
+		
+		
       <Component Id='mainComponentx64' Win64='yes' Directory="mainx64" Guid='{225DF59C-8C11-4AFF-95A9-88A98A6CD576}'>
         <File Id="filB436E4594E3544C098B9943DBDC1A518" Source="!(wix.MainSource)\x64\cef.pak" />
         <File Id="filCB052B4928C8DBE2730D9A211E470208" Source="!(wix.MainSource)\x64\CefSharp.BrowserSubprocess.Core.dll" />
@@ -250,6 +283,20 @@
       </Directory>
       <Directory Id="mainru" Name="ru">
       </Directory>
+
+		<Directory Id="mainit" Name="it">
+		</Directory>
+
+		<Directory Id="mainfr" Name="fr">
+		</Directory>
+
+		<Directory Id="mainnl" Name="nl">
+		</Directory>
+
+		<Directory Id="mainja" Name="ja">
+		</Directory>
+
+		 
     </DirectoryRef>
 
   </Fragment>

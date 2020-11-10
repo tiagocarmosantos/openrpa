@@ -32,6 +32,22 @@
         <File Id="OpenRPA.Utilities.resources.dll_ru" Source="!(wix.UtilitiesSource)\ru\OpenRPA.Utilities.resources.dll" />
       </Component>
 
+		<Component Id='UtilitiesComponentit' Win64='yes' Directory="Utilitiesit" Guid='{B49A09EB-4533-465D-A13D-F2D76B42FCE2}'>
+			<File Id="OpenRPA.Utilities.resources.dll_it" Source="!(wix.UtilitiesSource)\it\OpenRPA.Utilities.resources.dll" />
+		</Component>
+
+		<Component Id='UtilitiesComponentfr' Win64='yes' Directory="Utilitiesfr" Guid='{B49A09EB-4533-465D-A13D-F2D76B42FCE3}'>
+			<File Id="OpenRPA.Utilities.resources.dll_fr" Source="!(wix.UtilitiesSource)\fr\OpenRPA.Utilities.resources.dll" />
+		</Component>
+
+		<Component Id='UtilitiesComponentnl' Win64='yes' Directory="Utilitiesnl" Guid='{B49A09EB-4533-465D-A13D-F2D76B42FCE4}'>
+			<File Id="OpenRPA.Utilities.resources.dll_nl" Source="!(wix.UtilitiesSource)\nl\OpenRPA.Utilities.resources.dll" />
+		</Component>
+
+		<Component Id='UtilitiesComponentja' Win64='yes' Directory="Utilitiesja" Guid='{B49A09EB-4533-465D-A13D-F2D76B42FCE5}'>
+			<File Id="OpenRPA.Utilities.resources.dll_ja" Source="!(wix.UtilitiesSource)\ja\OpenRPA.Utilities.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="Utilitiesde" Name="de">
@@ -46,6 +62,18 @@
       </Directory>
       <Directory Id="Utilitiesru" Name="ru">
       </Directory>
+
+		<Directory Id="Utilitiesit" Name="it">
+		</Directory>
+
+		<Directory Id="Utilitiesfr" Name="fr">
+		</Directory>
+
+		<Directory Id="Utilitiesnl" Name="nl">
+		</Directory>
+
+		<Directory Id="Utilitiesja" Name="ja">
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

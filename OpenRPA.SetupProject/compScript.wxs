@@ -29,6 +29,22 @@
         <File Id="OpenRPA.Script.resources.dll_ru" Source="!(wix.ScriptSource)\ru\OpenRPA.Script.resources.dll" />
       </Component>
 
+		<Component Id='ScriptComponentit' Win64='yes' Directory="Scriptit" Guid='{B349FDF7-836D-457D-88B7-9A2AB7D0E3D9}'>
+			<File Id="OpenRPA.Script.resources.dll_it" Source="!(wix.ScriptSource)\it\OpenRPA.Script.resources.dll" />
+		</Component>
+
+		<Component Id='ScriptComponentfr' Win64='yes' Directory="Scriptfr" Guid='{B349FDF7-836D-457D-88B7-9A2AB7D0E3D0}'>
+			<File Id="OpenRPA.Script.resources.dll_fr" Source="!(wix.ScriptSource)\fr\OpenRPA.Script.resources.dll" />
+		</Component>
+
+		<Component Id='ScriptComponentnl' Win64='yes' Directory="Scriptnl" Guid='{B349FDF7-836D-457D-88B7-9A2AB7D0E3D1}'>
+			<File Id="OpenRPA.Script.resources.dll_nl" Source="!(wix.ScriptSource)\nl\OpenRPA.Script.resources.dll" />
+		</Component>
+
+		<Component Id='ScriptComponentja' Win64='yes' Directory="Scriptja" Guid='{B349FDF7-836D-457D-88B7-9A2AB7D0E3D2}'>
+			<File Id="OpenRPA.Script.resources.dll_ja" Source="!(wix.ScriptSource)\ja\OpenRPA.Script.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="Scriptde" Name="de">
@@ -43,6 +59,18 @@
       </Directory>
       <Directory Id="Scriptru" Name="ru">
       </Directory>
+
+		<Directory Id="Scriptit" Name="it">
+		</Directory>
+
+		<Directory Id="Scriptfr" Name="fr">
+		</Directory>
+
+		<Directory Id="Scriptnl" Name="nl">
+		</Directory>
+
+		<Directory Id="Scriptja" Name="ja">
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

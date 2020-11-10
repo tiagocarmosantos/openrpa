@@ -12,6 +12,7 @@
       <Component Id='AviRecorderComponentde' Win64='yes' Directory="AviRecorderde" Guid='{E5E526BD-2D95-47C8-BFD6-CE1158D14341}'>
         <File Id="OpenRPA.AviRecorder.resources.dll_de" Source="!(wix.AviRecorderSource)\de\OpenRPA.AviRecorder.resources.dll" />
       </Component>
+		
       <Component Id='AviRecorderComponentda' Win64='yes' Directory="AviRecorderda" Guid='{7BA5094B-A417-4905-8D2D-F558B104C8CC}'>
         <File Id="OpenRPA.AviRecorder.resources.dll_da" Source="!(wix.AviRecorderSource)\da\OpenRPA.AviRecorder.resources.dll" />
       </Component>
@@ -28,10 +29,27 @@
         <File Id="OpenRPA.AviRecorder.resources.dll_ru" Source="!(wix.AviRecorderSource)\ru\OpenRPA.AviRecorder.resources.dll" />
       </Component>
 
+		<Component Id='AviRecorderComponentit' Win64='yes' Directory="AviRecorderit" Guid='{E5E526BD-2D95-47C8-BFD6-CE1158D14342}'>
+			<File Id="OpenRPA.AviRecorder.resources.dll_it" Source="!(wix.AviRecorderSource)\it\OpenRPA.AviRecorder.resources.dll" />
+		</Component>
+
+		<Component Id='AviRecorderComponentfr' Win64='yes' Directory="AviRecorderfr" Guid='{E5E526BD-2D95-47C8-BFD6-CE1158D14343}'>
+			<File Id="OpenRPA.AviRecorder.resources.dll_fr" Source="!(wix.AviRecorderSource)\fr\OpenRPA.AviRecorder.resources.dll" />
+		</Component>
+
+		<Component Id='AviRecorderComponentnl' Win64='yes' Directory="AviRecordernl" Guid='{E5E526BD-2D95-47C8-BFD6-CE1158D14344}'>
+			<File Id="OpenRPA.AviRecorder.resources.dll_nl" Source="!(wix.AviRecorderSource)\nl\OpenRPA.AviRecorder.resources.dll" />
+		</Component>
+
+		<Component Id='AviRecorderComponentja' Win64='yes' Directory="AviRecorderja" Guid='{E5E526BD-2D95-47C8-BFD6-CE1158D14345}'>
+			<File Id="OpenRPA.AviRecorder.resources.dll_ja" Source="!(wix.AviRecorderSource)\ja\OpenRPA.AviRecorder.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="AviRecorderde" Name="de">
       </Directory>
+		
       <Directory Id="AviRecorderda" Name="da">
       </Directory>
       <Directory Id="AviRecorderes" Name="es">
@@ -42,6 +60,18 @@
       </Directory>
       <Directory Id="AviRecorderru" Name="ru">
       </Directory>
+
+		<Directory Id="AviRecorderit" Name="it">
+		</Directory>
+
+		<Directory Id="AviRecorderfr" Name="fr">
+		</Directory>
+
+		<Directory Id="AviRecordernl" Name="nl">
+		</Directory>
+
+		<Directory Id="AviRecorderja" Name="ja">
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

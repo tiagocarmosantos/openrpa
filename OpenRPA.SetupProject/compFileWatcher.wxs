@@ -26,6 +26,22 @@
         <File Id="OpenRPA.FileWatcher.resources.dll_ru" Source="!(wix.FileWatcherSource)\ru\OpenRPA.FileWatcher.resources.dll" />
       </Component>
 
+		<Component Id='FileWatcherComponentit' Win64='yes' Directory="FileWatcherit" Guid='{32157D98-982D-4875-9915-027DC322977C}'>
+			<File Id="OpenRPA.FileWatcher.resources.dll_it" Source="!(wix.FileWatcherSource)\it\OpenRPA.FileWatcher.resources.dll" />
+		</Component>
+
+		<Component Id='FileWatcherComponentfr' Win64='yes' Directory="FileWatcherfr" Guid='{32157D98-982D-4875-9915-027DC322978C}'>
+			<File Id="OpenRPA.FileWatcher.resources.dll_fr" Source="!(wix.FileWatcherSource)\fr\OpenRPA.FileWatcher.resources.dll" />
+		</Component>
+
+		<Component Id='FileWatcherComponentnl' Win64='yes' Directory="FileWatchernl" Guid='{32157D98-982D-4875-9915-027DC322979C}'>
+			<File Id="OpenRPA.FileWatcher.resources.dll_nl" Source="!(wix.FileWatcherSource)\nl\OpenRPA.FileWatcher.resources.dll" />
+		</Component>
+
+		<Component Id='FileWatcherComponentja' Win64='yes' Directory="FileWatcherja" Guid='{32157D98-982D-4875-9915-027DC322966C}'>
+			<File Id="OpenRPA.FileWatcher.resources.dll_ja" Source="!(wix.FileWatcherSource)\ja\OpenRPA.FileWatcher.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="FileWatcherde" Name="de">
@@ -40,6 +56,19 @@
       </Directory>
       <Directory Id="FileWatcherru" Name="ru">
       </Directory>
+
+		<Directory Id="FileWatcherit" Name="it">
+		</Directory>
+
+		<Directory Id="FileWatcherfr" Name="fr">
+
+		<Directory Id="FileWatchernl" Name="nl">
+		</Directory>
+			
+		<Directory Id="FileWatcherja" Name="ja">
+		</Directory>	
+			
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

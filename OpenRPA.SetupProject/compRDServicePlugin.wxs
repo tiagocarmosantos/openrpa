@@ -79,6 +79,22 @@
         <File Id="OpenRPA.RDServicePlugin.resources.dll_ru" Source="!(wix.RDServicePluginSource)\ru\OpenRPA.RDServicePlugin.resources.dll" />
       </Component>
 
+		<Component Id='RDServicePluginComponentit' Win64='yes' Directory="RDServicePluginit" Guid='{CBEFB416-771B-482C-BDCD-A8E0DEEAFE8A}'>
+			<File Id="OpenRPA.RDServicePlugin.resources.dll_it" Source="!(wix.RDServicePluginSource)\it\OpenRPA.RDServicePlugin.resources.dll" />
+		</Component>
+
+		<Component Id='RDServicePluginComponentfr' Win64='yes' Directory="RDServicePluginfr" Guid='{CBEFB416-771B-482C-BDCD-A8E0DEEAFE9A}'>
+			<File Id="OpenRPA.RDServicePlugin.resources.dll_fr" Source="!(wix.RDServicePluginSource)\fr\OpenRPA.RDServicePlugin.resources.dll" />
+		</Component>
+
+		<Component Id='RDServicePluginComponentnl' Win64='yes' Directory="RDServicePluginnl" Guid='{CBEFB416-771B-482C-BDCD-A8E0DEEAFE0A}'>
+			<File Id="OpenRPA.RDServicePlugin.resources.dll_nl" Source="!(wix.RDServicePluginSource)\nl\OpenRPA.RDServicePlugin.resources.dll" />
+		</Component>
+
+		<Component Id='RDServicePluginComponentja' Win64='yes' Directory="RDServicePluginja" Guid='{CBEFB416-771B-482C-BDCD-A8E0DEEAFE1A}'>
+			<File Id="OpenRPA.RDServicePlugin.resources.dll_ja" Source="!(wix.RDServicePluginSource)\ja\OpenRPA.RDServicePlugin.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="RDServicePluginx64" Name="x64" />
@@ -88,6 +104,14 @@
       <Directory Id="RDServicePluginpt" Name="pt" />
       <Directory Id="RDServicePluginro" Name="ro" />
       <Directory Id="RDServicePluginru" Name="ru" />
+
+		<Directory Id="RDServicePluginit" Name="it" />
+
+		<Directory Id="RDServicePluginfr" Name="fr" />
+
+		<Directory Id="RDServicePluginnl" Name="nl" />
+
+		<Directory Id="RDServicePluginja" Name="ja" />
     </DirectoryRef>
 
   </Fragment>

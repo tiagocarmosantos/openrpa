@@ -41,6 +41,25 @@
         <File Id="ZedGraph.resources.dll_ru" Source="!(wix.ImageSource)\ru\ZedGraph.resources.dll" />
       </Component>
 
+		<Component Id='ImageComponentit' Win64='yes' Directory="Imageit" Guid='{0956CF1F-136A-4A65-80E2-83C3E957ED5A}'>
+			<File Id="OpenRPA.Image.resources.dll_it" Source="!(wix.ImageSource)\it\OpenRPA.Image.resources.dll" />
+			<File Id="ZedGraph.resources.dll_it" Source="!(wix.ImageSource)\it\ZedGraph.resources.dll" />
+		</Component>
+
+		<Component Id='ImageComponentfr' Win64='yes' Directory="Imagefr" Guid='{0956CF1F-136A-4A65-80E2-83C3E957ED6A}'>
+			<File Id="OpenRPA.Image.resources.dll_fr" Source="!(wix.ImageSource)\fr\OpenRPA.Image.resources.dll" />
+			<File Id="ZedGraph.resources.dll_fr" Source="!(wix.ImageSource)\fr\ZedGraph.resources.dll" />
+		</Component>
+
+		<Component Id='ImageComponentnl' Win64='yes' Directory="Imagenl" Guid='{0956CF1F-136A-4A65-80E2-83C3E957ED7A}'>
+			<File Id="OpenRPA.Image.resources.dll_nl" Source="!(wix.ImageSource)\nl\OpenRPA.Image.resources.dll" />
+	 	</Component>
+
+		<Component Id='ImageComponentja' Win64='yes' Directory="Imageja" Guid='{0956CF1F-136A-4A65-80E2-83C3E957ED8A}'>
+			<File Id="OpenRPA.Image.resources.dll_ja" Source="!(wix.ImageSource)\ja\OpenRPA.Image.resources.dll" />
+			<File Id="ZedGraph.resources.dll_ja" Source="!(wix.ImageSource)\ja\ZedGraph.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="Imagex64" Name="x64">
@@ -57,6 +76,18 @@
       </Directory>
       <Directory Id="Imageru" Name="ru">
       </Directory>
+
+		<Directory Id="Imageit" Name="it">
+		</Directory>
+
+		<Directory Id="Imagefr" Name="fr">
+		</Directory>
+
+		<Directory Id="Imagenl" Name="nl">
+		</Directory>
+
+		<Directory Id="Imageja" Name="ja">
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

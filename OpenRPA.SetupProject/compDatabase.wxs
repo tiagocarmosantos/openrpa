@@ -41,6 +41,20 @@
       </Directory>
       <Directory Id="Databaseru" Name="ru">
       </Directory>
+
+		<Directory Id="Databaseit" Name="it">
+		</Directory>
+
+		<Directory Id="Databasefr" Name="fr">
+		</Directory>
+
+		<Directory Id="Databasenl" Name="nl">
+		</Directory>
+
+
+		<Directory Id="Databaseja" Name="ja">
+		</Directory>
+		
     </DirectoryRef>
     <!--<ComponentGroup Id="DatabaseComponentsde" >
     </ComponentGroup>-->

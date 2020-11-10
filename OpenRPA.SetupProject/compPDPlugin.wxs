@@ -26,6 +26,22 @@
         <File Id="OpenRPA.PDPlugin.resources.dll_ru" Source="!(wix.PDPluginSource)\ru\OpenRPA.PDPlugin.resources.dll" />
       </Component>
 
+		<Component Id='PDPluginComponentit' Win64='yes' Directory="PDPluginit" Guid='{8CF302DC-734C-471D-BFD5-37ED47B3B727}'>
+			<File Id="OpenRPA.PDPlugin.resources.dll_it" Source="!(wix.PDPluginSource)\it\OpenRPA.PDPlugin.resources.dll" />
+		</Component>
+
+		<Component Id='PDPluginComponentfr' Win64='yes' Directory="PDPluginfr" Guid='{8CF302DC-734C-471D-BFD5-37ED47B3B728}'>
+			<File Id="OpenRPA.PDPlugin.resources.dll_fr" Source="!(wix.PDPluginSource)\fr\OpenRPA.PDPlugin.resources.dll" />
+		</Component>
+
+		<Component Id='PDPluginComponentnl' Win64='yes' Directory="PDPluginnl" Guid='{8CF302DC-734C-471D-BFD5-37ED47B3B729}'>
+			<File Id="OpenRPA.PDPlugin.resources.dll_nl" Source="!(wix.PDPluginSource)\nl\OpenRPA.PDPlugin.resources.dll" />
+		</Component>
+
+		<Component Id='PDPluginComponentja' Win64='yes' Directory="PDPluginja" Guid='{8CF302DC-734C-471D-BFD5-37ED47B3B720}'>
+			<File Id="OpenRPA.PDPlugin.resources.dll_ja" Source="!(wix.PDPluginSource)\ja\OpenRPA.PDPlugin.resources.dll" />
+		</Component>
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="PDPluginde" Name="de">
@@ -40,6 +56,20 @@
       </Directory>
       <Directory Id="PDPluginru" Name="ru">
       </Directory>
+
+		<Directory Id="PDPluginit" Name="it">
+		</Directory>
+
+		<Directory Id="PDPluginfr" Name="fr">
+		</Directory>
+
+		<Directory Id="PDPluginnl" Name="nl">
+		</Directory>
+
+		<Directory Id="PDPluginja" Name="ja">
+		</Directory>
+		
+		
     </DirectoryRef>
 
   </Fragment>

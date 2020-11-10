@@ -30,6 +30,24 @@
         <File Id="OpenRPA.Java.resources.dll_ru" Source="!(wix.JavaSource)\ru\OpenRPA.Java.resources.dll" />
       </Component>
 
+		<Component Id='JavaComponentit' Win64='yes' Directory="Javait" Guid='{8BFCF029-B48A-4EE2-988A-1FF28E3C3FF1}'>
+			<File Id="OpenRPA.Java.resources.dll_it" Source="!(wix.JavaSource)\it\OpenRPA.Java.resources.dll" />
+		</Component>
+
+		<Component Id='JavaComponentfr' Win64='yes' Directory="Javafr" Guid='{8BFCF029-B48A-4EE2-988A-1FF28E3C3FF2}'>
+			<File Id="OpenRPA.Java.resources.dll_fr" Source="!(wix.JavaSource)\fr\OpenRPA.Java.resources.dll" />
+		</Component>
+
+		<Component Id='JavaComponentnl' Win64='yes' Directory="Javanl" Guid='{8BFCF029-B48A-4EE2-988A-1FF28E3C3FF3}'>
+			<File Id="OpenRPA.Java.resources.dll_nl" Source="!(wix.JavaSource)\nl\OpenRPA.Java.resources.dll" />
+		</Component>
+
+		<Component Id='JavaComponentja' Win64='yes' Directory="Javaja" Guid='{8BFCF029-B48A-4EE2-988A-1FF28E3C3FF4}'>
+			<File Id="OpenRPA.Java.resources.dll_ja" Source="!(wix.JavaSource)\ja\OpenRPA.Java.resources.dll" />
+		</Component>
+
+		 
+
     </ComponentGroup>
     <DirectoryRef Id="INSTALLDIR">
       <Directory Id="Javade" Name="de">
@@ -44,6 +62,18 @@
       </Directory>
       <Directory Id="Javaru" Name="ru">
       </Directory>
+
+		<Directory Id="Javait" Name="it">
+		</Directory>
+
+		<Directory Id="Javafr" Name="fr">
+		</Directory>
+
+		<Directory Id="Javanl" Name="nl">
+		</Directory>
+
+		<Directory Id="Javaja" Name="ja">
+		</Directory>
     </DirectoryRef>
 
   </Fragment>

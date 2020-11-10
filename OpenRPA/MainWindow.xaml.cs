@@ -145,7 +145,7 @@ namespace OpenRPA
                         if (Config.local.show_getting_started && (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["GettingStartedURL"])))
                         {
                             LayoutDocument layoutDocument = new LayoutDocument { Title = "Getting started" };
-                            layoutDocument.ContentId = "GettingStarted";                           
+                            layoutDocument.ContentId = "GettingStarted" ;                           
                             Views.GettingStarted view = new Views.GettingStarted(ConfigurationManager.AppSettings["GettingStartedURL"]);
                             layoutDocument.Content = view;
                             MainTabControl.Children.Add(layoutDocument);
@@ -245,8 +245,8 @@ namespace OpenRPA
                         if (System.IO.File.Exists(System.IO.Path.Combine(Interfaces.Extensions.ProjectsDirectory, "layout.config")))
                         {
                             System.IO.File.Delete(System.IO.Path.Combine(Interfaces.Extensions.ProjectsDirectory, "layout.config"));
-                            SkipLayoutSaving = true;
                         }
+                        SkipLayoutSaving = true;
                         //System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Config.local.culture);
                         //InitializeComponent();
                         MessageBox.Show("Please restart the robot for the change to take fully effect");

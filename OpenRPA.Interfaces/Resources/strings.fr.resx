@@ -1,0 +1,2098 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="activity_add_variables" xml:space="preserve">
+    <value>Ajouter des variables</value>
+  </data>
+  <data name="activity_animatemouse" xml:space="preserve">
+    <value>Animer la souris</value>
+  </data>
+  <data name="activity_animatemouse_help" xml:space="preserve">
+    <value>Déplacer visiblement la souris, au lieu de la déplacer instantanément vers la destination</value>
+  </data>
+  <data name="activity_animatemove" xml:space="preserve">
+    <value>Animer le mouvement</value>
+  </data>
+  <data name="activity_animatemove_help" xml:space="preserve">
+    <value>Déplacer visiblement la fenêtre, au lieu de la déplacer instantanément vers la destination</value>
+  </data>
+  <data name="activity_blocking" xml:space="preserve">
+    <value>Blocage</value>
+  </data>
+  <data name="activity_blocking_help" xml:space="preserve">
+    <value>Bloquer l&apos;exécution jusqu&apos;à la complétion</value>
+  </data>
+  <data name="activity_checkrunning" xml:space="preserve">
+    <value>Vérifier l&apos;exécution</value>
+  </data>
+  <data name="activity_checkrunning_help" xml:space="preserve">
+    <value>Vérifier si l&apos;application est déjà en cours d&apos;exécution à l&apos;aide du sélecteur. S&apos;il est sur « false », lancera une nouvelle application quoi qu&apos;il arrive.</value>
+  </data>
+  <data name="activity_clickdelay" xml:space="preserve">
+    <value>Temps de clic</value>
+  </data>
+  <data name="activity_clickdelay_help" xml:space="preserve">
+    <value>Temps entre chaque frappe</value>
+  </data>
+  <data name="activity_clickelement" xml:space="preserve">
+    <value>Cliquer sur l&apos;élément</value>
+  </data>
+  <data name="activity_clickelement_tooltip" xml:space="preserve">
+    <value>Cliquer sur un élément trouvé avec GetElement</value>
+  </data>
+  <data name="activity_click_to_view" xml:space="preserve">
+    <value>Double-cliquer pour voir</value>
+  </data>
+  <data name="activity_closeapplication" xml:space="preserve">
+    <value>Fermer l&apos;application</value>
+  </data>
+  <data name="activity_closeapplication_tooltip" xml:space="preserve">
+    <value>Trouve une application en fonction d&apos;un sélecteur d&apos;IU puis ferme l&apos;application</value>
+  </data>
+  <data name="activity_commentout" xml:space="preserve">
+    <value>Commenter</value>
+  </data>
+  <data name="activity_commentout_tooltip" xml:space="preserve">
+    <value>Ignorer tout à l&apos;intérieur de cette activité, pratique pour remarquer rapidement quelque chose</value>
+  </data>
+  <data name="activity_copyclipboard" xml:space="preserve">
+    <value>Copier le presse-papiers</value>
+  </data>
+  <data name="activity_copyclipboard_tooltip" xml:space="preserve">
+    <value>Copier le contenu du presse-papiers dans une variable</value>
+  </data>
+  <data name="activity_datatable" xml:space="preserve">
+    <value>DataTable</value>
+  </data>
+  <data name="activity_datatable_help" xml:space="preserve">
+    <value>Le tableau DataTable avec lequel travailler</value>
+  </data>
+  <data name="activity_dataview" xml:space="preserve">
+    <value>Affichage des données</value>
+  </data>
+  <data name="activity_dataview_help" xml:space="preserve">
+    <value>Le tableau DateView avec lequel travailler</value>
+  </data>
+  <data name="activity_detector" xml:space="preserve">
+    <value>Détecteur</value>
+  </data>
+  <data name="activity_detector_help" xml:space="preserve">
+    <value>Attendra que ce détecteur soit déclenché, puis le flux de travail continuera</value>
+  </data>
+  <data name="activity_detector_tooltip" xml:space="preserve">
+    <value>Met le flux de travail à l&apos;arrêt, en attendant le déclenchement du détecteur sélectionné</value>
+  </data>
+  <data name="activity_displayname" xml:space="preserve">
+    <value>Nom d&apos;utilisateur</value>
+  </data>
+  <data name="activity_displayname_help" xml:space="preserve">
+    <value>Nom d&apos;utilisateur à l&apos;intérieur du créateur de flux de travail</value>
+  </data>
+  <data name="activity_doubleclick" xml:space="preserve">
+    <value>Double-clic</value>
+  </data>
+  <data name="activity_doubleclick_help" xml:space="preserve">
+    <value>Fait un double-clic au lieu d&apos;un simple clic</value>
+  </data>
+  <data name="activity_drop_hint" xml:space="preserve">
+    <value>Déposer l&apos;activité</value>
+  </data>
+  <data name="activity_duration" xml:space="preserve">
+    <value>Durée</value>
+  </data>
+  <data name="activity_duration_help" xml:space="preserve">
+    <value>S&apos;exécutera pendant la durée</value>
+  </data>
+  <data name="activity_element" xml:space="preserve">
+    <value>Élément</value>
+  </data>
+  <data name="activity_element_help" xml:space="preserve">
+    <value>Travailler sur cet élément, le type de retour de toutes les activités GetElement et quelques autres</value>
+  </data>
+  <data name="activity_focuselement" xml:space="preserve">
+    <value>Mise en avant de l&apos;élément</value>
+  </data>
+  <data name="activity_focuselement_tooltip" xml:space="preserve">
+    <value>Mettre l&apos;élément en avant</value>
+  </data>
+  <data name="activity_force" xml:space="preserve">
+    <value>Forcer</value>
+  </data>
+  <data name="activity_force_help" xml:space="preserve">
+    <value>Forcer l&apos;action</value>
+  </data>
+  <data name="activity_foreachdatarow" xml:space="preserve">
+    <value>Pour chaque DataRow</value>
+  </data>
+  <data name="activity_foreachdatarow_tooltip" xml:space="preserve">
+    <value>Énumérer chaque ligne à l&apos;intérieur d&apos;un tableau DataTable</value>
+  </data>
+  <data name="activity_height" xml:space="preserve">
+    <value>Hauteur</value>
+  </data>
+  <data name="activity_height_help" xml:space="preserve">
+    <value>Si configuré, déplacera la fenêtre vers cet emplacement</value>
+  </data>
+  <data name="activity_highlight" xml:space="preserve">
+    <value>Souligner</value>
+  </data>
+  <data name="activity_highlightelement" xml:space="preserve">
+    <value>Souligner l&apos;élément</value>
+  </data>
+  <data name="activity_highlightelement_tooltip" xml:space="preserve">
+    <value>Souligner un élément trouvé avec GetElement</value>
+  </data>
+  <data name="activity_ignoreerrors" xml:space="preserve">
+    <value>Ignorer les erreurs</value>
+  </data>
+  <data name="activity_ignoreerrors_help" xml:space="preserve">
+    <value>Si une erreur se produit, l&apos;ignorera et continuera</value>
+  </data>
+  <data name="activity_imageresult" xml:space="preserve">
+    <value>Résultat en image</value>
+  </data>
+  <data name="activity_imageresult_help" xml:space="preserve">
+    <value>Donne le résultat sous forme d&apos;image</value>
+  </data>
+  <data name="activity_insertclipboard" xml:space="preserve">
+    <value>Insérer le presse-papiers</value>
+  </data>
+  <data name="activity_insertclipboard_tooltip" xml:space="preserve">
+    <value>Insérer le nouveau contenu dans la mémoire tampon du presse-papiers des utilisateurs</value>
+  </data>
+  <data name="activity_invokeopenflow" xml:space="preserve">
+    <value>Invoquer OpenFlow</value>
+  </data>
+  <data name="activity_invokeopenflow_tooltip" xml:space="preserve">
+    <value>Invoquer un flux de travail dans le nœud enregistré pour l&apos;usage RPA à l&apos;intérieur d&apos;OpenFlow</value>
+  </data>
+  <data name="activity_invokeopenrpa" xml:space="preserve">
+    <value>Invoquer un OpenRPA</value>
+  </data>
+  <data name="activity_invokeopenrpa_tooltip" xml:space="preserve">
+    <value>Invoquer un flux de travail OpenRPA local</value>
+  </data>
+  <data name="activity_invokeremoteopenrpa" xml:space="preserve">
+    <value>Invoquer un OpenRPA à distance</value>
+  </data>
+  <data name="activity_invokeremoteopenrpa_tooltip" xml:space="preserve">
+    <value>Invoquer un flux de travail OpenRPA sur un robot à distance</value>
+  </data>
+  <data name="activity_keymodifiers" xml:space="preserve">
+    <value>Modificateurs de touche</value>
+  </data>
+  <data name="activity_keymodifiers_help" xml:space="preserve">
+    <value>Maintenez cette touche enfoncée tout en cliquant, ne fonctionne que si le clic virtuel est désactivé</value>
+  </data>
+  <data name="activity_map_variables" xml:space="preserve">
+    <value>Variables de carte</value>
+  </data>
+  <data name="activity_mousebutton" xml:space="preserve">
+    <value>Bouton de souris</value>
+  </data>
+  <data name="activity_mousebutton_help" xml:space="preserve">
+    <value>Bouton de la souris avec lequel cliquer</value>
+  </data>
+  <data name="activity_movemouse" xml:space="preserve">
+    <value>Déplacer la souris</value>
+  </data>
+  <data name="activity_movemouse_tooltip" xml:space="preserve">
+    <value>Déplacer le curseur de la souris sur un emplacement lié à un élément trouvé avec GetElement (ou sur le bureau si aucun élément n&apos;est fourni)</value>
+  </data>
+  <data name="activity_offsetx" xml:space="preserve">
+    <value>Décalage X</value>
+  </data>
+  <data name="activity_offsetx_help" xml:space="preserve">
+    <value>Cliquer avec ce décalage dans l&apos;élément</value>
+  </data>
+  <data name="activity_offsety" xml:space="preserve">
+    <value>Décalage Y</value>
+  </data>
+  <data name="activity_offsety_help" xml:space="preserve">
+    <value>Cliquer avec ce décalage dans l&apos;élément</value>
+  </data>
+  <data name="activity_openapplication" xml:space="preserve">
+    <value>Ouvrir l&apos;application</value>
+  </data>
+  <data name="activity_openapplication_tooltip" xml:space="preserve">
+    <value>Rechercher un élément Windows en fonction d&apos;un sélecteur et faire une mise au point dessus ; s&apos;il n&apos;est pas trouvé, lancer l&apos;application</value>
+  </data>
+  <data name="activity_open_selector" xml:space="preserve">
+    <value>Ouvrir le sélecteur</value>
+  </data>
+  <data name="activity_postwait" xml:space="preserve">
+    <value>Attente de publication</value>
+  </data>
+  <data name="activity_postwait_help" xml:space="preserve">
+    <value>Attendre pendant cette période après avoir cliqué, aide les applications remplies qui peuvent être très lentes à réagir aux clics</value>
+  </data>
+  <data name="activity_result" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="activity_result_help" xml:space="preserve">
+    <value>Enregistrer le résultat dans cette variable</value>
+  </data>
+  <data name="activity_selector" xml:space="preserve">
+    <value>Sélecteur</value>
+  </data>
+  <data name="activity_selector_help" xml:space="preserve">
+    <value>Le sélecteur utilisé pour trouver le ou les élément(s), prend en charge la création des variables de flux de travail en utilisant {{variablename}}</value>
+  </data>
+  <data name="activity_select_element" xml:space="preserve">
+    <value>Sélectionner l&apos;élément</value>
+  </data>
+  <data name="activity_sendctrlc" xml:space="preserve">
+    <value>Envoyer Ctrl+C</value>
+  </data>
+  <data name="activity_sendctrlc_help" xml:space="preserve">
+    <value>Envoyer Ctrl+C avant d&apos;essayer de copier le contenu du presse-papiers</value>
+  </data>
+  <data name="activity_showballontop_message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="activity_showballontop_message_hint" xml:space="preserve">
+    <value>Message à afficher</value>
+  </data>
+  <data name="activity_showballontop_title" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+  <data name="activity_showballontop_title_hint" xml:space="preserve">
+    <value>Titre du message ballon</value>
+  </data>
+  <data name="activity_showballoontip" xml:space="preserve">
+    <value>Afficher l&apos;info-bulle</value>
+  </data>
+  <data name="activity_showballoontip_tooltip" xml:space="preserve">
+    <value>Afficher une petite info-bulle à proximité de la zone de notification, respectera les paramètres du centre de messagerie du système d&apos;exploitation</value>
+  </data>
+  <data name="activity_stringresult" xml:space="preserve">
+    <value>Résultat de la chaîne</value>
+  </data>
+  <data name="activity_stringresult_help" xml:space="preserve">
+    <value>Donne le résultat sous forme de chaîne</value>
+  </data>
+  <data name="activity_target" xml:space="preserve">
+    <value>Cible</value>
+  </data>
+  <data name="activity_target_help" xml:space="preserve">
+    <value>L&apos;utilisateur ou rôle cible</value>
+  </data>
+  <data name="activity_text" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="activity_timeout" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="activity_timeout_help" xml:space="preserve">
+    <value>Attendre cette période avant d&apos;abandonner et d&apos;échouer ou de continuer en fonction des autres paramètres</value>
+  </data>
+  <data name="activity_typetext" xml:space="preserve">
+    <value>Taper le texte</value>
+  </data>
+  <data name="activity_typetext_tooltip" xml:space="preserve">
+    <value>Envoyer des frappes de clavier vers ce qui est mis en avant, ne doit être utilisé que par l&apos;archiviste</value>
+  </data>
+  <data name="activity_virtualclick" xml:space="preserve">
+    <value>Clic virtuel</value>
+  </data>
+  <data name="activity_virtualclick_help" xml:space="preserve">
+    <value>Essayer de faire un clic virtuel au lieu d&apos;utiliser la souris, tous les éléments ne prennent pas cela en charge</value>
+  </data>
+  <data name="activity_waitforcompleted" xml:space="preserve">
+    <value>Attendre la fin de l&apos;opération</value>
+  </data>
+  <data name="activity_waitforcompleted_help" xml:space="preserve">
+    <value>Attendre la fin de l&apos;opération avant de continuer avec le flux de travail</value>
+  </data>
+  <data name="activity_width" xml:space="preserve">
+    <value>Largeur</value>
+  </data>
+  <data name="activity_width_help" xml:space="preserve">
+    <value>Si activé, déplacera la fenêtre vers cet emplacement</value>
+  </data>
+  <data name="activity_workflow" xml:space="preserve">
+    <value>Flux de travail</value>
+  </data>
+  <data name="activity_workflow_help" xml:space="preserve">
+    <value>Utiliser ce flux de travail</value>
+  </data>
+  <data name="activity_x" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="activity_x_help" xml:space="preserve">
+    <value>Si activé, déplacera la fenêtre vers cet emplacement</value>
+  </data>
+  <data name="activity_y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="activity_y_help" xml:space="preserve">
+    <value>Si activé, déplacera la fenêtre vers cet emplacement</value>
+  </data>
+  <data name="animatemouse" xml:space="preserve">
+    <value>Utiliser « Animer la souris »</value>
+  </data>
+  <data name="browseraddons" xml:space="preserve">
+    <value>Modules de navigateur</value>
+  </data>
+  <data name="button_ok" xml:space="preserve">
+    <value>D&apos;accord</value>
+  </data>
+  <data name="cancelkey" xml:space="preserve">
+    <value>Touche d&apos;annulation</value>
+  </data>
+  <data name="chrome" xml:space="preserve">
+    <value>Chrome</value>
+  </data>
+  <data name="clickpostwait" xml:space="preserve">
+    <value>Définir le paramètre PostWait du clic</value>
+  </data>
+  <data name="copy" xml:space="preserve">
+    <value>Copier</value>
+  </data>
+  <data name="copyid" xml:space="preserve">
+    <value>Copier l&apos;identifiant</value>
+  </data>
+  <data name="copyrelativefilename" xml:space="preserve">
+    <value>Copier le nom de fichier lié</value>
+  </data>
+  <data name="debug" xml:space="preserve">
+    <value>Déboguer</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="designer_menu_commentout" xml:space="preserve">
+    <value>Commenter</value>
+  </data>
+  <data name="designer_menu_runfromhere" xml:space="preserve">
+    <value>Exécuter à partir d&apos;ici</value>
+  </data>
+  <data name="designer_menu_runthis" xml:space="preserve">
+    <value>Exécuter cette activité</value>
+  </data>
+  <data name="designer_menu_uncomment" xml:space="preserve">
+    <value>Retirer le commentaire</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="detectors" xml:space="preserve">
+    <value>Détecteurs</value>
+  </data>
+  <data name="dock_logging" xml:space="preserve">
+    <value>Enregistrement</value>
+  </data>
+  <data name="dock_output" xml:space="preserve">
+    <value>Données de sortie</value>
+  </data>
+  <data name="dock_properties" xml:space="preserve">
+    <value>Propriétés</value>
+  </data>
+  <data name="dock_snippets" xml:space="preserve">
+    <value>Snippets</value>
+  </data>
+  <data name="dock_toolbox" xml:space="preserve">
+    <value>Boîte à outils</value>
+  </data>
+  <data name="dock_workflowinstances" xml:space="preserve">
+    <value>Exemples de flux de travail</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>Téléchargement</value>
+  </data>
+  <data name="edge" xml:space="preserve">
+    <value>Avantage</value>
+  </data>
+  <data name="exitapplication" xml:space="preserve">
+    <value>Quitter l&apos;application</value>
+  </data>
+  <data name="export" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="files" xml:space="preserve">
+    <value>Fichiers</value>
+  </data>
+  <data name="firefox" xml:space="preserve">
+    <value>Firefox</value>
+  </data>
+  <data name="general" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="import" xml:space="preserve">
+    <value>Importer</value>
+  </data>
+  <data name="logging" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="mainnew" xml:space="preserve">
+    <value>Nouveau</value>
+  </data>
+  <data name="maintitle" xml:space="preserve">
+    <value>OpenRPA</value>
+  </data>
+  <data name="main_reload" xml:space="preserve">
+    <value>Rafraîchir</value>
+  </data>
+  <data name="main_settings_recording_add_to_designer" xml:space="preserve">
+    <value>Enregistrer directement dans l&apos;outil de conception</value>
+  </data>
+  <data name="minimize" xml:space="preserve">
+    <value>Réduire</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="newproject" xml:space="preserve">
+    <value>Nouveau projet</value>
+  </data>
+  <data name="newworkflow" xml:space="preserve">
+    <value>Nouveau flux de travail</value>
+  </data>
+  <data name="nodered" xml:space="preserve">
+    <value>Node-RED</value>
+  </data>
+  <data name="open" xml:space="preserve">
+    <value>Ouvrir</value>
+  </data>
+  <data name="openflow" xml:space="preserve">
+    <value>OpenFlow</value>
+  </data>
+  <data name="openrpa" xml:space="preserve">
+    <value>OpenRPA</value>
+  </data>
+  <data name="open_created" xml:space="preserve">
+    <value>Créé à</value>
+  </data>
+  <data name="open_createdby" xml:space="preserve">
+    <value>Créé par</value>
+  </data>
+  <data name="open_edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="open_edit_xaml" xml:space="preserve">
+    <value>Modifier le XAML</value>
+  </data>
+  <data name="open_modified" xml:space="preserve">
+    <value>Dernière modification à</value>
+  </data>
+  <data name="open_modifiedby" xml:space="preserve">
+    <value>Dernière modification par</value>
+  </data>
+  <data name="open_name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="open_serializable" xml:space="preserve">
+    <value>Sérialisable</value>
+  </data>
+  <data name="open_state" xml:space="preserve">
+    <value>État</value>
+  </data>
+  <data name="packages" xml:space="preserve">
+    <value>Paquets</value>
+  </data>
+  <data name="permissions" xml:space="preserve">
+    <value>Autorisations</value>
+  </data>
+  <data name="permissionswindow_delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="permissionswindow_new" xml:space="preserve">
+    <value>Nouveau</value>
+  </data>
+  <data name="permissions_delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="permissions_invoke" xml:space="preserve">
+    <value>Invoquer</value>
+  </data>
+  <data name="permissions_read" xml:space="preserve">
+    <value>Lire</value>
+  </data>
+  <data name="permissions_update" xml:space="preserve">
+    <value>Mettre à jour</value>
+  </data>
+  <data name="play" xml:space="preserve">
+    <value>Lire</value>
+  </data>
+  <data name="plugins" xml:space="preserve">
+    <value>Modules complémentaires</value>
+  </data>
+  <data name="record" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="recorderplugins" xml:space="preserve">
+    <value>Modules complémentaires d&apos;enregistrement</value>
+  </data>
+  <data name="recordingoverlay" xml:space="preserve">
+    <value>Enregistrement du cache transparent</value>
+  </data>
+  <data name="rename" xml:space="preserve">
+    <value>Renommer</value>
+  </data>
+  <data name="ribbon_search" xml:space="preserve">
+    <value>Chercher</value>
+  </data>
+  <data name="runplugins" xml:space="preserve">
+    <value>Exécuter les modules complémentaires</value>
+  </data>
+  <data name="runtime" xml:space="preserve">
+    <value>Exécution du programme</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="selector" xml:space="preserve">
+    <value>Outil de sélection</value>
+  </data>
+  <data name="selectorverbose" xml:space="preserve">
+    <value>Mode Détaillé de l&apos;outil de sélection</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="settingsfile" xml:space="preserve">
+    <value>Fichier de configuration</value>
+  </data>
+  <data name="signout" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="slowmotion" xml:space="preserve">
+    <value>Ralenti</value>
+  </data>
+  <data name="status_disconnected" xml:space="preserve">
+    <value>Déconnecté</value>
+  </data>
+  <data name="stop" xml:space="preserve">
+    <value>Arrêter</value>
+  </data>
+  <data name="tesseract" xml:space="preserve">
+    <value>Tesseract</value>
+  </data>
+  <data name="tools" xml:space="preserve">
+    <value>Outils</value>
+  </data>
+  <data name="tools_change_type" xml:space="preserve">
+    <value>Modifier le type</value>
+  </data>
+  <data name="tools_swap_animate" xml:space="preserve">
+    <value>Échanger les animations</value>
+  </data>
+  <data name="tools_swap_sendkeys" xml:space="preserve">
+    <value>Échanger les SendKeys</value>
+  </data>
+  <data name="tools_swap_virtualclick" xml:space="preserve">
+    <value>Échanger les clics virtuels</value>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="uilanguage" xml:space="preserve">
+    <value>Langage de l&apos;IU</value>
+  </data>
+  <data name="usesendkeys" xml:space="preserve">
+    <value>Utiliser les SendKeys</value>
+  </data>
+  <data name="usevirtualclicks" xml:space="preserve">
+    <value>Utiliser les clics virtuels</value>
+  </data>
+  <data name="value" xml:space="preserve">
+    <value>Valeur</value>
+  </data>
+  <data name="verbose" xml:space="preserve">
+    <value>Mode Détaillé</value>
+  </data>
+  <data name="version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="visualtracking" xml:space="preserve">
+    <value>Suivi visuel</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Avertissement</value>
+  </data>
+  <data name="NEW_FILE_AVIRECORDER" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_playrecording" xml:space="preserve">
+    <value>Lire l&apos;enregistrement</value>
+  </data>
+  <data name="activity_playrecording_tooltip" xml:space="preserve">
+    <value>Repasser un enregistrement vidéo</value>
+  </data>
+  <data name="activity_play_hint" xml:space="preserve">
+    <value>Lire ce fichier vidéo</value>
+  </data>
+  <data name="activity_startrecording" xml:space="preserve">
+    <value>Commencer l&apos;enregistrement</value>
+  </data>
+  <data name="activity_startrecording_tooltip" xml:space="preserve">
+    <value>Commencer à enregistrer l&apos;écran dans un fichier</value>
+  </data>
+  <data name="activity_start_hint" xml:space="preserve">
+    <value>Enregistrer dans ce dossier</value>
+  </data>
+  <data name="activity_stoprecording" xml:space="preserve">
+    <value>Arrêter l&apos;enregistrement</value>
+  </data>
+  <data name="activity_stoprecording_tooltip" xml:space="preserve">
+    <value>Arrêter l&apos;enregistrement d&apos;un écran d&apos;exécution et enregistrer dans le fichier</value>
+  </data>
+  <data name="activity_stop_hint" xml:space="preserve">
+    <value>Enregistrer le nom du fichier vidéo</value>
+  </data>
+  <data name="plugin_codec" xml:space="preserve">
+    <value>Codec</value>
+  </data>
+  <data name="plugin_enabled" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="plugin_keep_successful" xml:space="preserve">
+    <value>Conserver les succès</value>
+  </data>
+  <data name="plugin_quality" xml:space="preserve">
+    <value>Qualité d&apos;enregistrement</value>
+  </data>
+  <data name="plugin_save_in_folder" xml:space="preserve">
+    <value>Enregistrer dans le dossier</value>
+  </data>
+  <data name="NEW_FILE_DATABASE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_databasescope" xml:space="preserve">
+    <value>Étendue de la base de données</value>
+  </data>
+  <data name="activity_databasescope_select" xml:space="preserve">
+    <value>Sélectionner une base de données</value>
+  </data>
+  <data name="activity_databasescope_tooltip" xml:space="preserve">
+    <value>Étendue de la base de données qui établit une connexion vers une base de données et interrompt la connexion à la fin du processus</value>
+  </data>
+  <data name="activity_database_datatable" xml:space="preserve">
+    <value>Tableau de données</value>
+  </data>
+  <data name="activity_database_datatable_hint" xml:space="preserve">
+    <value>Le tableau de données dans lequel enregistrer le résultat</value>
+  </data>
+  <data name="activity_database_query" xml:space="preserve">
+    <value>Requête</value>
+  </data>
+  <data name="activity_database_query_hint" xml:space="preserve">
+    <value>La requête à exécuter</value>
+  </data>
+  <data name="activity_database_result" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="activity_database_result_hint" xml:space="preserve">
+    <value>Le résultat de la requête</value>
+  </data>
+  <data name="activity_database_table" xml:space="preserve">
+    <value>Tableau</value>
+  </data>
+  <data name="activity_database_table_hint" xml:space="preserve">
+    <value>Tableau dans lequel insérer les lignes</value>
+  </data>
+  <data name="activity_executenonquery" xml:space="preserve">
+    <value>ExecuteNonQuery</value>
+  </data>
+  <data name="activity_executenonquery_query" xml:space="preserve">
+    <value>Requête</value>
+  </data>
+  <data name="activity_executenonquery_query_help" xml:space="preserve">
+    <value>La requête à exécuter</value>
+  </data>
+  <data name="activity_executenonquery_tooltip" xml:space="preserve">
+    <value>Exécute une requête qui ne retourne aucun résultat. Pour les instructions de MISE À JOUR, d&apos;INSERTION, de SUPPRESSION, la valeur de résultat correspond au nombre de lignes affectées par la commande. Pour tout le reste, la valeur de résultat sera -1.</value>
+  </data>
+  <data name="activity_executequery" xml:space="preserve">
+    <value>Exécuter la requête</value>
+  </data>
+  <data name="activity_executequery_tooltip" xml:space="preserve">
+    <value>Exécute une requête et retourne le résultat sous la forme d&apos;un tableau de données</value>
+  </data>
+  <data name="activity_executescalar" xml:space="preserve">
+    <value>Exécuter les variables</value>
+  </data>
+  <data name="activity_executescalar_tooltip" xml:space="preserve">
+    <value>Exécute une requête qui retourne précisément un résultat</value>
+  </data>
+  <data name="activity_getelement_drop_hint" xml:space="preserve">
+    <value>Abandonner l&apos;activité</value>
+  </data>
+  <data name="activity_updatefromtable" xml:space="preserve">
+    <value>Mettre à jour à partir du tableau de données</value>
+  </data>
+  <data name="activity_updatefromtable_datatable" xml:space="preserve">
+    <value>Tableau contenant les données que vous voulez utiliser pour la mise à jour</value>
+  </data>
+  <data name="activity_updatefromtable_datatable_help" xml:space="preserve">
+    <value>Tableau de données</value>
+  </data>
+  <data name="activity_updatefromtable_result" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="activity_updatefromtable_result_help" xml:space="preserve">
+    <value>Le nombre de lignes affectées</value>
+  </data>
+  <data name="activity_updatefromtable_tablename" xml:space="preserve">
+    <value>Nom du tableau</value>
+  </data>
+  <data name="activity_updatefromtable_tablename_help" xml:space="preserve">
+    <value>Tableau dans lequel insérer les lignes</value>
+  </data>
+  <data name="activity_updatefromtable_tooltip" xml:space="preserve">
+    <value>Les instructions Insérer, Mettre à jour et Supprimer les données du tableau par rapport à la base de données actuelle, retournent le nombre de lignes affectées.</value>
+  </data>
+  <data name="NEW_FILE_ELIS" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_auth" xml:space="preserve">
+    <value>Authentification</value>
+  </data>
+  <data name="activity_auth_hint" xml:space="preserve">
+    <value>Nom d&apos;utilisateur ou adresse e-mail</value>
+  </data>
+  <data name="activity_auth_tooltip" xml:space="preserve">
+    <value>Authentifier au moyen du service de Rossum et récupérer un jeton/une clé</value>
+  </data>
+  <data name="activity_auth_username" xml:space="preserve">
+    <value>Nom d&apos;utilisateur</value>
+  </data>
+  <data name="activity_exportfiledata" xml:space="preserve">
+    <value>Exporter les données du fichier</value>
+  </data>
+  <data name="activity_exportfiledata_tooltip" xml:space="preserve">
+    <value>Obtenir la date de l&apos;extraction des données d&apos;une facture. Ne fonctionne qu&apos;une fois que le statut du fichier est « Exporté ».</value>
+  </data>
+  <data name="activity_exportfile_file" xml:space="preserve">
+    <value>URL du fichier</value>
+  </data>
+  <data name="activity_exportfile_file_hint" xml:space="preserve">
+    <value>URL du fichier contenant les données à obtenir</value>
+  </data>
+  <data name="activity_exportfile_key" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="activity_exportfile_key_hint" xml:space="preserve">
+    <value>Clé API de l&apos;activité d&apos;authentification</value>
+  </data>
+  <data name="activity_exportfile_queue" xml:space="preserve">
+    <value>File d&apos;attente</value>
+  </data>
+  <data name="activity_exportfile_queue_hint" xml:space="preserve">
+    <value>File d&apos;attente contenant les données à exporter</value>
+  </data>
+  <data name="activity_getfilestatus" xml:space="preserve">
+    <value>Obtenir le statut du fichier</value>
+  </data>
+  <data name="activity_getfilestatus_tooltip" xml:space="preserve">
+    <value>Obtenez le statut d&apos;un dossier dans la file d&apos;attente, peut être 
+importation : le document est traité par le moteur central d&apos;IA pour l&apos;extraction des données ; état initial du document.
+failed_import : l&apos;importation a échoué, par exemple en raison d&apos;un fichier de document mal formé.
+to_review : l&apos;étape d&apos;extraction initiale est terminée et le document est en attente de validation par l&apos;utilisateur.
+révision : le document est en cours de validation dans l&apos;interface utilisateur.
+exportation : le document est validé et attend maintenant la fin de l&apos;appel de sauvegarde du connecteur.
+exporter : le document est validé et a passé avec succès tous les crochets ; c&apos;est l&apos;état terminal typique d&apos;un document.
+failed_export : lorsque le connecteur a renvoyé une erreur.
+rerporté : l&apos;opérateur a choisi de reporter le document au lieu de l&apos;exporter.
+supprimé : lorsque le document a été supprimé par l&apos;utilisateur.
+purgé : seules les métadonnées ont été conservées après une suppression.</value>
+  </data>
+  <data name="activity_getqueues" xml:space="preserve">
+    <value>Obtenir des files d&apos;attente</value>
+  </data>
+  <data name="activity_getqueues_key" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="activity_getqueues_key_hint" xml:space="preserve">
+    <value>Clé d&apos;API de l&apos;activité d&apos;authentification</value>
+  </data>
+  <data name="activity_getqueues_tooltip" xml:space="preserve">
+    <value>Obtenez une liste des files d&apos;attente de rossum, un fichier doit être téléchargé dans une file d&apos;attente dont les paramètres varient selon le site Web</value>
+  </data>
+  <data name="activity_getstatus_file" xml:space="preserve">
+    <value>URL du fichier</value>
+  </data>
+  <data name="activity_getstatus_file_hint" xml:space="preserve">
+    <value>URL du fichier de laquelle obtenir le statut</value>
+  </data>
+  <data name="activity_getstatus_key" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="activity_getstatus_key_hint" xml:space="preserve">
+    <value>Clé d&apos;API de l&apos;activité d&apos;authentification</value>
+  </data>
+  <data name="activity_uploadfile" xml:space="preserve">
+    <value>Télécharger un fichier</value>
+  </data>
+  <data name="activity_uploadfile_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_uploadfile_filename_hint" xml:space="preserve">
+    <value>Fichier à télécharger dans la file d&apos;attente</value>
+  </data>
+  <data name="activity_uploadfile_key" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="activity_uploadfile_key_hint" xml:space="preserve">
+    <value>Clé d&apos;API de l&apos;activité d&apos;authentification</value>
+  </data>
+  <data name="activity_uploadfile_queue" xml:space="preserve">
+    <value>File d&apos;attente</value>
+  </data>
+  <data name="activity_uploadfile_queue_hint" xml:space="preserve">
+    <value>File d&apos;attente vers laquelle télécharger le fichier</value>
+  </data>
+  <data name="activity_uploadfile_tooltip" xml:space="preserve">
+    <value>Télécharge un fichier dans une file d&apos;attente Rossum</value>
+  </data>
+  <data name="activity_waitforfilestatus" xml:space="preserve">
+    <value>Attendez l&apos;état du dossier</value>
+  </data>
+  <data name="activity_waitforfilestatus_tooltip" xml:space="preserve">
+    <value>Faites en sorte que le flux de travail reste inactif en attendant que le dossier acquière le statut spécifié</value>
+  </data>
+  <data name="activity_waitforfile_file" xml:space="preserve">
+    <value>URL du fichier</value>
+  </data>
+  <data name="activity_waitforfile_file_hint" xml:space="preserve">
+    <value>URL du fichier à attendre</value>
+  </data>
+  <data name="activity_waitforfile_key" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="activity_waitforfile_key_hint" xml:space="preserve">
+    <value>Clé d&apos;API de l&apos;activité d&apos;authentification</value>
+  </data>
+  <data name="activity_waitforfile_status" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="activity_waitforfile_status_hint" xml:space="preserve">
+    <value>Statut à attendre</value>
+  </data>
+  <data name="NEW_FILE_FILE_WATCHER" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="plugin_filter" xml:space="preserve">
+    <value>Filtre de fichiers</value>
+  </data>
+  <data name="plugin_includesubdir" xml:space="preserve">
+    <value>Sous-répertoires</value>
+  </data>
+  <data name="plugin_name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="plugin_path" xml:space="preserve">
+    <value>Cheminement</value>
+  </data>
+  <data name="NEW_FILE_FORMS" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_alert_message_hint" xml:space="preserve">
+    <value>Message d&apos;alerte</value>
+  </data>
+  <data name="activity_formdesigner_build" xml:space="preserve">
+    <value>Construire un formulaire</value>
+  </data>
+  <data name="activity_invokeform" xml:space="preserve">
+    <value>Invoquer la formule</value>
+  </data>
+  <data name="activity_invokeform_create_var" xml:space="preserve">
+    <value>Créer des variables</value>
+  </data>
+  <data name="activity_invokeform_open" xml:space="preserve">
+    <value>Ouvrir concepteur</value>
+  </data>
+  <data name="activity_invokeform_tooltip" xml:space="preserve">
+    <value>Interagissez avec l&apos;utilisateur à l&apos;ordinateur à l&apos;aide de formules prédéfinies</value>
+  </data>
+  <data name="activity_noti_message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="activity_noti_message_hint" xml:space="preserve">
+    <value>Message de notification</value>
+  </data>
+  <data name="activity_shownotification" xml:space="preserve">
+    <value>Afficher la notification</value>
+  </data>
+  <data name="activity_shownotification_tooltip" xml:space="preserve">
+    <value>Afficher une notification dans le coin inférieur droit de l&apos;écran pendant une durée limitée</value>
+  </data>
+  <data name="NEW_FILE_IE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_getelement" xml:space="preserve">
+    <value>Obtenir un élément</value>
+  </data>
+  <data name="activity_getelement_highlight" xml:space="preserve">
+    <value>Souligner</value>
+  </data>
+  <data name="activity_getelement_open_selector" xml:space="preserve">
+    <value>Ouvrir le sélecteur</value>
+  </data>
+  <data name="activity_getelement_tooltip" xml:space="preserve">
+    <value>Trouvez un élément de l&apos;interface utilisateur Windows basé sur le sélecteur</value>
+  </data>
+  <data name="activity_openurl" xml:space="preserve">
+    <value>Ouvrir l&apos;URL</value>
+  </data>
+  <data name="activity_openurl_getcurrent" xml:space="preserve">
+    <value>Obtenir le courant</value>
+  </data>
+  <data name="activity_openurl_tooltip" xml:space="preserve">
+    <value>Ouvrez l&apos;URL spécifique dans le navigateur sélectionné</value>
+  </data>
+  <data name="activity_waitforready" xml:space="preserve">
+    <value>Attendez d&apos;être prêt</value>
+  </data>
+  <data name="activity_waitforready_help" xml:space="preserve">
+    <value>Attendez que la page soit prête/ne se charge pas</value>
+  </data>
+  <data name="enable_caching_browser" xml:space="preserve">
+    <value>Mise en cache d&apos;un objet du navigateur</value>
+  </data>
+  <data name="enable_caching_browser_help" xml:space="preserve">
+    <value>Sauvegardez l&apos;objet du navigateur, au lieu de rechercher la fenêtre à chaque appel</value>
+  </data>
+  <data name="enable_xpath_support" xml:space="preserve">
+    <value>Activer XPath</value>
+  </data>
+  <data name="enable_xpath_support_help" xml:space="preserve">
+    <value>Permettre la prise en charge expérimentale de XPath dans IE</value>
+  </data>
+  <data name="NEW_FILE_IMAGE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_getcolor" xml:space="preserve">
+    <value>Obtenir la couleur</value>
+  </data>
+  <data name="activity_getcolor_tooltip" xml:space="preserve">
+    <value>Obtenez la couleur aux coordonnées spécifiées.</value>
+  </data>
+  <data name="activity_getelement_process_limit" xml:space="preserve">
+    <value>Limite du processus</value>
+  </data>
+  <data name="activity_getelement_select" xml:space="preserve">
+    <value>Sélectionnez une image</value>
+  </data>
+  <data name="activity_getimage" xml:space="preserve">
+    <value>Obtenez une image</value>
+  </data>
+  <data name="activity_getimage_drop_hint" xml:space="preserve">
+    <value>Supprimer l&apos;activité</value>
+  </data>
+  <data name="activity_getimage_highlight" xml:space="preserve">
+    <value>Souligner</value>
+  </data>
+  <data name="activity_getimage_select" xml:space="preserve">
+    <value>Sélectionnez une image</value>
+  </data>
+  <data name="activity_getimage_tooltip" xml:space="preserve">
+    <value>Obtenez une image de l&apos;écran relatif à partir d&apos;une autre image ou d&apos;un élément trouvé avec GetElement</value>
+  </data>
+  <data name="activity_gettext" xml:space="preserve">
+    <value>Obtenir un texte</value>
+  </data>
+  <data name="activity_gettext_drop_hint" xml:space="preserve">
+    <value>Supprimer l&apos;activité</value>
+  </data>
+  <data name="activity_gettext_limit" xml:space="preserve">
+    <value>Limite à</value>
+  </data>
+  <data name="activity_gettext_limit_hint" xml:space="preserve">
+    <value>Recherchez uniquement ce mot</value>
+  </data>
+  <data name="activity_gettext_tooltip" xml:space="preserve">
+    <value>L&apos;utilisation d&apos;OCR permet d&apos;obtenir tout le texte d&apos;une image, mais peut être limitée à un mot ou à une phrase spécifique</value>
+  </data>
+  <data name="activity_loadfile_drop_hint" xml:space="preserve">
+    <value>Supprimer l&apos;activité</value>
+  </data>
+  <data name="activity_loadfile_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_loadfile_filename_hint" xml:space="preserve">
+    <value>Fichier d&apos;image à charger</value>
+  </data>
+  <data name="activity_loadfromfile" xml:space="preserve">
+    <value>Charger à partir du fichier</value>
+  </data>
+  <data name="activity_loadfromfile_tooltip" xml:space="preserve">
+    <value>Charger une image à partir d&apos;un fichier et renvoyer un ImageElement</value>
+  </data>
+  <data name="activity_takescreenshot" xml:space="preserve">
+    <value>Prendre une capture d&apos;écran</value>
+  </data>
+  <data name="activity_takescreenshot_tooltip" xml:space="preserve">
+    <value>Prenez une capture d&apos;écran de l&apos;écran entier ou d&apos;un élément spécifique trouvé à l&apos;aide de Get Element</value>
+  </data>
+  <data name="NEW_FILE_INTERFACE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="selector_buttons_cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="selector_buttons_cancel_hint" xml:space="preserve">
+    <value>Annuler les modifications et fermer la fenêtre de sélection</value>
+  </data>
+  <data name="selector_buttons_highlight" xml:space="preserve">
+    <value>Souligner</value>
+  </data>
+  <data name="selector_buttons_highlight_hint" xml:space="preserve">
+    <value>Mettre en évidence le ou les éléments effectués par le sélecteur actuel</value>
+  </data>
+  <data name="selector_buttons_ok" xml:space="preserve">
+    <value>D&apos;accord</value>
+  </data>
+  <data name="selector_buttons_ok_hint" xml:space="preserve">
+    <value>Accepter les changements et fermer la fenêtre de sélection</value>
+  </data>
+  <data name="selector_buttons_select" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="selector_buttons_select_hint" xml:space="preserve">
+    <value>Sélectionnez l&apos;élément en cliquant dessus</value>
+  </data>
+  <data name="selector_buttons_sync" xml:space="preserve">
+    <value>Synchroniser l&apos;arbre</value>
+  </data>
+  <data name="selector_buttons_sync_hint" xml:space="preserve">
+    <value>Synchroniser l&apos;arbre et aller à l&apos;élément courant</value>
+  </data>
+  <data name="selector_menu_select" xml:space="preserve">
+    <value>Sélectionnez un élément</value>
+  </data>
+  <data name="NEW_FILE_JAVA" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="detector_highlight" xml:space="preserve">
+    <value>Souligner</value>
+  </data>
+  <data name="detector_name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="detector_open_selector" xml:space="preserve">
+    <value>Ouvrir le sélecteur</value>
+  </data>
+  <data name="detector_select" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="detector_selector" xml:space="preserve">
+    <value>Sélecteur</value>
+  </data>
+  <data name="plugin_auto_launch_java_bridge" xml:space="preserve">
+    <value>Lancement automatique</value>
+  </data>
+  <data name="plugin_auto_launch_java_bridge_help" xml:space="preserve">
+    <value>Lancement automatique de l&apos;application java bridge lorsque le robot est en marche</value>
+  </data>
+  <data name="plugin_launch_java_bridge" xml:space="preserve">
+    <value>Lancer java bridge</value>
+  </data>
+  <data name="NEW_FILE_NM" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_closetab" xml:space="preserve">
+    <value>Fermer l&apos;onglet</value>
+  </data>
+  <data name="activity_closetab_tooltip" xml:space="preserve">
+    <value>Fermer l&apos;onglet en cours, ou fermer tous les onglets</value>
+  </data>
+  <data name="activity_executescript" xml:space="preserve">
+    <value>Exécuter le script</value>
+  </data>
+  <data name="activity_executescript_tooltip" xml:space="preserve">
+    <value>Exécuter le script dans le navigateur, en ciblant l&apos;onglet actuel et le cadre par défaut</value>
+  </data>
+  <data name="activity_getelement_loopaction" xml:space="preserve">
+    <value>Action en boucle</value>
+  </data>
+  <data name="activity_getelement_loopaction_tooltop" xml:space="preserve">
+    <value>Faites-le lorsque vous avez fini de traiter chaque résultat, puis relancez le sélecteur et recherchez de nouveaux éléments</value>
+  </data>
+  <data name="activity_open_editor" xml:space="preserve">
+    <value>Ouvrir l&apos;éditeur</value>
+  </data>
+  <data name="compensate_for_old_addon" xml:space="preserve">
+    <value>Compenser l&apos;ancienne prolongation</value>
+  </data>
+  <data name="compensate_for_old_addon_help" xml:space="preserve">
+    <value>Ajouter une compensation de pixels pour l&apos;ancien ajout</value>
+  </data>
+  <data name="debug_console_output" xml:space="preserve">
+    <value>Console de débogage</value>
+  </data>
+  <data name="debug_console_output_help" xml:space="preserve">
+    <value>Écrivez les informations de débogage dans la console du navigateur</value>
+  </data>
+  <data name="plugin_wait_for_tab_after_set_value" xml:space="preserve">
+    <value>Attendre après la valeur de consigne</value>
+  </data>
+  <data name="plugin_wait_for_tab_after_set_value_help" xml:space="preserve">
+    <value>Attendez que l&apos;état de l&apos;onglet soit prêt après avoir défini une valeur</value>
+  </data>
+  <data name="register_old_portname" xml:space="preserve">
+    <value>enregistrer l&apos;ancien nom de port</value>
+  </data>
+  <data name="register_old_portname_help" xml:space="preserve">
+    <value>Enregistrer les noms de port des anciennes extensions de navigateur</value>
+  </data>
+  <data name="unique_xpath_ids" xml:space="preserve">
+    <value>identifiants uniques</value>
+  </data>
+  <data name="unique_xpath_ids_help" xml:space="preserve">
+    <value>Utilisez l&apos;un de ces attributs comme identifiant unique lors de la création de sélecteurs xpath</value>
+  </data>
+  <data name="wait_for_tab_click" xml:space="preserve">
+    <value>attendre l&apos;onglet</value>
+  </data>
+  <data name="wait_for_tab_click_help" xml:space="preserve">
+    <value>Attendez que l&apos;état des onglets soit prêt après avoir cliqué sur un bouton</value>
+  </data>
+  <data name="NEW_FILE_OFFICE" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_addparagraph" xml:space="preserve">
+    <value>Ajouter un paragraphe</value>
+  </data>
+  <data name="activity_addparagraph_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_addparagraph_filename_help" xml:space="preserve">
+    <value>Chemin complet et nom de fichier du document Microsoft Word à utiliser</value>
+  </data>
+  <data name="activity_addparagraph_index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="activity_addparagraph_index_help" xml:space="preserve">
+    <value>Ajoutez le nouveau paragraphe à cet index (zéro indexé) Laissez  en blanc pour ajouter à la fin du document</value>
+  </data>
+  <data name="activity_addparagraph_text" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="activity_addparagraph_text_help" xml:space="preserve">
+    <value>Le texte à ajouter</value>
+  </data>
+  <data name="activity_addparagraph_tooltip" xml:space="preserve">
+    <value>Ajoutez un nouveau paragraphe à un document Microsoft Word</value>
+  </data>
+  <data name="activity_clearrange" xml:space="preserve">
+    <value>Effacer la plage</value>
+  </data>
+  <data name="activity_clearrange_cells" xml:space="preserve">
+    <value>Cellules</value>
+  </data>
+  <data name="activity_clearrange_cells_help" xml:space="preserve">
+    <value>Définissez les cellules à effacer, laissez en blanc pour effacer toutes les cellules</value>
+  </data>
+  <data name="activity_clearrange_tooltip" xml:space="preserve">
+    <value>Efface toutes les données et le formatage à partir d&apos;une série de cellules</value>
+  </data>
+  <data name="activity_closedocument" xml:space="preserve">
+    <value>Fermer le document</value>
+  </data>
+  <data name="activity_closedocument_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_closedocument_filename_help" xml:space="preserve">
+    <value>Chemin complet et nom de fichier du document Microsoft Word à utiliser</value>
+  </data>
+  <data name="activity_closedocument_savechanges" xml:space="preserve">
+    <value>Enregistrer les changements</value>
+  </data>
+  <data name="activity_closedocument_savechanges_help" xml:space="preserve">
+    <value>Réglez sur « vrai » pour enregistrer le fichier Word, sur « faux » pour supprimer les modifications apportées</value>
+  </data>
+  <data name="activity_closedocument_tooltip" xml:space="preserve">
+    <value>La fermeture d&apos;un document Microsoft Word s&apos;il est ouvert ferme également Word si aucun autre document n&apos;est ouvert</value>
+  </data>
+  <data name="activity_closeworkbook" xml:space="preserve">
+    <value>Fermer le classeur</value>
+  </data>
+  <data name="activity_closeworkbook_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_closeworkbook_filename_help" xml:space="preserve">
+    <value>Chemin complet et nom de fichier du classeur Microsoft Excel avec lequel travailler</value>
+  </data>
+  <data name="activity_closeworkbook_savechanges" xml:space="preserve">
+    <value>Enregistrer les changements</value>
+  </data>
+  <data name="activity_closeworkbook_savechanges_help" xml:space="preserve">
+    <value>Régler sur « vrai » pour sauvegarder le fichier Excel, sur « faux » pour supprimer les modifications apportées</value>
+  </data>
+  <data name="activity_closeworkbook_tooltip" xml:space="preserve">
+    <value>La fermeture d&apos;un classeur, s&apos;il est ouvert, entraîne également la fermeture d&apos;Excel si aucun autre classeur n&apos;est ouvert</value>
+  </data>
+  <data name="activity_closeworkbook_workbook" xml:space="preserve">
+    <value>Classeur</value>
+  </data>
+  <data name="activity_closeworkbook_workbook_help" xml:space="preserve">
+    <value>Utiliser une variable de classeur Microsoft Excel pour travailler</value>
+  </data>
+  <data name="activity_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_getemails_reload" xml:space="preserve">
+    <value>Recharger</value>
+  </data>
+  <data name="activity_getmails" xml:space="preserve">
+    <value>Recevoir des courriers</value>
+  </data>
+  <data name="activity_getmails_filter" xml:space="preserve">
+    <value>Filtrer</value>
+  </data>
+  <data name="activity_getmails_filter_hint" xml:space="preserve">
+    <value>Filtrer les e-mails par requête</value>
+  </data>
+  <data name="activity_getmails_tooltip" xml:space="preserve">
+    <value>Recevez tous les e-mails à partir d&apos;un dossier Microsoft Outlook</value>
+  </data>
+  <data name="activity_getparagraph" xml:space="preserve">
+    <value>Obtenir un paragraphe</value>
+  </data>
+  <data name="activity_getparagraph_count" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="activity_getparagraph_count_help" xml:space="preserve">
+    <value>Renvoie le nombre de paragraphes dans le document Microsoft Word</value>
+  </data>
+  <data name="activity_getparagraph_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_getparagraph_filename_help" xml:space="preserve">
+    <value>Chemin complet et nom de fichier du document Microsoft Word à utiliser</value>
+  </data>
+  <data name="activity_getparagraph_index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="activity_getparagraph_index_help" xml:space="preserve">
+    <value>Obtenez tout le contenu du paragraphe avec cet index et d&apos;autres MaxResults. Laissez ce champ vide pour obtenir tout le document Word.</value>
+  </data>
+  <data name="activity_getparagraph_maxresults" xml:space="preserve">
+    <value>Résultats maximums</value>
+  </data>
+  <data name="activity_getparagraph_maxresults_help" xml:space="preserve">
+    <value>Limiter le nombre de paragraphes à obtenir, laisser en blanc ou mettre à 0 pour obtenir tous les paragraphes à partir de l&apos;index</value>
+  </data>
+  <data name="activity_getparagraph_text" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="activity_getparagraph_text_help" xml:space="preserve">
+    <value>Enregistrer les paragrahes lus dans cette variable</value>
+  </data>
+  <data name="activity_getparagraph_tooltip" xml:space="preserve">
+    <value>Obtenir un ou plusieurs paragraphes d&apos;un document Microsoft Word</value>
+  </data>
+  <data name="activity_getselectedrange" xml:space="preserve">
+    <value>Obtenir la gamme sélectionnée</value>
+  </data>
+  <data name="activity_getselectedrange_tooltip" xml:space="preserve">
+    <value>Obtenir les cellules actuellement sélectionnées dans la feuille de calcul spécifique</value>
+  </data>
+  <data name="activity_movemailitem" xml:space="preserve">
+    <value>Déplacer MailItem</value>
+  </data>
+  <data name="activity_movemailitem_tooltip" xml:space="preserve">
+    <value>Déplacer un courrier reçu avec GetEmails vers un autre dossier</value>
+  </data>
+  <data name="activity_movemail_mail" xml:space="preserve">
+    <value>Courrier</value>
+  </data>
+  <data name="activity_movemail_mail_hint" xml:space="preserve">
+    <value>Courrier à déplacer</value>
+  </data>
+  <data name="activity_newmailitem" xml:space="preserve">
+    <value>Nouveau MailItem</value>
+  </data>
+  <data name="activity_newmailitem_tooltip" xml:space="preserve">
+    <value>Créer un nouveau Microsoft Outlook Mailitem</value>
+  </data>
+  <data name="activity_readcell" xml:space="preserve">
+    <value>Lire la cellule</value>
+  </data>
+  <data name="activity_readcell_tooltip" xml:space="preserve">
+    <value>Lire le contenu d&apos;une seule cellule dans Microsoft Excel</value>
+  </data>
+  <data name="activity_readrange" xml:space="preserve">
+    <value>Gamme de lecture</value>
+  </data>
+  <data name="activity_readrange_clearformats" xml:space="preserve">
+    <value>Effacer les formats</value>
+  </data>
+  <data name="activity_readrange_clearformats_help" xml:space="preserve">
+    <value>Régler sur « vrai » pour supprimer tout formatage de la feuille de calcul sélectionnée</value>
+  </data>
+  <data name="activity_readrange_tooltip" xml:space="preserve">
+    <value>Lire une gamme d&apos;une feuille Microsoft Excel</value>
+  </data>
+  <data name="activity_readrange_useheaderrow" xml:space="preserve">
+    <value>Utiliser la ligne d&apos;en-tête</value>
+  </data>
+  <data name="activity_readrange_useheaderrow_help" xml:space="preserve">
+    <value>Si la plage de sélection contient également une ligne d&apos;en-tête avec des noms de colonnes, réglez cette valeur sur « vrai », sinon laissez-la vide (toutes les colonnes n&apos;auront alors pas de nom)</value>
+  </data>
+  <data name="activity_runexcelmacro" xml:space="preserve">
+    <value>Exécuter une macro Excel</value>
+  </data>
+  <data name="activity_runexcelmacro_name_hint" xml:space="preserve">
+    <value>Nom de la macro</value>
+  </data>
+  <data name="activity_runexcelmacro_tooltip" xml:space="preserve">
+    <value>Exécutez une macro dans un classeur Excel. Le fichier du classeur doit être activé pour les macros</value>
+  </data>
+  <data name="activity_runslideshow" xml:space="preserve">
+    <value>Lancer le diaporama</value>
+  </data>
+  <data name="activity_runslideshow_tooltip" xml:space="preserve">
+    <value>Ouvrez une présentation Powerpoint de Microsoft et lancez le diaporama</value>
+  </data>
+  <data name="activity_savemailitem" xml:space="preserve">
+    <value>Sauvegarder MailItem</value>
+  </data>
+  <data name="activity_savemailitem_tooltip" xml:space="preserve">
+    <value>Enregistrer un élément de Microsoft Outlook Mail dans un fichier</value>
+  </data>
+  <data name="activity_setparagraph" xml:space="preserve">
+    <value>Définir le paragraphe</value>
+  </data>
+  <data name="activity_setparagraph_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_setparagraph_filename_help" xml:space="preserve">
+    <value>Chemin complet et nom de fichier du document Microsoft Word à utiliser</value>
+  </data>
+  <data name="activity_setparagraph_index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="activity_setparagraph_index_help" xml:space="preserve">
+    <value>Écrasez le contenu du paragraphe avec cet index, mettez 0 pour écraser tout le document Word</value>
+  </data>
+  <data name="activity_setparagraph_text" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="activity_setparagraph_text_help" xml:space="preserve">
+    <value>Le texte à fixer</value>
+  </data>
+  <data name="activity_setparagraph_tooltip" xml:space="preserve">
+    <value>Définir le contenu d&apos;un paragraphe dans un document Microsoft Word</value>
+  </data>
+  <data name="activity_writecell" xml:space="preserve">
+    <value>Écrire une cellule</value>
+  </data>
+  <data name="activity_writecell_tooltip" xml:space="preserve">
+    <value>Fixer une valeur ou un formulaire à une seule cellule dans Microsoft Excel</value>
+  </data>
+  <data name="activity_writerange" xml:space="preserve">
+    <value>Plage d&apos;écriture</value>
+  </data>
+  <data name="activity_writerange_cells" xml:space="preserve">
+    <value>Cellules</value>
+  </data>
+  <data name="activity_writerange_cells_help" xml:space="preserve">
+    <value>Définissez la première cellule à partir de laquelle vous commencez à écrire, laissez en blanc pour commencer à la dernière ligne vide de la colonne A</value>
+  </data>
+  <data name="activity_writerange_datatable" xml:space="preserve">
+    <value>Table de données</value>
+  </data>
+  <data name="activity_writerange_datatable_help" xml:space="preserve">
+    <value>La table de données contenant les données à ajouter dans Excel</value>
+  </data>
+  <data name="activity_writerange_tooltip" xml:space="preserve">
+    <value>Écrivez toutes les données d&apos;une table de données à une plage dans une feuille Microsoft Excel</value>
+  </data>
+  <data name="activity_writerange_useheaderrow" xml:space="preserve">
+    <value>Utiliser la ligne d&apos;en-tête</value>
+  </data>
+  <data name="activity_writerange_useheaderrow_help" xml:space="preserve">
+    <value>S&apos;il est réglé sur « vrai », il ajoutera également une ligne d&apos;en-tête avec des noms de colonnes comme première ligne ; réglez sur « faux » pour n&apos;ajouter que les données</value>
+  </data>
+  <data name="NEW_FILE_OPENFLOW" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_assignopenflow" xml:space="preserve">
+    <value>Affecter OpenFlow</value>
+  </data>
+  <data name="activity_assignopenflow_tooltip" xml:space="preserve">
+    <value>Attribuer un flux de travail OpenFlow à un utilisateur ou à un rôle</value>
+  </data>
+  <data name="activity_deletefile" xml:space="preserve">
+    <value>Supprimer un fichier</value>
+  </data>
+  <data name="activity_deletefile_tooltip" xml:space="preserve">
+    <value>Supprimer un fichier de la base de données OpenFlow</value>
+  </data>
+  <data name="activity_deleteone" xml:space="preserve">
+    <value>Supprimer un</value>
+  </data>
+  <data name="activity_deleteone_tooltip" xml:space="preserve">
+    <value>Supprimer un élément dans la base de données OpenFlow</value>
+  </data>
+  <data name="activity_filename_hint" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_getcredentials" xml:space="preserve">
+    <value>Obtenir des données d&apos;identification</value>
+  </data>
+  <data name="activity_getcredentials_tooltip" xml:space="preserve">
+    <value>Obtenez un ensemble de données d&apos;identification chiffrées à partir d&apos;OpenFlow</value>
+  </data>
+  <data name="activity_getfile" xml:space="preserve">
+    <value>Obtenir le fichier</value>
+  </data>
+  <data name="activity_getfile_tooltip" xml:space="preserve">
+    <value>Télécharger un fichier enregistré dans la base de données OpenFlow</value>
+  </data>
+  <data name="activity_grantpermission" xml:space="preserve">
+    <value>Accorder l&apos;autorisation</value>
+  </data>
+  <data name="activity_grantpermission_tooltip" xml:space="preserve">
+    <value>Ajoutez ou mettez à jour les autorisations pour un utilisateur ou un rôle sur l&apos;objet spécifié ; vous devez mettre à jour le document dans OpenFlow après</value>
+  </data>
+  <data name="activity_insertone" xml:space="preserve">
+    <value>Insérer un</value>
+  </data>
+  <data name="activity_insertone_tooltip" xml:space="preserve">
+    <value>Insère un élément dans la base de données OpenFlow</value>
+  </data>
+  <data name="activity_insertorupdateone" xml:space="preserve">
+    <value>Insérer ou mettre à jour un</value>
+  </data>
+  <data name="activity_insertorupdateone_tooltip" xml:space="preserve">
+    <value>Insère un élément dans la base de données OpenFlow ou le met à jour s&apos;il existe déjà. vérifie _id à moins que vous ne spécifiiez l&apos;unicité ; il trouvera alors les éléments existants sur la base des champs mentionnés dans l&apos;unicité</value>
+  </data>
+  <data name="activity_local_path" xml:space="preserve">
+    <value>Cheminement local</value>
+  </data>
+  <data name="activity_local_path_hint" xml:space="preserve">
+    <value>Enregistrer le fichier dans ce dossier</value>
+  </data>
+  <data name="activity_perm_delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="activity_perm_read" xml:space="preserve">
+    <value>Lire</value>
+  </data>
+  <data name="activity_perm_update" xml:space="preserve">
+    <value>Mettre à jour</value>
+  </data>
+  <data name="activity_query" xml:space="preserve">
+    <value>Requête</value>
+  </data>
+  <data name="activity_query_tooltip" xml:space="preserve">
+    <value>Interroger la base de données OpenFlow pour un ou plusieurs éléments</value>
+  </data>
+  <data name="activity_removepermission" xml:space="preserve">
+    <value>Supprimer l&apos;autorisation</value>
+  </data>
+  <data name="activity_removepermission_tooltip" xml:space="preserve">
+    <value>Supprimez une permission d&apos;un utilisateur ou d&apos;un rôle sur l&apos;objet spécifié, vous devez mettre à jour le document dans OpenFlow après</value>
+  </data>
+  <data name="activity_savefile" xml:space="preserve">
+    <value>Enregistrer le fichier</value>
+  </data>
+  <data name="activity_savefile_filename" xml:space="preserve">
+    <value>Nom du fichier</value>
+  </data>
+  <data name="activity_savefile_filename_help" xml:space="preserve">
+    <value>Le chemin complet et le nom du fichier à télécharger</value>
+  </data>
+  <data name="activity_savefile_path" xml:space="preserve">
+    <value>Cheminement</value>
+  </data>
+  <data name="activity_savefile_path_help" xml:space="preserve">
+    <value>Sauvegardez le fichier dans ce sous-dossier sur le serveur ; cette opération est pertinente lorsque vous récupérez le fichier</value>
+  </data>
+  <data name="activity_savefile_result" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="activity_savefile_result_help" xml:space="preserve">
+    <value>Retourne l&apos;identifiant du nouveau fichier téléchargé</value>
+  </data>
+  <data name="activity_savefile_tooltip" xml:space="preserve">
+    <value>Téléchargez et enregistrez un fichier dans la base de données OpenFlow</value>
+  </data>
+  <data name="activity_setcredentials" xml:space="preserve">
+    <value>Définir les compétences</value>
+  </data>
+  <data name="activity_setcredentials_tooltip" xml:space="preserve">
+    <value>Créer ou mettre à jour un ensemble d&apos;informations d&apos;identification chiffrées dans OpenFlow</value>
+  </data>
+  <data name="activity_updatefromdataTable" xml:space="preserve">
+    <value>Mettre à jour à partir de DataTable</value>
+  </data>
+  <data name="activity_updatefromdataTable_tooltip" xml:space="preserve">
+    <value>Engagez les modifications apportées sur une table de données dans OpenFlow, renvoie la liste des lignes insérées et mises à jour</value>
+  </data>
+  <data name="NEW_FILE_PDPLUGIN" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="plugin_collectionname" xml:space="preserve">
+    <value>Nom de la collection</value>
+  </data>
+  <data name="plugin_collectionname_help" xml:space="preserve">
+    <value>Enregistrer des événements dans cette collection</value>
+  </data>
+  <data name="plugin_enabled_keyboard_recording" xml:space="preserve">
+    <value>Capturer le clavier</value>
+  </data>
+  <data name="plugin_enabled_keyboard_recording_help" xml:space="preserve">
+    <value>Enregistrer tous les événements de clavier</value>
+  </data>
+  <data name="plugin_enabled_mouse_recording" xml:space="preserve">
+    <value>Capturer la souris</value>
+  </data>
+  <data name="plugin_enabled_mouse_recording_help" xml:space="preserve">
+    <value>Enregistrer tous les clics de souris</value>
+  </data>
+  <data name="NEW_FILE_RDSERVICEPLUGIN" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="plugin_auto_signout" xml:space="preserve">
+    <value>Déconnexion automatique</value>
+  </data>
+  <data name="plugin_button_add_user" xml:space="preserve">
+    <value>Ajouter l&apos;utilisateur actuel</value>
+  </data>
+  <data name="plugin_button_install_service" xml:space="preserve">
+    <value>Installer le service</value>
+  </data>
+  <data name="plugin_button_reauth" xml:space="preserve">
+    <value>Réauthentifier le service</value>
+  </data>
+  <data name="plugin_button_remove_user" xml:space="preserve">
+    <value>Supprimer l&apos;utilisateur actuel</value>
+  </data>
+  <data name="plugin_button_start_service" xml:space="preserve">
+    <value>Démarrer le service</value>
+  </data>
+  <data name="plugin_button_stop_service" xml:space="preserve">
+    <value>Arrêter le service</value>
+  </data>
+  <data name="plugin_button_uninstall_service" xml:space="preserve">
+    <value>Désinstaller le service</value>
+  </data>
+  <data name="plugin_executable" xml:space="preserve">
+    <value>Exécutable</value>
+  </data>
+  <data name="plugin_reload_interval" xml:space="preserve">
+    <value>Intervalle de rechargement</value>
+  </data>
+  <data name="plugin_use_free_rdp" xml:space="preserve">
+    <value>Utiliser le RDP gratuit</value>
+  </data>
+  <data name="plugin_windows_login" xml:space="preserve">
+    <value>Nom d&apos;utilisateur de connexion</value>
+  </data>
+  <data name="plugin_windows_password" xml:space="preserve">
+    <value>Mot de passe Windows</value>
+  </data>
+  <data name="plugin_windows_username" xml:space="preserve">
+    <value>Nom d&apos;utilisateur Windows</value>
+  </data>
+  <data name="NEW_FILE_SAP" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_getproperty" xml:space="preserve">
+    <value>Obtenir des biens</value>
+  </data>
+  <data name="activity_getproperty_actionname" xml:space="preserve">
+    <value>Nom de la propriété</value>
+  </data>
+  <data name="activity_getproperty_actionname_help" xml:space="preserve">
+    <value>Nom de la propriété à obtenir</value>
+  </data>
+  <data name="activity_getproperty_path" xml:space="preserve">
+    <value>Chemin</value>
+  </data>
+  <data name="activity_getproperty_path_help" xml:space="preserve">
+    <value>Chemin vers l&apos;objet</value>
+  </data>
+  <data name="activity_getproperty_result" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="activity_getproperty_result_help" xml:space="preserve">
+    <value>Le résultat de l&apos;obtention de la propriété</value>
+  </data>
+  <data name="activity_getproperty_systemname" xml:space="preserve">
+    <value>Nom du Système</value>
+  </data>
+  <data name="activity_getproperty_systemname_help" xml:space="preserve">
+    <value>Nom du Système auquel envoyer la commande</value>
+  </data>
+  <data name="activity_getproperty_tooltip" xml:space="preserve">
+    <value>Obtenir la valeur des biens de SAP UI Element</value>
+  </data>
+  <data name="activity_invokemethod" xml:space="preserve">
+    <value>Méthode d&apos;Appel</value>
+  </data>
+  <data name="activity_invokemethod_actionname" xml:space="preserve">
+    <value>Nom de l&apos;Action</value>
+  </data>
+  <data name="activity_invokemethod_actionname_help" xml:space="preserve">
+    <value>Action à exécuter sur l&apos;objet</value>
+  </data>
+  <data name="activity_invokemethod_parameters" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="activity_invokemethod_parameters_help" xml:space="preserve">
+    <value>Paramètres pour ll&apos;Action</value>
+  </data>
+  <data name="activity_invokemethod_path" xml:space="preserve">
+    <value>Chemin</value>
+  </data>
+  <data name="activity_invokemethod_path_help" xml:space="preserve">
+    <value>Chemin vers l&apos;objet</value>
+  </data>
+  <data name="activity_invokemethod_result" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="activity_invokemethod_result_help" xml:space="preserve">
+    <value>La valeur de retour de la Méthode d&apos;Appel, si elle en a une</value>
+  </data>
+  <data name="activity_invokemethod_systemname" xml:space="preserve">
+    <value>Nom du Système</value>
+  </data>
+  <data name="activity_invokemethod_systemname_help" xml:space="preserve">
+    <value>Nom du système auquel envoyer la commande</value>
+  </data>
+  <data name="activity_invokemethod_tooltip" xml:space="preserve">
+    <value>Appeler la méthode SAP UI</value>
+  </data>
+  <data name="activity_login" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="activity_login_client" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="activity_login_client_help" xml:space="preserve">
+    <value>Client SAP à utiliser</value>
+  </data>
+  <data name="activity_login_host" xml:space="preserve">
+    <value>Hébergeur</value>
+  </data>
+  <data name="activity_login_host_help" xml:space="preserve">
+    <value>IP du serveur ou nom de l&apos;hébergeur</value>
+  </data>
+  <data name="activity_login_language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="activity_login_language_help" xml:space="preserve">
+    <value>Définir la langue du client</value>
+  </data>
+  <data name="activity_login_password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="activity_login_password_help" xml:space="preserve">
+    <value>Mot de passe permettant à l&apos;utilisateur de se connecter</value>
+  </data>
+  <data name="activity_login_systemname" xml:space="preserve">
+    <value>Nom du Système</value>
+  </data>
+  <data name="activity_login_systemname_help" xml:space="preserve">
+    <value>Expected System Name, recherchera une session dans ce système, et ne se connectera que si aucun nom n&apos;est trouvé. Laissez vide pour toujours vous connecter à une nouvelle session</value>
+  </data>
+  <data name="activity_login_tooltip" xml:space="preserve">
+    <value>Se connecter à sap en utilisant les identifiants, sauf si une session avec le prénom en question existe</value>
+  </data>
+  <data name="activity_login_username" xml:space="preserve">
+    <value>Nom d&apos;utilisateur</value>
+  </data>
+  <data name="activity_login_username_help" xml:space="preserve">
+    <value>Nom d&apos;utilisateur avec lequel se connecter</value>
+  </data>
+  <data name="activity_setproperty" xml:space="preserve">
+    <value>Définir la Propriété</value>
+  </data>
+  <data name="activity_setproperty_actionname" xml:space="preserve">
+    <value>Nom de la Propriété</value>
+  </data>
+  <data name="activity_setproperty_actionname_help" xml:space="preserve">
+    <value>Nom de la propriété à définir</value>
+  </data>
+  <data name="activity_setproperty_parameters" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="activity_setproperty_parameters_help" xml:space="preserve">
+    <value>Paramètres pour l&apos;Action</value>
+  </data>
+  <data name="activity_setproperty_path" xml:space="preserve">
+    <value>Chemin</value>
+  </data>
+  <data name="activity_setproperty_path_help" xml:space="preserve">
+    <value>Chemin vers l&apos;objet</value>
+  </data>
+  <data name="activity_setproperty_systemname" xml:space="preserve">
+    <value>Nom du Système</value>
+  </data>
+  <data name="activity_setproperty_systemname_help" xml:space="preserve">
+    <value>Nom du système auquel envoyer la commande</value>
+  </data>
+  <data name="activity_setproperty_tooltip" xml:space="preserve">
+    <value>Fixer la propriété du SAP UI Element</value>
+  </data>
+  <data name="plugin_auto_launch_sap_bridge" xml:space="preserve">
+    <value>Lancement automatique</value>
+  </data>
+  <data name="plugin_auto_launch_sap_bridge_help" xml:space="preserve">
+    <value>Lancement automatique de l&apos;interface SAP lorsque le robot est en marche</value>
+  </data>
+  <data name="plugin_bridge_timeout_seconds" xml:space="preserve">
+    <value>Délai de transition</value>
+  </data>
+  <data name="plugin_bridge_timeout_seconds_help" xml:space="preserve">
+    <value>Combien de temps faut-il attendre par demande d&apos;accès à l&apos;interface SAP ?</value>
+  </data>
+  <data name="plugin_launch_sap_bridge" xml:space="preserve">
+    <value>Lancer l&apos;interface SAP</value>
+  </data>
+  <data name="plugin_record_with_get_element" xml:space="preserve">
+    <value>Enregistrement Get Element</value>
+  </data>
+  <data name="plugin_record_with_get_element_help" xml:space="preserve">
+    <value>Lors de l&apos;enregistrement, utilisez GetElement au lieu de SetProperty</value>
+  </data>
+  <data name="NEW_FILE_OPENRPASCRIPT" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_invokecode" xml:space="preserve">
+    <value>Code d&apos;appel</value>
+  </data>
+  <data name="activity_invokecode_tooltip" xml:space="preserve">
+    <value>Invoquer un code écrit dans une ou plusieurs langues</value>
+  </data>
+  <data name="activity_pipinstall" xml:space="preserve">
+    <value>Installation de pip</value>
+  </data>
+  <data name="activity_pipinstall_force" xml:space="preserve">
+    <value>Forcer</value>
+  </data>
+  <data name="activity_pipinstall_force_help" xml:space="preserve">
+    <value>Forcer la réinstallation du module s&apos;il existe déjà</value>
+  </data>
+  <data name="activity_pipinstall_modules" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="activity_pipinstall_modules_help" xml:space="preserve">
+    <value>Liste des modules python à installer</value>
+  </data>
+  <data name="activity_pipinstall_tooltip" xml:space="preserve">
+    <value>Installer un ou plusieurs modules python dans l&apos;environnement python actuellement sélectionné</value>
+  </data>
+  <data name="plugin_csharp_intellisense" xml:space="preserve">
+    <value>C# Intellisense</value>
+  </data>
+  <data name="plugin_csharp_intellisense_help" xml:space="preserve">
+    <value>Activer intellisense pour les scripts C#</value>
+  </data>
+  <data name="plugin_use_embedded_python" xml:space="preserve">
+    <value>Utiliser python intégré</value>
+  </data>
+  <data name="plugin_use_embedded_python_help" xml:space="preserve">
+    <value>OpenRPA est livré avec python intégré, mais utilisera le système python par défaut s&apos;il est désactivé</value>
+  </data>
+  <data name="plugin_vb_intellisense" xml:space="preserve">
+    <value>VB Intellisense</value>
+  </data>
+  <data name="plugin_vb_intellisense_help" xml:space="preserve">
+    <value>Activer intellisense pour les scripts Visual Basic</value>
+  </data>
+  <data name="NEW_FILE_UPDATER" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="main_button_install" xml:space="preserve">
+    <value>Installer</value>
+  </data>
+  <data name="main_button_launch" xml:space="preserve">
+    <value>Lancer</value>
+  </data>
+  <data name="main_button_launch_hint" xml:space="preserve">
+    <value>Lancer OpenRPA</value>
+  </data>
+  <data name="main_button_reinstall" xml:space="preserve">
+    <value>Réinstaller</value>
+  </data>
+  <data name="main_button_search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="main_button_search_hint" xml:space="preserve">
+    <value>Recherche d&apos;activités</value>
+  </data>
+  <data name="main_button_search_text" xml:space="preserve">
+    <value>Recherche...</value>
+  </data>
+  <data name="main_button_uninstall" xml:space="preserve">
+    <value>Désinstaller</value>
+  </data>
+  <data name="main_button_update_all" xml:space="preserve">
+    <value>Tout mettre à jour</value>
+  </data>
+  <data name="main_button_update_all_hint" xml:space="preserve">
+    <value>Tout mettre à jour</value>
+  </data>
+  <data name="main_button_upgrade" xml:space="preserve">
+    <value>Mettre à jour</value>
+  </data>
+  <data name="main_label_authors" xml:space="preserve">
+    <value>Auteurs</value>
+  </data>
+  <data name="main_label_description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="main_label_id" xml:space="preserve">
+    <value>Identification</value>
+  </data>
+  <data name="main_label_latestversion" xml:space="preserve">
+    <value>Dernière Version</value>
+  </data>
+  <data name="main_label_summary" xml:space="preserve">
+    <value>Résumé</value>
+  </data>
+  <data name="main_label_tags" xml:space="preserve">
+    <value>Balises</value>
+  </data>
+  <data name="main_label_version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="NEW_FILE_UTILITIES" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="activity_adddatarow_datatable" xml:space="preserve">
+    <value>DataTable à insérer dans</value>
+  </data>
+  <data name="activity_converter_datatable" xml:space="preserve">
+    <value>Datatable</value>
+  </data>
+  <data name="activity_converter_jarray" xml:space="preserve">
+    <value>JArray</value>
+  </data>
+  <data name="activity_datatable_columnnames" xml:space="preserve">
+    <value>Tableau des colonnes de DataTable</value>
+  </data>
+  <data name="activity_datatable_newcolumnname" xml:space="preserve">
+    <value>Nom des nouvelles colonnes</value>
+  </data>
+  <data name="activity_deletedatarow_row" xml:space="preserve">
+    <value>Rang</value>
+  </data>
+  <data name="activity_downloadfile_hint" xml:space="preserve">
+    <value>Enregistrer dans ce dossier</value>
+  </data>
+  <data name="activity_match_compiled" xml:space="preserve">
+    <value>Compilé</value>
+  </data>
+  <data name="activity_match_input" xml:space="preserve">
+    <value>La chaîne de saisie à faire correspondre avec</value>
+  </data>
+  <data name="activity_match_pattern" xml:space="preserve">
+    <value>L&apos;expression courante adaptée à la situation</value>
+  </data>
+  <data name="activity_match_replacement" xml:space="preserve">
+    <value>Remplacer par cette chaîne</value>
+  </data>
+  <data name="activity_new_datatable" xml:space="preserve">
+    <value>Nouvelle variable DataTable</value>
+  </data>
+  <data name="activity_readexcel_hint" xml:space="preserve">
+    <value>Sélectionnez le fichier excel à lire</value>
+  </data>
+  <data name="activity_readjson_hint" xml:space="preserve">
+    <value>Sélectionner le fichier JSON à lire</value>
+  </data>
+  <data name="activity_readpdf_hint" xml:space="preserve">
+    <value>Sélectionner le fichier PDF à lire</value>
+  </data>
+  <data name="activity_selectfolder_hint" xml:space="preserve">
+    <value>Sélectionner le Dossier</value>
+  </data>
+  <data name="activity_startprocess_arguments_hint" xml:space="preserve">
+    <value>Arguments à analyser concernant l&apos;exécutable</value>
+  </data>
+  <data name="activity_startprocess_filename_hint" xml:space="preserve">
+    <value>Le nom complet du fichier et le chemin d&apos;accès à l&apos;exécutable pour commencer</value>
+  </data>
+  <data name="activity_writecsv_hint" xml:space="preserve">
+    <value>Sélectionnez le fichier CSV dans lequel vous souhaitez écrire</value>
+  </data>
+  <data name="activity_writeexcel_hint" xml:space="preserve">
+    <value>Sélectionnez le fichier excel dans lequel vous souhaitez écrire</value>
+  </data>
+  <data name="NEW_FILE_WINDOWS" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="detector_button_highlight" xml:space="preserve">
+    <value>Souligner</value>
+  </data>
+  <data name="detector_button_open_selector" xml:space="preserve">
+    <value>Ouvrir le Sélecteur</value>
+  </data>
+  <data name="detector_button_select" xml:space="preserve">
+    <value>Sélectionner</value>
+  </data>
+  <data name="enable_cache_help" xml:space="preserve">
+    <value>Permettre la mise en cache des éléments pour une automatisation plus rapide au détriment de la RAM</value>
+  </data>
+  <data name="getelement_drop_hint" xml:space="preserve">
+    <value>Activité en baisse</value>
+  </data>
+  <data name="getelement_highlight" xml:space="preserve">
+    <value>Souligner</value>
+  </data>
+  <data name="getelement_open_selector" xml:space="preserve">
+    <value>Ouvrir le Sélecteur</value>
+  </data>
+  <data name="plugin_allow_child_searching" xml:space="preserve">
+    <value>Autoriser la recherche enfant</value>
+  </data>
+  <data name="plugin_allow_child_searching_help" xml:space="preserve">
+    <value>Si un élément dans un sélecteur n&apos;est pas trouvé, recherchez automatiquement une correspondance pour tous les enfants</value>
+  </data>
+  <data name="plugin_allow_multiple_hits" xml:space="preserve">
+    <value>Autoriser les accès multiples</value>
+  </data>
+  <data name="plugin_allow_multiple_hits_help" xml:space="preserve">
+    <value>Permettre à un sélecteur d&apos;éléments dans un sélecteur de trouver plusieurs enfants</value>
+  </data>
+  <data name="plugin_enable_cache" xml:space="preserve">
+    <value>Activer la mise en cache</value>
+  </data>
+  <data name="plugin_enum_properties" xml:space="preserve">
+    <value>Propriétés Enum</value>
+  </data>
+  <data name="plugin_enum_properties_help" xml:space="preserve">
+    <value>Tester chaque élément du sélecteur pour déterminer la quantité minimale de propriétés requises</value>
+  </data>
+  <data name="plugin_get_elements_in_different_thread" xml:space="preserve">
+    <value>Obtenir des éléments dans différents fils de discussion</value>
+  </data>
+  <data name="plugin_get_elements_in_different_thread_help" xml:space="preserve">
+    <value>GetElement utilise un autre fil de discussion pendant la recherche, pour éviter les verrous si le sélecteur trouve le robot</value>
+  </data>
+  <data name="plugin_search_descendants" xml:space="preserve">
+    <value>Recherche de descendants</value>
+  </data>
+  <data name="plugin_search_descendants_help" xml:space="preserve">
+    <value>Recherche de tous les descendants, utilisation de sélecteurs plus simples mais plus lents</value>
+  </data>
+  <data name="plugin_traverse_selector_both_ways" xml:space="preserve">
+    <value>Sélecteur de passage dans les deux sens</value>
+  </data>
+  <data name="plugin_traverse_selector_both_ways_help" xml:space="preserve">
+    <value>Parcourir l&apos;arbre de l&apos;interface utilisateur dans les deux sens pour filtrer les éléments du sélecteur de fantômes</value>
+  </data>
+</root>
