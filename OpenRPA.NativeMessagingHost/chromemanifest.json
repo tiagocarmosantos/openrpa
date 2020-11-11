@@ -4,6 +4,7 @@
   "path": "REPLACEPATH\\OpenRPA.NativeMessagingHost.exe",
   "type": "stdio",
   "allowed_origins": [
+    "chrome-extension://gmpnnjghibofefmnppkgkadiijlblhia/",
     "chrome-extension://cjjehhadngahcdkbkeopdlmjedddkedh/",
     "chrome-extension://meoobaegjobjgfnlfndegpnpdmonbnbe/",
     "chrome-extension://eglkkjllkdooicijpbolleoemogkagbp/",

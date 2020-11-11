@@ -700,7 +700,6 @@ if (true == false) {
                         chrome.runtime.sendMessage({ functionName: action, key: String.fromCharCode(event.which) });
                     }
                     else {
-                        console.log("Catch", action);
                         // https://www.jeffersonscher.com/res/resolution.php
                         // https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
                         var message = { functionName: action, frame: frame, parents: 0, xpaths: []};
