@@ -64,7 +64,7 @@ namespace OpenRPA
             cancelkey.Text = Config.local.cancelkey;
             InputDriver.Instance.onCancel += OnCancel;
             NotifyPropertyChanged("Toolbox");
-            lblVersion.Text = System.Reflection.Assembly.GetEntryAssembly().GetName().Version + ConfigurationManager.AppSettings["TmVersion"];
+            lblVersion.Text = ConfigurationManager.AppSettings["TmVersion"];
             Log.FunctionOutdent("MainWindow", "MainWindow");
             instance = this;
         }

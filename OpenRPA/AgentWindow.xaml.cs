@@ -46,7 +46,7 @@ namespace OpenRPA
             Console.SetError(new ConsoleDecorator(Console.Out, true));
             lvDataBinding.ItemsSource = Plugins.recordPlugins;
             NotifyPropertyChanged("Toolbox");
-            lblVersion.Text = System.Reflection.Assembly.GetEntryAssembly().GetName().Version + ConfigurationManager.AppSettings["TmVersion"];
+            lblVersion.Text = ConfigurationManager.AppSettings["TmVersion"];
         }
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
