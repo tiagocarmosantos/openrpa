@@ -12,7 +12,7 @@ namespace OpenRPA
 {
     public class Config : AppSettings<Config>
     {
-        public string wsurl = "wss://tm-auth.my-invenio.com/openflow/";
+        public string wsurl = "";
         public string username = "";
         public byte[] jwt;
         public byte[] password;
@@ -125,10 +125,7 @@ namespace OpenRPA
                         filename = System.IO.Path.Combine(Extensions.ProjectsDirectory, "settings.json");
                     }
                     _local = Load(filename);
-                    if(_local.wsurl == "wss://tm-auth.my-invenio.com/openflow/" || _local.wsurl == "wss://tm-auth.my-invenio.com/openflow")
-                    {
-                        _local.wsurl = "wss://tm-auth.my-invenio.com/openflow/";
-                    }
+                     
                 }
                 return _local;
             }
