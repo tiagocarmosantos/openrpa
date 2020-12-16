@@ -2640,7 +2640,7 @@ namespace OpenRPA
         }
         private void OnOpenChromePage(object _item)
         {
-            System.Diagnostics.Process.Start("chrome.exe", "https://chrome.google.com/webstore/detail/openrpa/hpnihnhlcnfejboocnckgchjdofeaphe");
+            System.Diagnostics.Process.Start("chrome.exe", "https://chrome.google.com/webstore/detail/openrpa/gmpnnjghibofefmnppkgkadiijlblhia");
         }
         private void OnOpenFirefoxPageCommand(object _item)
         {
@@ -2648,7 +2648,7 @@ namespace OpenRPA
         }
         private void OnOpenEdgePageCommand(object _item)
         {
-            System.Diagnostics.Process.Start("msedge.exe", "https://chrome.google.com/webstore/detail/openrpa/hpnihnhlcnfejboocnckgchjdofeaphe");
+            System.Diagnostics.Process.Start("msedge.exe", "https://chrome.google.com/webstore/detail/openrpa/gmpnnjghibofefmnppkgkadiijlblhia");
         }
         
         private int lastsapprocessid = -1;
