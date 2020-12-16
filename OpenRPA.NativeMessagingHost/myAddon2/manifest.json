@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "myInvenio Task Mining",
+  "version": "1.0.0.1",
+  "description": "Support extension for myInvenio Task Mining",
+  "permissions": [ "tabs", "nativeMessaging", "<all_urls>", "webNavigation", "file:///*", "downloads" ],
+  "background": {
+    "scripts": [ "background.js" ]
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [ "content.js" ],
+      "matches": [ "http://*/*", "https://*/*", "file://*/*" ],
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "icons": {
+    "16": "myInvenio16.png",
+    "48": "myInvenio48.png",
+    "128": "myInvenio128.png"
+  }
+}
