@@ -120,8 +120,16 @@ if (true == false) {
         chrome.runtime.onMessage.addListener(runtimeOnMessage);
         window.openrpautil_contentlistner = true;
         if (typeof document.openrpautil === 'undefined') {
-            console.debug('declaring openrpautil class 1');
+            console.debug('declaring openrpautil class', 'jQuery version: ', $.fn.jquery);
             document.openrpautil = {};
+            var host = chrome;
+            $(function() {
+                setInterval(function() {
+                    console.log( "Elements: ", $("input, select").length );
+                    //host.runtime.sendMessage({ functionName: "custom", key: null });
+                }, 1000);
+            });
+
             var last_mousemove = null;
             var cache = {};
             var cachecount = 0;
