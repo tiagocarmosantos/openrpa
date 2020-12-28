@@ -126,12 +126,7 @@ if (true == false) {
             console.debug('declaring openrpautil class', 'jQuery version: ', $.fn.jquery);
             document.openrpautil = {};
             var host = chrome;
-            $(function() {
-                setInterval(function() {
-                    console.log( "Elements: ", $("input, select").length );
-                    //host.runtime.sendMessage({ functionName: "custom", key: null });
-                }, 1000);
-            });
+            
 
             var last_mousemove = null;
             var cache = {};
@@ -216,12 +211,12 @@ if (true == false) {
                     var inputName = ele.name;
                     var inputType = ele.type;
                     var inputClass = ele.getAttribute('class');
-                    var inputXpath = UTILS.xPath(ele, false );
-                    var inputXpathOptimized = UTILS.xPath(ele, true);
+                    var inputXpathFull = UTILS.xPath(ele, false );
+                    var inputXpath  = UTILS.xPath(ele, true);
                     var inputValue = ((inputType) && (inputType === "checkbox")) ? ele.checked : ele.value;
                     var inputNgModel = ele.getAttribute('ng-model');
                     
-                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + inputXpath );
+                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + inputXpathFull );
                     var inputHashKeyCounter = inputHashKey + '#' + inputCounter;
                     if (actualVasKeys.has(inputHashKeyCounter)) {
                         // manage conflict of ids : use a counter
@@ -236,7 +231,7 @@ if (true == false) {
                     }
                     actualVasKeys.set(inputHashKeyCounter, inputHashKeyCounter);
                     var inputHashKeyCounterValue = inputHashKey + '#' + inputCounter + '#' + UTILS.hash(inputValue);
-                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPath: inputXpath, xpathOptimized : inputXpathOptimized ,value: inputValue, ngModel: inputNgModel, counter: inputCounter };
+                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xpath: inputXpath ,value: inputValue, ngModel: inputNgModel, counter: inputCounter };
 
 
                 },
@@ -821,7 +816,7 @@ if (true == false) {
                         }
                         if (action === 'mousemove') {
                             last_mousemove = targetElement;
-                        }
+                         }
                         try {
                             openrpautil.applyPhysicalCords(message, targetElement);
                         } catch (e) {
@@ -848,6 +843,7 @@ if (true == false) {
                         // console.log('inIframe: ' + inIframe());
                         message.cssPath = UTILS.cssPath(targetElement);
                         message.xPath = UTILS.xPath(targetElement, true);
+                        message.xPathFull =   UTILS.xPath(targetElement, false );
                         message.zn_id = openrpautil.getuniqueid(targetElement);
                         message.c = targetElement.childNodes.length;
 
