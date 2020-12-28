@@ -1,5 +1,8 @@
 document.openrpadebug = false;
 document.openrpauniquexpathids = ['ng-model', 'ng-reflect-name']; // aria-label
+
+ 
+
 function inIframe() {
     var result = true;
     try {
@@ -136,7 +139,28 @@ if (true == false) {
                 ping: function () {
                     return "pong";
                 },
+               
+               
                 init: function () {
+
+                    window.onfocus = function () {
+                        window.isTabActive = true;
+                    };
+                    window.onblur = function () {
+                        window.isTabActive = false;
+                        openrpautil.checkFieldsChange(true);
+                    };
+                    window.onbeforeunload = function (event) {
+                        openrpautil.checkFieldsChange(true);
+                    };
+                    setInterval(function () {
+                        if (window.isTabActive) {
+                            openrpautil.checkFieldsChange(false);
+                        }                       
+                    }, 3000);
+
+                   
+
                     if (document.URL.startsWith("https://docs.google.com/spreadsheets/d")) {
                         console.log("skip google docs *");
                         return;
@@ -176,6 +200,84 @@ if (true == false) {
                         }
                     }, true);
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
+                },
+                getElementTrackObject: function (ele, actualVasKeys ) {
+                    var inputCounter = 0;
+                    
+                    var inputId = ele.id;
+                    var inputName = ele.name;
+                    var inputType = ele.type;
+                    var inputClass = ele.getAttribute('class');
+                    var inputXpath = UTILS.xPath(ele, false );
+                    var inputXpathOptimized = UTILS.xPath(ele, true);
+                    var inputValue = ((inputType) && (inputType === "checkbox")) ? ele.checked : ele.value;
+                    var inputNgModel = ele.getAttribute('ng-model');
+                    
+                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + inputXpath );
+                    var inputHashKeyCounter = inputHashKey + '#' + inputCounter;
+                    if (actualVasKeys.has(inputHashKeyCounter)) {
+                        // manage conflict of ids : use a counter
+                        for (let conflictKey of actualVasKeys.keys()) {
+                            if (conflictKey.split('#')[0] === inputHashKey.toString()) {// the key has match : find the greater counter
+                                let conflictCounter = parseInt(conflictKey.split('#')[1]);
+                                inputCounter = conflictCounter > inputCounter ? conflictCounter : inputCounter;
+                            }                            
+                        }
+                        inputCounter = inputCounter + 1; // increase form gratest value
+                        inputHashKeyCounter = inputHashKey + '#' + inputCounter;
+                    }
+                    actualVasKeys.set(inputHashKeyCounter, inputHashKeyCounter);
+                    var inputHashKeyCounterValue = inputHashKey + '#' + inputCounter + '#' + UTILS.hash(inputValue);
+                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPath: inputXpath, xpathOptimized : inputXpathOptimized ,value: inputValue, ngModel: inputNgModel, counter: inputCounter };
+
+
+                },
+                checkFieldsChange: function (sendCurrentPageVals) {
+                    var t0 = performance.now();
+
+                    // key = hashKey#counter#hashValue
+                    let actualVas = new Map();
+                    // key = hashKey#counter need for managing fields with same key, so need to increase the counter
+                    let actualVasKeys = new Map();
+                    var actualVasMatch = 0;
+                    var inputs = UTILS.getElementsByTagNames(['input', 'select','textarea']);  
+                    for (index = 0; index < inputs.length; ++index) {
+
+                        let  trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
+                        actualVas.set(trackObject.hashId, trackObject);
+                        if (window.pageVals) {
+                            if (window.pageVals.has(trackObject.hashId)) {
+                                actualVasMatch = actualVasMatch + 1;
+                            }
+                            // else { console.log('not match : ' + '- ' + trackObject.hashId + '  object   : ' + trackObject.inputId + trackObject.name + trackObject.type + trackObject.xPath + trackObject.value );        }
+                        }
+                    }
+                    
+                    var minDelta = (window.pageVals) ? window.pageVals.size * 0.2 : -1; // minimum number of values changed to detect a major event  is 20% 
+                    if ((sendCurrentPageVals) || // force for window onblur or onunload
+                        (minDelta === -1) || // first run
+                        (Math.abs(window.pageVals.size - actualVas.size) >= minDelta) ||  // major change of number  of fields 
+                        (actualVas.size - actualVasMatch >= minDelta)) { // major change of values  of fields 
+                        if (sendCurrentPageVals) {
+                            openrpautil.raiseFieldsChangeEvent(actualVas); // send the field of current page (for example on blur of page)
+                        } else {
+                            openrpautil.raiseFieldsChangeEvent(window.pageVals);  // send the previus field (for example a major event has already done)
+                        } 
+                    }
+
+                    window.pageVals = null; // reset the page attributes
+                    window.pageVals = actualVas;
+                    var t1 = performance.now();
+                    console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds.")
+
+                },                
+                raiseFieldsChangeEvent(fields) {
+                    if (fields) {
+                        console.log('dump of relevant data: number of fields ' + fields.size ); 
+                        chrome.runtime.sendMessage({ functionName: "dumprelevantdata", result: JSON.stringify([...fields.values()])  , parents: 0, xpaths: [] });
+                    }
+                   
+
                 },
                 findform: function (element) {
                     try {
@@ -1446,6 +1548,32 @@ if (true == false) {
                     return this.value;
                 }
             };
+
+            UTILS.hash = function (str) {
+
+                var hash = 0, i, chr;
+                for (i = 0; i < str.length; i++) {
+                    chr = str.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + chr;
+                    hash |= 0; // Convert to 32bit integer
+                }
+                return hash;
+                    
+            }
+ 
+            
+            UTILS.getElementsByTagNames = function (tags) {
+                var elements = [];
+
+                for (var i = 0, n = tags.length; i < n; i++) {
+                    // Concatenate the array created from a HTMLCollection object
+                    elements = elements.concat(Array.prototype.slice.call(document.getElementsByTagName(tags[i])));
+                }
+
+                return elements;
+            };
+           
+            
 
         }
     }
