@@ -120,8 +120,10 @@ if (true == false) {
         chrome.runtime.onMessage.addListener(runtimeOnMessage);
         window.openrpautil_contentlistner = true;
         if (typeof document.openrpautil === 'undefined') {
-            console.debug('declaring openrpautil class 1');
             document.openrpautil = {};
+            var host = chrome;
+
+
             var last_mousemove = null;
             var cache = {};
             var cachecount = 0;
@@ -136,7 +138,28 @@ if (true == false) {
                 ping: function () {
                     return "pong";
                 },
+
+
                 init: function () {
+
+                    window.onfocus = function () {
+                        window.isTabActive = true;
+                    };
+                    window.onblur = function () {
+                        window.isTabActive = false;
+                        openrpautil.checkFieldsChange(true);
+                    };
+                    window.onbeforeunload = function (event) {
+                        openrpautil.checkFieldsChange(true);
+                    };
+                    setInterval(function () {
+                        if (window.isTabActive) {
+                            openrpautil.checkFieldsChange(false);
+                        }
+                    }, 3000);
+
+
+
                     if (document.URL.startsWith("https://docs.google.com/spreadsheets/d")) {
                         console.log("skip google docs *");
                         return;
@@ -144,18 +167,16 @@ if (true == false) {
                     document.addEventListener('mousemove', function (e) { openrpautil.pushEvent('mousemove', e); }, true);
                     if (inIframe()) return;
                     document.addEventListener('click', function (e) { openrpautil.pushEvent('click', e); }, true);
-                    document.addEventListener('keydown', function(e) {
+                    document.addEventListener('keydown', function (e) {
 
                         if (e.keyCode === ctrlKey || e.keyCode === cmdKey) ctrlDown = true;
-                        
-                        if (ctrlDown && (e.keyCode === cKey)) 
-                        {
+
+                        if (ctrlDown && (e.keyCode === cKey)) {
                             openrpautil.pushEvent('ctrlc', e);
                             return;
                         }
-                        
-                        if (ctrlDown && (e.keyCode === vKey)) 
-                        {
+
+                        if (ctrlDown && (e.keyCode === vKey)) {
                             openrpautil.pushEvent('ctrlv', e);
                             return;
                         }
@@ -163,10 +184,9 @@ if (true == false) {
                         openrpautil.pushEvent('keydown', e);
                     }, true);
                     document.addEventListener('keypress', function (e) { openrpautil.pushEvent('keyup', e); }, true);
-                    document.addEventListener('keyup', function(e) {
+                    document.addEventListener('keyup', function (e) {
                         if (e.keyCode === ctrlKey || e.keyCode === cmdKey) ctrlDown = false;
-                        if (e.keyCode === KEYCODE_TAB) 
-                        {
+                        if (e.keyCode === KEYCODE_TAB) {
                             openrpautil.pushEvent('tab', e);
                         }
                     }, true);
@@ -176,6 +196,84 @@ if (true == false) {
                         }
                     }, true);
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
+                },
+                getElementTrackObject: function (ele, actualVasKeys) {
+                    var inputCounter = 0;
+
+                    var inputId = ele.id;
+                    var inputName = ele.name;
+                    var inputType = ele.type;
+                    var inputClass = ele.getAttribute('class');
+                    var inputXpathFull = UTILS.xPath(ele, false);
+                    var inputXpath = UTILS.xPath(ele, true);
+                    var inputValue = ((inputType) && (inputType === "checkbox")) ? ele.checked : ele.value;
+                    var inputNgModel = ele.getAttribute('ng-model');
+
+                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + inputXpathFull);
+                    var inputHashKeyCounter = inputHashKey + '#' + inputCounter;
+                    if (actualVasKeys.has(inputHashKeyCounter)) {
+                        // manage conflict of ids : use a counter
+                        for (let conflictKey of actualVasKeys.keys()) {
+                            if (conflictKey.split('#')[0] === inputHashKey.toString()) {// the key has match : find the greater counter
+                                let conflictCounter = parseInt(conflictKey.split('#')[1]);
+                                inputCounter = conflictCounter > inputCounter ? conflictCounter : inputCounter;
+                            }
+                        }
+                        inputCounter = inputCounter + 1; // increase form gratest value
+                        inputHashKeyCounter = inputHashKey + '#' + inputCounter;
+                    }
+                    actualVasKeys.set(inputHashKeyCounter, inputHashKeyCounter);
+                    var inputHashKeyCounterValue = inputHashKey + '#' + inputCounter + '#' + UTILS.hash(inputValue);
+                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xpath: inputXpath, value: inputValue, ngModel: inputNgModel, counter: inputCounter };
+
+
+                },
+                checkFieldsChange: function (sendCurrentPageVals) {
+                    var t0 = performance.now();
+
+                    // key = hashKey#counter#hashValue
+                    let actualVas = new Map();
+                    // key = hashKey#counter need for managing fields with same key, so need to increase the counter
+                    let actualVasKeys = new Map();
+                    var actualVasMatch = 0;
+                    var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea']);
+                    for (index = 0; index < inputs.length; ++index) {
+
+                        let trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
+                        actualVas.set(trackObject.hashId, trackObject);
+                        if (window.pageVals) {
+                            if (window.pageVals.has(trackObject.hashId)) {
+                                actualVasMatch = actualVasMatch + 1;
+                            }
+                            // else { console.log('not match : ' + '- ' + trackObject.hashId + '  object   : ' + trackObject.inputId + trackObject.name + trackObject.type + trackObject.xPath + trackObject.value );        }
+                        }
+                    }
+
+                    var minDelta = (window.pageVals) ? window.pageVals.size * 0.2 : -1; // minimum number of values changed to detect a major event  is 20% 
+                    if ((sendCurrentPageVals) || // force for window onblur or onunload
+                        (minDelta === -1) || // first run
+                        (Math.abs(window.pageVals.size - actualVas.size) >= minDelta) ||  // major change of number  of fields 
+                        (actualVas.size - actualVasMatch >= minDelta)) { // major change of values  of fields 
+                        if (sendCurrentPageVals) {
+                            openrpautil.raiseFieldsChangeEvent(actualVas); // send the field of current page (for example on blur of page)
+                        } else {
+                            openrpautil.raiseFieldsChangeEvent(window.pageVals);  // send the previus field (for example a major event has already done)
+                        }
+                    }
+
+                    window.pageVals = null; // reset the page attributes
+                    window.pageVals = actualVas;
+                    var t1 = performance.now();
+                    console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds.")
+
+                },
+                raiseFieldsChangeEvent(fields) {
+                    if (fields) {
+                        console.log('dump of relevant data: number of fields ' + fields.size);
+                        chrome.runtime.sendMessage({ functionName: "dumprelevantdata", result: JSON.stringify([...fields.values()]), parents: 0, xpaths: [] });
+                    }
+
+
                 },
                 findform: function (element) {
                     try {
@@ -606,9 +704,9 @@ if (true == false) {
                             message.uix += 7;
                             message.uiy -= 7;
                         }
-                    //} else {
-                    //    message.uix += 1;
-                    //    message.uiy += 1;
+                        //} else {
+                        //    message.uix += 1;
+                        //    message.uiy += 1;
                     }
                 },
                 // https://stackoverflow.com/questions/53056796/getboundingclientrect-from-within-iframe
@@ -654,7 +752,7 @@ if (true == false) {
                                             } else {
                                                 positions.push({ x: 0, y: 0 });
                                             }
-                                            
+
                                         }
                                     } catch (e) {
                                         // console.debug(e);
@@ -670,7 +768,7 @@ if (true == false) {
                                 break;
                             }
                     }
-                    
+
                     var result = positions.reduce((accumulator, currentValue) => {
                         return {
                             x: (accumulator.x + currentValue.x) | 0,
@@ -702,7 +800,7 @@ if (true == false) {
                     else {
                         // https://www.jeffersonscher.com/res/resolution.php
                         // https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
-                        var message = { functionName: action, frame: frame, parents: 0, xpaths: []};
+                        var message = { functionName: action, frame: frame, parents: 0, xpaths: [] };
                         var targetElement = null;
                         targetElement = event.target || event.srcElement;
                         if (targetElement == null) {
@@ -738,6 +836,7 @@ if (true == false) {
                         // console.log('inIframe: ' + inIframe());
                         message.cssPath = UTILS.cssPath(targetElement);
                         message.xPath = UTILS.xPath(targetElement, true);
+                        message.xPathFull = UTILS.xPath(targetElement, false);
                         message.zn_id = openrpautil.getuniqueid(targetElement);
                         message.c = targetElement.childNodes.length;
 
@@ -784,7 +883,7 @@ if (true == false) {
                     delete message.script;
                     var test = JSON.parse(JSON.stringify(message));
                     if (document.openrpadebug) console.log(test);
-                    return test;                    
+                    return test;
                 },
                 fullPath: function (el) {
                     var names = [];
@@ -997,7 +1096,7 @@ if (true == false) {
                             if (element.options[i].selected) {
                                 selectedvalues.push(element.options[i].value);
                             }
-                        } 
+                        }
                         treeObject["values"] = selectedvalues;
                     }
 
@@ -1007,19 +1106,19 @@ if (true == false) {
                 },
                 getAdditions: function (elm) {
                     var additions = {};
-                    
+
                     try {
                         var cells = getTableRowCellsFrom(elm);
-                        
+
                         if (cells.length > 0) {
                             additions["tableRowCells"] = cells;
                         }
-                        
+
                         return additions;
-                    } 
+                    }
                     catch (e) {
                         //window.console.error(e);
-                        return { };
+                        return {};
                     }
 
                     function getTableRowCellsFrom(element) {
@@ -1235,7 +1334,7 @@ if (true == false) {
                     case Node.ELEMENT_NODE:
                         ownValue = node.localName;
                         if (optimized) {
-                            
+
                             for (var i = 0; i < document.openrpauniquexpathids.length; i++) {
                                 var id = document.openrpauniquexpathids[i].toLowerCase();
                                 if (node.getAttribute(id))
@@ -1447,7 +1546,32 @@ if (true == false) {
                 }
             };
 
+            UTILS.hash = function (str) {
+
+                var hash = 0, i, chr;
+                for (i = 0; i < str.length; i++) {
+                    chr = str.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + chr;
+                    hash |= 0; // Convert to 32bit integer
+                }
+                return hash;
+
+            }
+
+
+            UTILS.getElementsByTagNames = function (tags) {
+                var elements = [];
+
+                for (var i = 0, n = tags.length; i < n; i++) {
+                    // Concatenate the array created from a HTMLCollection object
+                    elements = elements.concat(Array.prototype.slice.call(document.getElementsByTagName(tags[i])));
+                }
+
+                return elements;
+            };
+
+
+
         }
     }
 }
-

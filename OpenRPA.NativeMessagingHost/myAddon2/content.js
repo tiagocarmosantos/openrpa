@@ -1,8 +1,5 @@
 document.openrpadebug = false;
 document.openrpauniquexpathids = ['ng-model', 'ng-reflect-name']; // aria-label
-
- 
-
 function inIframe() {
     var result = true;
     try {
@@ -123,7 +120,6 @@ if (true == false) {
         chrome.runtime.onMessage.addListener(runtimeOnMessage);
         window.openrpautil_contentlistner = true;
         if (typeof document.openrpautil === 'undefined') {
-            console.debug('declaring openrpautil class', 'jQuery version: ', $.fn.jquery);
             document.openrpautil = {};
             var host = chrome;
             

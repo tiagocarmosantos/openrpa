@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "all_frames": true,
-      "js": [ "jquery.js", "content.js" ],
+      "js": [   "content.js" ],
       "matches": [ "http://*/*", "https://*/*", "file://*/*" ],
       "run_at": "document_start"
     }
