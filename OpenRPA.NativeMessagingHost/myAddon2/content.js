@@ -271,12 +271,30 @@ if (true == false) {
 
                 },                
                 raiseFieldsChangeEvent(fields) {
-                    if (fields) {
-                        console.log('dump of relevant data: number of fields ' + fields.size ); 
-                        chrome.runtime.sendMessage({ functionName: "dumprelevantdata", result: JSON.stringify([...fields.values()])  , parents: 0, xpaths: [] });
-                    }
-                   
 
+                    if (!fields) return;
+                    
+                    try {
+                        var arrOfFields = Array.from(fields.values()).map(function(obj) {
+                            return {
+                                id : obj.id,
+                                name : obj.name,
+                                "class" : obj.class,
+                                type : obj.type,
+                                xPathFull : obj.xPathFull,
+                                xpath: obj.xpath,
+                                value: obj.value
+                            }
+                        });
+
+                        console.log('dumprelevantdata', arrOfFields );
+                        
+                        host.runtime.sendMessage({ functionName: "dumprelevantdata", result: JSON.stringify(arrOfFields) });
+
+                    } catch (e) 
+                    {
+                        console.error(e);
+                    }
                 },
                 findform: function (element) {
                     try {
