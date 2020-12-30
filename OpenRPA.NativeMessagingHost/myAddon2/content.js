@@ -1,5 +1,7 @@
 document.openrpadebug = false;
 document.openrpauniquexpathids = ['ng-model', 'ng-reflect-name']; // aria-label
+ 
+
 function inIframe() {
     var result = true;
     try {
@@ -122,8 +124,8 @@ if (true == false) {
         if (typeof document.openrpautil === 'undefined') {
             document.openrpautil = {};
             var host = chrome;
-            
-
+            var isTabFocused = true ; 
+            var intervalId;
             var last_mousemove = null;
             var cache = {};
             var cachecount = 0;
@@ -141,24 +143,7 @@ if (true == false) {
                
                
                 init: function () {
-
-                    window.onfocus = function () {
-                        window.isTabActive = true;
-                    };
-                    window.onblur = function () {
-                        window.isTabActive = false;
-                        openrpautil.checkFieldsChange(true);
-                    };
-                    window.onbeforeunload = function (event) {
-                        openrpautil.checkFieldsChange(true);
-                    };
-                    setInterval(function () {
-                        if (window.isTabActive) {
-                            openrpautil.checkFieldsChange(false);
-                        }                       
-                    }, 3000);
-
-                   
+ 
 
                     if (document.URL.startsWith("https://docs.google.com/spreadsheets/d")) {
                         console.log("skip google docs *");
@@ -166,6 +151,38 @@ if (true == false) {
                     }
                     document.addEventListener('mousemove', function (e) { openrpautil.pushEvent('mousemove', e); }, true);
                     if (inIframe()) return;
+
+
+                    window.onload = function () {                        
+                            intervalId = setInterval(function () {
+                                try {
+                                    if (isTabFocused) {
+                                        openrpautil.checkFieldsChange(false);
+                                    }
+                                  } catch (e) {
+                                    console.error(e);
+                                }
+                            }, 3000);
+                      };
+
+                    window.onfocus = function () {
+                        isTabFocused = true;
+                     };
+
+
+                    window.onblur = function () {
+                        isTabFocused = false;
+                        openrpautil.checkFieldsChange(true);
+                    };
+
+                    window.onbeforeunload = function (event) {
+                        openrpautil.checkFieldsChange(true);
+                        if (intervalId) {
+                            clearInterval(intervalId);
+                        }
+                    };
+
+
                     document.addEventListener('click', function (e) { openrpautil.pushEvent('click', e); }, true);
                     document.addEventListener('keydown', function(e) {
 
@@ -200,16 +217,41 @@ if (true == false) {
                     }, true);
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
                 },
+                getElementTrackObjectValue: function (ele, inputIsText) {
+
+                    if ((!inputIsText  ) &&
+                        ((ele.tagName === 'INPUT') || (ele.tagName === 'SELECT') || (ele.tagName === 'TEXTAREA')) &&
+                        (ele.type) ) {
+                        return ele.type === 'checkbox' ? ele.checked : ele.value;
+                    }
+
+                    if ((inputIsText) && 
+                        ((!ele.children) || (ele.children.length === 0)) &&
+                        (ele.innerText.length <= 50)) {
+
+                        return ele.innerText;
+                    }                    
+
+                    return null;
+                },
+
                 getElementTrackObject: function (ele, actualVasKeys ) {
-                    var inputCounter = 0;
+
+                    var inputTagName = ele.tagName;
+                    var inputIsText = (inputTagName === 'A') || (inputTagName === 'DIV') || (inputTagName === 'SPAN');
+
+                    var inputValue = openrpautil.getElementTrackObjectValue(ele, inputIsText);
+                    if ( inputValue === null ) {
+                        return null;
+                    }
                     
+                    var inputCounter = 0;                    
                     var inputId = ele.id;
                     var inputName = ele.name;
                     var inputType = ele.type;
                     var inputClass = ele.getAttribute('class');
                     var inputXpathFull = UTILS.xPath(ele, false );
-                    var inputXpath  = UTILS.xPath(ele, true);
-                    var inputValue = ((inputType) && (inputType === "checkbox")) ? ele.checked : ele.value;
+                    var inputXpath = (inputIsText) ? '' : UTILS.xPath(ele, true);                    
                     var inputNgModel = ele.getAttribute('ng-model');
                     
                     var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + inputXpathFull );
@@ -239,17 +281,21 @@ if (true == false) {
                     // key = hashKey#counter need for managing fields with same key, so need to increase the counter
                     let actualVasKeys = new Map();
                     var actualVasMatch = 0;
-                    var inputs = UTILS.getElementsByTagNames(['input', 'select','textarea']);  
+                    var inputs = UTILS.getElementsByTagNames(['input', 'select','textarea' ,'span', 'a' , 'div']);  
+                   // var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea' ]);  
                     for (index = 0; index < inputs.length; ++index) {
 
-                        let  trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
-                        actualVas.set(trackObject.hashId, trackObject);
-                        if (window.pageVals) {
-                            if (window.pageVals.has(trackObject.hashId)) {
-                                actualVasMatch = actualVasMatch + 1;
+                        let trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
+                        if (trackObject) {
+                            actualVas.set(trackObject.hashId, trackObject);
+                            if (window.pageVals) {
+                                if (window.pageVals.has(trackObject.hashId)) {
+                                    actualVasMatch = actualVasMatch + 1;
+                                }
+                                // else { console.log('not match : ' + '- ' + trackObject.hashId + '  object   : ' + trackObject.inputId + trackObject.name + trackObject.type + trackObject.xPath + trackObject.value );        }
                             }
-                            // else { console.log('not match : ' + '- ' + trackObject.hashId + '  object   : ' + trackObject.inputId + trackObject.name + trackObject.type + trackObject.xPath + trackObject.value );        }
                         }
+                        
                     }
                     
                     var minDelta = (window.pageVals) ? window.pageVals.size * 0.2 : -1; // minimum number of values changed to detect a major event  is 20% 
@@ -287,9 +333,9 @@ if (true == false) {
                             }
                         });
 
-                        console.log('dumprelevantdata', arrOfFields );
+                        console.log('dumprelevantdata: ' + arrOfFields.length );
                         
-                        host.runtime.sendMessage({ functionName: "dumprelevantdata", result: JSON.stringify(arrOfFields) });
+                        host.runtime.sendMessage({   functionName: "dumprelevantdata", result: JSON.stringify(arrOfFields) });
 
                     } catch (e) 
                     {
