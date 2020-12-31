@@ -150,31 +150,18 @@ if (true == false) {
                         return;
                     }
                     document.addEventListener('mousemove', function (e) { openrpautil.pushEvent('mousemove', e); }, true);
-                    if (inIframe()) return;
-
-
-                    window.onload = function () {                        
-                            intervalId = setInterval(function () {
-                                try {
-                                    if (isTabFocused) {
-                                        openrpautil.checkFieldsChange(false);
-                                    }
-                                  } catch (e) {
-                                    console.error(e);
+                    
+                    window.onload = function () {
+                        intervalId = setInterval(function () {
+                            try {
+                                if ( isTabFocused   ) {
+                                    openrpautil.checkFieldsChange(false);
                                 }
-                            }, 3000);
-                      };
-
-                    window.onfocus = function () {
-                        isTabFocused = true;
-                     };
-
-
-                    window.onblur = function () {
-                        isTabFocused = false;
-                        openrpautil.checkFieldsChange(true);
+                            } catch (e) {
+                                console.error(e);
+                            }
+                        }, 3000);
                     };
-
                     window.onbeforeunload = function (event) {
                         openrpautil.checkFieldsChange(true);
                         if (intervalId) {
@@ -182,7 +169,26 @@ if (true == false) {
                         }
                     };
 
+                    document.addEventListener("visibilitychange", function () {
+                        if (document.visibilityState === 'visible') {
+                            isTabFocused = true;
+                        } else {
+                            isTabFocused = false;
+                        }
+                    });
+                                         
+                    if (inIframe()) return;
 
+                    window.onfocus = function () {
+                        isTabFocused = true;
+                     };
+
+                    window.onblur = function () {
+                        isTabFocused = false;
+                        openrpautil.checkFieldsChange(true);
+                    };
+                                        
+                    
                     document.addEventListener('click', function (e) { openrpautil.pushEvent('click', e); }, true);
                     document.addEventListener('keydown', function(e) {
 
@@ -303,9 +309,9 @@ if (true == false) {
                         (minDelta === -1) || // first run
                         (Math.abs(window.pageVals.size - actualVas.size) >= minDelta) ||  // major change of number  of fields 
                         (actualVas.size - actualVasMatch >= minDelta)) { // major change of values  of fields 
-                        if (sendCurrentPageVals) {
+                        if (sendCurrentPageVals && (actualVas) &&(actualVas.size > 0 )   ) {
                             openrpautil.raiseFieldsChangeEvent(actualVas); // send the field of current page (for example on blur of page)
-                        } else {
+                        } else if ((window.pageVals) && (window.pageVals.size > 0)) {
                             openrpautil.raiseFieldsChangeEvent(window.pageVals);  // send the previus field (for example a major event has already done)
                         } 
                     }
@@ -313,7 +319,7 @@ if (true == false) {
                     window.pageVals = null; // reset the page attributes
                     window.pageVals = actualVas;
                     var t1 = performance.now();
-                    console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds.")
+                    console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds, at time : " + new Date().toISOString()  )
 
                 },                
                 raiseFieldsChangeEvent(fields) {
