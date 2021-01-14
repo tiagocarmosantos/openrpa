@@ -256,11 +256,11 @@ if (true == false) {
                     var inputName = ele.name;
                     var inputType = ele.type;
                     var inputClass = ele.getAttribute('class');
-                    var inputXpathFull = UTILS.xPath(ele, false );
-                    var inputXpath = (inputIsText) ? '' : UTILS.xPath(ele, true);                    
+                    var inputXpathFull =   (inputIsText) ? null : UTILS.xPath(ele, false );
+                    var inputXpath =  UTILS.xPath(ele, true);                    
                     var inputNgModel = ele.getAttribute('ng-model');
-                    
-                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + inputXpathFull );
+                    var uniqueXpath = (inputIsText) ? inputXpath : inputXpathFull;
+                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + uniqueXpath );
                     var inputHashKeyCounter = inputHashKey + '#' + inputCounter;
                     if (actualVasKeys.has(inputHashKeyCounter)) {
                         // manage conflict of ids : use a counter
@@ -275,7 +275,7 @@ if (true == false) {
                     }
                     actualVasKeys.set(inputHashKeyCounter, inputHashKeyCounter);
                     var inputHashKeyCounterValue = inputHashKey + '#' + inputCounter + '#' + UTILS.hash(inputValue);
-                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xpath: inputXpath ,value: inputValue, ngModel: inputNgModel, counter: inputCounter };
+                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xPath: inputXpath ,value: inputValue, ngModel: inputNgModel, counter: inputCounter };
 
 
                 },
@@ -334,7 +334,7 @@ if (true == false) {
                                 "class" : obj.class,
                                 type : obj.type,
                                 xPathFull : obj.xPathFull,
-                                xpath: obj.xpath,
+                                xPath: obj.xPath,
                                 value: obj.value
                             }
                         });
@@ -909,7 +909,6 @@ if (true == false) {
                         // console.log('inIframe: ' + inIframe());
                         message.cssPath = UTILS.cssPath(targetElement);
                         message.xPath = UTILS.xPath(targetElement, true);
-                        message.xPathFull =   UTILS.xPath(targetElement, false );
                         message.zn_id = openrpautil.getuniqueid(targetElement);
                         message.c = targetElement.childNodes.length;
 
@@ -1076,6 +1075,7 @@ if (true == false) {
                         object["tagName"] = element.tagName;
                         if (ident === 0) {
                             object["xPath"] = UTILS.xPath(element, true);
+                            object["xPathFull"] = ((element.tagName === 'A') || (element.tagName === 'DIV') || (element.tagName === 'SPAN')) ? null : UTILS.xPath(element, false);
                             object["cssPath"] = UTILS.cssPath(element);
                             if (object["tagName"] !== 'STYLE' && object["tagName"] !== 'SCRIPT' && object["tagName"] !== 'HEAD' && object["tagName"] !== 'HTML') {
                                 if (element.innerText !== undefined && element.innerText !== null && element.innerText !== '') {
