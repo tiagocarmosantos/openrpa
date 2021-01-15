@@ -1541,6 +1541,13 @@ Union(modelService.Find(modelService.Root, typeof(System.Activities.Debugger.Sta
                 {
                     if (model.ItemType.BaseType == typeof(Variable))
                     {
+                        if (e.ModelChangeInfo.PropertyName == "Default" && "BusinessActivity_Name".Equals(e.PropertiesChanged.ElementAt<ModelProperty>(0).Parent.GetCurrentValue().PropertyValue("Name")))
+                        {
+                            //TODO Rename workflow
+                            this.RenameWorkflow(e.ModelChangeInfo.Value.ToString());
+                            return;
+                        }
+
                         if (e.ModelChangeInfo.PropertyName != "Name") return;
 #pragma warning disable 0618
                         ModelProperty property = e.PropertiesChanged.ElementAt<ModelProperty>(0);
@@ -2015,26 +2022,43 @@ Union(modelService.Find(modelService.Root, typeof(System.Activities.Debugger.Sta
             {
                 var modelItem = wfDesigner.Context.Services.GetService<ModelService>().Root;
                 modelItem.Properties["Name"].SetValue(name.Replace("_", " "));
-
-                ModelItem mi = modelItem.Properties["Implementation"].Value;
-                Sequence mainSequence = mi.GetCurrentValue() as Sequence;
-                if (mainSequence != null)
-                {
-                    Variable businessActivityNameVariable = mainSequence.Variables.FirstOrDefault(v => "BusinessActivity_Name".Equals(v.Name));
-                    if (businessActivityNameVariable != null)
-                    {
-                        mainSequence.Variables.Remove(businessActivityNameVariable);
-                    }
-
-                    Variable<string> BusinessActivityNameVariable = new Variable<string>("BusinessActivity_Name");
-                    BusinessActivityNameVariable.Default = name;
-                    mainSequence.Variables.Insert(0, BusinessActivityNameVariable);
-                }
+                UpdateBusinessActivityVariable(wfDesigner, name);
 
                 editingScope.Complete();
             }
             wfDesigner.Flush();
             return wfDesigner.Text;
+        }
+
+        public static void UpdateBusinessActivityVariable(WorkflowDesigner wfDesigner, string newWorkflowName)
+        {
+            ModelService modelService = wfDesigner.Context.Services.GetService<ModelService>();
+            using (ModelEditingScope editingScope = modelService.Root.BeginEdit("Implementation"))
+            {
+                var modelItem = wfDesigner.Context.Services.GetService<ModelService>().Root;
+                ModelItem mi = modelItem.Properties["Implementation"].Value;
+                Sequence mainSequence = mi.GetCurrentValue() as Sequence;
+                if (mainSequence != null)
+                {
+                    Variable businessActivityNameVariable = mainSequence.Variables.FirstOrDefault(v => "BusinessActivity_Name".Equals(v.Name));
+                    bool isBusinessActivityNameVariableToUpdate = false;
+                    if (businessActivityNameVariable != null && !newWorkflowName.Equals(businessActivityNameVariable.Default.ToString()))
+                    {
+                        mainSequence.Variables.Remove(businessActivityNameVariable);
+                        isBusinessActivityNameVariableToUpdate = true;
+                    }
+
+                    if (isBusinessActivityNameVariableToUpdate)
+                    {
+                        Variable<string> BusinessActivityNameVariable = new Variable<string>("BusinessActivity_Name");
+                        BusinessActivityNameVariable.Default = newWorkflowName;
+                        mainSequence.Variables.Insert(0, BusinessActivityNameVariable);
+                    }
+
+                }
+                editingScope.Complete();
+            }
+
         }
 
     }

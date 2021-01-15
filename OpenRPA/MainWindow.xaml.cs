@@ -19,6 +19,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using OpenRPA.Views;
 using Xceed.Wpf.AvalonDock.Layout;
 
 namespace OpenRPA
@@ -1980,6 +1981,12 @@ namespace OpenRPA
                 try
                 {
                     designer.tab.Title = (designer.HasChanged ? designer.Workflow.name + "*" : designer.Workflow.name);
+
+                    if(!designer.HasChanged)
+                    {
+                        WFDesigner.UpdateBusinessActivityVariable(designer.WorkflowDesigner, designer.Workflow.name);
+                    }
+
                     CommandManager.InvalidateRequerySuggested();
                 }
                 catch (Exception ex)
@@ -2407,22 +2414,7 @@ namespace OpenRPA
                         string Name = Microsoft.VisualBasic.Interaction.InputBox("Name?", "New name", designer.Workflow.name);
                         if (string.IsNullOrEmpty(Name) || designer.Workflow.name == Name) return;
                         designer.RenameWorkflow(Name);
-
-                        var modelItem = designer.WorkflowDesigner.Context.Services.GetService<ModelService>().Root;
-                        ModelItem mi = modelItem.Properties["Implementation"].Value;
-                        Sequence mainSequence = mi.GetCurrentValue() as Sequence;
-                        if(mainSequence != null)
-                        {
-                            Variable businessActivityNameVariable = mainSequence.Variables.FirstOrDefault(v => "BusinessActivity_Name".Equals(v.Name));
-                            if (businessActivityNameVariable != null)
-                            {
-                                mainSequence.Variables.Remove(businessActivityNameVariable);
-                            }
-
-                            Variable<string> BusinessActivityNameVariable = new Variable<string>("BusinessActivity_Name");
-                            BusinessActivityNameVariable.Default = Name;
-                            mainSequence.Variables.Insert(0, BusinessActivityNameVariable);
-                        }
+                        WFDesigner.UpdateBusinessActivityVariable(designer.WorkflowDesigner, Name);
                     }
                     else
                     {
