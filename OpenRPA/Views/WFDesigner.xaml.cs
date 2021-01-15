@@ -301,12 +301,39 @@ namespace OpenRPA.Views
             }
             else
             {
-                Activity wf = new System.Activities.Statements.Sequence { };
+                Variable<string> BusinessActivityNameVar = new Variable<string>
+                {
+                    Name = "BusinessActivity_Name",
+                    Default = Activity<string>.FromValue(workflow.name)
+
+                };
+                Variable<string> ProcessIdVar = new Variable<string>
+                {
+                    Name = "Process_ID"
+                };
+                Variable<string> StartTaskVar = new Variable<string>
+                {
+                    Name = "Start_Task"
+                };
+                Variable<string> EndTaskVar = new Variable<string>
+                {
+                    Name = "End_Task"
+                };
+                Variable<string> MainTaskVar = new Variable<string>
+                {
+                    Name = "Main_Task"
+                };
+
+                Activity wf = new System.Activities.Statements.Sequence
+                {
+                    Variables = { BusinessActivityNameVar, ProcessIdVar, StartTaskVar, EndTaskVar, MainTaskVar }
+                };
                 var ab = new ActivityBuilder
                 {
                     Name = Workflow.name.Replace(" ", "_"),
                     Implementation = wf
                 };
+
                 WFHelper.AddVBNamespaceSettings(ab, typeof(Action),
                     typeof(System.Xml.XmlNode),
                     typeof(OpenRPA.Workflow),

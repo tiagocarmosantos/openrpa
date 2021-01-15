@@ -3,29 +3,22 @@ using Newtonsoft.Json.Linq;
 using OpenRPA.Input;
 using OpenRPA.Interfaces;
 using OpenRPA.Interfaces.entity;
-using OpenRPA.Net;
 using System;
 using System.Activities;
 using System.Activities.Core.Presentation;
-using System.Activities.Expressions;
+using System.Activities.Presentation.Model;
+using System.Activities.Presentation.Services;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Xceed.Wpf.AvalonDock.Layout;
 
 namespace OpenRPA
@@ -2414,6 +2407,22 @@ namespace OpenRPA
                         string Name = Microsoft.VisualBasic.Interaction.InputBox("Name?", "New name", designer.Workflow.name);
                         if (string.IsNullOrEmpty(Name) || designer.Workflow.name == Name) return;
                         designer.RenameWorkflow(Name);
+
+                        var modelItem = designer.WorkflowDesigner.Context.Services.GetService<ModelService>().Root;
+                        ModelItem mi = modelItem.Properties["Implementation"].Value;
+                        Sequence mainSequence = mi.GetCurrentValue() as Sequence;
+                        if(mainSequence != null)
+                        {
+                            Variable businessActivityNameVariable = mainSequence.Variables.FirstOrDefault(v => "BusinessActivity_Name".Equals(v.Name));
+                            if (businessActivityNameVariable != null)
+                            {
+                                mainSequence.Variables.Remove(businessActivityNameVariable);
+                            }
+
+                            Variable<string> BusinessActivityNameVariable = new Variable<string>("BusinessActivity_Name");
+                            BusinessActivityNameVariable.Default = Name;
+                            mainSequence.Variables.Add(BusinessActivityNameVariable);
+                        }
                     }
                     else
                     {
