@@ -2421,7 +2421,7 @@ namespace OpenRPA
 
                             Variable<string> BusinessActivityNameVariable = new Variable<string>("BusinessActivity_Name");
                             BusinessActivityNameVariable.Default = Name;
-                            mainSequence.Variables.Add(BusinessActivityNameVariable);
+                            mainSequence.Variables.Insert(0, BusinessActivityNameVariable);
                         }
                     }
                     else

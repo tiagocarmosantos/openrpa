@@ -2015,6 +2015,22 @@ Union(modelService.Find(modelService.Root, typeof(System.Activities.Debugger.Sta
             {
                 var modelItem = wfDesigner.Context.Services.GetService<ModelService>().Root;
                 modelItem.Properties["Name"].SetValue(name.Replace("_", " "));
+
+                ModelItem mi = modelItem.Properties["Implementation"].Value;
+                Sequence mainSequence = mi.GetCurrentValue() as Sequence;
+                if (mainSequence != null)
+                {
+                    Variable businessActivityNameVariable = mainSequence.Variables.FirstOrDefault(v => "BusinessActivity_Name".Equals(v.Name));
+                    if (businessActivityNameVariable != null)
+                    {
+                        mainSequence.Variables.Remove(businessActivityNameVariable);
+                    }
+
+                    Variable<string> BusinessActivityNameVariable = new Variable<string>("BusinessActivity_Name");
+                    BusinessActivityNameVariable.Default = name;
+                    mainSequence.Variables.Insert(0, BusinessActivityNameVariable);
+                }
+
                 editingScope.Complete();
             }
             wfDesigner.Flush();
