@@ -26,6 +26,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
+using OpenRPA.Custom;
 
 namespace OpenRPA.Views
 {
@@ -418,45 +419,13 @@ namespace OpenRPA.Views
                 {
                     foreach (ModelItem item in GetWorkflowActivities())
                     {
-                        ModelProperty property = item.Properties["Image"];
-                        if ((property != null) && (property.Value != null) && !string.IsNullOrEmpty(Workflow._id))
+                        foreach (var propName in ModelItemUpdater.PropertyNamesOfTypeImage)
                         {
-                            string image = item.Properties["Image"].Value.ToString();
-                            if (!System.Text.RegularExpressions.Regex.Match(image, "[a-f0-9]{24}").Success)
-                            {
-                                var metadata = new OpenRPA.Interfaces.entity.metadata
-                                {
-                                    // metadata.AddRight(global.webSocketClient.user, null);
-                                    _acl = Workflow._acl,
-                                    workflow = Workflow._id
-                                };
-                                var imageid = GenericTools.YoutubeLikeId();
-                                var tempfilename = System.IO.Path.Combine(System.IO.Path.GetTempPath(), imageid + ".png");
-                                using (var ms = new System.IO.MemoryStream(Convert.FromBase64String(image)))
-                                {
-                                    using (var b = new System.Drawing.Bitmap(ms))
-                                    {
-                                        try
-                                        {
-                                            b.Save(tempfilename, System.Drawing.Imaging.ImageFormat.Png);
-                                        }
-                                        catch (Exception)
-                                        {
-                                            throw;
-                                        }
-                                    }
-                                }
-                                string id = await global.webSocketClient.UploadFile(tempfilename, "", metadata);
-                                var filename = System.IO.Path.Combine(imagepath, id + ".png");
-                                System.IO.File.Copy(tempfilename, filename, true);
-                                System.IO.File.Delete(tempfilename);
-                                item.Properties["Image"].SetValue(id);
-                                usedimages.Add(id);
-                            }
-                            else
-                            {
-                                usedimages.Add(image);
-                            }
+                            var imageId = await ModelItemUpdater.SetPropertyOnSaveWorkflowAsync(Workflow, item, propName, imagepath);
+
+                            if (string.IsNullOrWhiteSpace(imageId)) continue;
+
+                            usedimages.Add(imageId);
                         }
                     }
                     editingScope.Complete();
@@ -513,7 +482,7 @@ namespace OpenRPA.Views
             var modelItem = WorkflowDesigner.Context.Services.GetService<ModelService>().Root;
             ModelProperty property = modelItem.Properties["Name"];
             property.SetValue(name.Replace(" ", "_"));
-            //Workflow.name = name;
+            Workflow.name = name;
             tab.IsSelected = true;
             // Workflow.name = modelItem.GetValue<string>("Name").Replace("_", " ");
         }
@@ -1989,20 +1958,12 @@ Union(modelService.Find(modelService.Root, typeof(System.Activities.Debugger.Sta
             {
                 foreach (ModelItem item in GetWorkflowActivities(wfDesigner))
                 {
-                    ModelProperty property = item.Properties["Image"];
-                    if ((property != null) && (property.Value != null))
+                    foreach (var propName in ModelItemUpdater.PropertyNamesOfTypeImage)
                     {
-                        string image = item.Properties["Image"].Value.ToString();
-                        if (System.Text.RegularExpressions.Regex.Match(image, "[a-f0-9]{24}").Success)
-                        {
-                            using (var b = await Interfaces.Image.Util.LoadBitmap(image))
-                            {
-                                image = Interfaces.Image.Util.Bitmap2Base64(b);
-                            }
-                            item.Properties["Image"].SetValue(image);
-                        }
+                        await ModelItemUpdater.SetPropertyOnLoadImagesAsync(item, propName);
                     }
                 }
+
                 editingScope.Complete();
             }
             wfDesigner.Flush();
