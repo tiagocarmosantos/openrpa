@@ -2649,7 +2649,7 @@ namespace OpenRPA
         }
         private void OnOpenEdgePageCommand(object _item)
         {
-            System.Diagnostics.Process.Start("msedge.exe", "https://chrome.google.com/webstore/detail/openrpa/gmpnnjghibofefmnppkgkadiijlblhia");
+            System.Diagnostics.Process.Start("msedge.exe", "https://chrome.google.com/webstore/detail/openrpa/hpnihnhlcnfejboocnckgchjdofeaphe");
         }
         
         private int lastsapprocessid = -1;
