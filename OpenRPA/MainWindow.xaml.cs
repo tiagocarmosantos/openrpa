@@ -2641,7 +2641,7 @@ namespace OpenRPA
         }
         private void OnOpenChromePage(object _item)
         {
-            System.Diagnostics.Process.Start("chrome.exe", "https://chrome.google.com/webstore/detail/openrpa/gmpnnjghibofefmnppkgkadiijlblhia");
+            System.Diagnostics.Process.Start("chrome.exe", "https://chrome.google.com/webstore/detail/openrpa/hpnihnhlcnfejboocnckgchjdofeaphe");
         }
         private void OnOpenFirefoxPageCommand(object _item)
         {
