@@ -6,11 +6,13 @@ using System.Activities.Expressions;
 using System.Activities.Presentation.Model;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using OpenRPA.NM.Activities;
 
 namespace OpenRPA.NM
 {
@@ -80,50 +82,63 @@ namespace OpenRPA.NM
                 }
             }
         }
-        private async void Highlight_Click(object sender, RoutedEventArgs e)
+
+        private void Highlight_Click(object sender, RoutedEventArgs e)
         {
-            ModelItem loadFrom = ModelItem.Parent;
-            string loadFromSelectorString = "";
-            NMSelector anchor = null;
-            int parentmaxresults = 1;
-            while (loadFrom.Parent != null)
+            var image = ModelItem.GetValue<string>("FullImage");
+            var b = Task.Run(() => Interfaces.Image.Util.LoadBitmap(image)).Result;
+            using (b)
             {
-                var p = loadFrom.Properties.Where(x => x.Name == "Selector").FirstOrDefault();
-                if (p != null)
-                {
-                    loadFromSelectorString = loadFrom.GetValue<string>("Selector");
-                    anchor = new NMSelector(loadFromSelectorString);
-                    parentmaxresults = loadFrom.GetValue<int>("MaxResults");
-                    break;
-                }
-                loadFrom = loadFrom.Parent;
+                if (b == null) return;
+                var fullImage = Interfaces.Image.Util.BitmapToImageSource(b);
+                new ScreenshotHighlightView(fullImage).ShowDialog();
             }
-
-
-            string SelectorString = ModelItem.GetValue<string>("Selector");
-            int maxresults = ModelItem.GetValue<int>("MaxResults");
-            var selector = new NMSelector(SelectorString);
-            // var elements = NMSelector.GetElementsWithuiSelector(selector, anchor, maxresults);
-            var elements = new List<NMElement>();
-            if (anchor != null)
-            {
-                var _base = NMSelector.GetElementsWithuiSelector(anchor, null, parentmaxresults);
-                foreach (var _e in _base)
-                {
-                    var res = NMSelector.GetElementsWithuiSelector(selector, _e, maxresults);
-                    elements.AddRange(res);
-                }
-
-            }
-            else
-            {
-                var res = NMSelector.GetElementsWithuiSelector(selector, null, maxresults);
-                elements.AddRange(res);
-            }
-
-            foreach (var ele in elements) await ele.Highlight(false, System.Drawing.Color.Red, TimeSpan.FromSeconds(1));
-
         }
+
+        //private async void Highlight_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ModelItem loadFrom = ModelItem.Parent;
+        //    string loadFromSelectorString = "";
+        //    NMSelector anchor = null;
+        //    int parentmaxresults = 1;
+        //    while (loadFrom.Parent != null)
+        //    {
+        //        var p = loadFrom.Properties.Where(x => x.Name == "Selector").FirstOrDefault();
+        //        if (p != null)
+        //        {
+        //            loadFromSelectorString = loadFrom.GetValue<string>("Selector");
+        //            anchor = new NMSelector(loadFromSelectorString);
+        //            parentmaxresults = loadFrom.GetValue<int>("MaxResults");
+        //            break;
+        //        }
+        //        loadFrom = loadFrom.Parent;
+        //    }
+
+
+        //    string SelectorString = ModelItem.GetValue<string>("Selector");
+        //    int maxresults = ModelItem.GetValue<int>("MaxResults");
+        //    var selector = new NMSelector(SelectorString);
+        //    // var elements = NMSelector.GetElementsWithuiSelector(selector, anchor, maxresults);
+        //    var elements = new List<NMElement>();
+        //    if (anchor != null)
+        //    {
+        //        var _base = NMSelector.GetElementsWithuiSelector(anchor, null, parentmaxresults);
+        //        foreach (var _e in _base)
+        //        {
+        //            var res = NMSelector.GetElementsWithuiSelector(selector, _e, maxresults);
+        //            elements.AddRange(res);
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        var res = NMSelector.GetElementsWithuiSelector(selector, null, maxresults);
+        //        elements.AddRange(res);
+        //    }
+
+        //    foreach (var ele in elements) await ele.Highlight(false, System.Drawing.Color.Red, TimeSpan.FromSeconds(1));
+
+        //}
         public string ImageString
         {
             get

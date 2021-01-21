@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenRPA.Interfaces.Custom;
 
 namespace OpenRPA.NM
 {
@@ -295,6 +296,10 @@ namespace OpenRPA.NM
             var a = new GetElement { DisplayName = LastElement.id + " " + LastElement.type + " " + LastElement.Name };
             a.Selector = selector.ToString();
             a.Image = LastElement.ImageString();
+
+            var paths = PathRootDiscovery.GetPathToRoot(e.UIElement.RawElement).ToArray();
+            var rootElem = paths.Length > 1 ? paths[1] : e.UIElement.RawElement;
+            a.FullImage = UIElementUtils.FullImageString(e.UIElement, rootElem);
             a.MaxResults = 1;
 
             e.Element = LastElement;

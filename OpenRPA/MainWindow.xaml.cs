@@ -3,29 +3,23 @@ using Newtonsoft.Json.Linq;
 using OpenRPA.Input;
 using OpenRPA.Interfaces;
 using OpenRPA.Interfaces.entity;
-using OpenRPA.Net;
 using System;
 using System.Activities;
 using System.Activities.Core.Presentation;
-using System.Activities.Expressions;
+using System.Activities.Presentation.Model;
+using System.Activities.Presentation.Services;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using OpenRPA.Views;
 using Xceed.Wpf.AvalonDock.Layout;
 
 namespace OpenRPA
@@ -1987,6 +1981,12 @@ namespace OpenRPA
                 try
                 {
                     designer.tab.Title = (designer.HasChanged ? designer.Workflow.name + "*" : designer.Workflow.name);
+
+                    if(!designer.HasChanged)
+                    {
+                        WFDesigner.UpdateBusinessActivityVariable(designer.WorkflowDesigner, designer.Workflow.name);
+                    }
+
                     CommandManager.InvalidateRequerySuggested();
                 }
                 catch (Exception ex)
@@ -2414,6 +2414,7 @@ namespace OpenRPA
                         string Name = Microsoft.VisualBasic.Interaction.InputBox("Name?", "New name", designer.Workflow.name);
                         if (string.IsNullOrEmpty(Name) || designer.Workflow.name == Name) return;
                         designer.RenameWorkflow(Name);
+                        WFDesigner.UpdateBusinessActivityVariable(designer.WorkflowDesigner, Name);
                     }
                     else
                     {

@@ -35,6 +35,8 @@ namespace OpenRPA.NM
         public InArgument<bool> WaitForReady { get; set; }
         [Browsable(false)]
         public string Image { get; set; }
+        [Browsable(false)]
+        public string FullImage { get; set; }
         private readonly Variable<IEnumerator<NMElement>> _elements = new Variable<IEnumerator<NMElement>>("_elements");
         private Variable<NMElement[]> _lastelements = new Variable<NMElement[]>("_lastelements");
         private Variable<NMElement[]> _allelements = new Variable<NMElement[]>("_allelements");

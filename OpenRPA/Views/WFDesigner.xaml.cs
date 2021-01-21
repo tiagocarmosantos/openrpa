@@ -26,6 +26,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
+using OpenRPA.Custom;
 
 namespace OpenRPA.Views
 {
@@ -301,12 +302,39 @@ namespace OpenRPA.Views
             }
             else
             {
-                Activity wf = new System.Activities.Statements.Sequence { };
+                Variable<string> BusinessActivityNameVar = new Variable<string>
+                {
+                    Name = "BusinessActivity_Name",
+                    Default = Activity<string>.FromValue(workflow.name)
+
+                };
+                Variable<string> ProcessIdVar = new Variable<string>
+                {
+                    Name = "Process_ID"
+                };
+                Variable<string> StartTaskVar = new Variable<string>
+                {
+                    Name = "Start_Task"
+                };
+                Variable<string> EndTaskVar = new Variable<string>
+                {
+                    Name = "End_Task"
+                };
+                Variable<string> MainTaskVar = new Variable<string>
+                {
+                    Name = "Main_Task"
+                };
+
+                Activity wf = new System.Activities.Statements.Sequence
+                {
+                    Variables = { BusinessActivityNameVar, ProcessIdVar, StartTaskVar, EndTaskVar, MainTaskVar }
+                };
                 var ab = new ActivityBuilder
                 {
                     Name = Workflow.name.Replace(" ", "_"),
                     Implementation = wf
                 };
+
                 WFHelper.AddVBNamespaceSettings(ab, typeof(Action),
                     typeof(System.Xml.XmlNode),
                     typeof(OpenRPA.Workflow),
@@ -391,45 +419,13 @@ namespace OpenRPA.Views
                 {
                     foreach (ModelItem item in GetWorkflowActivities())
                     {
-                        ModelProperty property = item.Properties["Image"];
-                        if ((property != null) && (property.Value != null) && !string.IsNullOrEmpty(Workflow._id))
+                        foreach (var propName in ModelItemUpdater.PropertyNamesOfTypeImage)
                         {
-                            string image = item.Properties["Image"].Value.ToString();
-                            if (!System.Text.RegularExpressions.Regex.Match(image, "[a-f0-9]{24}").Success)
-                            {
-                                var metadata = new OpenRPA.Interfaces.entity.metadata
-                                {
-                                    // metadata.AddRight(global.webSocketClient.user, null);
-                                    _acl = Workflow._acl,
-                                    workflow = Workflow._id
-                                };
-                                var imageid = GenericTools.YoutubeLikeId();
-                                var tempfilename = System.IO.Path.Combine(System.IO.Path.GetTempPath(), imageid + ".png");
-                                using (var ms = new System.IO.MemoryStream(Convert.FromBase64String(image)))
-                                {
-                                    using (var b = new System.Drawing.Bitmap(ms))
-                                    {
-                                        try
-                                        {
-                                            b.Save(tempfilename, System.Drawing.Imaging.ImageFormat.Png);
-                                        }
-                                        catch (Exception)
-                                        {
-                                            throw;
-                                        }
-                                    }
-                                }
-                                string id = await global.webSocketClient.UploadFile(tempfilename, "", metadata);
-                                var filename = System.IO.Path.Combine(imagepath, id + ".png");
-                                System.IO.File.Copy(tempfilename, filename, true);
-                                System.IO.File.Delete(tempfilename);
-                                item.Properties["Image"].SetValue(id);
-                                usedimages.Add(id);
-                            }
-                            else
-                            {
-                                usedimages.Add(image);
-                            }
+                            var imageId = await ModelItemUpdater.SetPropertyOnSaveWorkflowAsync(Workflow, item, propName, imagepath);
+
+                            if (string.IsNullOrWhiteSpace(imageId)) continue;
+
+                            usedimages.Add(imageId);
                         }
                     }
                     editingScope.Complete();
@@ -486,7 +482,7 @@ namespace OpenRPA.Views
             var modelItem = WorkflowDesigner.Context.Services.GetService<ModelService>().Root;
             ModelProperty property = modelItem.Properties["Name"];
             property.SetValue(name.Replace(" ", "_"));
-            //Workflow.name = name;
+            Workflow.name = name;
             tab.IsSelected = true;
             // Workflow.name = modelItem.GetValue<string>("Name").Replace("_", " ");
         }
@@ -696,7 +692,7 @@ namespace OpenRPA.Views
         {
             if (Config.local.recording_add_to_designer)
             {
-                Type t = plugin.GetType();
+               
                 var rootObject = GetRootElement();
                 Microsoft.VisualBasic.Activities.VisualBasicSettings vbsettings = Microsoft.VisualBasic.Activities.VisualBasic.GetSettings(rootObject);
                 if (vbsettings == null)
@@ -746,13 +742,16 @@ namespace OpenRPA.Views
                             Import = typeof(Microsoft.VisualBasic.Collection).Namespace
                         });
                 }
-
-                vbsettings.ImportReferences.Add(
+                if (plugin != null)
+                {
+                    Type t = plugin.GetType();
+                    vbsettings.ImportReferences.Add(
                     new Microsoft.VisualBasic.Activities.VisualBasicImportReference
                     {
                         Assembly = t.Assembly.GetName().Name,
                         Import = t.Namespace
                     });
+                }
                 Microsoft.VisualBasic.Activities.VisualBasic.SetSettings(rootObject, vbsettings);
                 //DynamicAssemblyMonitor(t.Assembly.GetName().Name, t.Assembly, true);
                 return AddActivity(a);
@@ -1511,6 +1510,13 @@ Union(modelService.Find(modelService.Root, typeof(System.Activities.Debugger.Sta
                 {
                     if (model.ItemType.BaseType == typeof(Variable))
                     {
+                        if (e.ModelChangeInfo.PropertyName == "Default" && "BusinessActivity_Name".Equals(e.PropertiesChanged.ElementAt<ModelProperty>(0).Parent.GetCurrentValue().PropertyValue("Name")))
+                        {
+                            //TODO Rename workflow
+                            this.RenameWorkflow(e.ModelChangeInfo.Value.ToString());
+                            return;
+                        }
+
                         if (e.ModelChangeInfo.PropertyName != "Name") return;
 #pragma warning disable 0618
                         ModelProperty property = e.PropertiesChanged.ElementAt<ModelProperty>(0);
@@ -1952,20 +1958,12 @@ Union(modelService.Find(modelService.Root, typeof(System.Activities.Debugger.Sta
             {
                 foreach (ModelItem item in GetWorkflowActivities(wfDesigner))
                 {
-                    ModelProperty property = item.Properties["Image"];
-                    if ((property != null) && (property.Value != null))
+                    foreach (var propName in ModelItemUpdater.PropertyNamesOfTypeImage)
                     {
-                        string image = item.Properties["Image"].Value.ToString();
-                        if (System.Text.RegularExpressions.Regex.Match(image, "[a-f0-9]{24}").Success)
-                        {
-                            using (var b = await Interfaces.Image.Util.LoadBitmap(image))
-                            {
-                                image = Interfaces.Image.Util.Bitmap2Base64(b);
-                            }
-                            item.Properties["Image"].SetValue(image);
-                        }
+                        await ModelItemUpdater.SetPropertyOnLoadImagesAsync(item, propName);
                     }
                 }
+
                 editingScope.Complete();
             }
             wfDesigner.Flush();
@@ -1985,10 +1983,43 @@ Union(modelService.Find(modelService.Root, typeof(System.Activities.Debugger.Sta
             {
                 var modelItem = wfDesigner.Context.Services.GetService<ModelService>().Root;
                 modelItem.Properties["Name"].SetValue(name.Replace("_", " "));
+                UpdateBusinessActivityVariable(wfDesigner, name);
+
                 editingScope.Complete();
             }
             wfDesigner.Flush();
             return wfDesigner.Text;
+        }
+
+        public static void UpdateBusinessActivityVariable(WorkflowDesigner wfDesigner, string newWorkflowName)
+        {
+            ModelService modelService = wfDesigner.Context.Services.GetService<ModelService>();
+            using (ModelEditingScope editingScope = modelService.Root.BeginEdit("Implementation"))
+            {
+                var modelItem = wfDesigner.Context.Services.GetService<ModelService>().Root;
+                ModelItem mi = modelItem.Properties["Implementation"].Value;
+                Sequence mainSequence = mi.GetCurrentValue() as Sequence;
+                if (mainSequence != null)
+                {
+                    Variable businessActivityNameVariable = mainSequence.Variables.FirstOrDefault(v => "BusinessActivity_Name".Equals(v.Name));
+                    bool isBusinessActivityNameVariableToUpdate = false;
+                    if (businessActivityNameVariable != null && !newWorkflowName.Equals(businessActivityNameVariable.Default.ToString()))
+                    {
+                        mainSequence.Variables.Remove(businessActivityNameVariable);
+                        isBusinessActivityNameVariableToUpdate = true;
+                    }
+
+                    if (isBusinessActivityNameVariableToUpdate)
+                    {
+                        Variable<string> BusinessActivityNameVariable = new Variable<string>("BusinessActivity_Name");
+                        BusinessActivityNameVariable.Default = newWorkflowName;
+                        mainSequence.Variables.Insert(0, BusinessActivityNameVariable);
+                    }
+
+                }
+                editingScope.Complete();
+            }
+
         }
 
     }

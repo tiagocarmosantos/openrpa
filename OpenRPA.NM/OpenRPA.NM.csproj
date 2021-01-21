@@ -70,6 +70,7 @@
     <None Remove="Activities\ExecuteScriptDesigner.xaml" />
     <None Remove="Activities\GetElementDesigner.xaml" />
     <None Remove="Activities\OpenURLDesigner.xaml" />
+    <None Remove="Activities\ScreenshotHighlightView.xaml" />
     <None Remove="Resources\designer\gethtmlelement.png" />
     <None Remove="Resources\toolbox\gethtmlelement.png" />
     <None Remove="Snippets\ChromeGoogleSearch.xaml" />
@@ -117,6 +118,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Activities\ScreenshotHighlightView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Resource Include="Resources\designer\gethtmlelement.png" />
     <Resource Include="Snippets\FirefoxGoogleSearch.xaml">
       <SubType>Designer</SubType>
