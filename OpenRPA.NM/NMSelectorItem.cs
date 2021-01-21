@@ -33,7 +33,9 @@ namespace OpenRPA.NM
                 canDisable = false;
                 return;
             }
-            if (!string.IsNullOrEmpty(element.xpath)) Properties.Add(new SelectorItemProperty("xpath", element.xpath) { Enabled = !hasAnchor });  
+            if (!string.IsNullOrEmpty(element.xpath)) Properties.Add(new SelectorItemProperty("xpath", element.xpath) { Enabled = !hasAnchor });
+            if (!string.IsNullOrEmpty(element.xpathfull)) Properties.Add(new SelectorItemProperty("xpathfull", element.xpathfull) { Enabled = !hasAnchor });
+            
             // if (!string.IsNullOrEmpty(element.cssselector)) Properties.Add(new SelectorItemProperty("cssselector", element.cssselector) { Enabled = !hasAnchor });
             if (!string.IsNullOrEmpty(element.id)) Properties.Add(new SelectorItemProperty("id", element.id) { Enabled = !hasAnchor });  
 
@@ -130,6 +132,7 @@ namespace OpenRPA.NM
         {
             var result = new List<string>();
             if (Properties.Where(x => x.Name == "xpath").Count() == 1) result.Add("xpath");
+            if (Properties.Where(x => x.Name == "xpathfull").Count() == 1) result.Add("xpathfull");            
             if (Properties.Where(x => x.Name == "cssselector").Count() == 1) result.Add("cssselector");
             if (Properties.Where(x => x.Name == "id").Count() == 1) result.Add("id");
             if (Properties.Where(x => x.Name == "Name").Count() == 1) result.Add("Name");

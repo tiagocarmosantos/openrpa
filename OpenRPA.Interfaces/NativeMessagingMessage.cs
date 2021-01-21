@@ -44,6 +44,7 @@ namespace OpenRPA.Interfaces
         //public string selector { get; set; }
         public string cssPath { get; set; }
         public string xPath { get; set; }
+        public string xPathFull { get; set; }
         public string[] xpaths { get; set; }
         public string fromcssPath { get; set; }
         public string fromxPath { get; set; }

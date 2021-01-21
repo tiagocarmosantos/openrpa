@@ -1,10 +1,11 @@
 {
   "name": "com.openrpa.msg",
   "description": "OpenRPA messaging host",
-  "path": "REPLACEPATH\\OpenRPA.NativeMessagingHost.exe",
+  "path": "C:\\code\\openrpa\\debug\\net462\\OpenRPA.NativeMessagingHost.exe",
   "type": "stdio",
   "allowed_origins": [
     "chrome-extension://gnbhhfbboacbdjdiaggoejpcfbcaekjc/",
+    "chrome-extension://facpbcdnjicpojeafkmighabbjdainpk/",
     "chrome-extension://gmpnnjghibofefmnppkgkadiijlblhia/",
     "chrome-extension://cjjehhadngahcdkbkeopdlmjedddkedh/",
     "chrome-extension://meoobaegjobjgfnlfndegpnpdmonbnbe/",

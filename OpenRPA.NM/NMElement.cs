@@ -74,6 +74,8 @@ namespace OpenRPA.NM
         }
         internal Dictionary<string, object> chromeelement { get; set; }
         public string xpath { get; set; }
+        public string xpathfull { get; set; }
+         
         public string cssselector { get; set; }
         public string tagname { get; set; }
         public string classname { get; set; }
@@ -131,6 +133,7 @@ namespace OpenRPA.NM
                 }
                 if (chromeelement.ContainsKey("type")) type = chromeelement["type"].ToString();
                 if (chromeelement.ContainsKey("xpath")) xpath = chromeelement["xpath"].ToString();
+                if (chromeelement.ContainsKey("xpathfull")) xpathfull = chromeelement["xpathfull"].ToString();
                 if (chromeelement.ContainsKey("cssselector")) cssselector = chromeelement["cssselector"].ToString();
                 if (chromeelement.ContainsKey("cssPath")) cssselector = chromeelement["cssPath"].ToString();
                 if (chromeelement.ContainsKey("csspath")) cssselector = chromeelement["csspath"].ToString();
@@ -153,6 +156,7 @@ namespace OpenRPA.NM
             zn_id = message.zn_id;
             this.message = message;
             if (string.IsNullOrEmpty(xpath)) xpath = message.xPath;
+            if (string.IsNullOrEmpty(xpathfull)) xpathfull = message.xPathFull;
             if (string.IsNullOrEmpty(cssselector)) cssselector = message.cssPath;
             X = message.uix;
             Y = message.uiy;

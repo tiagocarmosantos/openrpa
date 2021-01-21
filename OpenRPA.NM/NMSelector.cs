@@ -87,6 +87,12 @@ namespace OpenRPA.NM
             p = second.Properties.Where(x => x.Name == "xpath").FirstOrDefault();
             string xpath = "";
             if (p != null) { xpath = p.Value; }
+
+            p = second.Properties.Where(x => x.Name == "xPathFull").FirstOrDefault();
+            string xpathFull = "";
+            if (p != null) { xpathFull = p.Value; }
+
+            
             p = second.Properties.Where(x => x.Name == "cssselector").FirstOrDefault();
             string cssselector = "";
             if (p != null) { cssselector = p.Value; }
@@ -116,6 +122,7 @@ namespace OpenRPA.NM
             var getelement = new NativeMessagingMessage("getelements", PluginConfig.debug_console_output, PluginConfig.unique_xpath_ids);
             getelement.browser = browser;
             getelement.xPath = xpath;
+            getelement.xPathFull = xpathFull;
             getelement.cssPath = cssselector;
             getelement.fromxPath = fromxPath;
             getelement.fromcssPath = fromcssPath;
