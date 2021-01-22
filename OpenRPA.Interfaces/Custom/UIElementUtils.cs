@@ -50,7 +50,7 @@ namespace OpenRPA.Interfaces.Custom
             }
         }
 
-        public static string FullImageString(UIElement element, AutomationElement rootElem)
+        public static string FullImageString(IElement element, AutomationElement rootElem)
         {
             const int addedWidth = 10;
             const int addedHeight = 10;
