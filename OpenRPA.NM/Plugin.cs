@@ -299,7 +299,7 @@ namespace OpenRPA.NM
 
             var paths = PathRootDiscovery.GetPathToRoot(e.UIElement.RawElement).ToArray();
             var rootElem = paths.Length > 1 ? paths[1] : e.UIElement.RawElement;
-            a.FullImage = UIElementUtils.FullImageString(e.UIElement, rootElem);
+            a.FullImage = UIElementUtils.FullImageString(LastElement, rootElem);
             a.MaxResults = 1;
 
             e.Element = LastElement;

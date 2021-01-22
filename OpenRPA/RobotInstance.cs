@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xceed.Wpf.AvalonDock.Layout;
 
@@ -601,6 +602,22 @@ namespace OpenRPA
                         d.Path = Interfaces.Extensions.ProjectsDirectory;
                         dp = Plugins.AddDetector(RobotInstance.instance, d);
                         if (dp != null) dp.OnDetector += Window.OnDetector;
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        Regex r = new Regex(@"^wss:\/\/(.*)\/openflow\/$");
+                        Match m = r.Match(Config.local.wsurl);
+                        if (!m.Success)
+                        {
+                            Log.Error("Attention: the \"wsurl\" specified into settings.json configuration file does not respect the correct format \"wss://<HOSTNAME>/openflow/\". Be careful to the final slash that is needed.");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e, "Error on checking wsurl format.");
                     }
                 }
                 try
