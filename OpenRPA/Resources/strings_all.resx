@@ -2109,4 +2109,16 @@ Fuzzy</comment>
   <data name="plugin_traverse_selector_both_ways_help" xml:space="preserve">
     <value>Traverse UI tree both ways to filter out ghost selector elements</value>
   </data>
+  <data name="main_settings_btn_chrome_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>The "openrpa" plugin extension has been detected on Google Chrome.&#10;Please uninstall it and install the new Task Mining plugin extension.</value>
+  </data>
+  <data name="main_settings_btn_chrome_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Install the Chrome plugin extension to track web activities.</value>
+  </data>
+  <data name="main_settings_btn_edge_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>The "openrpa" plugin extension has been detected on Microsoft Edge.&#10;Please uninstall it and install the new Task Mining plugin extension.</value>
+  </data>
+  <data name="main_settings_btn_edge_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Install the Edge plugin extension to track web activities.</value>
+  </data>
 </root>
