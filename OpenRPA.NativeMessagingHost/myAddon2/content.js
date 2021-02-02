@@ -280,7 +280,7 @@ if (true == false) {
 
                 },
                 checkFieldsChange: function (sendCurrentPageVals) {
-                    var t0 = performance.now();
+                  //  var t0 = performance.now();
 
                     // key = hashKey#counter#hashValue
                     let actualVas = new Map();
@@ -318,8 +318,8 @@ if (true == false) {
 
                     window.pageVals = null; // reset the page attributes
                     window.pageVals = actualVas;
-                    var t1 = performance.now();
-                    console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds, at time : " + new Date().toISOString()  )
+                  //  var t1 = performance.now();
+                  //  console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds, at time : " + new Date().toISOString()  )
 
                 },                
                 raiseFieldsChangeEvent(fields) {
