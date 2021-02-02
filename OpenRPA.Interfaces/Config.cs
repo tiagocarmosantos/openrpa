@@ -56,6 +56,7 @@ namespace OpenRPA
         public bool remote_allow_multiple_running = false;
         public int remote_allow_multiple_running_max = 2;
         public string cef_useragent = "";
+        public bool cef_allow_unsigned_certificates = false;
         public bool show_getting_started = true;
         // public bool notify_on_workflow_start = false;
         public bool notify_on_workflow_remote_start = true;

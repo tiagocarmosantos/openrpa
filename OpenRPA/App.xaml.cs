@@ -98,11 +98,15 @@ namespace OpenRPA
             try
             {
                 //Perform dependency check to make sure all relevant resources are in our output directory.
-                var settings = new CefSharp.Wpf.CefSettings();
-                settings.CachePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache");
-                if(!System.IO.Directory.Exists(settings.CachePath))
+                var settings = new CefSharp.Wpf.CefSettings
                 {
-                    System.IO.Directory.CreateDirectory(settings.CachePath);
+                    IgnoreCertificateErrors = Config.local.cef_allow_unsigned_certificates,
+                    CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
+                };
+
+                if(!Directory.Exists(settings.CachePath))
+                {
+                    Directory.CreateDirectory(settings.CachePath);
                 }
                 // We need to update useragent to be of one of the supported browsers on googles signin page
                 settings.UserAgent = Config.local.cef_useragent;
