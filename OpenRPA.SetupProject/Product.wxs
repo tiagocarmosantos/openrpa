@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <?define VersionNumber="1.10.0" ?>
+  <?define VersionNumber="1.10.1" ?>
   <!--
    Upgrade code HAS to be the same for all updates.
    Once you've chosen it don't change it.
