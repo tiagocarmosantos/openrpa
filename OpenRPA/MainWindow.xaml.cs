@@ -21,6 +21,8 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using OpenRPA.Views;
 using Xceed.Wpf.AvalonDock.Layout;
+using System.Windows.Media;
+using OpenRPA.Custom;
 
 namespace OpenRPA
 {
@@ -3472,6 +3474,129 @@ namespace OpenRPA
         {
             if (SearchBox.IsDropDownOpen) e.Handled = true;
         }
+
+        public ImageSource _chromeButtonImage;
+        public ImageSource ChromeButtonImage
+        {
+            get
+            {
+                if (_chromeButtonImage == null)
+                    _chromeButtonImage = new BitmapImage(new Uri(@"/OpenRPA;component/Resources/Buttons/OpenChrome.png", UriKind.Relative));
+                return _chromeButtonImage;
+            }
+            set
+            {
+                _chromeButtonImage = value;
+            }
+        }
+
+        public ImageSource _edgeButtonImage;
+        public ImageSource EdgeButtonImage
+        {
+            get
+            {
+                if (_edgeButtonImage == null)
+                    _edgeButtonImage = new BitmapImage(new Uri(@"/OpenRPA;component/Resources/Buttons/edge.png", UriKind.Relative));
+                return _edgeButtonImage;
+            }
+            set
+            {
+                _edgeButtonImage = value;
+            }
+        }
+
+        private string _chromeButtonTooltip;
+        public string ChromeButtonTooltip
+        {
+            get => _chromeButtonTooltip;
+            set
+            {
+                _chromeButtonTooltip = value;
+            }
+        }
+
+        private string _edgeButtonTooltip;
+        public string EdgeButtonTooltip
+        {
+            get => _edgeButtonTooltip;
+            set
+            {
+                _edgeButtonTooltip = value;
+            }
+        }
+
+        private bool _myInvenioIsInstalledOnChrome;
+        private bool _myInvenioIsActiveOnChrome;
+        private bool _myInvenioIsInstalledOnEdge;
+        private bool _myInvenioIsActiveOnEdge;
+        private bool _openrpaIsInstalledOnChrome;
+        private bool _openrpaIsActiveOnChrome;
+        private bool _openrpaIsInstalledOnEdge;
+        private bool _openrpaIsActiveOnEdge;
+
+        public void CheckExtensionStatus()
+        {
+            Helper.IsMyInvenioExtnInstalledOnChrome(ref _myInvenioIsInstalledOnChrome, ref _myInvenioIsActiveOnChrome);
+            Helper.IsMyInvenioExtnInstalledOnEdge(ref _myInvenioIsInstalledOnEdge, ref _myInvenioIsActiveOnEdge);
+            Helper.IsOpenRPAExtnInstalledOnChrome(ref _openrpaIsInstalledOnChrome, ref _openrpaIsActiveOnChrome);
+            Helper.IsOpenRPAExtnInstalledOnEdge(ref _openrpaIsInstalledOnEdge, ref _openrpaIsActiveOnEdge);
+            bool isChromeInstalled = Helper.IsChromeInstalled();
+            bool isEdgeInstalled = Helper.IsEdgeInstalled();
+
+            if (_openrpaIsInstalledOnChrome && isChromeInstalled)
+            {
+                _chromeButtonImage = new BitmapImage(new Uri(@"/OpenRPA;component/Resources/Buttons/OpenChrome-warning.png", UriKind.Relative));
+                _chromeButtonTooltip = OpenRPA.Resources.strings.main_settings_btn_chrome_openrpainstalledwarning_tooltip_text;
+            }
+            else if (!_myInvenioIsInstalledOnChrome && isChromeInstalled)
+            {
+                _chromeButtonImage = new BitmapImage(new Uri(@"/OpenRPA;component/Resources/Buttons/OpenChrome-warning.png", UriKind.Relative));
+                _chromeButtonTooltip = OpenRPA.Resources.strings.main_settings_btn_chrome_myinvenionotinstalledwarning_tooltip_text;
+            }
+            else
+            {
+                _chromeButtonImage = new BitmapImage(new Uri(@"/OpenRPA;component/Resources/Buttons/OpenChrome.png", UriKind.Relative));
+                _chromeButtonTooltip = null;
+            }
+
+            if (_openrpaIsInstalledOnEdge && isEdgeInstalled)
+            {
+                _edgeButtonImage = new BitmapImage(new Uri(@"/OpenRPA;component/Resources/Buttons/edge-warning.png", UriKind.Relative));
+                _edgeButtonTooltip = OpenRPA.Resources.strings.main_settings_btn_edge_openrpainstalledwarning_tooltip_text;
+            }
+            else if (!_myInvenioIsInstalledOnEdge && isEdgeInstalled)
+            {
+                _edgeButtonImage = new BitmapImage(new Uri(@"/OpenRPA;component/Resources/Buttons/edge-warning.png", UriKind.Relative));
+                _edgeButtonTooltip = OpenRPA.Resources.strings.main_settings_btn_edge_myinvenionotinstalledwarning_tooltip_text;
+            }
+            else
+            {
+                _edgeButtonImage = new BitmapImage(new Uri(@"/OpenRPA;component/Resources/Buttons/edge.png", UriKind.Relative));
+                _edgeButtonTooltip = null;
+            }
+
+            NotifyPropertyChanged("ChromeButtonImage");
+            NotifyPropertyChanged("EdgeButtonImage");
+            NotifyPropertyChanged("ChromeButtonTooltip");
+            NotifyPropertyChanged("EdgeButtonTooltip");
+        }
+
+        private bool _settingsTabIsSelected;
+        public bool SettingsTabIsSelected
+        {
+            get
+            {
+                return _settingsTabIsSelected;
+            }
+            set
+            {
+                if (value)
+                {
+                    CheckExtensionStatus();
+                }
+                _settingsTabIsSelected = value;
+            }
+        }
     }
     public class QuickLaunchItem
     {
@@ -3483,4 +3608,6 @@ namespace OpenRPA
         public string Header { get; set; }
         public DynamicActivityProperty argument { get; set; }
     }
+
+
 }

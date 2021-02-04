@@ -223,6 +223,7 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
     <None Remove="Resources\Buttons\Delete_2.png" />
     <None Remove="Resources\Buttons\Delete_color.png" />
     <None Remove="Resources\Buttons\edge.png" />
+	<None Remove="Resources\Buttons\edge-warning.png" />
     <None Remove="Resources\Buttons\Export.png" />
     <None Remove="Resources\Buttons\GetHTMLText.png" />
     <None Remove="Resources\Buttons\ImageClick.png" />
@@ -235,6 +236,7 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
     <None Remove="Resources\Buttons\Open.png" />
     <None Remove="Resources\Buttons\OpenBrowser.png" />
     <None Remove="Resources\Buttons\OpenChrome.png" />
+	<None Remove="Resources\Buttons\OpenChrome-warning.png" />
     <None Remove="Resources\Buttons\OpenFirefox.png" />
     <None Remove="Resources\Buttons\OpenIE.png" />
     <None Remove="Resources\Buttons\Open_mono.png" />
@@ -525,6 +527,7 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
     <Resource Include="Resources\Buttons\Clear.png" />
     <Resource Include="Resources\Buttons\CloseWebdriver.png" />
     <Resource Include="Resources\Buttons\edge.png" />
+	<Resource Include="Resources\Buttons\edge-warning.png" />
     <Resource Include="Resources\Buttons\Mouse.png" />
     <Resource Include="Resources\Buttons\OpenBrowser.png" />
     <Resource Include="Resources\Buttons\OpenFirefox.png" />
@@ -687,6 +690,7 @@ Add toggle between embedded and locally installed python, Add PipInstall activit
     <Resource Include="Resources\Buttons\OCR.png" />
     <Resource Include="Resources\Buttons\Open.png" />
     <Resource Include="Resources\Buttons\OpenChrome.png" />
+	<Resource Include="Resources\Buttons\OpenChrome-warning.png" />
     <Resource Include="Resources\Buttons\Open_mono.png" />
     <Resource Include="Resources\Buttons\Package.png" />
     <Resource Include="Resources\Buttons\Package.svg" />
