@@ -33,7 +33,7 @@ namespace OpenRPA.Custom
         {
             try
             {
-                ChromiumExtensionUtils.CheckChromeExtensionExistance(@"hpnihnhlcnfejboocnckgchjdofeaphe", ref pluginIsPresent, ref pluginIsActive);
+                ChromiumExtensionUtils.CheckChromeExtensionExistence(@"hpnihnhlcnfejboocnckgchjdofeaphe", ref pluginIsPresent, ref pluginIsActive);
             }
             catch (Exception e) //catch (FileNotFoundException fileNotFoundException)
             {
@@ -47,7 +47,7 @@ namespace OpenRPA.Custom
         {
             try
             {
-                ChromiumExtensionUtils.CheckChromeExtensionExistance(@"gmpnnjghibofefmnppkgkadiijlblhia", ref pluginIsPresent, ref pluginIsActive);
+                ChromiumExtensionUtils.CheckChromeExtensionExistence(@"gmpnnjghibofefmnppkgkadiijlblhia", ref pluginIsPresent, ref pluginIsActive);
             }
             catch (Exception e) //catch (FileNotFoundException fileNotFoundException)
             {
@@ -60,7 +60,7 @@ namespace OpenRPA.Custom
         {
             try
             {
-                ChromiumExtensionUtils.CheckEdgeExtensionExistance(@"hpnihnhlcnfejboocnckgchjdofeaphe", ref pluginIsPresent, ref pluginIsActive);
+                ChromiumExtensionUtils.CheckEdgeExtensionExistence(@"hpnihnhlcnfejboocnckgchjdofeaphe", ref pluginIsPresent, ref pluginIsActive);
             }
             catch (Exception e) //catch (FileNotFoundException fileNotFoundException)
             {
@@ -73,7 +73,7 @@ namespace OpenRPA.Custom
         {
             try
             {
-                ChromiumExtensionUtils.CheckEdgeExtensionExistance(@"gmpnnjghibofefmnppkgkadiijlblhia", ref pluginIsPresent, ref pluginIsActive);
+                ChromiumExtensionUtils.CheckEdgeExtensionExistence(@"gmpnnjghibofefmnppkgkadiijlblhia", ref pluginIsPresent, ref pluginIsActive);
             }
             catch (Exception e) //catch (FileNotFoundException fileNotFoundException)
             {
