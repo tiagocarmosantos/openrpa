@@ -1,4 +1,5 @@
 ﻿using CefSharp;
+using CefSharp.Handler;
 using Newtonsoft.Json.Linq;
 using OpenRPA.Interfaces;
 using System;
@@ -23,6 +24,28 @@ using System.Windows.Shapes;
 
 namespace OpenRPA.Views
 {
+
+    public class AllowSSLRequestHandler : RequestHandler
+    {
+        protected override bool OnCertificateError(IWebBrowser chromiumWebBrowser, IBrowser browser, CefErrorCode errorCode, string requestUrl, ISslInfo sslInfo, IRequestCallback callback)
+        {
+            Task.Run(() =>
+            {
+                //NOTE: When executing the callback in an async fashion need to check to see if it's disposed
+                if (!callback.IsDisposed)
+                {
+                    using (callback)
+                    {
+                        callback.Continue(true);
+                    }
+                }
+            });
+
+            return true;
+
+        }
+    }
+
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
@@ -49,6 +72,14 @@ namespace OpenRPA.Views
             }
             browser.LoadingStateChanged += Browser_LoadingStateChanged;
             content.Child = browser;
+
+            if (Config.local.cef_allow_unsigned_certificates)
+            {
+                browser.RequestHandler = new AllowSSLRequestHandler();
+            }
+           
+
+
         }
         public string getjwt(string url, string cookies)
         {

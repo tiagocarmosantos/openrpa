@@ -23,6 +23,7 @@ using OpenRPA.Views;
 using Xceed.Wpf.AvalonDock.Layout;
 using System.Windows.Media;
 using OpenRPA.Custom;
+using System.Net;
 
 namespace OpenRPA
 {
@@ -63,6 +64,12 @@ namespace OpenRPA
             lblVersion.Text = ConfigurationManager.AppSettings["TmVersion"];
             Log.FunctionOutdent("MainWindow", "MainWindow");
             instance = this;
+            if (Config.local.cef_allow_unsigned_certificates)
+            {
+                ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+            }
+            
+
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
