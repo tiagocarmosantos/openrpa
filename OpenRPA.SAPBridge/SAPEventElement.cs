@@ -28,6 +28,10 @@ namespace OpenRPA.SAPBridge
             if (comp.Parent != null) Parent = ((SAPFEWSELib.GuiComponent)comp.Parent).Id;
             ContainerType = comp.ContainerType;
             type = comp.Type;
+            if(type == "GuiOkCodeField")
+            {
+                var b = true;
+            }
             if (comp is SAPFEWSELib.GuiTree tree)
             {
                 type = "GuiTree";
@@ -52,14 +56,18 @@ namespace OpenRPA.SAPBridge
                         ScreenTop = tree.ScreenTop;
                     }
                     var p = new List<SAPElementProperty>();
-                    p.Add(new SAPElementProperty("Left", tree.Left.ToString(), true));
-                    p.Add(new SAPElementProperty("Top", tree.Top.ToString(), true));
-                    p.Add(new SAPElementProperty("ScreenLeft", tree.ScreenLeft.ToString(), true));
-                    p.Add(new SAPElementProperty("ScreenTop", tree.ScreenTop.ToString(), true));
-                    p.Add(new SAPElementProperty("Width", tree.Width.ToString(), true));
-                    p.Add(new SAPElementProperty("Height", tree.Height.ToString(), true));
+                    if(Properties == null || Properties.Length == 0)
+                    {
+                        if (Properties != null) p.AddRange(Properties);
+                        if (p.Where(x => x.Name == "Left").Count() == 0) p.Add(new SAPElementProperty("Left", tree.Left.ToString(), true));
+                        p.Add(new SAPElementProperty("Top", tree.Top.ToString(), true));
+                        p.Add(new SAPElementProperty("ScreenLeft", tree.ScreenLeft.ToString(), true));
+                        p.Add(new SAPElementProperty("ScreenTop", tree.ScreenTop.ToString(), true));
+                        p.Add(new SAPElementProperty("Width", tree.Width.ToString(), true));
+                        p.Add(new SAPElementProperty("Height", tree.Height.ToString(), true));
+                        Properties = p.ToArray();
+                    }
                     _Rectangle = new Rectangle(tree.ScreenLeft, tree.ScreenTop, tree.Width, tree.Height);
-                    Properties = p.ToArray();
                     if (Flat)
                     {
                         keys = tree.GetAllNodeKeys() as SAPFEWSELib.GuiCollection;
@@ -122,19 +130,50 @@ namespace OpenRPA.SAPBridge
                             ScreenTop = Top + tree.ScreenTop;
                         }
                     }
-                    var p = new List<SAPElementProperty>();
-                    var text = tree.GetNodeTextByKey(Path);
 
-                    p.Add(new SAPElementProperty("Left", Left.ToString(), true));
-                    p.Add(new SAPElementProperty("Top", Top.ToString(), true));
-                    p.Add(new SAPElementProperty("ScreenLeft", ScreenLeft.ToString(), true));
-                    p.Add(new SAPElementProperty("ScreenTop", ScreenTop.ToString(), true));
-                    p.Add(new SAPElementProperty("Width", Width.ToString(), true));
-                    p.Add(new SAPElementProperty("Height", Height.ToString(), true));
-                    p.Add(new SAPElementProperty("Key", Path, true));
-                    if (!string.IsNullOrEmpty(Cell)) p.Add(new SAPElementProperty("Cell", Cell, true));
-                    p.Add(new SAPElementProperty("Text", text, true));
-                    Properties = p.ToArray();
+                    if (Properties == null || Properties.Length == 0)
+                    {
+                        var p = new List<SAPElementProperty>();
+                        if (Properties != null) p.AddRange(Properties);
+                        var text = tree.GetNodeTextByKey(Path);
+                        if (p.Where(x => x.Name == "Left").Count() == 0) p.Add(new SAPElementProperty("Left", Left.ToString(), true));
+                        if (p.Where(x => x.Name == "Top").Count() == 0) p.Add(new SAPElementProperty("Top", Top.ToString(), true));
+                        if (p.Where(x => x.Name == "ScreenLeft").Count() == 0) p.Add(new SAPElementProperty("ScreenLeft", ScreenLeft.ToString(), true));
+                        if (p.Where(x => x.Name == "ScreenTop").Count() == 0) p.Add(new SAPElementProperty("ScreenTop", ScreenTop.ToString(), true));
+                        if (p.Where(x => x.Name == "Width").Count() == 0) p.Add(new SAPElementProperty("Width", Width.ToString(), true));
+                        if (p.Where(x => x.Name == "Height").Count() == 0) p.Add(new SAPElementProperty("Height", Height.ToString(), true));
+                        if (p.Where(x => x.Name == "Key").Count() == 0) p.Add(new SAPElementProperty("Key", Path, true));
+                        if (SAPHook.Instance.Recording)
+                        {
+                            if (string.IsNullOrEmpty(Cell))
+                            {
+                                try
+                                {
+                                    if (p.Where(x => x.Name == "Tooltip").Count() == 0) p.Add(new SAPElementProperty("Tooltip", tree.GetNodeToolTip(Path), true));
+                                }
+                                catch (Exception)
+                                {
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    if (p.Where(x => x.Name == "Tooltip").Count() == 0) p.Add(new SAPElementProperty("Tooltip", tree.GetItemToolTip(Path, Cell), true));
+                                    var b = true;
+                                }
+                                catch (Exception)
+                                {
+                                }
+                            }
+                        }
+                        if (!string.IsNullOrEmpty(Cell))
+                        {
+                            if (p.Where(x => x.Name == "Cell").Count() == 0) p.Add(new SAPElementProperty("Cell", Cell, true));
+                        }
+                        if (p.Where(x => x.Name == "Text").Count() == 0) p.Add(new SAPElementProperty("Text", text, true));
+                        Properties = p.ToArray();
+                    }
                     _Rectangle = new Rectangle(ScreenLeft, ScreenTop, Width, Height);
                     if (string.IsNullOrEmpty(Cell) && (VisibleOnly && Height > 0 && expanded || !VisibleOnly))
                     {
@@ -179,6 +218,7 @@ namespace OpenRPA.SAPBridge
                     }
 
                 }
+
             }
             else if (comp is SAPFEWSELib.GuiTableControl table)
             {
@@ -197,6 +237,12 @@ namespace OpenRPA.SAPBridge
                     p.Add(new SAPElementProperty("ScreenTop", grid.ScreenTop.ToString(), true));
                     p.Add(new SAPElementProperty("Width", grid.Width.ToString(), true));
                     p.Add(new SAPElementProperty("Height", grid.Height.ToString(), true));
+                    if (SAPHook.Instance.Recording)
+                    {
+                        p.Add(new SAPElementProperty("Tooltip", grid.Tooltip, true));
+                        p.Add(new SAPElementProperty("DefaultTooltip", grid.DefaultTooltip, true));
+                    }
+
                     _Rectangle = new Rectangle(grid.ScreenLeft, grid.ScreenTop, grid.Width, grid.Height);
                     Properties = p.ToArray();
                 }
@@ -230,6 +276,11 @@ namespace OpenRPA.SAPBridge
                     p.Add(new SAPElementProperty("Width", Width.ToString(), true));
                     p.Add(new SAPElementProperty("Height", Height.ToString(), true));
                     p.Add(new SAPElementProperty("Key", Path, true));
+                    if (SAPHook.Instance.Recording)
+                    {
+                        p.Add(new SAPElementProperty("Tooltip", grid.GetColumnTooltip(Path), true));
+                    }
+
                     if (!string.IsNullOrEmpty(Cell)) p.Add(new SAPElementProperty("Cell", Cell, true));
                     //var text = tree.GetNodeTextByKey(Path);
                     //p.Add(new SAPElementProperty("Text", text, true));
@@ -294,6 +345,10 @@ namespace OpenRPA.SAPBridge
                     properties.Add(new SAPElementProperty("ScreenTop", ScreenTop.ToString(), true));
                     properties.Add(new SAPElementProperty("Width", Width.ToString(), true));
                     properties.Add(new SAPElementProperty("Height", Height.ToString(), true));
+                    if (SAPHook.Instance.Recording)
+                    {
+                        properties.Add(new SAPElementProperty("Tooltip", grid.GetCellTooltip(index, Cell), true));
+                    }
 
                     _Rectangle = new Rectangle(ScreenLeft, ScreenTop, Width, Height);
                     Properties = properties.ToArray();
@@ -368,6 +423,12 @@ namespace OpenRPA.SAPBridge
                 p.Add(new SAPElementProperty("ScreenTop", ScreenTop.ToString(), true));
                 p.Add(new SAPElementProperty("Width", Width.ToString(), true));
                 p.Add(new SAPElementProperty("Height", Height.ToString(), true));
+                if (SAPHook.Instance.Recording)
+                {
+                    p.Add(new SAPElementProperty("Tooltip", radio.Tooltip, true));
+                    p.Add(new SAPElementProperty("DefaultTooltip", radio.DefaultTooltip, true));
+                }
+
                 Properties = p.ToArray();
                 _Rectangle = new Rectangle(ScreenLeft, ScreenTop, Width, Height);
                 var children = new List<SAPEventElement>();
@@ -413,6 +474,11 @@ namespace OpenRPA.SAPBridge
                 p.Add(new SAPElementProperty("ScreenTop", ScreenTop.ToString(), true));
                 p.Add(new SAPElementProperty("Width", Width.ToString(), true));
                 p.Add(new SAPElementProperty("Height", Height.ToString(), true));
+                if (SAPHook.Instance.Recording)
+                {
+                    p.Add(new SAPElementProperty("Tooltip", combobox.Tooltip, true));
+                    p.Add(new SAPElementProperty("DefaultTooltip", combobox.DefaultTooltip, true));
+                }
                 Properties = p.ToArray();
                 _Rectangle = new Rectangle(ScreenLeft, ScreenTop, Width, Height);
                 if(LoadChildren)
@@ -527,7 +593,19 @@ namespace OpenRPA.SAPBridge
             }
             if (Properties == null || Properties.Count() == 0)
             {
-                if (!VisibleOnly) LoadProperties(comp, all);
+                if(SAPHook.Instance.Recording)
+                {
+                    LoadProperties(comp, all);
+                } else if (!VisibleOnly)
+                {
+                    LoadProperties(comp, all);
+                }
+                 
+            }
+            var tool = Properties.Where(x => x.Name == "DefaultTooltip").FirstOrDefault();
+            if(tool ==null)
+            {
+                Program.log("Missing DefaultTooltip " + Id);
             }
             if (string.IsNullOrEmpty(Name))
             {
@@ -633,7 +711,7 @@ namespace OpenRPA.SAPBridge
         //    Items = items.ToArray();
 
         //}
-        private static string[] limitedProperties = { "Changeable", "Modified", "Text", "ScreenTop", "ScreenLeft", "Height", "Width", "Top", "Left", };
+        private static string[] limitedProperties = { "Changeable", "Modified", "Text", "ScreenTop", "ScreenLeft", "Height", "Width", "Top", "Left", "Tooltip", "DefaultTooltip"};
         private static Dictionary<Type, System.Reflection.PropertyInfo[]> typeProperties = new Dictionary<Type, System.Reflection.PropertyInfo[]>();
         public void LoadProperties(SAPFEWSELib.GuiComponent Element, bool all)
         {
@@ -675,6 +753,8 @@ namespace OpenRPA.SAPBridge
                         if (type == "GuiShell" && _p.Name == "Parent") continue;
                         if (type == "GuiStatusPane" && _p.Name == "Modified") continue;
                         if (type == "GuiStatusPane" && _p.Name == "Modified") continue;
+                        if (type == "GuiOkCodeField" && _p.Name == "Tooltip") continue;
+                        if (type == "GuiOkCodeField" && _p.Name == "DefaultTooltip") continue;
                         var value = _p.GetValue(Element);
                         if (value != null) prop.Value = value.ToString();
                         if (value == null) prop.Value = "";
