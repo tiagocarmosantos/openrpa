@@ -2095,4 +2095,16 @@ purgé : seules les métadonnées ont été conservées après une suppression.<
   <data name="plugin_traverse_selector_both_ways_help" xml:space="preserve">
     <value>Parcourir l&apos;arbre de l&apos;interface utilisateur dans les deux sens pour filtrer les éléments du sélecteur de fantômes</value>
   </data>
+  <data name="main_settings_btn_chrome_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>L&apos;extension de plugin « openrpa » a été détectée sur Google Chrome, veuillez la désinstaller et installer la nouvelle extension de plugin « Task Mining ».</value>
+  </data>
+  <data name="main_settings_btn_chrome_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Installez l&apos;extension du plugin « Chrome » pour suivre les activités sur le web.</value>
+  </data>
+  <data name="main_settings_btn_edge_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>L&apos;extension de plugin « openrpa » a été détectée sur Microsoft Edge, veuillez la désinstaller et installer la nouvelle extension de plugin « Task Mining ».</value>
+  </data>
+  <data name="main_settings_btn_edge_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Installez l&apos;extension du plugin « Edge » pour suivre les activités sur le web.</value>
+  </data>
 </root>

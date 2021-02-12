@@ -2099,4 +2099,16 @@ purged - Solo i metadati sono stati conservati dopo l&apos;eliminazione</value>
   <data name="plugin_traverse_selector_both_ways_help" xml:space="preserve">
     <value>Attraversa la struttura dell&apos;UI in entrambi i modi per filtrare gli elementi del selettore fantasma</value>
   </data>
+  <data name="main_settings_btn_chrome_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>L&apos;estensione di &quot;OpenRpa&quot; è stata rilevata su Google Chrome. Per favore disinstallarla e installare la nuova estensione del Task Mining.</value>
+  </data>
+  <data name="main_settings_btn_chrome_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Installa l&apos;estensione di Chrome per tracciare le attività web</value>
+  </data>
+  <data name="main_settings_btn_edge_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>L&apos;estensione di &quot;OpenRpa&quot; è stata rilevata su Microsoft Edge. Per favore disinstallarla e installare la nuova estensione del Task Mining.</value>
+  </data>
+  <data name="main_settings_btn_edge_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Installa l&apos;estensione di Edge per tracciare le attività web</value>
+  </data>
 </root>

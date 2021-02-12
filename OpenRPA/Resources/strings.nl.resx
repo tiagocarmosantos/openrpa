@@ -2094,4 +2094,16 @@ purged - Alleen metagegevens zijn bewaard gebleven na een verwijdering.</value>
   <data name="plugin_traverse_selector_both_ways_help" xml:space="preserve">
     <value>Beweeg de UI-boom in beide richtingen om &apos;spookelementen&apos; van de selector eruit te pikken</value>
   </data>
+  <data name="main_settings_btn_chrome_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>De &apos;openrpa&apos;-pluginextensie is gedetecteerd in Google Chrome. Verwijder het en installeer de nieuwe Task Mining-pluginextensie.</value>
+  </data>
+  <data name="main_settings_btn_chrome_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Installeer de Chrome-pluginextensie om webactiviteiten te tracken.</value>
+  </data>
+  <data name="main_settings_btn_edge_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>De &apos;openrpa&apos;-pluginextensie is gedetecteerd in Microsoft Edge. Verwijder het en installeer de nieuwe Task Mining-pluginextensie.</value>
+  </data>
+  <data name="main_settings_btn_edge_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Installeer de Edge-pluginextensie om webactiviteiten te tracken.</value>
+  </data>
 </root>

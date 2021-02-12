@@ -2118,4 +2118,16 @@ Fuzzy</comment>
   <data name="plugin_traverse_selector_both_ways_help" xml:space="preserve">
     <value>両方の方法でUIツリーを巡回してゴーストセレクターを非表示にします</value>
   </data>
+  <data name="main_settings_btn_chrome_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Google Chromeで拡張機能openrpaが検出されました。こちらをアンインストールして、新たな拡張機能Task Miningをインストールしてください。</value>
+  </data>
+  <data name="main_settings_btn_chrome_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Chromeの拡張機能をインストールしてウェブ上のアクティビティをフォローしましょう。</value>
+  </data>
+  <data name="main_settings_btn_edge_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Microsoft Edgeで拡張機能openrpaが検出されました。こちらをアンインストールして、新たな拡張機能Task Miningをインストールしてください。</value>
+  </data>
+  <data name="main_settings_btn_edge_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Edgeの拡張機能をインストールしてウェブ上のアクティビティをフォローしましょう。</value>
+  </data>
 </root>

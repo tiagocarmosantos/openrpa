@@ -687,4 +687,16 @@
 	<data name="designer_menu_uncomment" xml:space="preserve">
 		<value>Kommentar</value>
 	</data>
+	 <data name="main_settings_btn_chrome_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>In Google Chrome wurde das Plugin „openrpa“ gefunden. Bitte deinstallieren Sie dieses und installieren Sie das neue Plugin „Task Mining“.</value>
+  </data>
+  <data name="main_settings_btn_chrome_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Installieren Sie das Chrome-Plugin, um Webaktivitäten nachverfolgen zu können.</value>
+  </data>
+  <data name="main_settings_btn_edge_openrpainstalledwarning_tooltip_text" xml:space="preserve">
+    <value>In Microsoft Edge wurde das Plugin „openrpa“ gefunden. Bitte deinstallieren Sie dieses und installieren Sie das neue Plugin „Task Mining“.</value>
+  </data>
+  <data name="main_settings_btn_edge_myinvenionotinstalledwarning_tooltip_text" xml:space="preserve">
+    <value>Installieren Sie das Edge-Plugin, um Webaktivitäten nachverfolgen zu können.</value>
+  </data>
 </root>
