@@ -101,31 +101,43 @@ namespace OpenRPA.SAPBridge
             //    }
             //}
         }
+        public bool refreshingui = false;
         public void RefreshUIElements(bool VisibleOnly)
         {
             if(app==null) UIElements = new SAPEventElement[] { };
+            refreshingui = true;
             var result = new List<SAPEventElement>();
-            if(app != null && app.Children != null)
-                for (int x = 0; x < app.Children.Count; x++)
-                {
-                    var con = app.Children.ElementAt(x) as GuiConnection;
-                    if (con.Sessions.Count == 0) continue;
-
-                    for (int j = 0; j < con.Sessions.Count; j++)
+            try
+            {
+                Program.log("Refreshing UI Elements");
+                if (app != null && app.Children != null)
+                    for (int x = 0; x < app.Children.Count; x++)
                     {
-                        var session = con.Children.ElementAt(j) as GuiSession;
-                        var ele = session as GuiComponent;
-                        GetUIElements(result, session, session.Id, ele, VisibleOnly);
-                        //for (var i = 0; i < session.Children.Count; i++)
-                        //{
-                        //    GetUIElements(result, session, session.Id, session.Children.ElementAt(i), VisibleOnly);
-                        //}
+                        var con = app.Children.ElementAt(x) as GuiConnection;
+                        if (con.Sessions.Count == 0) continue;
+
+                        for (int j = 0; j < con.Sessions.Count; j++)
+                        {
+                            var session = con.Children.ElementAt(j) as GuiSession;
+                            var ele = session as GuiComponent;
+                            GetUIElements(result, session, session.Id, ele, VisibleOnly);
+                            //for (var i = 0; i < session.Children.Count; i++)
+                            //{
+                            //    GetUIElements(result, session, session.Id, session.Children.ElementAt(i), VisibleOnly);
+                            //}
+                        }
                     }
-                }
-            lock(UIElements)
+                Program.log("Refresh complete");
+            }
+            catch (Exception ex)
+            {
+                Program.log(ex.ToString());
+            }
+            lock (UIElements)
             {
                 UIElements = result.ToArray();
             }
+            refreshingui = false;
         }
         public SAPSession[] Sessions { get; private set; } = new SAPSession[] { };
         public SAPConnection[] Connections { get; private set; } = new SAPConnection[] { };
@@ -238,21 +250,21 @@ namespace OpenRPA.SAPBridge
                     session.Record = true;
                     Recording = true;
                 }
-                if (VisualizationEnabled)
-                {
-                    for (int j = 0; j < con.Children.Count; j++)
-                    {
-                        var ses = con.Children.ElementAt(i) as GuiSession;
-                        for (int y = 0; y < ses.Children.Count; y++)
-                        {
-                            var fWin = ses.Children.ElementAt(y) as GuiFrameWindow;
-                            if (fWin != null)
-                            {
-                                fWin.ElementVisualizationMode = true;
-                            }
-                        }
-                    }
-                }
+                //if (VisualizationEnabled)
+                //{
+                //    for (int j = 0; j < con.Children.Count; j++)
+                //    {
+                //        var ses = con.Children.ElementAt(i) as GuiSession;
+                //        for (int y = 0; y < ses.Children.Count; y++)
+                //        {
+                //            var fWin = ses.Children.ElementAt(y) as GuiFrameWindow;
+                //            if (fWin != null)
+                //            {
+                //                fWin.ElementVisualizationMode = true;
+                //            }
+                //        }
+                //    }
+                //}
             }
         }
         internal bool Login(SAPLoginEvent message)

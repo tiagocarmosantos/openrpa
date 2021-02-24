@@ -251,6 +251,8 @@ namespace OpenRPA.SAPBridge
                         message.Set(last);
                         form.AddText("[send] " + message.action + " " + last.ToString());
                         pipe.PushMessage(message);
+                        Task.Run(() => { if(recordstarting && !SAPHook.Instance.refreshingui) SAPHook.Instance.RefreshUIElements(true); });
+                        // 
                     }
                     else
                     {
@@ -325,7 +327,9 @@ namespace OpenRPA.SAPBridge
                             overlay = recinfo.overlay;
                             //StartMonitorMouse(recinfo.mousemove);
                             form.AddText("StartMonitorMouse::begin");
-                            if(overlay) StartMonitorMouse(true);
+                            // if(overlay) StartMonitorMouse(true);
+                            // if(recinfo.mousemove) StartMonitorMouse(true);
+                            StartMonitorMouse(true);
                             form.AddText("StartMonitorMouse::end");
                         }
                         form.AddText("BeginRecord::begin");

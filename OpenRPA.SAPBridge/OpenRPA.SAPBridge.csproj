@@ -7,7 +7,7 @@
     <Configurations>Debug;Release;PrepInstaller;PrepInstallerIBM</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\debug</OutputPath>
+    <OutputPath>..\debug\version1</OutputPath>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">

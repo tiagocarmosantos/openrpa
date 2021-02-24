@@ -84,8 +84,11 @@ namespace OpenRPA.SAP
                 // SAPhook.Instance.OnRecordEvent += OnRecordEvent;
                 SAPhook.Instance.Connected += () => { SetStatus("Online"); };
                 SAPhook.Instance.Disconnected += () => { SetStatus("Offline"); };
-                timer = new System.Timers.Timer(5000);
-                timer.Elapsed += Timer_Elapsed;
+                if(timer==null)
+                {
+                    timer = new System.Timers.Timer(5000);
+                    timer.Elapsed += Timer_Elapsed;
+                }
                 timer.Start();
             }
             catch (Exception ex)
@@ -99,7 +102,7 @@ namespace OpenRPA.SAP
             try
             {
                 SAPhook.Instance.RefreshConnections();
-                if(SAPhook.Instance.isSapRunning)
+                if(SAPhook.Instance.Connections.Length < 1)
                 {
                     SetStatus("Online(-1)");
                 } 
@@ -113,7 +116,8 @@ namespace OpenRPA.SAP
             {
                 Log.Error("Error getting sap sessions: " + ex.Message);
             }
-            timer.Interval = TimeSpan.FromMinutes(5).TotalMilliseconds;
+            // timer.Interval = TimeSpan.FromMinutes(5).TotalMilliseconds;
+            timer.Interval = TimeSpan.FromSeconds(30).TotalMilliseconds;
             timer.Start();
         }
         public static Plugin Instance { get; set; }
@@ -122,8 +126,8 @@ namespace OpenRPA.SAP
             if (!SAPhook.Instance.isConnected) return;
             Instance = this;
             var e = new SAPToogleRecordingEvent();
-            // e.overlay = Config.local.record_overlay;
             e.overlay = false;
+            e.overlay = Config.local.record_overlay;
             e.mousemove = Config.local.record_overlay;
             var msg = new SAPEvent("beginrecord"); msg.Set(e);
             SAPhook.Instance.SendMessage(msg, TimeSpan.FromSeconds(5));
