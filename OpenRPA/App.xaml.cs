@@ -23,7 +23,7 @@ namespace OpenRPA
         [STAThread]
         public static void Main(string[] args)
         {
-            if (args != null && args[0] != null && args[0] == "AUTORESTART")
+            if (args != null && args.Length > 0 && args[0] == "AUTORESTART")
             {
                 int maxRetry = 30;
                 while (maxRetry > 0 && ApplicationSingleInstance.AlreadyRunning())
