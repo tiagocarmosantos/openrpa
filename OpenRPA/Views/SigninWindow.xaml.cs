@@ -20,6 +20,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CefSharp.Wpf;
 
 
 namespace OpenRPA.Views
@@ -137,7 +138,17 @@ namespace OpenRPA.Views
                             _jwt = getjwt(this.url, cookies);
                             if(!string.IsNullOrEmpty(_jwt))
                             {
-                                GenericTools.RunUI(() => { DialogResult = true; });
+                                GenericTools.RunUI(() =>
+                                {
+                                    DialogResult = true;
+
+                                    ChromiumWebBrowser cwb = this.content.Child as ChromiumWebBrowser;
+                                    if (cwb != null)
+                                    {
+                                        cwb.Dispose();
+                                    }
+                                    Cef.Shutdown();
+                                });
                             }
                         }
                     }

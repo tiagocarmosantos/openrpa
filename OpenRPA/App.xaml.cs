@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
+using OpenRPA.Custom;
 
 namespace OpenRPA
 {
@@ -20,8 +21,19 @@ namespace OpenRPA
     public partial class App : Application, ISingleInstanceApp
     {
         [STAThread]
-        public static void Main()
+        public static void Main(string[] args)
         {
+            if (args != null && args[0] != null && args[0] == "AUTORESTART")
+            {
+                int maxRetry = 30;
+                while (maxRetry > 0 && ApplicationSingleInstance.AlreadyRunning())
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    maxRetry--;
+                    Log.Information("Remaining retries for auto restart: "+ maxRetry);
+                }
+            }
+
             if (SingleInstance<App>.InitializeAsFirstInstance("OpenRPA"))
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Ssl3;

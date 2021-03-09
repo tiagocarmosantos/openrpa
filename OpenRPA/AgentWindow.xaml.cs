@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using OpenRPA.Custom;
 using Xceed.Wpf.AvalonDock.Layout;
 
 namespace OpenRPA
@@ -406,6 +407,7 @@ namespace OpenRPA
                 {
                     if (document.Content is Views.WFDesigner view) document.Close();
                 }
+
                 Config.Reload();
                 Config.local.password = new byte[] { };
                 Config.local.jwt = new byte[] { };
@@ -416,6 +418,10 @@ namespace OpenRPA
             {
                 Log.Error(ex, "");
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ApplicationSingleInstance.Restart();
             }
         }
         private void OnOpen(object _item)

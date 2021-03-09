@@ -145,6 +145,8 @@ namespace OpenRPA
                         first_connect = false;
                         LoadLayout();
 
+                        /*
+                        //Removed caused by Cef http caching
                         if (Config.local.show_getting_started && (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["GettingStartedURL"])))
                         {
                             LayoutDocument layoutDocument = new LayoutDocument { Title = "Getting started" };
@@ -155,6 +157,7 @@ namespace OpenRPA
                             layoutDocument.IsSelected = true;
                             layoutDocument.Closing += LayoutDocument_Closing;
                         }
+                        */
                     }
                 }
                 catch (Exception ex)
@@ -1474,6 +1477,10 @@ namespace OpenRPA
             {
                 Log.Error(ex, "");
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ApplicationSingleInstance.Restart();
             }
         }
         private bool CanManagePackages(object _item)
