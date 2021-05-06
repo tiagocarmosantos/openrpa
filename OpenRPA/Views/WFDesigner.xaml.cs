@@ -319,14 +319,18 @@ namespace OpenRPA.Views
                 {
                     Name = "End_Task"
                 };
-                Variable<string> MainTaskVar = new Variable<string>
+                Variable<string> CaseStartVar = new Variable<string>
                 {
-                    Name = "Main_Task"
+                    Name = "Case_Start"
+                };
+                Variable<string> CaseEndVar = new Variable<string>
+                {
+                    Name = "Case_End"
                 };
 
                 Activity wf = new System.Activities.Statements.Sequence
                 {
-                    Variables = { BusinessActivityNameVar, ProcessIdVar, StartTaskVar, EndTaskVar, MainTaskVar }
+                    Variables = { BusinessActivityNameVar, ProcessIdVar, StartTaskVar, EndTaskVar, CaseStartVar, CaseEndVar }
                 };
                 var ab = new ActivityBuilder
                 {
