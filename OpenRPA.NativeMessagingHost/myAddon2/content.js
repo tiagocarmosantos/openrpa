@@ -275,9 +275,15 @@ if (true == false) {
                     }
                     actualVasKeys.set(inputHashKeyCounter, inputHashKeyCounter);
                     var inputHashKeyCounterValue = inputHashKey + '#' + inputCounter + '#' + UTILS.hash(inputValue);
-                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xPath: inputXpath ,value: inputValue, ngModel: inputNgModel, counter: inputCounter };
+                    
+					let inputRectangle = {};
+					try {
+						openrpautil.applyPhysicalCords(inputRectangle, ele);
+					} catch (e) {
+						console.error(e);
+					}
 
-
+                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xPath: inputXpath, value: inputValue, ngModel: inputNgModel, counter: inputCounter, rectangle: inputRectangle};
                 },
                 checkFieldsChange: function (sendCurrentPageVals) {
                   //  var t0 = performance.now();
@@ -290,7 +296,6 @@ if (true == false) {
                     var inputs = UTILS.getElementsByTagNames(['input', 'select','textarea' ,'span', 'a' , 'div']);  
                    // var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea' ]);  
                     for (index = 0; index < inputs.length; ++index) {
-
                         let trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
                         if (trackObject) {
                             actualVas.set(trackObject.hashId, trackObject);
@@ -325,18 +330,23 @@ if (true == false) {
                 raiseFieldsChangeEvent(fields) {
 
                     if (!fields) return;
-                    
                     try {
-                        var arrOfFields = Array.from(fields.values()).map(function(obj) {
-                            return {
-                                id : obj.id,
-                                name : obj.name,
-                                "class" : obj.class,
-                                type : obj.type,
-                                xPathFull : obj.xPathFull,
+                        var arrOfFields = Array.from(fields.values()).map(function (obj) {
+                            let result = {
+                                id: obj.id,
+                                name: obj.name,
+                                "class": obj.class,
+                                type: obj.type,
+                                xPathFull: obj.xPathFull,
                                 xPath: obj.xPath,
                                 value: obj.value
+                            };
+
+                            if (obj.value && obj.rectangle && obj.rectangle.height > 0 && obj.rectangle.width > 0) {
+                                result.rectangle = obj.rectangle;
+                                //console.info(result);
                             }
+                            return result;
                         });
 
                         console.log('dumprelevantdata: ' + arrOfFields.length );
