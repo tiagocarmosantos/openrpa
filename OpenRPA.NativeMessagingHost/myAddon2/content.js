@@ -224,6 +224,10 @@ if (true == false) {
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
                 },
                 getElementTrackObjectValue: function (ele, inputIsText) {
+					
+					if(ele.tagName === 'INPUT' && ele.type && ele.type.toUpperCase() === 'PASSWORD'){
+						return 'PASSWORD';
+					}
 
                     if ((!inputIsText  ) &&
                         ((ele.tagName === 'INPUT') || (ele.tagName === 'SELECT') || (ele.tagName === 'TEXTAREA')) &&
