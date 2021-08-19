@@ -1,6 +1,6 @@
 document.openrpadebug = false;
 document.openrpauniquexpathids = ['ng-model', 'ng-reflect-name']; // aria-label
- 
+
 
 function inIframe() {
     var result = true;
@@ -124,7 +124,7 @@ if (true == false) {
         if (typeof document.openrpautil === 'undefined') {
             document.openrpautil = {};
             var host = chrome;
-            var isTabFocused = true ; 
+            var isTabFocused = true;
             var intervalId;
             var last_mousemove = null;
             var cache = {};
@@ -140,21 +140,21 @@ if (true == false) {
                 ping: function () {
                     return "pong";
                 },
-               
-               
+
+
                 init: function () {
- 
+
 
                     if (document.URL.startsWith("https://docs.google.com/spreadsheets/d")) {
                         console.log("skip google docs *");
                         return;
                     }
                     document.addEventListener('mousemove', function (e) { openrpautil.pushEvent('mousemove', e); }, true);
-                    
+
                     window.onload = function () {
                         intervalId = setInterval(function () {
                             try {
-                                if ( isTabFocused   ) {
+                                if (isTabFocused) {
                                     openrpautil.checkFieldsChange(false);
                                 }
                             } catch (e) {
@@ -176,32 +176,30 @@ if (true == false) {
                             isTabFocused = false;
                         }
                     });
-                                         
+
                     if (inIframe()) return;
 
                     window.onfocus = function () {
                         isTabFocused = true;
-                     };
+                    };
 
                     window.onblur = function () {
                         isTabFocused = false;
                         openrpautil.checkFieldsChange(true);
                     };
-                                        
-                    
+
+
                     document.addEventListener('click', function (e) { openrpautil.pushEvent('click', e); }, true);
-                    document.addEventListener('keydown', function(e) {
+                    document.addEventListener('keydown', function (e) {
 
                         if (e.keyCode === ctrlKey || e.keyCode === cmdKey) ctrlDown = true;
-                        
-                        if (ctrlDown && (e.keyCode === cKey)) 
-                        {
+
+                        if (ctrlDown && (e.keyCode === cKey)) {
                             openrpautil.pushEvent('ctrlc', e);
                             return;
                         }
-                        
-                        if (ctrlDown && (e.keyCode === vKey)) 
-                        {
+
+                        if (ctrlDown && (e.keyCode === vKey)) {
                             openrpautil.pushEvent('ctrlv', e);
                             return;
                         }
@@ -209,10 +207,9 @@ if (true == false) {
                         openrpautil.pushEvent('keydown', e);
                     }, true);
                     document.addEventListener('keypress', function (e) { openrpautil.pushEvent('keyup', e); }, true);
-                    document.addEventListener('keyup', function(e) {
+                    document.addEventListener('keyup', function (e) {
                         if (e.keyCode === ctrlKey || e.keyCode === cmdKey) ctrlDown = false;
-                        if (e.keyCode === KEYCODE_TAB) 
-                        {
+                        if (e.keyCode === KEYCODE_TAB) {
                             openrpautil.pushEvent('tab', e);
                         }
                     }, true);
@@ -224,47 +221,47 @@ if (true == false) {
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
                 },
                 getElementTrackObjectValue: function (ele, inputIsText) {
-					
-					if(ele.tagName === 'INPUT' && ele.type && ele.type.toUpperCase() === 'PASSWORD'){
-						return 'PASSWORD';
-					}
 
-                    if ((!inputIsText  ) &&
+                    if (ele.tagName === 'INPUT' && ele.type && ele.type.toUpperCase() === 'PASSWORD') {
+                        return 'PASSWORD';
+                    }
+
+                    if ((!inputIsText) &&
                         ((ele.tagName === 'INPUT') || (ele.tagName === 'SELECT') || (ele.tagName === 'TEXTAREA')) &&
-                        (ele.type) ) {
+                        (ele.type)) {
                         return ele.type === 'checkbox' ? ele.checked : ele.value;
                     }
 
-                    if ((inputIsText) && 
+                    if ((inputIsText) &&
                         ((!ele.children) || (ele.children.length === 0)) &&
                         (ele.innerText.length <= 50)) {
 
                         return ele.innerText;
-                    }                    
+                    }
 
                     return null;
                 },
 
-                getElementTrackObject: function (ele, actualVasKeys ) {
+                getElementTrackObject: function (ele, actualVasKeys) {
 
                     var inputTagName = ele.tagName;
                     var inputIsText = (inputTagName === 'A') || (inputTagName === 'DIV') || (inputTagName === 'SPAN');
 
                     var inputValue = openrpautil.getElementTrackObjectValue(ele, inputIsText);
-                    if ( inputValue === null ) {
+                    if (inputValue === null) {
                         return null;
                     }
-                    
-                    var inputCounter = 0;                    
+
+                    var inputCounter = 0;
                     var inputId = ele.id;
                     var inputName = ele.name;
                     var inputType = ele.type;
                     var inputClass = ele.getAttribute('class');
-                    var inputXpathFull =   (inputIsText) ? null : UTILS.xPath(ele, false );
-                    var inputXpath =  UTILS.xPath(ele, true);                    
+                    var inputXpathFull = (inputIsText) ? null : UTILS.xPath(ele, false);
+                    var inputXpath = UTILS.xPath(ele, true);
                     var inputNgModel = ele.getAttribute('ng-model');
                     var uniqueXpath = (inputIsText) ? inputXpath : inputXpathFull;
-                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + uniqueXpath );
+                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + uniqueXpath);
                     var inputHashKeyCounter = inputHashKey + '#' + inputCounter;
                     if (actualVasKeys.has(inputHashKeyCounter)) {
                         // manage conflict of ids : use a counter
@@ -272,33 +269,33 @@ if (true == false) {
                             if (conflictKey.split('#')[0] === inputHashKey.toString()) {// the key has match : find the greater counter
                                 let conflictCounter = parseInt(conflictKey.split('#')[1]);
                                 inputCounter = conflictCounter > inputCounter ? conflictCounter : inputCounter;
-                            }                            
+                            }
                         }
                         inputCounter = inputCounter + 1; // increase form gratest value
                         inputHashKeyCounter = inputHashKey + '#' + inputCounter;
                     }
                     actualVasKeys.set(inputHashKeyCounter, inputHashKeyCounter);
                     var inputHashKeyCounterValue = inputHashKey + '#' + inputCounter + '#' + UTILS.hash(inputValue);
-                    
-					let inputRectangle = {};
-					try {
-						openrpautil.applyPhysicalCords(inputRectangle, ele);
-					} catch (e) {
-						console.error(e);
-					}
 
-                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xPath: inputXpath, value: inputValue, ngModel: inputNgModel, counter: inputCounter, rectangle: inputRectangle};
+                    let inputRectangle = {};
+                    try {
+                        openrpautil.applyPhysicalCords(inputRectangle, ele);
+                    } catch (e) {
+                        console.error(e);
+                    }
+
+                    return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xPath: inputXpath, value: inputValue, ngModel: inputNgModel, counter: inputCounter, rectangle: inputRectangle };
                 },
                 checkFieldsChange: function (sendCurrentPageVals) {
-                  //  var t0 = performance.now();
+                    //  var t0 = performance.now();
 
                     // key = hashKey#counter#hashValue
                     let actualVas = new Map();
                     // key = hashKey#counter need for managing fields with same key, so need to increase the counter
                     let actualVasKeys = new Map();
                     var actualVasMatch = 0;
-                    var inputs = UTILS.getElementsByTagNames(['input', 'select','textarea' ,'span', 'a' , 'div']);  
-                   // var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea' ]);  
+                    var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea', 'span', 'a', 'div']);
+                    // var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea' ]);  
                     for (index = 0; index < inputs.length; ++index) {
                         let trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
                         if (trackObject) {
@@ -310,27 +307,27 @@ if (true == false) {
                                 // else { console.log('not match : ' + '- ' + trackObject.hashId + '  object   : ' + trackObject.inputId + trackObject.name + trackObject.type + trackObject.xPath + trackObject.value );        }
                             }
                         }
-                        
+
                     }
-                    
+
                     var minDelta = (window.pageVals) ? window.pageVals.size * 0.2 : -1; // minimum number of values changed to detect a major event  is 20% 
                     if ((sendCurrentPageVals) || // force for window onblur or onunload
                         (minDelta === -1) || // first run
                         (Math.abs(window.pageVals.size - actualVas.size) >= minDelta) ||  // major change of number  of fields 
                         (actualVas.size - actualVasMatch >= minDelta)) { // major change of values  of fields 
-                        if (sendCurrentPageVals && (actualVas) &&(actualVas.size > 0 )   ) {
+                        if (sendCurrentPageVals && (actualVas) && (actualVas.size > 0)) {
                             openrpautil.raiseFieldsChangeEvent(actualVas); // send the field of current page (for example on blur of page)
                         } else if ((window.pageVals) && (window.pageVals.size > 0)) {
                             openrpautil.raiseFieldsChangeEvent(window.pageVals);  // send the previus field (for example a major event has already done)
-                        } 
+                        }
                     }
 
                     window.pageVals = null; // reset the page attributes
                     window.pageVals = actualVas;
-                  //  var t1 = performance.now();
-                  //  console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds, at time : " + new Date().toISOString()  )
+                    //  var t1 = performance.now();
+                    //  console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds, at time : " + new Date().toISOString()  )
 
-                },                
+                },
                 raiseFieldsChangeEvent(fields) {
 
                     if (!fields) return;
@@ -353,12 +350,11 @@ if (true == false) {
                             return result;
                         });
 
-                        console.log('dumprelevantdata: ' + arrOfFields.length );
-                        
-                        host.runtime.sendMessage({   functionName: "dumprelevantdata", result: JSON.stringify(arrOfFields) });
+                        console.log('dumprelevantdata: ' + arrOfFields.length);
 
-                    } catch (e) 
-                    {
+                        host.runtime.sendMessage({ functionName: "dumprelevantdata", result: JSON.stringify(arrOfFields) });
+
+                    } catch (e) {
                         console.error(e);
                     }
                 },
@@ -791,9 +787,9 @@ if (true == false) {
                             message.uix += 7;
                             message.uiy -= 7;
                         }
-                    //} else {
-                    //    message.uix += 1;
-                    //    message.uiy += 1;
+                        //} else {
+                        //    message.uix += 1;
+                        //    message.uiy += 1;
                     }
                 },
                 // https://stackoverflow.com/questions/53056796/getboundingclientrect-from-within-iframe
@@ -839,7 +835,7 @@ if (true == false) {
                                             } else {
                                                 positions.push({ x: 0, y: 0 });
                                             }
-                                            
+
                                         }
                                     } catch (e) {
                                         // console.debug(e);
@@ -855,7 +851,7 @@ if (true == false) {
                                 break;
                             }
                     }
-                    
+
                     var result = positions.reduce((accumulator, currentValue) => {
                         return {
                             x: (accumulator.x + currentValue.x) | 0,
@@ -887,7 +883,7 @@ if (true == false) {
                     else {
                         // https://www.jeffersonscher.com/res/resolution.php
                         // https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
-                        var message = { functionName: action, frame: frame, parents: 0, xpaths: []};
+                        var message = { functionName: action, frame: frame, parents: 0, xpaths: [] };
                         var targetElement = null;
                         targetElement = event.target || event.srcElement;
                         if (targetElement == null) {
@@ -896,7 +892,7 @@ if (true == false) {
                         }
                         if (action === 'mousemove') {
                             last_mousemove = targetElement;
-                         }
+                        }
                         try {
                             openrpautil.applyPhysicalCords(message, targetElement);
                         } catch (e) {
@@ -969,7 +965,7 @@ if (true == false) {
                     delete message.script;
                     var test = JSON.parse(JSON.stringify(message));
                     if (document.openrpadebug) console.log(test);
-                    return test;                    
+                    return test;
                 },
                 fullPath: function (el) {
                     var names = [];
@@ -1183,7 +1179,7 @@ if (true == false) {
                             if (element.options[i].selected) {
                                 selectedvalues.push(element.options[i].value);
                             }
-                        } 
+                        }
                         treeObject["values"] = selectedvalues;
                     }
 
@@ -1193,19 +1189,19 @@ if (true == false) {
                 },
                 getAdditions: function (elm) {
                     var additions = {};
-                    
+
                     try {
                         var cells = getTableRowCellsFrom(elm);
-                        
+
                         if (cells.length > 0) {
                             additions["tableRowCells"] = cells;
                         }
-                        
+
                         return additions;
-                    } 
+                    }
                     catch (e) {
                         //window.console.error(e);
-                        return { };
+                        return {};
                     }
 
                     function getTableRowCellsFrom(element) {
@@ -1421,7 +1417,7 @@ if (true == false) {
                     case Node.ELEMENT_NODE:
                         ownValue = node.localName;
                         if (optimized) {
-                            
+
                             for (var i = 0; i < document.openrpauniquexpathids.length; i++) {
                                 var id = document.openrpauniquexpathids[i].toLowerCase();
                                 if (node.getAttribute(id))
@@ -1642,10 +1638,10 @@ if (true == false) {
                     hash |= 0; // Convert to 32bit integer
                 }
                 return hash;
-                    
+
             }
- 
-            
+
+
             UTILS.getElementsByTagNames = function (tags) {
                 var elements = [];
 
@@ -1656,8 +1652,8 @@ if (true == false) {
 
                 return elements;
             };
-           
-            
+
+
 
         }
     }
