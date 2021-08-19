@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "myInvenio Task Mining",
-  "version": "1.0.0.3",
+  "version": "1.0.0.4",
   "description": "Support extension for myInvenio Task Mining",
   "permissions": [ "tabs", "nativeMessaging", "<all_urls>", "webNavigation", "file:///*", "downloads" ],
   "background": {
