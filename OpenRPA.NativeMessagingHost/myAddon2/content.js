@@ -287,14 +287,15 @@ if (true == false) {
                     return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xPath: inputXpath, value: inputValue, ngModel: inputNgModel, counter: inputCounter, rectangle: inputRectangle };
                 },
                 checkFieldsChange: function (sendCurrentPageVals) {
+                    let ts = new Date();
                     //  var t0 = performance.now();
 
                     // key = hashKey#counter#hashValue
                     let actualVas = new Map();
                     // key = hashKey#counter need for managing fields with same key, so need to increase the counter
                     let actualVasKeys = new Map();
-                    var actualVasMatch = 0;
-                    var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea', 'span', 'a', 'div']);
+                    let actualVasMatch = 0;
+                    let inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea', 'span', 'a', 'div']);
                     // var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea' ]);  
                     for (index = 0; index < inputs.length; ++index) {
                         let trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
@@ -310,25 +311,33 @@ if (true == false) {
 
                     }
 
-                    var minDelta = (window.pageVals) ? window.pageVals.size * 0.2 : -1; // minimum number of values changed to detect a major event  is 20% 
+                    let minDelta = (window.pageVals) ? window.pageVals.size * 0.2 : -1; // minimum number of values changed to detect a major event  is 20%
                     if ((sendCurrentPageVals) || // force for window onblur or onunload
                         (minDelta === -1) || // first run
                         (Math.abs(window.pageVals.size - actualVas.size) >= minDelta) ||  // major change of number  of fields 
                         (actualVas.size - actualVasMatch >= minDelta)) { // major change of values  of fields 
                         if (sendCurrentPageVals && (actualVas) && (actualVas.size > 0)) {
-                            openrpautil.raiseFieldsChangeEvent(actualVas); // send the field of current page (for example on blur of page)
+                            openrpautil.raiseFieldsChangeEvent(actualVas, window.pageValsTs); // send the field of current page (for example on blur of page)
+                            window.pageValsTs = ts;
                         } else if ((window.pageVals) && (window.pageVals.size > 0)) {
-                            openrpautil.raiseFieldsChangeEvent(window.pageVals);  // send the previus field (for example a major event has already done)
+                            openrpautil.raiseFieldsChangeEvent(window.pageVals, window.pageValsTs);  // send the previus field (for example a major event has already done)
+                            window.pageValsTs = ts;
                         }
                     }
 
+
                     window.pageVals = null; // reset the page attributes
                     window.pageVals = actualVas;
+                    //console.log("Save actual values: " + new Date().toISOString())
                     //  var t1 = performance.now();
                     //  console.log("Call to checkFieldsChange took " + (t1 - t0) + " milliseconds, at time : " + new Date().toISOString()  )
 
                 },
-                raiseFieldsChangeEvent(fields) {
+                raiseFieldsChangeEvent(fields, ts) {
+                    if (!ts) {
+                        ts = new Date();
+                        console.debug("raiseFieldsChangeEvent init default ts");
+                    }
 
                     if (!fields) return;
                     try {
@@ -350,9 +359,9 @@ if (true == false) {
                             return result;
                         });
 
-                        console.log('dumprelevantdata: ' + arrOfFields.length);
+                        console.log('dumprelevantdata: ' + arrOfFields.length + ' ts: ' + ts.toISOString());
 
-                        host.runtime.sendMessage({ functionName: "dumprelevantdata", result: JSON.stringify(arrOfFields) });
+                        host.runtime.sendMessage({ functionName: "dumprelevantdata", referenceTimeStamp: ts.toISOString(), result: JSON.stringify(arrOfFields) });
 
                     } catch (e) {
                         console.error(e);

@@ -58,6 +58,8 @@ namespace OpenRPA.Interfaces
         public int uiheight { get; set; } = -1;
         public string data { get; set; }
         public int c { get; set; }
+        [System.Xml.Serialization.XmlElement("referenceTimeStamp", IsNullable = true)]
+        public DateTime? referenceTimeStamp { get; set; }
         
     }
 }
