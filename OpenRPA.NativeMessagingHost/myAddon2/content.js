@@ -317,17 +317,17 @@ if (true == false) {
                         (Math.abs(window.pageVals.size - actualVas.size) >= minDelta) ||  // major change of number  of fields 
                         (actualVas.size - actualVasMatch >= minDelta)) { // major change of values  of fields 
                         if (sendCurrentPageVals && (actualVas) && (actualVas.size > 0)) {
-                            openrpautil.raiseFieldsChangeEvent(actualVas, window.pageValsTs); // send the field of current page (for example on blur of page)
+                            openrpautil.raiseFieldsChangeEvent(actualVas, ts/*window.pageValsTs*/); // send the field of current page (for example on blur of page)
                             window.pageValsTs = ts;
                             window.pageVals = null; // reset the page attributes
                             window.pageVals = actualVas;
                         } else if ((window.pageVals) && (window.pageVals.size > 0)) {
-                            openrpautil.raiseFieldsChangeEvent(window.pageVals, window.pageValsTs);  // send the previus field (for example a major event has already done)
+                            openrpautil.raiseFieldsChangeEvent(actualVas, window.pageValsTs);  // send the previus field (for example a major event has already done)
                             window.pageValsTs = ts;
                             window.pageVals = null; // reset the page attributes
                             window.pageVals = actualVas;
                         } else if (minDelta === -1) {
-                            openrpautil.raiseFieldsChangeEvent(actualVas, window.pageValsTs);  // send the previus field (for example a major event has already done)
+                            openrpautil.raiseFieldsChangeEvent(actualVas, ts/*window.pageValsTs*/);  // send the previus field (for example a major event has already done)
                             window.pageValsTs = ts;
                             window.pageVals = null; // reset the page attributes
                             window.pageVals = actualVas;
