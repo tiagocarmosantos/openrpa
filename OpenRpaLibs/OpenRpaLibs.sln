@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenRPA.Interfaces", "..\OpenRPA.Interfaces\OpenRPA.Interfaces.csproj", "{69FD731A-1E69-4DEE-A08D-722510ADDD25}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenRPA.NM", "..\OpenRPA.NM\OpenRPA.NM.csproj", "{52B0679A-E7F1-4588-8FD2-D88624743BE1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenRPA.NativeMessagingHost", "..\OpenRPA.NativeMessagingHost\OpenRPA.NativeMessagingHost.csproj", "{C5502A61-BAB4-4837-8281-156B176507BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenRPA.NamedPipeWrapper", "..\OpenRPA.NamedPipeWrapper\OpenRPA.NamedPipeWrapper.csproj", "{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		PrepInstaller|Any CPU = PrepInstaller|Any CPU
+		PrepInstaller|x86 = PrepInstaller|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+		ReleaseNuget|Any CPU = ReleaseNuget|Any CPU
+		ReleaseNuget|x86 = ReleaseNuget|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.Debug|x86.ActiveCfg = Debug|x86
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.Debug|x86.Build.0 = Debug|x86
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.PrepInstaller|Any CPU.ActiveCfg = PrepInstaller|Any CPU
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.PrepInstaller|Any CPU.Build.0 = PrepInstaller|Any CPU
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.PrepInstaller|x86.ActiveCfg = PrepInstaller|x86
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.PrepInstaller|x86.Build.0 = PrepInstaller|x86
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.Release|x86.ActiveCfg = Release|x86
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.Release|x86.Build.0 = Release|x86
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.ReleaseNuget|Any CPU.ActiveCfg = ReleaseNuget|Any CPU
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.ReleaseNuget|Any CPU.Build.0 = ReleaseNuget|Any CPU
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.ReleaseNuget|x86.ActiveCfg = ReleaseNuget|x86
+		{69FD731A-1E69-4DEE-A08D-722510ADDD25}.ReleaseNuget|x86.Build.0 = ReleaseNuget|x86
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.Debug|x86.ActiveCfg = Debug|x86
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.Debug|x86.Build.0 = Debug|x86
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.PrepInstaller|Any CPU.ActiveCfg = PrepInstaller|Any CPU
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.PrepInstaller|Any CPU.Build.0 = PrepInstaller|Any CPU
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.PrepInstaller|x86.ActiveCfg = PrepInstaller|x86
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.PrepInstaller|x86.Build.0 = PrepInstaller|x86
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.Release|x86.ActiveCfg = Release|x86
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.Release|x86.Build.0 = Release|x86
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.ReleaseNuget|Any CPU.ActiveCfg = ReleaseNuget|Any CPU
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.ReleaseNuget|Any CPU.Build.0 = ReleaseNuget|Any CPU
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.ReleaseNuget|x86.ActiveCfg = ReleaseNuget|x86
+		{52B0679A-E7F1-4588-8FD2-D88624743BE1}.ReleaseNuget|x86.Build.0 = ReleaseNuget|x86
+		{C5502A61-BAB4-4837-8281-156B176507BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5502A61-BAB4-4837-8281-156B176507BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5502A61-BAB4-4837-8281-156B176507BE}.Debug|x86.ActiveCfg = Debug|x86
+		{C5502A61-BAB4-4837-8281-156B176507BE}.Debug|x86.Build.0 = Debug|x86
+		{C5502A61-BAB4-4837-8281-156B176507BE}.PrepInstaller|Any CPU.ActiveCfg = PrepInstaller|Any CPU
+		{C5502A61-BAB4-4837-8281-156B176507BE}.PrepInstaller|Any CPU.Build.0 = PrepInstaller|Any CPU
+		{C5502A61-BAB4-4837-8281-156B176507BE}.PrepInstaller|x86.ActiveCfg = PrepInstaller|x86
+		{C5502A61-BAB4-4837-8281-156B176507BE}.PrepInstaller|x86.Build.0 = PrepInstaller|x86
+		{C5502A61-BAB4-4837-8281-156B176507BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5502A61-BAB4-4837-8281-156B176507BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5502A61-BAB4-4837-8281-156B176507BE}.Release|x86.ActiveCfg = Release|x86
+		{C5502A61-BAB4-4837-8281-156B176507BE}.Release|x86.Build.0 = Release|x86
+		{C5502A61-BAB4-4837-8281-156B176507BE}.ReleaseNuget|Any CPU.ActiveCfg = ReleaseNuget|Any CPU
+		{C5502A61-BAB4-4837-8281-156B176507BE}.ReleaseNuget|Any CPU.Build.0 = ReleaseNuget|Any CPU
+		{C5502A61-BAB4-4837-8281-156B176507BE}.ReleaseNuget|x86.ActiveCfg = ReleaseNuget|x86
+		{C5502A61-BAB4-4837-8281-156B176507BE}.ReleaseNuget|x86.Build.0 = ReleaseNuget|x86
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.Debug|x86.ActiveCfg = Debug|x86
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.Debug|x86.Build.0 = Debug|x86
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.PrepInstaller|Any CPU.ActiveCfg = PrepInstaller|Any CPU
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.PrepInstaller|Any CPU.Build.0 = PrepInstaller|Any CPU
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.PrepInstaller|x86.ActiveCfg = PrepInstaller|x86
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.PrepInstaller|x86.Build.0 = PrepInstaller|x86
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.Release|x86.ActiveCfg = Release|x86
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.Release|x86.Build.0 = Release|x86
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.ReleaseNuget|Any CPU.ActiveCfg = ReleaseNuget|Any CPU
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.ReleaseNuget|Any CPU.Build.0 = ReleaseNuget|Any CPU
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.ReleaseNuget|x86.ActiveCfg = ReleaseNuget|x86
+		{6A65E8D9-BA4F-47BB-BA62-A6525778E8EF}.ReleaseNuget|x86.Build.0 = ReleaseNuget|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C408516A-234B-402B-9EBB-92B638EFDEFA}
+	EndGlobalSection
+EndGlobal
