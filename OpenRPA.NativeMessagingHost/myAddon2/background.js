@@ -41,8 +41,8 @@ function Baseconnect() {
     if (base_debug) console.log("Baseconnect()");
     if (port !== null && port !== undefined) {
         try {
-            if(port!=null) port.onMessage.removeListener(BaseOnPortMessage);
-            if(port!=null) port.onDisconnect.removeListener(BaseOnPortDisconnect);
+            if (port != null) port.onMessage.removeListener(BaseOnPortMessage);
+            if (port != null) port.onDisconnect.removeListener(BaseOnPortDisconnect);
         } catch (e) {
             console.log(e);
         }
@@ -57,8 +57,8 @@ function Baseconnect() {
             return;
         }
     }
-    if(port!=null) port.onMessage.addListener(BaseOnPortMessage);
-    if(port!=null) port.onDisconnect.addListener(BaseOnPortDisconnect);
+    if (port != null) port.onMessage.addListener(BaseOnPortMessage);
+    if (port != null) port.onDisconnect.addListener(BaseOnPortDisconnect);
 
     if (chrome.runtime.lastError) {
         console.warn("Whoops.. " + chrome.runtime.lastError.message);
@@ -189,7 +189,7 @@ async function OnPortMessage(message) {
         if (message.functionName === "enumwindows") {
             await EnumWindows(message);
             console.log("[send][" + message.messageid + "]" + message.functionName + " results: " + message.results.length);
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
             return;
         }
         if (message.functionName === "enumtabs") {
@@ -225,14 +225,14 @@ async function OnPortMessage(message) {
             message.tab = tab;
             // message.tab = await tabsupdate(message.tabid, { highlighted: true });
             console.log("[send][" + message.messageid + "]" + message.functionName + " " + message.tab.url);
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
             return;
         }
         if (message.functionName === "updatetab") {
             var tabsList = await tabsquery();
             if (tabsList.length == 0) {
                 message.error = "No tabs found!";
-                if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+                if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
                 return;
             }
             for (var i = 0; i < tabsList.length; i++) {
@@ -257,12 +257,12 @@ async function OnPortMessage(message) {
             delete message.tab.windowId;
             message.tab = await tabsupdate(message.tabid, message.tab);
             console.log("[send][" + message.messageid + "]" + message.functionName + " " + message.tab.url);
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
             return;
         }
         if (message.functionName === "closetab") {
             chrome.tabs.remove(message.tabid);
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
             return;
         }
         if (message.functionName === "openurl") {
@@ -273,7 +273,7 @@ async function OnPortMessage(message) {
                 message.tab = newtab;
                 message.tabid = newtab.id;
                 console.log("[send][" + message.messageid + "]" + message.functionName);
-                if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+                if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
                 return;
             }
             var tabsList = await tabsquery();
@@ -289,7 +289,7 @@ async function OnPortMessage(message) {
             }
             if (tabsList.length == 0) {
                 message.error = "No tabs found!";
-                if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+                if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
                 return;
             }
             var tab = tabsList[0];
@@ -301,7 +301,7 @@ async function OnPortMessage(message) {
             message.tab = tab;
             message.tabid = tab.id;
             console.log("[send][" + message.messageid + "]" + message.functionName);
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
             return;
         }
         var windowId = 1;
@@ -321,7 +321,7 @@ async function OnPortMessage(message) {
         if (tabsList.length == 0) {
             message.error = "No tabs found!";
             console.log("[send][" + message.messageid + "]" + message.functionName + " No tabs found");
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
             return;
         }
         var tab = tabsList[0];
@@ -335,7 +335,7 @@ async function OnPortMessage(message) {
         message.error = JSON.stringify(e);
     }
     console.log("[send][" + message.messageid + "]" + message.functionName);
-    if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+    if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
     console.debug(message);
 };
 function OnPortDisconnect(message) {
@@ -356,8 +356,8 @@ function connect() {
     console.log("connect()");
     if (port !== null && port !== undefined) {
         try {
-            if(port!=null) port.onMessage.removeListener(OnPortMessage);
-            if(port!=null) port.onDisconnect.removeListener(OnPortDisconnect);
+            if (port != null) port.onMessage.removeListener(OnPortMessage);
+            if (port != null) port.onDisconnect.removeListener(OnPortDisconnect);
         } catch (e) {
             console.error(e);
         }
@@ -372,8 +372,8 @@ function connect() {
             return;
         }
     }
-    if(port!=null) port.onMessage.addListener(OnPortMessage);
-    if(port!=null) port.onDisconnect.addListener(OnPortDisconnect);
+    if (port != null) port.onMessage.addListener(OnPortMessage);
+    if (port != null) port.onDisconnect.addListener(OnPortDisconnect);
 
     if (chrome.runtime.lastError) {
         console.warn("Whoops.. " + chrome.runtime.lastError.message);
@@ -419,7 +419,7 @@ async function OnPageLoad(event) {
             if (isFirefox) message.browser = "ff";
             if (isChromeEdge) message.browser = "edge";
             console.debug("[send]" + message.functionName + " " + window.id);
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
         }
     });
     chrome.windows.onRemoved.addListener((windowId) => {
@@ -428,7 +428,7 @@ async function OnPageLoad(event) {
         if (isFirefox) message.browser = "ff";
         if (isChromeEdge) message.browser = "edge";
         console.debug("[send]" + message.functionName + " " + windowId);
-        if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+        if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
     });
     chrome.windows.onFocusChanged.addListener((windowId) => {
         var message = { functionName: "windowfocus", windowId: windowId };
@@ -437,7 +437,7 @@ async function OnPageLoad(event) {
         if (isFirefox) message.browser = "ff";
         if (isChromeEdge) message.browser = "edge";
         console.debug("[send]" + message.functionName + " " + windowId);
-        if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+        if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
     });
 
     if (port == null) return;
@@ -449,7 +449,7 @@ async function tabsOnCreated(tab) {
     if (isFirefox) message.browser = "ff";
     if (isChromeEdge) message.browser = "edge";
     console.debug("[send]" + message.functionName);
-    if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+    if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 }
 function tabsOnRemoved(tabId) {
     if (port == null) return;
@@ -458,7 +458,7 @@ function tabsOnRemoved(tabId) {
     if (isFirefox) message.browser = "ff";
     if (isChromeEdge) message.browser = "edge";
     console.debug("[send]" + message.functionName);
-    if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+    if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 }
 async function tabsOnUpdated(tabId, changeInfo, tab) {
     if (!allowExecuteScript(tab)) {
@@ -478,7 +478,7 @@ async function tabsOnUpdated(tabId, changeInfo, tab) {
     if (isFirefox) message.browser = "ff";
     if (isChromeEdge) message.browser = "edge";
     console.debug("[send]" + message.functionName);
-    if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+    if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 }
 function tabsOnActivated(activeInfo) {
     if (port == null) return;
@@ -487,7 +487,7 @@ function tabsOnActivated(activeInfo) {
     if (isFirefox) message.browser = "ff";
     if (isChromeEdge) message.browser = "edge";
     console.debug("[send]" + message.functionName);
-    if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+    if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 }
 //window.addEventListener("load", OnPageLoad, false);
 
@@ -775,24 +775,24 @@ async function runtimeOnMessage(msg, sender, fnResponse) {
         // https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-size-a-windows-forms-label-control-to-fit-its-contents
         // if (msg.functionName !== "mousemove" && msg.functionName !== "mousedown" && msg.functionName !== "click") console.log("[send]" + msg.functionName);
         if (msg.functionName !== "mousemove") console.log("[send]" + msg.functionName + " (" + msg.uix + "," + msg.uiy + ")");
-        if(port!=null) port.postMessage(JSON.parse(JSON.stringify(msg)));
+        if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
     }
     else {
         if (msg.functionName !== "keydown" && msg.functionName !== "keyup") console.log("[send]" + msg.functionName);
-        if(port!=null) port.postMessage(JSON.parse(JSON.stringify(msg)));
+        if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
     }
 }
 
 if (port != null) {
-    if(port!=null) port.onMessage.addListener(OnPortMessage);
-    if(port!=null) port.onDisconnect.addListener(OnPortDisconnect);
+    if (port != null) port.onMessage.addListener(OnPortMessage);
+    if (port != null) port.onDisconnect.addListener(OnPortDisconnect);
 }
 if (openrpautil_script === null || openrpautil_script === undefined || openrpautil_script === '') {
     if (port != null) {
         var message = { functionName: "openrpautilscript" };
         try {
             console.log("[send]" + message.functionName);
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
         } catch (e) {
             console.error(e);
             port = null;
@@ -807,7 +807,7 @@ setInterval(function () {
             if (isFirefox) message.browser = "ff";
             if (isChromeEdge) message.browser = "edge";
             // console.debug("[send]" + message.functionName);
-            if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
         } else {
             console.log("no port, cannot ping");
         }
@@ -845,6 +845,6 @@ async function downloadsOnChanged(delta) {
     if (isFirefox) message.browser = "ff";
     if (isChromeEdge) message.browser = "edge";
     console.debug("[send]" + message.functionName);
-    if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+    if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 
 }

@@ -333,7 +333,7 @@ if (true == false) {
                             window.pageVals = actualVas;
                         }
                     }
-                    
+
                     //window.pageVals = null; // reset the page attributes
                     //window.pageVals = actualVas;
                     //console.log("Save actual values: " + new Date().toISOString())
