@@ -194,7 +194,12 @@ if (true == false) {
                             return;
                         }
                         openrpautil.addModalLayer();
-                        openrpautil.pushEvent('click', e);
+                        try {
+                            openrpautil.pushEvent('click', e);
+                        } catch (e) {
+                            console.error('click event listener', e);
+                        }
+
                         openrpautil.removeModalLayer();
                     }, true);
                     document.addEventListener('keydown', function (e) {
@@ -307,17 +312,21 @@ if (true == false) {
                 },
                 extractDiffFields: function () {
                     if (!window.actualFields) {
-                        window.actualFields = openrpautil.extractFields();
-                        window.actualFieldsNumber = window.actualFields.size;
-                        return window.actualFields;
+                        let actFields = { fieldsMap: new Map(), fieldsMapSize: 0, contextId: -1 };
+                        actFields.fieldsMap = openrpautil.extractFields();
+                        actFields.fieldsMapSize = actFields.fieldsMap.size;
+                        actFields.contextId = new Date().getTime();
+                        window.actualFields = actFields;
+                        return actFields;
                     }
+
                     let fields = openrpautil.extractFields();
                     let fieldsCopy = new Map(fields);
 
-                    const actualFieldIterator = window.actualFields.keys();
+                    const actualFieldIterator = window.actualFields.fieldsMap.keys();
 
                     for (const key of actualFieldIterator) {
-                        let curField = window.actualFields.get(key);
+                        let curField = window.actualFields.fieldsMap.get(key);
                         let field = fields.get(key);
                         if (openrpautil.fieldEqualityCheck(curField, field)) {
                             fields.delete(key);
@@ -325,13 +334,20 @@ if (true == false) {
                     }
 
                     let diffFieldsNumber = fields.size;
-                    if (diffFieldsNumber * 100 / window.actualFieldsNumber > 10) {
-                        window.actualFields = fieldsCopy;
-                        window.actualFieldsNumber = fieldsCopy.size;
-                        return window.actualFields;
+                    if (diffFieldsNumber * 100 / window.actualFields.fieldsMapSize > 10) {
+                        let actFields = { fieldsMap: new Map(), fieldsMapSize: 0, contextId: -1 };
+                        actFields.fieldsMap = fieldsCopy;
+                        actFields.fieldsMapSize = fieldsCopy.size;
+                        actFields.contextId = new Date().getTime();
+                        window.actualFields = actFields;
+                        return actFields;
                     }
 
-                    return fields;
+                    return {
+                        fieldsMap: fields,
+                        fieldsMapSize: fields.size,
+                        contextId: window.actualFields.contextId
+                    };
                 },
                 fieldEqualityCheck: function (a, b) {
                     return a && b
@@ -1007,9 +1023,17 @@ if (true == false) {
                         message.result = openrpautil.mapDOM(targetElement, true);
 
                         if (action === 'click') {
-                            message.results = openrpautil.extractDiffFields();
-                            console.info('openrpautil.extractDiffFields()');
-                            console.info(message.results);
+                            let fields = openrpautil.extractDiffFields();
+                            if (fields && fields.fieldsMap) {
+                                let msgFields = {
+                                    list: JSON.stringify(Array.from(fields.fieldsMap, ([name, value]) => (value))),
+                                    length: fields.fieldsMapSize,
+                                    contextId: fields.contextId
+                                };
+                                message.fields = msgFields;
+                                console.info('openrpautil.extractDiffFields()');
+                                console.info(message.fields);
+                            }
                         }
 
                         //if (targetElement.tagName == "IFRAME" || targetElement.tagName == "FRAME") {

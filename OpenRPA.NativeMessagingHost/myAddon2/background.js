@@ -775,10 +775,20 @@ async function runtimeOnMessage(msg, sender, fnResponse) {
         // https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-size-a-windows-forms-label-control-to-fit-its-contents
         // if (msg.functionName !== "mousemove" && msg.functionName !== "mousedown" && msg.functionName !== "click") console.log("[send]" + msg.functionName);
         if (msg.functionName !== "mousemove") console.log("[send]" + msg.functionName + " (" + msg.uix + "," + msg.uiy + ")");
-        if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
     }
     else {
         if (msg.functionName !== "keydown" && msg.functionName !== "keyup") console.log("[send]" + msg.functionName);
+    }
+
+    if (msg.functionName === 'click') {
+        chrome.tabs.captureVisibleTab(
+            sender.tab.windowId,
+            { format: 'jpeg' },
+            (dataUrl) => {
+                msg.base64Screenshot = dataUrl.substring(23);
+                if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
+            });
+    } else {
         if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
     }
 }
