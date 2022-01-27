@@ -137,6 +137,7 @@ if (true == false) {
                 cKey = 67;
             var openrpautil = {
                 parent: null,
+                runningVersion: null,
                 ping: function () {
                     return "pong";
                 },
@@ -231,6 +232,8 @@ if (true == false) {
                         }
                     }, true);
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
+
+                    openrpautil.getRunningVersion();
                 },
                 getElementTrackObjectValue: function (ele, inputIsText) {
 
@@ -1434,6 +1437,20 @@ if (true == false) {
                     if (modalLayer) {
                         modalLayer.style.display = 'none';
                         modalLayer.parentNode.removeChild(modalLayer);
+                    }
+                },
+                setRunningVersion: function (newV) {
+                    if (newV !== null && !isNaN(newV) && newV >= 0) {
+                        this.runningVersion = newV;
+                        console.debug("runningVersion = " + newV);
+                    }
+                },
+                getRunningVersion: function () {
+                    if (this.runningVersion && this.runningVersion >= 0) {
+                        return this.runningVersion;
+                    } else {
+                        chrome.runtime.sendMessage(null, { functionName: "refreshRunningVersion" }, null, (newV) => { this.setRunningVersion(newV); });
+                        return 0;
                     }
                 }
             };

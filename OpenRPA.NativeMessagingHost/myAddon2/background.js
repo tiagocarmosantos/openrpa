@@ -1,6 +1,7 @@
 var port = null;
 var portname = 'com.openrpa.msg';
 var base_debug = false;
+var runningVersion = null;
 function BaseOnPortMessage(message) {
     if (port == null) {
         console.warn("BaseOnPortMessage: port is null!");
@@ -11,7 +12,12 @@ function BaseOnPortMessage(message) {
         console.warn("BaseOnPortMessage: Received null message!");
         return;
     }
-    if (message.functionName === "ping") return;
+    if (message.functionName === "ping") {
+        if (!isNaN(message.data)) {
+            runningVersion = parseInt(message.data);
+        }
+        return;
+    }
     if (base_debug) console.log("[baseresc][" + message.messageid + "]" + message.functionName);
     if (message.functionName === "backgroundscript") {
         try {
@@ -755,6 +761,11 @@ chrome.runtime.onMessage.addListener((msg, sender, fnResponse) => {
     }
 });
 async function runtimeOnMessage(msg, sender, fnResponse) {
+    if (msg.functionName === "refreshRunningVersion") {
+        fnResponse(runningVersion);
+        return;
+    }
+
     if (port == null) return;
     if (isChrome) msg.browser = "chrome";
     if (isFirefox) msg.browser = "ff";
