@@ -16,6 +16,7 @@ namespace OpenRPA.NativeMessagingHost
     using Newtonsoft.Json;
     using NamedPipeWrapper;
     using OpenRPA.Interfaces;
+    using System.Configuration;
 
     class Program
     {
@@ -25,6 +26,7 @@ namespace OpenRPA.NativeMessagingHost
             {
                 aTimer.Interval = 5000;
                 var r2 = new NativeMessagingMessage("ping", false, null);
+                r2.data = GetPluginRunningVersion();
                 handler.sendMessage(r2);
                 aTimer.Start();
             }
@@ -99,6 +101,20 @@ namespace OpenRPA.NativeMessagingHost
                 System.Diagnostics.Trace.WriteLine(ex.ToString());
             }
         }
+
+        private static String GetPluginRunningVersion()
+        {
+            String pluginRunningVersion = ConfigurationManager.AppSettings["pluginRunningVersion"];
+            if (String.IsNullOrWhiteSpace(pluginRunningVersion))
+            {
+                return "0";
+            }
+            else
+            {
+                return pluginRunningVersion;
+            }
+        }
+
         static void Main(string[] args)
         {
             aTimer = new System.Timers.Timer();

@@ -137,14 +137,13 @@ if (true == false) {
                 cKey = 67;
             var openrpautil = {
                 parent: null,
+                runningVersion: null,
                 ping: function () {
                     return "pong";
                 },
 
 
                 init: function () {
-
-
                     if (document.URL.startsWith("https://docs.google.com/spreadsheets/d")) {
                         console.log("skip google docs *");
                         return;
@@ -189,7 +188,21 @@ if (true == false) {
                     };
 
 
-                    document.addEventListener('click', function (e) { openrpautil.pushEvent('click', e); }, true);
+                    document.addEventListener('click', function (e) {
+                        if (e && e.target && e.target.id === 'chromium-plugin-modal-layer') {
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+                            return;
+                        }
+                        openrpautil.addModalLayer();
+                        try {
+                            openrpautil.pushEvent('click', e);
+                        } catch (e) {
+                            console.error('click event listener', e);
+                        }
+
+                        openrpautil.removeModalLayer();
+                    }, true);
                     document.addEventListener('keydown', function (e) {
 
                         if (e.keyCode === ctrlKey || e.keyCode === cmdKey) ctrlDown = true;
@@ -219,6 +232,8 @@ if (true == false) {
                         }
                     }, true);
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
+
+                    openrpautil.getRunningVersion();
                 },
                 getElementTrackObjectValue: function (ele, inputIsText) {
 
@@ -285,6 +300,75 @@ if (true == false) {
                     }
 
                     return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xPath: inputXpath, value: inputValue, ngModel: inputNgModel, counter: inputCounter, rectangle: inputRectangle };
+                },
+                extractFields: function () {
+                    let actualFields = new Map();
+                    let actualFieldKeys = new Map();
+                    let inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea', 'span', 'a', 'div']);
+                    for (let index = 0; index < inputs.length; ++index) {
+                        let trackObject = openrpautil.getElementTrackObject(inputs[index], actualFieldKeys);
+                        if (trackObject) {
+                            actualFields.set(trackObject.hashId, trackObject);
+                        }
+                    }
+                    return actualFields;
+                },
+                extractDiffFields: function () {
+                    if (!window.actualFields) {
+                        let actFields = { fieldsMap: new Map(), fieldsMapSize: 0, contextId: -1 };
+                        actFields.fieldsMap = openrpautil.extractFields();
+                        actFields.fieldsMapSize = actFields.fieldsMap.size;
+                        actFields.contextId = new Date().getTime();
+                        window.actualFields = actFields;
+                        return actFields;
+                    }
+
+                    let fields = openrpautil.extractFields();
+                    let fieldsCopy = new Map(fields);
+
+                    const actualFieldIterator = window.actualFields.fieldsMap.keys();
+
+                    for (const key of actualFieldIterator) {
+                        let curField = window.actualFields.fieldsMap.get(key);
+                        let field = fields.get(key);
+                        if (openrpautil.fieldEqualityCheck(curField, field)) {
+                            fields.delete(key);
+                        }
+                    }
+
+                    let diffFieldsNumber = fields.size;
+                    if (diffFieldsNumber * 100 / window.actualFields.fieldsMapSize > 10) {
+                        let actFields = { fieldsMap: new Map(), fieldsMapSize: 0, contextId: -1 };
+                        actFields.fieldsMap = fieldsCopy;
+                        actFields.fieldsMapSize = fieldsCopy.size;
+                        actFields.contextId = new Date().getTime();
+                        window.actualFields = actFields;
+                        return actFields;
+                    }
+
+                    return {
+                        fieldsMap: fields,
+                        fieldsMapSize: fields.size,
+                        contextId: window.actualFields.contextId
+                    };
+                },
+                fieldEqualityCheck: function (a, b) {
+                    return a && b
+                        && a.id === b.id
+                        && (
+                            (!a.rectangle && !b.rectangle)
+                            || (
+                                a.x === b.x
+                                && a.y === b.y
+                                && a.width === b.width
+                                && a.height === b.height
+                                && a.uix === b.uix
+                                && a.uiy === b.uiy
+                                && a.uiwidth === b.uiwidth
+                                && a.uiheight === b.uiheight
+                                && a.value === b.value
+                            )
+                        );
                 },
                 checkFieldsChange: function (sendCurrentPageVals) {
                     let ts = new Date();
@@ -940,6 +1024,21 @@ if (true == false) {
                         message.c = targetElement.childNodes.length;
 
                         message.result = openrpautil.mapDOM(targetElement, true);
+
+                        if (action === 'click') {
+                            let fields = openrpautil.extractDiffFields();
+                            if (fields && fields.fieldsMap) {
+                                let msgFields = {
+                                    list: JSON.stringify(Array.from(fields.fieldsMap, ([name, value]) => (value))),
+                                    length: fields.fieldsMapSize,
+                                    contextId: fields.contextId
+                                };
+                                message.fields = msgFields;
+                                console.info('openrpautil.extractDiffFields()');
+                                console.info(message.fields);
+                            }
+                        }
+
                         //if (targetElement.tagName == "IFRAME" || targetElement.tagName == "FRAME") {
                         message.xpaths.push(message.xPath);
                         //if (document.openrpadebug)
@@ -1308,8 +1407,52 @@ if (true == false) {
                         nodeElem = nodeElem.parentNode;
                     }
                     return parts.length ? '/' + parts.reverse().join('/') : '';
-                }
+                },
+                addModalLayer: function () {
+                    let modalLayer = document.getElementById('chromium-plugin-modal-layer');
+                    if (modalLayer) {
+                        modalLayer.style.display = 'visible';
+                    } else {
+                        let target = document.querySelector("body");
 
+                        modalLayer = document.createElement('div');
+                        modalLayer.id = 'chromium-plugin-modal-layer';
+                        modalLayer.style.position = 'fixed';
+                        modalLayer.style.top = 0;
+                        modalLayer.style.bottom = 0;
+                        modalLayer.style.left = 0;
+                        modalLayer.style.right = 0;
+                        modalLayer.style.zIndex = '99999';
+
+                        modalLayer.onclick = () => { console.info('block onclick'); };
+                        modalLayer.onmouseout = () => { console.info('block onmouseout'); };
+                        modalLayer.onmouseover = () => { console.info('block onmouseover'); };
+                        modalLayer.onwheel = () => { console.info('block onwheel'); };
+
+                        target.appendChild(modalLayer);
+                    }
+                },
+                removeModalLayer: function () {
+                    let modalLayer = document.getElementById('chromium-plugin-modal-layer');
+                    if (modalLayer) {
+                        modalLayer.style.display = 'none';
+                        modalLayer.parentNode.removeChild(modalLayer);
+                    }
+                },
+                setRunningVersion: function (newV) {
+                    if (newV !== null && !isNaN(newV) && newV >= 0) {
+                        this.runningVersion = newV;
+                        console.debug("runningVersion = " + newV);
+                    }
+                },
+                getRunningVersion: function () {
+                    if (this.runningVersion && this.runningVersion >= 0) {
+                        return this.runningVersion;
+                    } else {
+                        chrome.runtime.sendMessage(null, { functionName: "refreshRunningVersion" }, null, (newV) => { this.setRunningVersion(newV); });
+                        return 0;
+                    }
+                }
             };
             document.openrpautil = openrpautil;
             openrpautil.init();

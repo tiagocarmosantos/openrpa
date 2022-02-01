@@ -60,6 +60,7 @@ namespace OpenRPA.Interfaces
         public int c { get; set; }
         [System.Xml.Serialization.XmlElement("referenceTimeStamp", IsNullable = true)]
         public DateTime? referenceTimeStamp { get; set; }
-        
+        public string base64Screenshot { get; set; }
+        public NativeMessagingMessageFields fields { get; set; }
     }
 }

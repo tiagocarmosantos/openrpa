@@ -1,6 +1,7 @@
 var port = null;
 var portname = 'com.openrpa.msg';
 var base_debug = false;
+var runningVersion = null;
 function BaseOnPortMessage(message) {
     if (port == null) {
         console.warn("BaseOnPortMessage: port is null!");
@@ -11,7 +12,12 @@ function BaseOnPortMessage(message) {
         console.warn("BaseOnPortMessage: Received null message!");
         return;
     }
-    if (message.functionName === "ping") return;
+    if (message.functionName === "ping") {
+        if (!isNaN(message.data)) {
+            runningVersion = parseInt(message.data);
+        }
+        return;
+    }
     if (base_debug) console.log("[baseresc][" + message.messageid + "]" + message.functionName);
     if (message.functionName === "backgroundscript") {
         try {
@@ -755,6 +761,11 @@ chrome.runtime.onMessage.addListener((msg, sender, fnResponse) => {
     }
 });
 async function runtimeOnMessage(msg, sender, fnResponse) {
+    if (msg.functionName === "refreshRunningVersion") {
+        fnResponse(runningVersion);
+        return;
+    }
+
     if (port == null) return;
     if (isChrome) msg.browser = "chrome";
     if (isFirefox) msg.browser = "ff";
@@ -775,10 +786,20 @@ async function runtimeOnMessage(msg, sender, fnResponse) {
         // https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-size-a-windows-forms-label-control-to-fit-its-contents
         // if (msg.functionName !== "mousemove" && msg.functionName !== "mousedown" && msg.functionName !== "click") console.log("[send]" + msg.functionName);
         if (msg.functionName !== "mousemove") console.log("[send]" + msg.functionName + " (" + msg.uix + "," + msg.uiy + ")");
-        if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
     }
     else {
         if (msg.functionName !== "keydown" && msg.functionName !== "keyup") console.log("[send]" + msg.functionName);
+    }
+
+    if (msg.functionName === 'click') {
+        chrome.tabs.captureVisibleTab(
+            sender.tab.windowId,
+            { format: 'jpeg' },
+            (dataUrl) => {
+                msg.base64Screenshot = dataUrl.substring(23);
+                if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
+            });
+    } else {
         if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
     }
 }
