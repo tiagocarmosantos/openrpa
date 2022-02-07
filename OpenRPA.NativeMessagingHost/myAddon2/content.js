@@ -371,6 +371,8 @@ if (true == false) {
                         );
                 },
                 checkFieldsChange: function (sendCurrentPageVals) {
+                    if (openrpautil.getRunningVersion() !== 0) return; //Skip in newer version
+
                     let ts = new Date();
                     //  var t0 = performance.now();
 
@@ -1025,7 +1027,7 @@ if (true == false) {
 
                         message.result = openrpautil.mapDOM(targetElement, true);
 
-                        if (action === 'click') {
+                        if (action === 'click' || action === 'tab' || action === 'ctrlc' || action === 'ctrlv') {
                             let fields = openrpautil.extractDiffFields();
                             if (fields && fields.fieldsMap) {
                                 let msgFields = {
@@ -1034,8 +1036,8 @@ if (true == false) {
                                     contextId: fields.contextId
                                 };
                                 message.fields = msgFields;
-                                console.info('openrpautil.extractDiffFields()');
-                                console.info(message.fields);
+                                console.debug('openrpautil.extractDiffFields()');
+                                console.debug(message.fields);
                             }
                         }
 

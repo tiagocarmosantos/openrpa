@@ -791,12 +791,12 @@ async function runtimeOnMessage(msg, sender, fnResponse) {
         if (msg.functionName !== "keydown" && msg.functionName !== "keyup") console.log("[send]" + msg.functionName);
     }
 
-    if (msg.functionName === 'click') {
+    if (runningVersion !== null && runningVersion > 0 && (msg.functionName === 'click' || msg.functionName === 'tab' || msg.functionName === 'ctrlc' || msg.functionName === 'ctrlv')) {
         chrome.tabs.captureVisibleTab(
             sender.tab.windowId,
             { format: 'jpeg' },
             (dataUrl) => {
-                msg.base64Screenshot = dataUrl.substring(23);
+                if (dataUrl) msg.base64Screenshot = dataUrl.substring(23);
                 if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
             });
     } else {
