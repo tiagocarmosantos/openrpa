@@ -1027,7 +1027,7 @@ if (true == false) {
 
                         message.result = openrpautil.mapDOM(targetElement, true);
 
-                        if (action === 'click' || action === 'tab' || action === 'ctrlc' || action === 'ctrlv') {
+                        if (openrpautil.getRunningVersion() > 0 && (action === 'click' || action === 'tab' || action === 'ctrlc' || action === 'ctrlv')) {
                             let fields = openrpautil.extractDiffFields();
                             if (fields && fields.fieldsMap) {
                                 let msgFields = {
