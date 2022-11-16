@@ -6,7 +6,7 @@
     <Product>OpenRPA</Product>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
-    <Version>1.0.27.1+my1.0.142</Version>
+    <Version>1.0.27.2+my1.0.142</Version>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
@@ -79,11 +79,19 @@
     </Content>
     <Content Include="chromemanifest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <PackagePath>lib\$(TargetFramework)\chromemanifest.json</PackagePath>
     </Content>
     <Content Include="ffmanifest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <PackagePath>lib\$(TargetFramework)\ffmanifest.json</PackagePath>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+	<None Update="App.config">
+	  <Pack>True</Pack>
+	  <PackagePath>lib\$(TargetFramework)\$(AssemblyName).exe.config</PackagePath>
+	</None>
+  </ItemGroup>	
   <ItemGroup>
     <EmbeddedResource Include="background.js" />
     <EmbeddedResource Include="openrpautil.js" />
@@ -96,7 +104,7 @@
     <Resource Include="Resources\OpenRPA.png" />
     <Resource Include="Resources\OpenRPA2.ico" />
     <Resource Include="Resources\OpenRPA2.png" />
-  </ItemGroup>
+  </ItemGroup>	
   <Target Name="PushNugetPackage" AfterTargets="Pack" Condition="'$(Configuration)' == 'ReleaseNuget'">
     <Exec Command="nuget.exe push $(OutputPath)..\$(PackageId).$(PackageVersion).nupkg -Source nuget.org" />
   </Target>
