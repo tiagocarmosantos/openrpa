@@ -3,7 +3,7 @@ document.openrpauniquexpathids = ['ng-model', 'ng-reflect-name']; // aria-label
 
 
 function inIframe() {
-    var result = true;
+    let result = true;
     try {
         if (window.self === window.top) return false;
         if (parent) {
@@ -32,7 +32,7 @@ if (true == false) {
         } else {
             window.attachEvent("onmessage", remotePushEvent);
         }
-        var notifyFrames = (event) => {
+        const notifyFrames = (event) => {
             for (let targetElement of document.getElementsByTagName('iframe')) {
                 var message = { functionName: 'mousemove', parents: 0, xpaths: [] };
                 try {
@@ -52,7 +52,7 @@ if (true == false) {
                 height = parseInt(height.replace('px', '')) * 0.85;
                 message.uiy += (height | 0);
 
-                message.cssPath = UTILS.cssPath(targetElement);
+                message.cssPath = UTILS.cssPath(targetElement, false);
                 message.xPath = UTILS.xPath(targetElement, true);
                 //console.log('postMessage to', targetElement, { uix: message.uix, uiy: message.uiy });
                 targetElement.contentWindow.postMessage(message, '*');
@@ -78,7 +78,7 @@ if (true == false) {
                         height = parseInt(height.replace('px', '')) * 0.85;
                         message.uiy += (height | 0);
 
-                        message.cssPath = UTILS.cssPath(targetElement);
+                        message.cssPath = UTILS.cssPath(targetElement, false);
                         message.xPath = UTILS.xPath(targetElement, true);
                         targetElement.contentDocument.openrpautil.parent = message;
                     }
@@ -258,26 +258,25 @@ if (true == false) {
                 },
 
                 getElementTrackObject: function (ele, actualVasKeys) {
+                    const inputTagName = ele.tagName;
+                    const inputIsText = (inputTagName === 'A') || (inputTagName === 'DIV') || (inputTagName === 'SPAN');
 
-                    var inputTagName = ele.tagName;
-                    var inputIsText = (inputTagName === 'A') || (inputTagName === 'DIV') || (inputTagName === 'SPAN');
-
-                    var inputValue = openrpautil.getElementTrackObjectValue(ele, inputIsText);
+                    const inputValue = openrpautil.getElementTrackObjectValue(ele, inputIsText);
                     if (inputValue === null) {
                         return null;
                     }
 
-                    var inputCounter = 0;
-                    var inputId = ele.id;
-                    var inputName = ele.name;
-                    var inputType = ele.type;
-                    var inputClass = ele.getAttribute('class');
-                    var inputXpathFull = (inputIsText) ? null : UTILS.xPath(ele, false);
-                    var inputXpath = UTILS.xPath(ele, true);
-                    var inputNgModel = ele.getAttribute('ng-model');
-                    var uniqueXpath = (inputIsText) ? inputXpath : inputXpathFull;
-                    var inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + uniqueXpath);
-                    var inputHashKeyCounter = inputHashKey + '#' + inputCounter;
+                    let inputCounter = 0;
+                    const inputId = ele.id;
+                    const inputName = ele.name;
+                    const inputType = ele.type;
+                    const inputClass = ele.getAttribute('class');
+                    const inputXpathFull = (inputIsText) ? null : UTILS.xPath(ele, false);
+                    const inputXpath = UTILS.xPath(ele, true);
+                    const inputNgModel = ele.getAttribute('ng-model');
+                    const uniqueXpath = (inputIsText) ? inputXpath : inputXpathFull;
+                    const inputHashKey = UTILS.hash(inputId + inputName + inputType + inputNgModel + uniqueXpath);
+                    let inputHashKeyCounter = inputHashKey + '#' + inputCounter;
                     if (actualVasKeys.has(inputHashKeyCounter)) {
                         // manage conflict of ids : use a counter
                         for (let conflictKey of actualVasKeys.keys()) {
@@ -290,11 +289,12 @@ if (true == false) {
                         inputHashKeyCounter = inputHashKey + '#' + inputCounter;
                     }
                     actualVasKeys.set(inputHashKeyCounter, inputHashKeyCounter);
-                    var inputHashKeyCounterValue = inputHashKey + '#' + inputCounter + '#' + UTILS.hash(inputValue);
+                    const inputHashKeyCounterValue = inputHashKey + '#' + inputCounter + '#' + UTILS.hash(inputValue);
 
-                    let inputRectangle = {};
+                    const isVisible = CustomUtils.isElementVisibleToUser(ele);
+                    const inputRectangle = {};
                     try {
-                        openrpautil.applyPhysicalCords(inputRectangle, ele);
+                        if (isVisible) openrpautil.applyPhysicalCords(inputRectangle, ele);
                     } catch (e) {
                         console.error(e);
                     }
@@ -302,15 +302,18 @@ if (true == false) {
                     return { hashId: inputHashKeyCounterValue, id: inputId, name: inputName, type: inputType, class: inputClass, xPathFull: inputXpathFull, xPath: inputXpath, value: inputValue, ngModel: inputNgModel, counter: inputCounter, rectangle: inputRectangle };
                 },
                 extractFields: function () {
-                    let actualFields = new Map();
-                    let actualFieldKeys = new Map();
-                    let inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea', 'span', 'a', 'div']);
+                    const actualFields = new Map();
+                    const actualFieldKeys = new Map();
+                    const inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea', 'span', 'a', 'div']);
                     for (let index = 0; index < inputs.length; ++index) {
-                        let trackObject = openrpautil.getElementTrackObject(inputs[index], actualFieldKeys);
+                        const input = inputs[index];
+                        if (input.id === 'chromium-plugin-modal-layer') continue; //skip capture of the plugin modal layer
+                        const trackObject = openrpautil.getElementTrackObject(input, actualFieldKeys);
                         if (trackObject) {
                             actualFields.set(trackObject.hashId, trackObject);
                         }
                     }
+                    console.debug('actualFields', actualFields.values());
                     return actualFields;
                 },
                 extractDiffFields: function () {
@@ -358,33 +361,33 @@ if (true == false) {
                         && (
                             (!a.rectangle && !b.rectangle)
                             || (
-                                a.x === b.x
-                                && a.y === b.y
-                                && a.width === b.width
-                                && a.height === b.height
-                                && a.uix === b.uix
-                                && a.uiy === b.uiy
-                                && a.uiwidth === b.uiwidth
-                                && a.uiheight === b.uiheight
-                                && a.value === b.value
+                                a.rectangle.x === b.rectangle.x
+                                && a.rectangle.y === b.rectangle.y
+                                && a.rectangle.width === b.rectangle.width
+                                && a.rectangle.height === b.rectangle.height
+                                && a.rectangle.uix === b.rectangle.uix
+                                && a.rectangle.uiy === b.rectangle.uiy
+                                && a.rectangle.uiwidth === b.rectangle.uiwidth
+                                && a.rectangle.uiheight === b.rectangle.uiheight
+                                && a.rectangle.value === b.rectangle.value
                             )
                         );
                 },
                 checkFieldsChange: function (sendCurrentPageVals) {
                     if (openrpautil.getRunningVersion() !== 0) return; //Skip in newer version
 
-                    let ts = new Date();
+                    const ts = new Date();
                     //  var t0 = performance.now();
 
                     // key = hashKey#counter#hashValue
-                    let actualVas = new Map();
+                    const actualVas = new Map();
                     // key = hashKey#counter need for managing fields with same key, so need to increase the counter
-                    let actualVasKeys = new Map();
-                    let actualVasMatch = 0;
-                    let inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea', 'span', 'a', 'div']);
+                    const actualVasKeys = new Map();
+                    const actualVasMatch = 0;
+                    const inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea', 'span', 'a', 'div']);
                     // var inputs = UTILS.getElementsByTagNames(['input', 'select', 'textarea' ]);  
                     for (index = 0; index < inputs.length; ++index) {
-                        let trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
+                        const trackObject = openrpautil.getElementTrackObject(inputs[index], actualVasKeys);
                         if (trackObject) {
                             actualVas.set(trackObject.hashId, trackObject);
                             if (window.pageVals) {
@@ -397,7 +400,7 @@ if (true == false) {
 
                     }
 
-                    let minDelta = (window.pageVals) ? window.pageVals.size * 0.2 : -1; // minimum number of values changed to detect a major event  is 20%
+                    const minDelta = (window.pageVals) ? window.pageVals.size * 0.2 : -1; // minimum number of values changed to detect a major event  is 20%
                     if ((sendCurrentPageVals) || // force for window onblur or onunload
                         (minDelta === -1) || // first run
                         (Math.abs(window.pageVals.size - actualVas.size) >= minDelta) ||  // major change of number  of fields 
@@ -446,9 +449,8 @@ if (true == false) {
                                 value: obj.value
                             };
 
-                            if (obj.value && obj.rectangle && obj.rectangle.height > 0 && obj.rectangle.width > 0) {
+                            if (/*obj.value && */obj.rectangle && obj.rectangle.height > 0 && obj.rectangle.width > 0) {
                                 result.rectangle = obj.rectangle;
-                                //console.info(result);
                             }
                             return result;
                         });
@@ -723,7 +725,10 @@ if (true == false) {
                         }
                         if (ele !== null) {
                             if (message.data === 'getdom') {
-                                message.result = openrpautil.mapDOM(ele, true, true);
+                                message.result = openrpautil.mapDOM(ele, true, true, false);
+                            }
+                            else if (message.data === 'innerhtml') {
+                                message.result = openrpautil.mapDOM(ele, true, true, true);
                             }
                             else {
                                 message.result = openrpautil.mapDOM(ele, true);
@@ -778,8 +783,36 @@ if (true == false) {
                         ele = cssEle;
                     }
                     if (ele) {
+                        var data = message.data;
+                        try {
+                            data = Base64.decode(data);
+                        } catch (e) {
+                            console.error(e);
+                            console.log(data);
+                        }
+                        if (document.openrpadebug) console.log('focus', ele);
                         ele.focus();
-                        ele.value = message.data;
+                        if (ele.tagName == "INPUT" && ele.getAttribute("type") == "checkbox") {
+                            if (data === true || data === "true" || data === "True") {
+                                if (document.openrpadebug) console.log('set checked = true');
+                                ele.checked = true;
+                            } else {
+                                if (document.openrpadebug) console.log('set checked = false');
+                                ele.checked = false;
+                            }
+                        } else if (message.result == "innerhtml") {
+                            if (document.openrpadebug) console.log('set value', data);
+                            ele.innerHTML = data;
+                        } else if (message.result == "textcontent") {
+                            if (document.openrpadebug) console.log('set value', data);
+                            ele.innerText = data;
+                        } else if (ele.tagName == "DIV") {
+                            if (document.openrpadebug) console.log('set value', data);
+                            ele.innerText = data;
+                        } else {
+                            if (document.openrpadebug) console.log('set value', data);
+                            ele.value = data;
+                        }
                         try {
                             var evt = document.createEvent("HTMLEvents");
                             evt.initEvent("change", true, true);
@@ -825,8 +858,15 @@ if (true == false) {
                         ele = cssEle;
                     }
                     if (ele) {
+                        var data = message.data;
+                        try {
+                            data = Base64.decode(data);
+                        } catch (e) {
+                            console.error(e);
+                            console.log(data);
+                        }
                         ele.focus();
-                        var values = JSON.parse(message.data);
+                        var values = JSON.parse(data);
                         if (ele.tagName && ele.tagName.toLowerCase() == "select") {
                             for (i = 0; i < ele.options.length; i++) {
                                 if (values.indexOf(ele.options[i].value) > -1) {
@@ -1020,7 +1060,7 @@ if (true == false) {
                             message.uiy += currentFramePosition.y;
                         }
                         // console.log('inIframe: ' + inIframe());
-                        message.cssPath = UTILS.cssPath(targetElement);
+                        message.cssPath = UTILS.cssPath(targetElement, false);
                         message.xPath = UTILS.xPath(targetElement, true);
                         message.zn_id = openrpautil.getuniqueid(targetElement);
                         message.c = targetElement.childNodes.length;
@@ -1036,8 +1076,7 @@ if (true == false) {
                                     contextId: fields.contextId
                                 };
                                 message.fields = msgFields;
-                                console.debug('openrpautil.extractDiffFields()');
-                                console.debug(message.fields);
+                                console.debug('openrpautil.extractDiffFields()', fields.contextId, fields);
                             }
                         }
 
@@ -1073,6 +1112,7 @@ if (true == false) {
                 },
                 executescript: function (message) {
                     try {
+                        console.debug('executescript', message);
                         if (document.openrpadebug) console.log('script', message.script);
                         message.result = eval(message.script);
                         if (document.openrpadebug) console.log('result', message.result);
@@ -1178,7 +1218,7 @@ if (true == false) {
                     }
                     return node;
                 },
-                mapDOM: function (element, json, mapdom) {
+                mapDOM: function (element, json, mapdom, innerhtml) {
                     var maxiden = 40;
                     if (mapdom !== true) maxiden = 1;
                     if (maxiden === null || maxiden === undefined) maxiden = 20;
@@ -1204,7 +1244,7 @@ if (true == false) {
                         if (ident === 0) {
                             object["xPath"] = UTILS.xPath(element, true);
                             object["xPathFull"] = ((element.tagName === 'A') || (element.tagName === 'DIV') || (element.tagName === 'SPAN')) ? null : UTILS.xPath(element, false);
-                            object["cssPath"] = UTILS.cssPath(element);
+                            object["cssPath"] = UTILS.cssPath(element, false);
                             if (object["tagName"] !== 'STYLE' && object["tagName"] !== 'SCRIPT' && object["tagName"] !== 'HEAD' && object["tagName"] !== 'HTML') {
                                 if (element.innerText !== undefined && element.innerText !== null && element.innerText !== '') {
                                     object["innerText"] = element.innerText;
@@ -1288,6 +1328,16 @@ if (true == false) {
                     treeObject["innerText"] = element.innerText;
                     treeObject["additions"] = openrpautil.getAdditions(element);
 
+                    //textContent
+                    if (innerhtml) {
+                        treeObject["innerhtml"] = element.innerHTML;
+                        if (element.textContent) {
+                            treeObject["textcontent"] = element.textContent;
+                        }
+                    }
+                    if (element.tagName == "INPUT" && element.getAttribute("type") == "checkbox") {
+                        treeObject["checked"] = element.checked;
+                    }
                     if (element.tagName && element.tagName.toLowerCase() == "options") {
                         treeObject["selected"] = element.selected;
                     }
@@ -1296,6 +1346,7 @@ if (true == false) {
                         for (i = 0; i < element.options.length; i++) {
                             if (element.options[i].selected) {
                                 selectedvalues.push(element.options[i].value);
+                                treeObject["text"] = element.options[i].text;
                             }
                         }
                         treeObject["values"] = selectedvalues;
@@ -1455,6 +1506,7 @@ if (true == false) {
                         return 0;
                     }
                 }
+
             };
             document.openrpautil = openrpautil;
             openrpautil.init();
@@ -1515,8 +1567,52 @@ if (true == false) {
                 cancelable: true
             }
 
+            const CustomUtils = {};
+            CustomUtils.isElementVisibleToUser = function (elem) {
+                //Element has dimentions
+                if (elem.offsetWidth === 0 || elem.offsetHeight === 0) return false;
 
+                const bcr = elem.getBoundingClientRect();
 
+                //Element is vertically out of screen
+                //const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+                if (bcr.bottom < 0 || bcr.top - window.innerHeight >= 0) return false;
+
+                //Element is horizontally out of screen
+                //const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth);
+                if (bcr.right < 0 || bcr.left - window.innerWidth >= 0) return false;
+
+                const isCenterVisible = elem === this.elementFromPoint((bcr.left + bcr.right) / 2, (bcr.top + bcr.bottom) / 2);
+                if (isCenterVisible) return true;
+                const isTopLeftVisible = elem === this.elementFromPoint(bcr.left, bcr.top);
+                if (isTopLeftVisible) return true;
+                const isTopRightVisible = elem === this.elementFromPoint(bcr.right - 1, bcr.top);
+                if (isTopRightVisible) return true;
+                const isBottomLeftVisible = elem === this.elementFromPoint(bcr.left, bcr.bottom - 1);
+                if (isBottomLeftVisible) return true;
+                const isBottomRightVisible = elem === this.elementFromPoint(bcr.right - 1, bcr.bottom - 1);
+                if (isBottomRightVisible) return true;
+                return false;
+            };
+            CustomUtils.elementFromPoint = function (x, y) {
+                const elems = document.elementsFromPoint(x, y);
+                const vpWidth = CustomUtils.getViewPortWidth();
+                const vpHeight = CustomUtils.getViewPortHeight();
+                if (elems?.length > 0) {
+                    for (let i = 0; i < elems.length; i++) {
+                        const elem = elems[i];
+                        const isPluginModalLayer = elem.id === 'chromium-plugin-modal-layer';
+                        const isModalLayer = elem.offsetWidth === vpWidth
+                            && elem.offsetHeight === vpHeight
+                            && window.getComputedStyle(elem)["z-index"] !== 'auto';
+                        if (!isPluginModalLayer && !isModalLayer)
+                            return elem;
+                    }
+                }
+                return null;
+            };
+            CustomUtils.getViewPortWidth = function () { return Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0); };
+            CustomUtils.getViewPortHeight = function () { return Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0); };
 
             // https://chromium.googlesource.com/chromium/blink/+/master/Source/devtools/front_end/components/DOMPresentationUtils.js
             // https://gist.github.com/asfaltboy/8aea7435b888164e8563

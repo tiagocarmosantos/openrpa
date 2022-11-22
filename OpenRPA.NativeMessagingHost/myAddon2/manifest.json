@@ -1,39 +1,46 @@
 {
-  "manifest_version": 2,
-  "name": "myInvenio Task Mining",
-  "version": "1.0.0.6",
-  "description": "Support extension for myInvenio Task Mining",
-  "permissions": [
-    "tabs",
-    "nativeMessaging",
-    "<all_urls>",
-    "webNavigation",
-    "file:///*",
-    "downloads"
-  ],
-  "background": {
-    "scripts": [
-      "background.js"
-    ]
-  },
-  "content_scripts": [
-    {
-      "all_frames": true,
-      "js": [
-        "content.js"
-      ],
-      "matches": [
-        "http://*/*",
-        "https://*/*",
-        "file://*/*"
-      ],
-      "run_at": "document_start"
+    "manifest_version": 3,
+    "name": "IBM Task Mining",
+    "version": "1.0.0.3",
+    "description": "Support extension for IBM Task Mining",
+    "permissions": [
+        "scripting",
+        "activeTab",
+        "tabs",
+        "nativeMessaging",
+        "webNavigation",
+        "downloads"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "optional_host_permissions": [],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "all_frames": true,
+            "js": [
+                "content.js"
+            ],
+            "match_about_blank": true,
+            "matches": [
+                "http://*/*",
+                "https://*/*",
+                "file://*/*"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "content_security_policy": {
+        "script-src": "self unsafe-eval",
+        "object-src": "self"
+    },
+    "icons": {
+        "16": "IBMTaskMiningIcon16.png",
+        "48": "IBMTaskMiningIcon48.png",
+        "128": "IBMTaskMiningIcon128.png"
     }
-  ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-  "icons": {
-    "16": "myInvenio16.png",
-    "48": "myInvenio48.png",
-    "128": "myInvenio128.png"
-  }
 }

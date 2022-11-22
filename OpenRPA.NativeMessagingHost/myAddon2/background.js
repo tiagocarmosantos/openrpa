@@ -1,7 +1,8 @@
+const portname = 'com.openrpa.msg';
 var port = null;
-var portname = 'com.openrpa.msg';
 var base_debug = false;
 var runningVersion = null;
+
 function BaseOnPortMessage(message) {
     if (port == null) {
         console.warn("BaseOnPortMessage: port is null!");
@@ -81,22 +82,21 @@ Baseconnect();
 console.log('openrpa extension begin');
 //var port;
 var openrpautil_script = '';
-var portname = 'com.openrpa.msg';
 var lastwindowId = 1;
 var openrpadebug = false;
 
 // Opera 8.0+ (tested on Opera 42.0)
-var isOpera = !!window.opr && !!opr.addons || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+//var isOpera = !!window?.opr && !!opr.addons || !!window?.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
 // Firefox 1.0+ (tested on Firefox 45 - 53)
 var isFirefox = typeof InstallTrigger !== 'undefined';
 
 // Internet Explorer 6-11
 //   Untested on IE (of course). Here because it shows some logic for isEdge.
-var isIE = /*@cc_on!@*/false || !!document.documentMode;
+// var isIE = /*@cc_on!@*/false || !!document?.documentMode;
 
 // Edge 20+ (tested on Edge 38.14393.0.0)
-var isEdge = !isIE && !!window.StyleMedia;
+// var isEdge = !isIE && !!window?.StyleMedia;
 var isChromeEdge = navigator.appVersion.indexOf('Edge') > -1;
 if (!isChromeEdge) isChromeEdge = navigator.appVersion.indexOf('Edg') > -1;
 
@@ -106,15 +106,9 @@ if (!isChromeEdge) isChromeEdge = navigator.appVersion.indexOf('Edg') > -1;
 // The other browsers are trying to be more like Chrome, so picking
 // capabilities which are in Chrome, but not in others is a moving
 // target.  Just default to Chrome if none of the others is detected.
-var isChrome = !isOpera && !isFirefox && !isIE && !isEdge;
-
-// Blink engine detection (tested on Chrome 55.0.2883.87 and Opera 42.0)
-var isBlink = (isChrome || isOpera) && !!window.CSS;
+var isChrome = !isFirefox;
 
 /* The above code is based on code from: https://stackoverflow.com/a/9851769/3773011 */
-
-// var port = null;
-var portname = 'com.openrpa.msg';
 
 async function SendToTab(windowId, message) {
     try {
@@ -129,7 +123,7 @@ async function SendToTab(windowId, message) {
         }
         if (retry) {
             await new Promise(r => setTimeout(r, 2000));
-            console.debug("SendToTab: send message to tab id " + message.tabid + " windowId " + windowId);
+            console.debug("retry: SendToTab: send message to tab id " + message.tabid + " windowId " + windowId);
             message = await tabssendMessage(message.tabid, message);
         }
 
@@ -416,7 +410,6 @@ async function EnumWindows(message) {
     }
 }
 async function OnPageLoad(event) {
-    if (window) window.removeEventListener("load", OnPageLoad, false);
     chrome.windows.onCreated.addListener((window) => {
         if (window.type === "normal" || window.type === "popup") { // panel
             if (window.id > 0) lastwindowId = window.id;
@@ -548,13 +541,20 @@ var windowsgetAll = function () {
 var tabsexecuteScript = function (tabid, options) {
     return new Promise(function (resolve, reject) {
         try {
-            chrome.tabs.executeScript(tabid, options, function (results) {
-                if (chrome.runtime.lastError) {
-                    reject(chrome.runtime.lastError.message);
-                    return;
-                }
-                resolve(results);
-            });
+            // https://blog.bitsrc.io/what-is-chrome-scripting-api-f8dbdb6e3987
+            var opt = Object.assign(options, { target: { tabId: tabid, allFrames: true } });
+            if (opt.code) {
+                opt.func = eval(opt.code);
+                delete opt.code;
+            }
+            chrome.scripting.executeScript(
+                opt, function (results) {
+                    if (chrome.runtime.lastError) {
+                        reject(chrome.runtime.lastError.message);
+                        return;
+                    }
+                    resolve(results);
+                });
         } catch (e) {
             reject(e);
         }
@@ -791,14 +791,18 @@ async function runtimeOnMessage(msg, sender, fnResponse) {
         if (msg.functionName !== "keydown" && msg.functionName !== "keyup") console.log("[send]" + msg.functionName);
     }
 
-    if (runningVersion !== null && runningVersion > 0 && (msg.functionName === 'click' || msg.functionName === 'tab' || msg.functionName === 'ctrlc' || msg.functionName === 'ctrlv')) {
-        chrome.tabs.captureVisibleTab(
-            sender.tab.windowId,
-            { format: 'jpeg' },
-            (dataUrl) => {
-                if (dataUrl) msg.base64Screenshot = dataUrl.substring(23);
-                if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
-            });
+    if (runningVersion !== null && runningVersion > 0 && (msg.functionName === 'click' || msg.functionName === 'tab' || msg.functionName === 'ctrlc' || msg.functionName === 'ctrlv' || msg.functionName === 'return')) {
+        try {
+            let dataUrl = await chrome.tabs.captureVisibleTab(
+                sender.tab.windowId,
+                { format: 'jpeg' }
+            );
+            if (dataUrl) msg.base64Screenshot = dataUrl.substring(23);
+            if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
+        } catch (error) {
+            console.error(error);
+        }
+
     } else {
         if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
     }
@@ -838,7 +842,7 @@ setInterval(function () {
 }, 1000);
 
 
-var downloadsSearch = function (id) {
+const downloadsSearch = function (id) {
     return new Promise(function (resolve, reject) {
         try {
             chrome.downloads.search({ id: id }, function (data) {
