@@ -6,7 +6,7 @@
     <Product>OpenRPA</Product>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
-    <Version>1.0.27.4+my1.0.142</Version>
+    <Version>1.0.27.5+my1.0.142</Version>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
@@ -79,20 +79,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="chromemanifest.json" copyToOutput="true">
+	  <PackagePath>lib\$(TargetFramework)\chromemanifest.json</PackagePath>
 	  <Pack>True</Pack>
 	  <IncludeInPackage>true</IncludeInPackage>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  <CopyToOutput>true</CopyToOutput>
-	  <copyToOutput>true</copyToOutput>
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
     <Content Include="ffmanifest.json" copyToOutput="true">
+	  <PackagePath>lib\$(TargetFramework)\ffmanifest.json</PackagePath>
 	  <Pack>True</Pack>
 	  <IncludeInPackage>true</IncludeInPackage>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  <CopyToOutput>true</CopyToOutput>
-	  <copyToOutput>true</copyToOutput>
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
@@ -100,7 +100,7 @@
   <ItemGroup>
 	<None Include="App.config">
 	  <Pack>True</Pack>
-	  <PackagePath>contentFiles\any\$(TargetFramework)\$(AssemblyName).exe.config</PackagePath>
+	  <PackagePath>lib\$(TargetFramework)\$(AssemblyName).exe.config</PackagePath>
 	  <CopyToOutput>true</CopyToOutput>
 	  <copyToOutput>true</copyToOutput>
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
