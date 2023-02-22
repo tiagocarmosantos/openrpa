@@ -6,7 +6,7 @@
     <Product>OpenRPA</Product>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
-    <Version>1.0.27.5+my1.0.142</Version>
+    <Version>1.0.27.6+my1.0.142</Version>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
@@ -78,35 +78,30 @@
 	  <Pack>False</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="chromemanifest.json" copyToOutput="true">
-	  <PackagePath>lib\$(TargetFramework)\chromemanifest.json</PackagePath>
+    <Content Include="chromemanifest.json">
 	  <Pack>True</Pack>
+	  <BuildAction>Content</BuildAction>
 	  <IncludeInPackage>true</IncludeInPackage>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  <CopyToOutput>true</CopyToOutput>
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
-    <Content Include="ffmanifest.json" copyToOutput="true">
-	  <PackagePath>lib\$(TargetFramework)\ffmanifest.json</PackagePath>
+    <Content Include="ffmanifest.json">
 	  <Pack>True</Pack>
+	  <BuildAction>Content</BuildAction>
 	  <IncludeInPackage>true</IncludeInPackage>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  <CopyToOutput>true</CopyToOutput>
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
 	<None Include="App.config">
 	  <Pack>True</Pack>
-	  <PackagePath>lib\$(TargetFramework)\$(AssemblyName).exe.config</PackagePath>
-	  <CopyToOutput>true</CopyToOutput>
-	  <copyToOutput>true</copyToOutput>
-	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  <BuildAction>Content</BuildAction>
+	  <PackagePath>contentFiles\any\$(TargetFramework)\$(AssemblyName).exe.config</PackagePath>
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  <PackageCopyToOutput>true</PackageCopyToOutput>
 	</None>
-  </ItemGroup>	
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="background.js" />
     <EmbeddedResource Include="openrpautil.js" />

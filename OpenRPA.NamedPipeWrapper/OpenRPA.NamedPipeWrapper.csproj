@@ -7,7 +7,7 @@
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
     <PackageId>OpenRPA.NamedPipeWrapper</PackageId>
-    <Version>1.0.17.5+my1.0.142</Version>
+    <Version>1.0.17.6+my1.0.142</Version>
     <PackageReleaseNotes>1.0.18 Add thread names to improve debugging
 1.0.17 bump version
 1.0.15 update interfaces reference
