@@ -6,7 +6,7 @@
     <Product>OpenRPA</Product>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
-    <Version>1.0.27.7+my1.0.142</Version>
+    <Version>1.0.27.8+my1.0.142</Version>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
@@ -93,6 +93,11 @@
 	  <IncludeInPackage>true</IncludeInPackage>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="$(OutputPath)$(AssemblyName).exe">
+	  <Pack>True</Pack>
+	  <PackagePath>lib\any\$(AssemblyName).exe</PackagePath>
+	  <IncludeInPackage>true</IncludeInPackage>
     </Content>
   </ItemGroup>
   <ItemGroup>
