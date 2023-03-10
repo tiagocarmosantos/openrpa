@@ -1,7 +1,65 @@
-const portname = 'com.openrpa.msg';
+var portname = 'com.openrpa.msg';
 var port = null;
 var base_debug = false;
 var runningVersion = null;
+const tabCache = {};
+
+class TabCache {
+    static tabCache = {};
+
+    static getTabOrCreateDefault(tabId) {
+        if (tabCache[tabId]) return tabCache[tabId];
+        const tabCacheObj = {
+            tabId: tabId,
+            lastScreenshot: null,
+            frames: {}
+        };
+        tabCache[tabId] = tabCacheObj;
+        return tabCacheObj;
+    }
+
+    static getFrameInfo(tabId, frameId) {
+        const tabCacheObj = this.getTabOrCreateDefault(tabId);
+        if (tabCacheObj.frames[frameId]) {
+            return tabCacheObj.frames[frameId];
+        }
+        return null;
+    }
+
+    static setFrameInfo(tabId, frameId, frameInfo) {
+        const tabCacheObj = this.getTabOrCreateDefault(tabId);
+        let frameInfoObj;
+        if (tabCacheObj.frames[frameId]) {
+            frameInfoObj = tabCacheObj.frames[frameId];
+        } else {
+            frameInfoObj = { frameId: frameId };
+            tabCacheObj.frames[frameId] = frameInfoObj;
+        }
+        frameInfoObj.lastUpdate = new Date().getTime();
+        frameInfoObj.frameInfo = frameInfo;
+    }
+
+    static getLastScreenshot(tabId, windowId) {
+        const tabCacheObj = this.getTabOrCreateDefault(tabId);
+        if (tabCacheObj?.lastScreenshot?.windowId === windowId
+            && (new Date().getTime() - tabCacheObj?.lastScreenshot?.lastUpdate < 15000)
+            && tabCacheObj?.lastScreenshot?.screenshot
+        ) {
+            return tabCacheObj.lastScreenshot.screenshot;
+        }
+        return undefined;
+    }
+
+    static setLastScreenshot(tabId, windowId, screenshot) {
+        const tabCacheObj = this.getTabOrCreateDefault(tabId);
+        const screenshotObj = {
+            lastUpdate: new Date().getTime(),
+            windowId: windowId,
+            screenshot: screenshot
+        };
+        tabCacheObj.lastScreenshot = screenshotObj;
+    }
+}
 
 function BaseOnPortMessage(message) {
     if (port == null) {
@@ -112,7 +170,7 @@ var isChrome = !isFirefox;
 
 async function SendToTab(windowId, message) {
     try {
-        var retry = false;
+        let retry = false;
         try {
             console.debug("SendToTab: send message to tab id " + message.tabid + " windowId " + windowId);
             message = await tabssendMessage(message.tabid, message);
@@ -127,9 +185,9 @@ async function SendToTab(windowId, message) {
             message = await tabssendMessage(message.tabid, message);
         }
 
-        var allWindows = await windowsgetAll();
-        var win = allWindows.filter(x => x.id == windowId);
-        var currentWindow = allWindows[0];
+        const allWindows = await windowsgetAll();
+        const win = allWindows.filter(x => x.id == windowId);
+        let currentWindow = allWindows[0];
         if (win.length > 0) currentWindow = win[0];
         if (message.uix && message.uiy) {
             message.uix += currentWindow.left;
@@ -152,6 +210,7 @@ async function SendToTab(windowId, message) {
     }
     return message;
 }
+
 async function OnPortMessage(message) {
     try {
         if (port == null) {
@@ -194,9 +253,9 @@ async function OnPortMessage(message) {
         }
         if (message.functionName === "enumtabs") {
             await EnumTabs(message);
-            var _result = "";
-            for (var i = 0; i < message.results.length; i++) {
-                var _tab = message.results[i].tab;
+            const _result = "";
+            for (const element of message.results) {
+                const _tab = element.tab;
                 _result += "(tabid " + _tab.id + "/index:" + _tab.index + ") ";
             }
             console.log("[send][" + message.messageid + "]" + message.functionName + " results: " + message.results.length + " " + _result);
@@ -204,16 +263,16 @@ async function OnPortMessage(message) {
             return;
         }
         if (message.functionName === "selecttab") {
-            var tab = null;
-            var tabsList = await tabsquery();
+            let tab = null;
+            const tabsList = await tabsquery();
             if (tabsList.length == 0) {
                 message.error = "No tabs found!";
                 if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
                 return;
             }
-            for (var i = 0; i < tabsList.length; i++) {
-                if (tabsList[i].id == message.tabid) {
-                    tab = tabsList[i];
+            for (const element of tabsList) {
+                if (element.id == message.tabid) {
+                    tab = element;
                 }
             }
             if (tab == null) {
@@ -229,15 +288,15 @@ async function OnPortMessage(message) {
             return;
         }
         if (message.functionName === "updatetab") {
-            var tabsList = await tabsquery();
+            const tabsList = await tabsquery();
             if (tabsList.length == 0) {
                 message.error = "No tabs found!";
                 if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
                 return;
             }
-            for (var i = 0; i < tabsList.length; i++) {
-                if (tabsList[i].id == message.tabid) {
-                    if (tabsList[i].url == message.tab.url) {
+            for (const element of tabsList) {
+                if (element.id == message.tabid) {
+                    if (element.url == message.tab.url) {
                         delete message.tab.url;
                     }
                 }
@@ -338,6 +397,7 @@ async function OnPortMessage(message) {
     if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
     console.debug(message);
 };
+
 function OnPortDisconnect(message) {
     console.log("OnPortDisconnect: " + message);
     port = null;
@@ -352,6 +412,7 @@ function OnPortDisconnect(message) {
         console.log("onDisconnect from native port");
     }
 }
+
 function connect() {
     console.log("connect()");
     if (port !== null && port !== undefined) {
@@ -383,6 +444,7 @@ function connect() {
         console.log("Connected to native port");
     }
 }
+
 async function EnumTabs(message) {
     if (isChrome) message.browser = "chrome";
     if (isFirefox) message.browser = "ff";
@@ -397,6 +459,7 @@ async function EnumTabs(message) {
         message.results.push(_message);
     });
 }
+
 async function EnumWindows(message) {
     var allWindows = await windowsgetAll();
     message.results = [];
@@ -409,6 +472,7 @@ async function EnumWindows(message) {
         message.results.push(_message);
     }
 }
+
 async function OnPageLoad(event) {
     chrome.windows.onCreated.addListener((window) => {
         if (window.type === "normal" || window.type === "popup") { // panel
@@ -441,6 +505,7 @@ async function OnPageLoad(event) {
 
     if (port == null) return;
 }
+
 async function tabsOnCreated(tab) {
     if (port == null) return;
     var message = { functionName: "tabcreated", tab: tab, tabid: tab.id };
@@ -450,6 +515,7 @@ async function tabsOnCreated(tab) {
     console.debug("[send]" + message.functionName);
     if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 }
+
 function tabsOnRemoved(tabId) {
     if (port == null) return;
     var message = { functionName: "tabremoved", tabid: tabId };
@@ -459,6 +525,7 @@ function tabsOnRemoved(tabId) {
     console.debug("[send]" + message.functionName);
     if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 }
+
 async function tabsOnUpdated(tabId, changeInfo, tab) {
     if (!allowExecuteScript(tab)) {
         console.debug('tabsOnUpdated, skipped, not allowExecuteScript');
@@ -479,6 +546,7 @@ async function tabsOnUpdated(tabId, changeInfo, tab) {
     console.debug("[send]" + message.functionName);
     if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 }
+
 function tabsOnActivated(activeInfo) {
     if (port == null) return;
     var message = { functionName: "tabactivated", tabid: activeInfo.tabId, windowId: activeInfo.windowId };
@@ -490,7 +558,7 @@ function tabsOnActivated(activeInfo) {
 }
 //window.addEventListener("load", OnPageLoad, false);
 
-var allowExecuteScript = function (tab) {
+const allowExecuteScript = function (tab) {
     if (port == null) return false;
     if (isFirefox) {
         if (tab.url.startsWith("about:")) return false;
@@ -507,7 +575,8 @@ var allowExecuteScript = function (tab) {
     }
     return true;
 }
-var tabsquery = function (options) {
+
+const tabsquery = function (options) {
     return new Promise(function (resolve, reject) {
         try {
             if (options === null || options === undefined) options = {};
@@ -523,7 +592,8 @@ var tabsquery = function (options) {
         }
     });
 };
-var windowsgetAll = function () {
+
+const windowsgetAll = function () {
     return new Promise(function (resolve, reject) {
         try {
             chrome.windows.getAll({ populate: false }, (allWindows) => {
@@ -538,7 +608,8 @@ var windowsgetAll = function () {
         }
     });
 };
-var tabsexecuteScript = function (tabid, options) {
+const tabsexecuteScript = function (tabid, options) {
+    /*
     return new Promise(function (resolve, reject) {
         try {
             // https://blog.bitsrc.io/what-is-chrome-scripting-api-f8dbdb6e3987
@@ -559,8 +630,9 @@ var tabsexecuteScript = function (tabid, options) {
             reject(e);
         }
     });
+    */
 };
-var getCurrentTab = function () {
+const getCurrentTab = function () {
     return new Promise(function (resolve, reject) {
         try {
             chrome.tabs.getCurrent((tab, p1, p2) => {
@@ -578,7 +650,7 @@ var getCurrentTab = function () {
         }
     });
 };
-var tabsupdate = function (tabid, updateoptions) {
+const tabsupdate = function (tabid, updateoptions) {
     return new Promise(function (resolve, reject) {
         try {
             chrome.tabs.update(tabid, updateoptions, (tab) => {
@@ -593,7 +665,7 @@ var tabsupdate = function (tabid, updateoptions) {
         }
     });
 };
-var tabshighlight = function (index) {
+const tabshighlight = function (index) {
     return new Promise(function (resolve, reject) {
         try {
             chrome.tabs.highlight({ 'tabs': index }, () => {
@@ -609,10 +681,10 @@ var tabshighlight = function (index) {
     });
 };
 
-var tabssendMessage = function (tabid, message) {
+const tabssendMessage = function (tabid, message) {
     return new Promise(async function (resolve, reject) {
         try {
-            var details = [];
+            const details = [];
             if (message.frameId == -1) {
                 details = await getAllFrames(tabid);
                 console.debug("tabssendMessage, found " + details.length + " frames in tab " + tabid);
@@ -695,7 +767,8 @@ var tabssendMessage = function (tabid, message) {
         }
     });
 };
-var TabsSendMessage = function (tabid, message, options) {
+
+const TabsSendMessage = function (tabid, message, options) {
     return new Promise(function (resolve, reject) {
         try {
             chrome.tabs.sendMessage(tabid, message, options, (result, r2, r3) => {
@@ -710,7 +783,8 @@ var TabsSendMessage = function (tabid, message, options) {
         }
     });
 };
-var getAllFrames = function (tabid) {
+
+const getAllFrames = function (tabid) {
     return new Promise(function (resolve, reject) {
         try {
             chrome.webNavigation.getAllFrames({ tabId: tabid }, (details) => {
@@ -725,7 +799,8 @@ var getAllFrames = function (tabid) {
         }
     });
 };
-var tabscreate = function (createProperties) {
+
+const tabscreate = function (createProperties) {
     return new Promise(function (resolve, reject) {
         try {
             chrome.tabs.create(createProperties, (tab) => {
@@ -740,7 +815,9 @@ var tabscreate = function (createProperties) {
         }
     });
 };
+
 OnPageLoad();
+
 chrome.tabs.onCreated.addListener(tabsOnCreated);
 chrome.tabs.onRemoved.addListener(tabsOnRemoved);
 chrome.tabs.onUpdated.addListener(tabsOnUpdated);
@@ -760,6 +837,7 @@ chrome.runtime.onMessage.addListener((msg, sender, fnResponse) => {
         runtimeOnMessage(msg, sender, fnResponse);
     }
 });
+
 async function runtimeOnMessage(msg, sender, fnResponse) {
     if (msg.functionName === "refreshRunningVersion") {
         fnResponse(runningVersion);
@@ -786,6 +864,13 @@ async function runtimeOnMessage(msg, sender, fnResponse) {
         // https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-size-a-windows-forms-label-control-to-fit-its-contents
         // if (msg.functionName !== "mousemove" && msg.functionName !== "mousedown" && msg.functionName !== "click") console.log("[send]" + msg.functionName);
         if (msg.functionName !== "mousemove") console.log("[send]" + msg.functionName + " (" + msg.uix + "," + msg.uiy + ")");
+
+        if (sender.frameId > 0 && msg.functionName === "mousemove") {
+            const frameInfoObj = {
+
+            };
+            TabCache.setFrameInfo(sender.tab.id, sender.frameId, frameInfoObj);
+        }
     }
     else {
         if (msg.functionName !== "keydown" && msg.functionName !== "keyup") console.log("[send]" + msg.functionName);
@@ -797,11 +882,26 @@ async function runtimeOnMessage(msg, sender, fnResponse) {
                 sender.tab.windowId,
                 { format: 'jpeg' }
             );
-            if (dataUrl) msg.base64Screenshot = dataUrl.substring(23);
-            if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
+            if (dataUrl) {
+                msg.base64Screenshot = dataUrl.substring(23);
+                TabCache.setLastScreenshot(sender.tab.id, sender.tab.windowId, msg.base64Screenshot)
+            }
+
         } catch (error) {
-            console.error(error);
+            if (error.message.indexOf('MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND') >= 0) {
+                const screenshotFromCache = TabCache.getLastScreenshot(sender.tab.id, sender.tab.windowId);
+                if(screenshotFromCache){
+                    console.debug('Recovered screenshot from cache due MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND');
+                    msg.base64Screenshot = screenshotFromCache;
+                }else{
+                    console.debug('Was not possible to recover screenshot from cache due MAX_CAPTURE_VISIBLE_TAB_CALLS_PER_SECOND');
+                }
+                
+            } else {
+                console.error(error);
+            }
         }
+        if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
 
     } else {
         if (port != null) port.postMessage(JSON.parse(JSON.stringify(msg)));
@@ -809,8 +909,8 @@ async function runtimeOnMessage(msg, sender, fnResponse) {
 }
 
 if (port != null) {
-    if (port != null) port.onMessage.addListener(OnPortMessage);
-    if (port != null) port.onDisconnect.addListener(OnPortDisconnect);
+    port.onMessage.addListener(OnPortMessage);
+    port.onDisconnect.addListener(OnPortDisconnect);
 }
 if (openrpautil_script === null || openrpautil_script === undefined || openrpautil_script === '') {
     if (port != null) {
@@ -824,6 +924,7 @@ if (openrpautil_script === null || openrpautil_script === undefined || openrpaut
         }
     }
 }
+
 setInterval(function () {
     try {
         if (port != null) {
@@ -841,7 +942,6 @@ setInterval(function () {
     }
 }, 1000);
 
-
 const downloadsSearch = function (id) {
     return new Promise(function (resolve, reject) {
         try {
@@ -856,6 +956,7 @@ const downloadsSearch = function (id) {
         }
     });
 };
+
 async function downloadsOnChanged(delta) {
     if (!delta.state ||
         (delta.state.current != 'complete')) {
@@ -865,7 +966,7 @@ async function downloadsOnChanged(delta) {
     console.log(download);
 
     if (port == null) return;
-    var message = { functionName: "downloadcomplete", data: JSON.stringify(download) };
+    const message = { functionName: "downloadcomplete", data: JSON.stringify(download) };
     if (isChrome) message.browser = "chrome";
     if (isFirefox) message.browser = "ff";
     if (isChromeEdge) message.browser = "edge";
