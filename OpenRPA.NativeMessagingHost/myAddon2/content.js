@@ -84,6 +84,35 @@ class DOMUtils {
             }
         }
     }
+
+    static computeFrameOffset(win, dims) {
+        if (typeof dims === 'undefined') {
+            dims = { top: 0, left: 0 };
+        }
+
+        let frames = win.parent.document.getElementsByTagName('iframe');
+        let frame;
+        let found = false;
+
+        for (let i = 0, len = frames.length; i < len; i++) {
+            frame = frames[i];
+            if (frame.contentWindow == win) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            let rect = frame.getBoundingClientRect();
+            dims.left += Math.round(rect.left, 0);
+            dims.top += Math.round(rect.top, 0);
+            if (win !== top) {
+                DOMUtils.computeFrameOffset(win.parent, dims);
+            }
+        }
+
+        return dims;
+    };
 }
 
 class ContentListenerProxy {
@@ -251,10 +280,26 @@ if (true == false) {
                 },
 
                 init: function () {
+                    console.info('IBM Task Mining plugin registered on ' + window?.self?.location?.href);
+
                     if (document.URL.startsWith("https://docs.google.com/spreadsheets/d")) {
                         console.log("skip google docs *");
                         return;
                     }
+
+                    MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+                    let observer = new MutationObserver(function (mutations, observer) {
+                        if (document.onmousemove == null) {
+                            console.log('registered again because was not correctly registred (probably an iframe)');
+                            openrpautil.init();
+                        }
+                    });
+
+                    observer.observe(document, {
+                        childList: true
+                    });
+
                     document.addEventListener('mousemove', function (e) { openrpautil.pushEvent('mousemove', e); }, true);
 
                     window.onload = function () {
@@ -594,21 +639,24 @@ if (true == false) {
                     }
                 },
                 applyPhysicalCords: function (message, ele) {
-                    let ClientRect = ele.getBoundingClientRect();
+                    const clientRect = ele.getBoundingClientRect();
                     const devicePixelRatio = window.devicePixelRatio || 1;
-                    let scrollLeft = (((t = document.documentElement) || (t = document.body.parentNode)) && typeof t.scrollLeft === 'number' ? t : document.body).scrollLeft;
-                    message.x = Math.floor(ClientRect.left);
-                    message.y = Math.floor(ClientRect.top);
-                    message.width = Math.floor(ele.offsetWidth);
-                    message.height = Math.floor(ele.offsetHeight);
-                    message.uiwidth = Math.round(ele.offsetWidth * devicePixelRatio);
-                    message.uiheight = Math.round(ele.offsetHeight * devicePixelRatio);
+                    const scrollLeft = (((t = document.documentElement) || (t = document.body.parentNode)) && typeof t.scrollLeft === 'number' ? t : document.body).scrollLeft;
+                    const eleWidth = ele.offsetWidth || clientRect.width;
+                    const eleHeight = ele.offsetHeight || clientRect.height;
+
+                    message.x = Math.floor(clientRect.left);
+                    message.y = Math.floor(clientRect.top);
+                    message.width = Math.floor(eleWidth);
+                    message.height = Math.floor(eleHeight);
+                    message.uiwidth = Math.round(eleWidth * devicePixelRatio);
+                    message.uiheight = Math.round(eleHeight * devicePixelRatio);
                     if (window.self === window.top) {
-                        message.uix = Math.round((ClientRect.left - scrollLeft) * devicePixelRatio);
-                        message.uiy = Math.round((ClientRect.top * devicePixelRatio) + (window.outerHeight - (window.innerHeight * devicePixelRatio)));
+                        message.uix = Math.round((clientRect.left - scrollLeft) * devicePixelRatio);
+                        message.uiy = Math.round((clientRect.top * devicePixelRatio) + (window.outerHeight - (window.innerHeight * devicePixelRatio)));
                     } else {
-                        message.uix = Math.round(ClientRect.left * devicePixelRatio);
-                        message.uiy = Math.round(ClientRect.top * devicePixelRatio);
+                        message.uix = Math.round(clientRect.left * devicePixelRatio);
+                        message.uiy = Math.round(clientRect.top * devicePixelRatio);
                     }
                     if (DOMUtils.inIframe() === false) {
                         let isAtMaxWidth = screen.availWidth - window.innerWidth === 0;
@@ -625,80 +673,11 @@ if (true == false) {
                             message.uix += 7;
                             message.uiy -= 7;
                         }
-                        //} else {
-                        //    message.uix += 1;
-                        //    message.uiy += 1;
-                    } else {
-                        message.x += DOMUtils.coordinatesOffset.x;
-                        message.y += DOMUtils.coordinatesOffset.y;
                     }
                 },
                 // https://stackoverflow.com/questions/53056796/getboundingclientrect-from-within-iframe
                 currentFrameAbsolutePosition: function () {
-                    let currentWindow = window;
-                    let currentParentWindow;
-                    let positions = [];
-                    let rect;
-                    if (DOMUtils.inIframe()) {
-                    }
-                    currentParentWindow = parent;
-                    while (currentWindow !== window.top) {
-                        for (const element of currentParentWindow.frames)
-                            if (element === currentWindow) {
-                                // for (let frameElement of currentParentWindow.document.getElementsByTagName('iframe')) {
-                                for (const element of currentParentWindow.frames) {
-                                    try {
-                                        let frameElement = element;
-
-                                        if (typeof frameElement.getBoundingClientRect === "function") {
-                                            rect = frameElement.getBoundingClientRect();
-
-                                            positions.push({ x: rect.x, y: rect.y });
-                                        } else if (frameElement.frameElement != null && typeof frameElement.frameElement.getBoundingClientRect === "function") {
-                                            rect = frameElement.frameElement.getBoundingClientRect();
-                                            positions.push({ x: rect.x, y: rect.y });
-                                        } else if (frameElement.window != null && typeof frameElement.window.getBoundingClientRect === "function") {
-                                            rect = frameElement.window.getBoundingClientRect();
-                                            positions.push({ x: rect.x, y: rect.y });
-                                        } else if (frameElement.contentWindow === currentWindow) {
-                                            rect = frameElement.getBoundingClientRect();
-                                            positions.push({ x: rect.x, y: rect.y });
-                                        } else if (frameElement.window === currentWindow) {
-                                            if (typeof frameElement.getBoundingClientRect === "function") {
-                                                rect = frameElement.getBoundingClientRect();
-
-                                                positions.push(rect);
-                                            } else if (frameElement.frameElement != null && typeof frameElement.frameElement.getBoundingClientRect === "function") {
-                                                rect = frameElement.frameElement.getBoundingClientRect();
-
-                                                positions.push(rect);
-                                            } else {
-                                                positions.push({ x: 0, y: 0 });
-                                            }
-
-                                        }
-                                    } catch (e) {
-                                        // console.debug(e);
-                                        // console.error(e);
-                                        break;
-                                    }
-                                }
-                                //for (let frameElement of currentParentWindow.frames) {
-                                //}
-
-                                currentWindow = currentParentWindow;
-                                currentParentWindow = currentWindow.parent;
-                                break;
-                            }
-                    }
-
-                    let result = positions.reduce((accumulator, currentValue) => {
-                        return {
-                            x: (accumulator.x + currentValue.x) | 0,
-                            y: (accumulator.y + currentValue.y) | 0
-                        };
-                    }, { x: 0, y: 0 });
-                    return result;
+                    return DOMUtils.computeFrameOffset(window);
                 },
                 getOffset: function (el) {
                     let _x = 0;
@@ -738,25 +717,26 @@ if (true == false) {
                         } catch (e) {
                             console.error(e);
                         }
-                        // console.log(openrpautil.parent);
+
+                        if (DOMUtils.inIframe()) {
+                            let currentFramePosition = openrpautil.currentFrameAbsolutePosition();
+                            message.uix += currentFramePosition.left;
+                            message.uiy += currentFramePosition.top;
+
+                            message.x += currentFramePosition.left;
+                            message.y += currentFramePosition.top;
+                        }
+
                         if (openrpautil.parent != null) {
                             message.parents = openrpautil.parent.parents + 1;
-                            message.uix += openrpautil.parent.uix;
-                            message.uiy += openrpautil.parent.uiy;
                             message.xpaths = openrpautil.parent.xpaths.slice(0);
-                            //message.x += parent.uix;
-                            //message.y += parent.uiy;
-                            //message.width += parent.width;
-                            //message.height += parent.height;
-                        } else if (DOMUtils.inIframe()) {
-                            // TODO: exit?
-                            //return;
-                            let currentFramePosition = openrpautil.currentFrameAbsolutePosition();
-                            // console.log({ uix: message.uix, uiy: message.uiy, parent: message.parents }, currentFramePosition);
-                            message.uix += currentFramePosition.x;
-                            message.uiy += currentFramePosition.y;
-                        }
-                        // console.log('inIframe: ' + inIframe());
+
+                            if (!DOMUtils.inIframe()) {
+                                message.uix += openrpautil.parent.uix;
+                                message.uiy += openrpautil.parent.uiy;
+                            }
+                        } 
+
                         message.cssPath = UTILS.cssPath(targetElement, false);
                         message.xPath = UTILS.xPath(targetElement, true);
                         message.zn_id = openrpautil.getuniqueid(targetElement);
@@ -1512,8 +1492,6 @@ if (true == false) {
         }
     }
 }
-
-console.info('IBM Task Mining plugin registered on ' + window?.self?.location?.href);
 
 //
 // THIS FILE IS AUTOMATICALLY GENERATED! DO NOT EDIT BY HAND!
