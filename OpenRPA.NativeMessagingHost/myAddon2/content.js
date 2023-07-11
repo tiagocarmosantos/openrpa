@@ -1004,7 +1004,7 @@ if (true == false) {
                     treeObject["display"] = openrpautil.display(element);
                     treeObject["isvisibleonscreen"] = openrpautil.isVisibleOnScreen(element);
                     treeObject["disabled"] = element.disabled;
-                    treeObject["innerText"] = element.innerText;
+                    treeObject["innerText"] = element.innerText || '';
                     treeObject["additions"] = openrpautil.getAdditions(element);
 
                     //textContent
