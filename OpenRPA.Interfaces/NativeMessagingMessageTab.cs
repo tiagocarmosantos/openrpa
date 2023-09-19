@@ -60,6 +60,8 @@ namespace OpenRPA.Interfaces
 
         [DataMember(Name = "windowId")]
         public int windowId { get; set; }
+
+        [DataMember(Name = "pendingUrl")]
         public string pendingUrl { get; set; }
     }
 }
