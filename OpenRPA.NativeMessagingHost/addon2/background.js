@@ -848,3 +848,64 @@ async function downloadsOnChanged(delta) {
     if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
 
 }
+
+async function getFocusedTab() {
+    let [tab] = await tabsquery({ active: true, lastFocusedWindow: true });
+    return tab;
+}
+
+function getCurrentBrowser() {
+    if (isChrome) return "chrome";
+    if (isFirefox) return "ff";
+    if (isChromeEdge) return "edge";
+}
+
+function isSameUrlOrigin(data) {
+    if (data.target && data.source) {
+        var target = new URL(data.target);
+        var source = new URL(data.source);
+
+        if (target.origin == source.origin)
+            return true;
+    }
+}
+
+function pushNavigateEvent(functionName, data, event) {
+    var message = {
+        functionName: functionName,
+        browser: data.browser,
+        windowId: data.tab.windowId,
+        tabid: data.tab.id,
+        tab: data.tab,
+        data: JSON.stringify({ source: data.source, target: data.target }),
+        result: JSON.stringify(event)
+    };
+
+    console.debug(`[send] ${message.functionName}`);
+
+    if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+}
+
+async function handleOnBeforeNavigation(event) {
+    if (event.frameType == 'outermost_frame') {
+        var tab = await getFocusedTab();
+        var browser = getCurrentBrowser();
+        var data = {
+            browser: browser,
+            tab: tab,
+            target: tab.pendingUrl,
+            source: tab.url
+        }
+        
+        if (!isSameUrlOrigin(data))
+            pushNavigateEvent("navigate", data, event);
+    }
+}
+
+async function OnPageNavigation() {
+    const filter = { url: [{ urlMatches: 'https://*/*', }] };
+    chrome.webNavigation.onBeforeNavigate
+        .addListener(handleOnBeforeNavigation, filter);
+}
+
+OnPageNavigation();
