@@ -986,16 +986,6 @@ function getCurrentBrowser() {
     if (isChromeEdge) return "edge";
 }
 
-function isSameUrlOrigin(data) {
-    if (data.target && data.source) {
-        var target = new URL(data.target);
-        var source = new URL(data.source);
-
-        if (target.origin == source.origin)
-            return true;
-    }
-}
-
 function pushNavigateEvent(functionName, data, event) {
     var message = {
         functionName: functionName,
@@ -1003,35 +993,34 @@ function pushNavigateEvent(functionName, data, event) {
         windowId: data.tab.windowId,
         tabid: data.tab.id,
         tab: data.tab,
-        data: JSON.stringify({ source: data.source, target: data.target }),
         result: JSON.stringify(event)
     };
 
     console.debug(`[send] ${message.functionName}`);
-
     if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
 }
 
-async function handleOnBeforeNavigation(event) {
-    if (event.frameType == 'outermost_frame') {
-        var tab = await getFocusedTab();
-        var browser = getCurrentBrowser();
-        var data = {
-            browser: browser,
-            tab: tab,
-            target: tab.pendingUrl,
-            source: tab.url
-        }
-        
-        if (!isSameUrlOrigin(data))
-            pushNavigateEvent("navigate", data, event);
+async function handleNavigation(event) { 
+    var tab = await getFocusedTab();
+    var browser = getCurrentBrowser();
+    var data = {
+        browser: browser,
+        tab: tab
     }
+    
+    pushNavigateEvent("navigate", data, event);
+}
+
+async function handleOnCommittedNavigation(event) { 
+    var filteredTransitions = ["typed", "auto_bookmark"];
+    if (event.frameType == 'outermost_frame' && filteredTransitions.includes(event.transitionType)) 
+        handleNavigation(event);
 }
 
 async function OnPageNavigation() {
     const filter = { url: [{ urlMatches: 'https://*/*', }] };
-    chrome.webNavigation.onBeforeNavigate
-        .addListener(handleOnBeforeNavigation, filter);
+    chrome.webNavigation.onCommitted
+        .addListener(handleOnCommittedNavigation, filter);
 }
 
 OnPageNavigation();
