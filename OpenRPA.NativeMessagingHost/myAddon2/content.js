@@ -267,6 +267,7 @@ if (true == false) {
             var cache = {};
             var cachecount = 0;
             var KEYCODE_TAB = 9;
+            var KEYCODE_ENTER = 13;
             var ctrlDown = false,
                 ctrlKey = 17,
                 cmdKey = 91,
@@ -378,6 +379,9 @@ if (true == false) {
                         if (e.keyCode === ctrlKey || e.keyCode === cmdKey) ctrlDown = false;
                         if (e.keyCode === KEYCODE_TAB) {
                             openrpautil.pushEvent('tab', e);
+                        }
+                        if (e.keyCode === KEYCODE_ENTER) {
+                            openrpautil.pushEvent('enter', e);
                         }
                     }, true);
                     document.addEventListener('change', function (e) {
