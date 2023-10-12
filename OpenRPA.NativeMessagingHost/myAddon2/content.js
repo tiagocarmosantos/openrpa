@@ -273,6 +273,7 @@ if (true == false) {
                 cmdKey = 91,
                 vKey = 86,
                 cKey = 67;
+            var inputTypes = ['text', 'select', 'radio', 'checkbox', 'search', 'tel', 'url', 'number', 'range', 'email', 'password', 'date', 'month', 'week', 'time', 'datetime-local', 'month', 'color', 'file'];
             var openrpautil = {
                 parent: null,
                 runningVersion: null,
@@ -385,7 +386,7 @@ if (true == false) {
                         }
                     }, true);
                     document.addEventListener('change', function (e) {
-                        if (e.target.type === 'text' || e.target.type === 'select' || e.target.type === 'radio' || e.target.type === 'checkbox') {
+                        if (inputTypes.some(i => i === e.target.type)) {
                             openrpautil.pushEvent('change', e);
                         }
                     }, true);
@@ -739,7 +740,7 @@ if (true == false) {
                                 message.uix += openrpautil.parent.uix;
                                 message.uiy += openrpautil.parent.uiy;
                             }
-                        } 
+                        }
 
                         message.cssPath = UTILS.cssPath(targetElement, false);
                         message.xPath = UTILS.xPath(targetElement, true);
