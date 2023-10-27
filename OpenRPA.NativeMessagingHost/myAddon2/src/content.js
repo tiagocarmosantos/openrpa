@@ -1,3 +1,119 @@
+
+const { PageAnalyser } = require('page-understanding')
+
+let detectionRules = [{
+    selector: 'form,records-record-layout-section,div[role="dialog"]',
+    name: "group_rule",
+    color: "red",
+    section_name: null,
+    type: "form",
+},
+{
+    selector: "tbody tr",
+    color: "blue",
+    name: "group_rule",
+    section_name: null,
+    type: "table_row"
+},
+{
+    selector: "thead tr",
+    color: "green",
+    name: "group_rule",
+    section_name: null,
+    type: "table_header"
+},
+{
+    selector: 'nav,div[role="tablist"]',
+    color: "aqua",
+    name: "group_rule",
+    section_name: null,
+    type: "navigation"
+},
+{
+    selector: ".jobreqcard,.rcmIntwCandCard",
+    color: "aqua",
+    name: "group_rule",
+    section_name: "card",
+    type: "section",
+},
+{
+    selector: "ul,ol",
+    color: "fuchsia",
+    name: "group_rule",
+    section_name: null,
+    type: "list"
+},
+{
+    selector: "select",
+    color: "lime",
+    name: "list_rule",
+    type: "select_options",
+    item_selector: "option"
+},
+{
+    selector: 'input[type="text"],input[type="password"],input[type="email"],input[type="text"],input:not([type]),input[type="search"],input[type="textarea"], textarea',
+    color: "Maroon",
+    name: "rule",
+    type: "input",
+},
+//   { selector: "fieldset", color: "navy", name: "group_rule", section_name: null, type: "fields_group" },
+{
+    selector: "input[type='checkbox']",
+    color: "olive",
+    name: "rule",
+    type: "checkbox"
+},
+{
+    selector: "input[type='radio']",
+    color: "purple",
+    name: "rule",
+    type: "radio"
+},
+{
+    selector: 'ui5-link,a:not(:has(a)),[role="link"]',
+    color: "teal",
+    name: "rule",
+    type: "link"
+},
+{
+    selector: "label,legend,.field_label span.text",
+    color: "black",
+    name: "rule",
+    type: "label"
+},
+{
+    selector: "select,.CustomFilter__dropdown",
+    color: "orange",
+    name: "rule",
+    type: "select_toggle"
+},
+{
+    selector: "h1,h2,h3,h4,h5,h6",
+    name: "rule",
+    color: "violet",
+    type: "title"
+},
+{
+    selector: "ui5-button,button,input[type='button'],input[type='submit'],.oxd-topbar-body-nav-tab,.ant-tag,.TabBar__item,[role=\"button\"],[onclick],[jsaction*='click']",
+    name: "rule",
+    color: "green",
+    type: "button",
+},
+{
+    selector: "option,[role=\"option\"]",
+    name: "rule",
+    color: "pink",
+    type: "select_option"
+},
+{
+    selector: "ui5-switch,switch,[role=\"switch\"]",
+    name: "rule",
+    color: "turquoise",
+    type: "switch"
+}
+];
+const pageAnalyser = new PageAnalyser(detectionRules);
+
 document.openrpadebug = false;
 document.openrpauniquexpathids = ['ng-model', 'ng-reflect-name']; // aria-label
 
@@ -415,7 +531,7 @@ if (true == false) {
                     document.addEventListener('change', function (e) {
                         handleChange(e);
                     }, true);
-                    document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
+                    //document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
 
                     observersOption = {
                         childList: true,
@@ -816,6 +932,24 @@ if (true == false) {
 
                         message.result = openrpautil.mapDOM(targetElement, true);
 
+                        // BEGIN: PAGE ANALYSER
+                        if (action != "mousemove") {
+                            targetElement = getRootTargetElement(event, targetElement);
+
+                            let pu = pageAnalyser.analyze_element(targetElement);
+                            message.contextElement = {
+                                fields: pu.map,
+                                context: pu.nearestRuleElement
+                            }
+                        }
+
+                        function getRootTargetElement(event, targetElement) {
+                            let composedPath = event.composedPath();
+                            if (composedPath && composedPath.length)
+                                return (targetElement != composedPath[0] ? composedPath[0] : targetElement);
+                        }
+                        // END: PAGE ANALYSER
+
                         if (openrpautil.getRunningVersion() > 0 && (action === 'click' || action === 'tab' || action === 'ctrlc' || action === 'ctrlv')) {
                             let fields = openrpautil.extractDiffFields();
                             if (fields && fields.fieldsMap) {
@@ -848,16 +982,6 @@ if (true == false) {
                 },
                 getuniqueid: function (element) {
                     if (element === null || element === undefined) return null;
-                    if (element.attributes === null || element.attributes === undefined) return null;
-                    for (let r = 0; r < element.attributes.length; r++) {
-                        const name = element.attributes[r].nodeName;
-                        if (name === 'zn_id') return element.attributes[r].nodeValue;
-                    }
-                    if (element === null || element === undefined) return null;
-                    if (element.attributes === null || element.attributes === undefined) return null;
-                    ++cachecount;
-                    //                    element.setAttribute('zn_id', cachecount);
-                    return cachecount;
                 },
                 executescript: function (message) {
                     try {
@@ -1259,6 +1383,7 @@ if (true == false) {
                 },
 
             };
+            
             document.openrpautil = openrpautil;
             openrpautil.init();
 

@@ -126,5 +126,8 @@ namespace OpenRPA.Interfaces
 
         [DataMember(Name = "fields")]
         public NativeMessagingMessageFields fields { get; set; }
+
+        [DataMember(Name = "contextElement")]
+        public NativeMessagingMessagePU contextElement { get; set; }
     }
 }

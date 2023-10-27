@@ -1,0 +1,16 @@
+{
+  "name": "openrpa-pu",
+  "version": "0.0.1",
+  "description": "openrpa as task mining  plugin with page understand",
+  "scripts": {
+    "build": "webpack --watch --progress --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tiago Carmo Santos",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
