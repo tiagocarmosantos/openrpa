@@ -531,7 +531,7 @@ if (true == false) {
                     document.addEventListener('change', function (e) {
                         handleChange(e);
                     }, true);
-                    //document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
+                    document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
 
                     observersOption = {
                         childList: true,
