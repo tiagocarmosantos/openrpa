@@ -982,6 +982,16 @@ if (true == false) {
                 },
                 getuniqueid: function (element) {
                     if (element === null || element === undefined) return null;
+                    if (element.attributes === null || element.attributes === undefined) return null;
+                    for (let r = 0; r < element.attributes.length; r++) {
+                        const name = element.attributes[r].nodeName;
+                        if (name === 'zn_id') return element.attributes[r].nodeValue;
+                    }
+                    if (element === null || element === undefined) return null;
+                    if (element.attributes === null || element.attributes === undefined) return null;
+                    ++cachecount;
+                    //                    element.setAttribute('zn_id', cachecount);
+                    return cachecount;
                 },
                 executescript: function (message) {
                     try {
