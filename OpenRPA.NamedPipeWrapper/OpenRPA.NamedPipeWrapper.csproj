@@ -7,7 +7,7 @@
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
     <PackageId>OpenRPA.NamedPipeWrapper</PackageId>
-    <Version>1.0.17.13-analyzeelement01+my1.0.142</Version>
+    <Version>1.0.17.14-analyzeelement02+my1.0.142</Version>
     <PackageReleaseNotes>1.0.18 Add thread names to improve debugging
 1.0.17 bump version
 1.0.15 update interfaces reference

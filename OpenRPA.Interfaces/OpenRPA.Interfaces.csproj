@@ -8,7 +8,7 @@
     <PackageProjectUrl>https://github.com/open-rpa/openrpa</PackageProjectUrl>
     <RepositoryUrl>https://github.com/open-rpa/openrpa</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.49.13-analyzeelement01+my1.0.142</Version>
+    <Version>1.0.49.14-analyzeelement02+my1.0.142</Version>
     <PackageReleaseNotes>1.0.49 Fix updating json, when using select button in selector
 1.0.48 Allow custom unique ids for xpath generation in nm
 1.0.47 Allow enter in selector, to allow copy n paste
