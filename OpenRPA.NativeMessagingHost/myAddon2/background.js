@@ -1018,7 +1018,7 @@ async function handleOnCommittedNavigation(event) {
 }
 
 async function OnPageNavigation() {
-    const filter = { url: [{ urlMatches: 'https://*/*', }] };
+    const filter = { url: [{ urlMatches: '*://*/*', }] };
     chrome.webNavigation.onCommitted
         .addListener(handleOnCommittedNavigation, filter);
 }
