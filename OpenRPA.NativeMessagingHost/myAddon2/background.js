@@ -503,6 +503,8 @@ async function OnPageLoad(event) {
         if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
     });
 
+    OnPageNavigation();
+
     if (port == null) return;
 }
 
@@ -986,41 +988,30 @@ function getCurrentBrowser() {
     if (isChromeEdge) return "edge";
 }
 
-function pushNavigateEvent(functionName, data, event) {
-    var message = {
-        functionName: functionName,
-        browser: data.browser,
-        windowId: data.tab.windowId,
-        tabid: data.tab.id,
-        tab: data.tab,
-        result: JSON.stringify(event)
-    };
-
-    console.debug(`[send] ${message.functionName}`);
-    if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
-}
-
-async function handleNavigation(event) { 
-    var tab = await getFocusedTab();
-    var browser = getCurrentBrowser();
-    var data = {
-        browser: browser,
-        tab: tab
-    }
-    
-    pushNavigateEvent("navigate", data, event);
-}
-
-async function handleOnCommittedNavigation(event) { 
-    var filteredTransitions = ["typed", "auto_bookmark"];
-    if (event.frameType == 'outermost_frame' && filteredTransitions.includes(event.transitionType)) 
-        handleNavigation(event);
-}
-
 async function OnPageNavigation() {
-    const filter = { url: [{ urlMatches: '*://*/*', }] };
+    const filter = { url: [{ urlMatches: '://*/*', }] };
     chrome.webNavigation.onCommitted
-        .addListener(handleOnCommittedNavigation, filter);
+        .addListener(async (event) => {
+            var filteredTransitions = ["typed", "auto_bookmark"];
+            if (event.frameType == 'outermost_frame' && filteredTransitions.includes(event.transitionType)) {
+                var tab = await getFocusedTab();
+                var browser = getCurrentBrowser();
+                var data = {
+                    browser: browser,
+                    tab: tab
+                }
+                
+                var message = {
+                    functionName: "navigate",
+                    browser: data.browser,
+                    windowId: data.tab.windowId,
+                    tabid: data.tab.id,
+                    tab: data.tab,
+                    result: JSON.stringify(event)
+                };
+                
+                console.debug(`[send] ${message.functionName}`);
+                if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            }
+        }, filter);
 }
-
-OnPageNavigation();
