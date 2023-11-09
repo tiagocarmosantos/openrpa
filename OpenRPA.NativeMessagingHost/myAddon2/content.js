@@ -774,7 +774,9 @@ if (true == false) {
                         // https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
                         let message = { functionName: action, frame: frame, parents: 0, xpaths: [] };
                         let targetElement = null;
-                        targetElement = event.target || event.srcElement;
+                       
+                        targetElement = event.isComposed ? event.composedPath()[0] : event.target || event.srcElement;
+                   
                         if (targetElement == null) {
                             console.log('targetElement == null');
                             return;
