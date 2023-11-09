@@ -111,10 +111,6 @@
 	</None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="background.js" />
-    <EmbeddedResource Include="openrpautil.js" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\OpenRPA.Interfaces\OpenRPA.Interfaces.csproj" />
   </ItemGroup>
   <ItemGroup>
