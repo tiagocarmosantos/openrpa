@@ -503,6 +503,8 @@ async function OnPageLoad(event) {
         if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
     });
 
+    OnPageNavigation();
+
     if (port == null) return;
 }
 
@@ -973,4 +975,43 @@ async function downloadsOnChanged(delta) {
     console.debug("[send]" + message.functionName);
     if (port != null) port.postMessage(JSON.parse(JSON.stringify(message)));
 
+}
+
+async function getFocusedTab() {
+    let [tab] = await tabsquery({ active: true, lastFocusedWindow: true });
+    return tab;
+}
+
+function getCurrentBrowser() {
+    if (isChrome) return "chrome";
+    if (isFirefox) return "ff";
+    if (isChromeEdge) return "edge";
+}
+
+async function OnPageNavigation() {
+    const filter = { url: [{ urlMatches: '://*/*', }] };
+    chrome.webNavigation.onCommitted
+        .addListener(async (event) => {
+            var filteredTransitions = ["typed", "auto_bookmark"];
+            if (event.frameType == 'outermost_frame' && filteredTransitions.includes(event.transitionType)) {
+                var tab = await getFocusedTab();
+                var browser = getCurrentBrowser();
+                var data = {
+                    browser: browser,
+                    tab: tab
+                }
+                
+                var message = {
+                    functionName: "navigate",
+                    browser: data.browser,
+                    windowId: data.tab.windowId,
+                    tabid: data.tab.id,
+                    tab: data.tab,
+                    result: JSON.stringify(event)
+                };
+                
+                console.debug(`[send] ${message.functionName}`);
+                if(port!=null) port.postMessage(JSON.parse(JSON.stringify(message)));
+            }
+        }, filter);
 }
