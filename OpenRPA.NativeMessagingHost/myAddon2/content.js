@@ -115,6 +115,28 @@ class DOMUtils {
     };
 }
 
+function getAllShadowRoots(element) {
+    const shadowRoots = [];
+    
+    // Check if the element has a shadow root
+    if (element.shadowRoot) {
+        shadowRoots.push(element.shadowRoot);
+        shadowRoots.push(...getAllShadowRoots(element.shadowRoot))
+    }
+  
+    // Traverse the child nodes recursively
+    const childNodes = element.childNodes;
+    for (let i = 0; i < childNodes.length; i++) {
+        const child = childNodes[i];
+        
+      if (child.nodeType === Node.ELEMENT_NODE) {
+        shadowRoots.push(...getAllShadowRoots(child)); // Recursively check for shadow roots in the child element
+      }
+    }
+
+    return shadowRoots;
+}
+
 class ContentListenerProxy {
     documentOnScroll() {
         DOMUtils.notifyOffsetToSubFrames();
@@ -273,7 +295,12 @@ if (true == false) {
                 cmdKey = 91,
                 vKey = 86,
                 cKey = 67;
-            var inputTypes = ['text', 'select', 'radio', 'checkbox', 'search', 'tel', 'url', 'number', 'range', 'email', 'password', 'date', 'month', 'week', 'time', 'datetime-local', 'month', 'color', 'file'];
+            var inputTypes = ['text', 'textarea', 'select', 'radio', 'checkbox', 'search', 'tel', 'url', 'number', 'range', 'email', 'password', 'date', 'month', 'week', 'time', 'datetime-local', 'month', 'color', 'file'];
+            const handleChange = (e) => {
+                if (inputTypes.some(i => i === e.target.type)) {
+                    openrpautil.pushEvent('change', e);
+                }
+            }
             var openrpautil = {
                 parent: null,
                 runningVersion: null,
@@ -291,14 +318,14 @@ if (true == false) {
 
                     MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
-                    let observer = new MutationObserver(function (mutations, observer) {
+                    let iframeObserver = new MutationObserver(function (mutations, observer) {
                         if (document.onmousemove == null) {
                             console.log('registered again because was not correctly registred (probably an iframe)');
                             openrpautil.init();
                         }
                     });
 
-                    observer.observe(document, {
+                    iframeObserver.observe(document, {
                         childList: true
                     });
 
@@ -386,11 +413,49 @@ if (true == false) {
                         }
                     }, true);
                     document.addEventListener('change', function (e) {
-                        if (inputTypes.some(i => i === e.target.type)) {
-                            openrpautil.pushEvent('change', e);
-                        }
+                        handleChange(e);
                     }, true);
                     document.addEventListener('mousedown', function (e) { openrpautil.pushEvent('mousedown', e); }, true);
+
+                    observersOption = {
+                        childList: true,
+                        subtree: true,
+                    };
+
+                    const shadowRootsObserver = new MutationObserver((mutations) => {
+                         mutations.forEach((child) => {
+                            if (child.target.nodeType === Node.ELEMENT_NODE) {
+                                const shadowRoots = getAllShadowRoots(child.target);
+
+                                 shadowRoots.forEach((root) => {
+                                    const nestedShadowRootObserver = new MutationObserver((shadowRootMutations) => {
+                                        let prevTarget;
+
+                                        shadowRootMutations.forEach((shadowRootMutation) => {
+                                            if (prevTarget !== shadowRootMutation.target) {
+                                                prevTarget = shadowRootMutation.target;
+                                                const nestedShadowRoots = getAllShadowRoots(shadowRootMutation.target);
+
+                                                nestedShadowRoots.forEach((nestedRoot) => {
+                                                    nestedRoot.removeEventListener('change', (e) => {
+                                                        if (e.isTrusted) handleChange(e);
+                                                    }, true);
+                                                    
+                                                    nestedRoot.addEventListener('change', (e) => {
+                                                        if (e.isTrusted) handleChange(e);
+                                                    }, true);
+                                                })
+                                            }
+                                        });
+                                    })
+
+                                    nestedShadowRootObserver.observe(root, observersOption);
+                                })
+                            }
+                        });
+                    });
+
+                    shadowRootsObserver.observe(document, observersOption);
 
                     openrpautil.getRunningVersion();
                 },
