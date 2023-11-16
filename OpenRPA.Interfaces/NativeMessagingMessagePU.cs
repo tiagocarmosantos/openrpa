@@ -50,6 +50,9 @@ namespace OpenRPA.Interfaces
         [JsonProperty("xPathFull")]
         public string xPathFull { get; set; }
 
+        [DataMember(Name = "xPathFullByParts")]
+        public string[] xPathFullByParts { get; set; }
+
         [DataMember(Name = "selector")]
         [JsonProperty("selector")]
         public string selector { get; set; }

@@ -78,6 +78,9 @@ namespace OpenRPA.Interfaces
         [DataMember(Name = "xPathFull")]
         public string xPathFull { get; set; }
 
+        [DataMember(Name = "xPathFullByParts")]
+        public string[] xPathFullByParts { get; set; }
+
         [DataMember(Name = "xpaths")]
         public string[] xpaths { get; set; }
 
