@@ -934,19 +934,11 @@ if (true == false) {
 
                         // BEGIN: PAGE ANALYSER
                         if (action != "mousemove") {
-                            targetElement = getRootTargetElement(event, targetElement);
-
                             let pu = pageAnalyser.analyze_element(targetElement);
                             message.contextElement = {
                                 fields: pu.map,
                                 context: pu.nearestRuleElement
                             }
-                        }
-
-                        function getRootTargetElement(event, targetElement) {
-                            let composedPath = event.composedPath();
-                            if (composedPath && composedPath.length)
-                                return (targetElement != composedPath[0] ? composedPath[0] : targetElement);
                         }
                         // END: PAGE ANALYSER
 
