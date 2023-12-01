@@ -775,7 +775,7 @@ if (true == false) {
                         let message = { functionName: action, frame: frame, parents: 0, xpaths: [] };
                         let targetElement = null;
                        
-                        targetElement = event.isComposed ? event.composedPath()[0] : event.target || event.srcElement;
+                        targetElement = event.composed ? event.composedPath()[0] : event.target || event.srcElement;
 
                         if (targetElement == null) {
                             console.log('targetElement == null');
