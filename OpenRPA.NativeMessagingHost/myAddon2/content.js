@@ -297,7 +297,7 @@ if (true == false) {
                 cKey = 67;
             var inputTypes = ['text', 'textarea', 'select', 'radio', 'checkbox', 'search', 'tel', 'url', 'number', 'range', 'email', 'password', 'date', 'month', 'week', 'time', 'datetime-local', 'month', 'color', 'file'];
             const handleChange = (e) => {
-                if (inputTypes.some(i => i === e.target.type)) {
+                if (inputTypes.some(i => e.target.type.includes(i))) {
                     openrpautil.pushEvent('change', e);
                 }
             }
@@ -776,7 +776,7 @@ if (true == false) {
                         let targetElement = null;
                        
                         targetElement = event.isComposed ? event.composedPath()[0] : event.target || event.srcElement;
-                   
+
                         if (targetElement == null) {
                             console.log('targetElement == null');
                             return;
